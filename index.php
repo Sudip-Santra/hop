@@ -120,15 +120,15 @@ include __DIR__ . '/partials/head.php';
   <section id="gallery" class="clients" data-route="gallery">
     <div class="wrap">
       <div class="sec-head grid rv">
-        <p class="label">(03) Who we supply</p>
-        <h2>From a house party to <em>a thousand guests</em>.</h2>
-        <p class="side">Steady stock, so your next order matches the last one.</p>
+        <p class="label">(03) Who we press for</p>
+        <h2>Pressed for people who <em>notice</em>.</h2>
+        <p class="side">Same paper, same inks, same press, so your next box matches the last one.</p>
       </div>
       <div class="grid client-list">
-        <div class="client rv"><h3>Caterers &amp; events</h3><p class="muted">Weddings, functions and large gatherings.</p></div>
-        <div class="client rv"><h3>Hotels &amp; restaurants</h3><p class="muted">Takeaway, room service and staff meals.</p></div>
-        <div class="client rv"><h3>Food stalls &amp; cafés</h3><p class="muted">Everyday cups, plates and bowls.</p></div>
-        <div class="client rv"><h3>Shops &amp; resellers</h3><p class="muted">Bulk stock to sell on.</p></div>
+        <div class="client rv"><h3>Founders &amp; businesses</h3><p class="muted">A card that says you’re here to stay.</p></div>
+        <div class="client rv"><h3>Architects &amp; designers</h3><p class="muted">Clean lines, pressed as precisely as you draw them.</p></div>
+        <div class="client rv"><h3>Studios &amp; agencies</h3><p class="muted">Cards for the whole team, in one run.</p></div>
+        <div class="client rv"><h3>Brands &amp; makers</h3><p class="muted">Brand cards and notes that carry your mark.</p></div>
       </div>
     </div>
   </section>
@@ -137,14 +137,14 @@ include __DIR__ . '/partials/head.php';
   <section id="how-to-order" class="wrap" data-route="how-to-order">
     <div class="sec-head grid rv">
       <p class="label">(04) How to order</p>
-      <h2>Four steps, <em>no fuss</em>.</h2>
-      <p class="side">Call, WhatsApp or walk in — whatever is quickest for you.</p>
+      <h2>Four steps, <em>no rush</em>.</h2>
+      <p class="side">Message us on WhatsApp or send an enquiry — we’ll take it from there.</p>
     </div>
     <div class="grid steps">
-      <div class="step rv"><span class="n">01</span><h3>Send your list</h3><p>Items, sizes and how many — plates, bowls, cups.</p></div>
-      <div class="step rv"><span class="n">02</span><h3>Get a rate</h3><p>We reply with prices and what’s in stock.</p></div>
-      <div class="step rv"><span class="n">03</span><h3>Confirm</h3><p>Lock in quantities and a pick-up or delivery time.</p></div>
-      <div class="step rv"><span class="n">04</span><h3>Collect &amp; reorder</h3><p>Collect from Margao or ask about delivery. Reorder anytime.</p></div>
+      <div class="step rv"><span class="n">01</span><h3>Choose your card</h3><p>Pick a style and quantity, or send us your own design.</p></div>
+      <div class="step rv"><span class="n">02</span><h3>Approve your proof</h3><p>We send a proof on WhatsApp. Nothing moves until you say yes.</p></div>
+      <div class="step rv"><span class="n">03</span><h3>We press it</h3><p>Ink mixed for your order, each sheet pressed by hand, one at a time.</p></div>
+      <div class="step rv"><span class="n">04</span><h3>Delivered to you</h3><p>Trimmed, checked and sent with tracking, free across India.</p></div>
     </div>
   </section>
 

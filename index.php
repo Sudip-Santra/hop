@@ -96,20 +96,20 @@ include __DIR__ . '/partials/head.php';
   <!-- Story -->
   <section id="about" class="story" data-route="">
     <div class="wrap grid">
-      <figure class="story-img rv"><img src="assets/leaf-plates.jpg" alt="K K Marketing wholesale supply showroom in Margao, Goa" loading="lazy"></figure>
+      <figure class="story-img rv"><video src="assets/videos/about-studio.mp4" poster="assets/videos/about-studio.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Inside the House of Press letterpress studio: gloved hands set up a vintage platen press and check a printing plate against the light"></video></figure>
       <div class="story-body">
         <div class="rv">
-          <p class="label">(02) About K K Marketing</p>
-          <h2>Supplying Goa’s kitchens, caterers and celebrations <em>since 2015</em>.</h2>
+          <p class="label">(02) About House of Press</p>
+          <h2>In a hurry? <em>Not the place for you.</em></h2>
         </div>
         <div class="story-cols rv">
-          <p>K K Marketing is a supplier and trading company in Margao, Goa, dealing in disposable products — bowls, plates, paper plates and cups.</p>
-          <p class="muted">Buy in bulk for the best rates, or pick up what you need from the shop at Pajifond. Run by Mr Kantilal Bagrecha.</p>
+          <p>House of Press is a letterpress studio for business cards and brand cards. Every card is pressed by hand into thick cotton paper, one sheet at a time, so your words sit just below the surface where you can feel them.</p>
+          <p class="muted">It takes longer than printing flat. That is the point. Every order starts with a proof on WhatsApp, and nothing touches the press until you approve it.</p>
         </div>
         <div class="stats rv">
-          <div><b>2015</b><span class="label">Registered</span></div>
-          <div><b>Bulk</b><span class="label">Carton orders</span></div>
-          <div><b>Goa</b><span class="label">Based in Margao</span></div>
+          <div><b>40K+</b><span class="label">Instagram followers</span></div>
+          <div><b>600 gsm</b><span class="label">Cotton paper</span></div>
+          <div><b>1 sheet</b><span class="label">Pressed at a time</span></div>
         </div>
         <a href="about/" class="btn paper rv" style="align-self:flex-start">More about us <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       </div>

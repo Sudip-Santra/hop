@@ -279,7 +279,8 @@ section { padding: 112px 0; }
    ========================================================================== */
 .story { background: var(--red); color: var(--paper); }
 .story .muted { color: rgba(244, 239, 230, .72); }
-.story-img { grid-column: 1 / span 5; aspect-ratio: 4 / 5; overflow: hidden; }
+.story-img { grid-column: 1 / span 5; aspect-ratio: 4 / 5; overflow: hidden; position: relative; }
+.story-img video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .story-body { grid-column: 7 / span 6; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
 .story-body h2 { font-size: clamp(32px, 3.6vw, 56px); line-height: 1.04; margin-top: 24px; }
 .story-body h2 em { color: var(--butter); }

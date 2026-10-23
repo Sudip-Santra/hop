@@ -2,6 +2,11 @@
 // WhatsApp number comes from partials/config.php via <body data-whatsapp>
 const WHATSAPP = document.body.dataset.whatsapp;
 
+// Hero video: hold on the poster frame for visitors who ask for less motion
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video[autoplay]').forEach((v) => { v.removeAttribute('autoplay'); v.pause(); });
+}
+
 // Overlay scrollbar (mouse/trackpad only; touch keeps the native one)
 if (matchMedia('(pointer: fine)').matches) {
   const root = document.documentElement, thumb = document.createElement('div');

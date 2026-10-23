@@ -36,10 +36,10 @@ include __DIR__ . '/partials/head.php';
       </div>
     </div>
     <div class="hero-visual">
-      <div class="main hero-showcase" role="img" aria-label="Comprehensive range of disposable catering products by K K Marketing including paper plates, areca leaf plates, paper bowls, cups and cutlery">
-        <img class="hero-range-img" src="assets/hero-range.jpg" alt="K K Marketing complete range: paper plates, natural areca leaf plates, paper food bowls, tea cups and wooden cutlery" fetchpriority="high">
+      <div class="main hero-showcase">
+        <video class="hero-media" src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Letterpress business cards from House of Press, pressed into thick cotton paper in one and two inks"></video>
       </div>
-      <span class="tag label">The range</span>
+      <span class="tag label">Off the press</span>
       <div class="chip rv">
         <span class="label">Proof first</span>
         <p>Approve your card on WhatsApp before it touches the press.</p>

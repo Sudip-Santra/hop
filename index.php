@@ -180,7 +180,7 @@ include __DIR__ . '/partials/head.php';
         <label class="field"><span class="label">What do you need?</span><textarea name="need" placeholder="e.g. 1,000 paper plates, 500 bowls, 2,000 tea cups"></textarea></label>
         <div class="form-foot">
           <small>Opens WhatsApp with your message.</small>
-          <button type="submit" class="btn terra">Send enquiry <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          <button type="submit" class="btn red">Send enquiry <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
         </div>
       </form>
     </div>

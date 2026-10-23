@@ -569,7 +569,7 @@ include __DIR__ . '/../partials/head.php';
       <div class="p-custom-act rv">
         <p>Send us your list and quantities. If we stock it, or can get it, we’ll tell you the rate.</p>
         <div>
-          <a class="btn terra" href="https://wa.me/<?= WHATSAPP ?>?text=Hi%20K%20K%20Marketing%2C%20I%27m%20looking%20for%20an%20item%20that%20isn%27t%20on%20your%20website%3A%0A" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Ask on WhatsApp</a>
+          <a class="btn red" href="https://wa.me/<?= WHATSAPP ?>?text=Hi%20K%20K%20Marketing%2C%20I%27m%20looking%20for%20an%20item%20that%20isn%27t%20on%20your%20website%3A%0A" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Ask on WhatsApp</a>
           <a class="btn paper" href="tel:<?= PHONE_TEL ?>">Call the shop</a>
         </div>
       </div>

@@ -2,8 +2,6 @@
 // WhatsApp number comes from partials/config.php via <body data-whatsapp>
 const WHATSAPP = document.body.dataset.whatsapp;
 
-document.getElementById('yr').textContent = new Date().getFullYear();
-
 // Overlay scrollbar (mouse/trackpad only; touch keeps the native one)
 if (matchMedia('(pointer: fine)').matches) {
   const root = document.documentElement, thumb = document.createElement('div');

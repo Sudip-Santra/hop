@@ -18,7 +18,7 @@ $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketi
 
 <header>
   <nav class="wrap grid">
-    <a href="/" class="logo" aria-label="K K Marketing — home"><svg class="logo-svg" role="img" aria-label="K K Marketing" viewBox="0 0 270.22 64"><use href="#brand-logo"/></svg></a>
+    <a href="/" class="logo" aria-label="House of Press — home"><img class="logo-svg" src="<?= $base ?>assets/logo.svg" alt="House of Press"></a>
     <div class="links">
 <?php foreach ($nav as $key => [$label, $href]): ?>
       <a href="<?= $href ?>"<?= $key === $page ? ' aria-current="page"' : '' ?>><?= $label ?></a>

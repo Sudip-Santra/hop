@@ -1,0 +1,60 @@
+# K K Marketing — Apache config
+# Pages live as folder/index.php (shared parts in partials/), so URLs stay clean: /  and  /products/
+
+DirectoryIndex index.php index.html
+Options -Indexes
+DirectorySlash On
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS (uncomment once the site has an SSL certificate)
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Shared PHP partials are included by pages, never opened directly;
+  # router.php is only for the local dev server
+  RewriteRule ^partials/ - [F,L]
+  RewriteRule ^router\.php$ - [F,L]
+
+  # /index.php -> /   and   /products/index.php -> /products/
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.(php|html)[\s?] [NC]
+  RewriteRule ^(.*/)?index\.(php|html)$ /%1 [L,R=301,NE]
+
+  # Product ranges: /products/paper-plates is the products page, opened at that range.
+  # A trailing slash would break the page's relative links, so drop it.
+  RewriteRule ^products/([a-z-]+)/$ /products/$1 [L,R=301]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^products/([a-z-]+)$ products/index.php [L,QSA]
+
+  # Home sections: /how-to-order etc. is the home page, opened at that section
+  RewriteRule ^(who-we-supply|how-to-order)/$ /$1 [L,R=301]
+  RewriteRule ^(who-we-supply|how-to-order)$ index.php [L,QSA]
+
+  # Old-style /products.html etc. -> folder URLs
+  RewriteRule ^(products|about|contact)\.html$ /$1/ [L,R=301]
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
+
+# Caching: pages revalidate, assets cache for a month
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+# Basic security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>

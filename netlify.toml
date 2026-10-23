@@ -1,0 +1,62 @@
+# Netlify can't run PHP, so the site is rendered to plain HTML at deploy time (see build.php).
+
+[build]
+  command = "php build.php"
+  publish = "dist"
+
+[build.environment]
+  PHP_VERSION = "8.3"
+
+# Section URLs live without a trailing slash (relative links depend on it)
+[[redirects]]
+  from = "/products/:range/"
+  to = "/products/:range"
+  status = 301
+
+[[redirects]]
+  from = "/who-we-supply/"
+  to = "/who-we-supply"
+  status = 301
+
+[[redirects]]
+  from = "/how-to-order/"
+  to = "/how-to-order"
+  status = 301
+
+# Old addresses
+[[redirects]]
+  from = "/index.php"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/:page/index.php"
+  to = "/:page/"
+  status = 301
+
+[[redirects]]
+  from = "/products.html"
+  to = "/products/"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact/"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

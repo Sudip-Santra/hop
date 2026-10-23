@@ -11,7 +11,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
 if (matchMedia('(pointer: fine)').matches) {
   const root = document.documentElement, thumb = document.createElement('div');
   thumb.className = 'sb-thumb'; thumb.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(thumb); root.classList.add('sb');
+  document.body.appendChild(thumb); // the native bar is already hidden by CSS
   const sync = () => {
     const view = innerHeight, full = root.scrollHeight, h = Math.max(view * view / full, 40);
     thumb.style.height = h + 'px';

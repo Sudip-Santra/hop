@@ -42,8 +42,12 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
    02. Base: scrollbar & selection
    Native bar hidden; a thin thumb floats over the page edge (no track gap)
    ========================================================================== */
-html.sb { scrollbar-width: none; }
-html.sb::-webkit-scrollbar { display: none; }
+/* Hidden by CSS, not by main.js, so the first paint already has the full page width
+   and nothing shifts sideways when the script runs. Same test as main.js uses. */
+@media (pointer: fine) {
+  html { scrollbar-width: none; }
+  html::-webkit-scrollbar { display: none; }
+}
 .sb-thumb {
   position: fixed; top: 0; right: 0; z-index: 200; width: 4px;
   background: #8a8378;

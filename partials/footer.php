@@ -77,10 +77,6 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
 
   <div class="wrap footer__base">
     <p>© <?= date('Y') ?> <?= SITE_NAME ?>. Prices include GST and delivery within India.</p>
-    <p class="footer__colophon">
-      <img src="<?= $base ?>assets/press-stamp.webp" alt="" width="40" height="33" loading="lazy">
-      Letterpress printed, since the 18th century
-    </p>
     <ul class="footer__legal">
       <li><a href="<?= $base ?>shipping-and-returns">Shipping &amp; returns</a></li>
       <li><a href="<?= $base ?>privacy">Privacy policy</a></li>

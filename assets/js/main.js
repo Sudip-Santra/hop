@@ -136,3 +136,21 @@ if (routeEls.some(el => el.dataset.route)) {
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(sync); } }, { passive: true });
 }
+
+// Questions (contact page, home page): smooth open / close
+document.querySelectorAll('.c-faq details').forEach((d) => {
+  const body = d.querySelector('.faq-a');
+  d.querySelector('summary').addEventListener('click', (e) => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    e.preventDefault();
+    if (d.classList.contains('closing')) return;
+    if (d.open) {
+      d.classList.add('closing');
+      body.animate([{ height: body.offsetHeight + 'px' }, { height: '0px' }], { duration: 320, easing: 'cubic-bezier(.2,.7,0,1)' })
+        .onfinish = () => { d.open = false; d.classList.remove('closing'); };
+    } else {
+      d.open = true;
+      body.animate([{ height: '0px', opacity: 0 }, { height: body.offsetHeight + 'px', opacity: 1 }], { duration: 420, easing: 'cubic-bezier(.2,.7,0,1)' });
+    }
+  });
+});

@@ -195,6 +195,46 @@ include __DIR__ . '/partials/head.php';
       </form>
     </div>
   </section>
+
+  <!-- Questions -->
+  <section class="c-faq dark">
+    <div class="wrap grid">
+      <div class="c-faq-head rv">
+        <p class="label">(06) Questions</p>
+        <h2>Before you <em>order</em>.</h2>
+      </div>
+      <div class="c-faq-list rv">
+        <details>
+          <summary>What is letterpress?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="faq-a"><p>Relief printing: a raised plate is inked and pressed into paper with real force. The words sit slightly below the surface of the card, so you can feel them with your fingertips.</p></div>
+        </details>
+        <details>
+          <summary>Will I see my card before it’s pressed?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="faq-a"><p>Yes. We send a proof to your WhatsApp. Nothing goes to press until you approve it, and you can ask for changes first.</p></div>
+        </details>
+        <details>
+          <summary>Do I need a design ready?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="faq-a"><p>No. Send your own print-ready design, or tell us what should be on the card and the studio will set it for you.</p></div>
+        </details>
+        <details>
+          <summary>Which file should I send?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="faq-a"><p>A vector PDF, AI, EPS or SVG works best, with text converted to outlines. Letterpress can’t print photographs or soft gradients, so keep the artwork to solid shapes and lines.</p></div>
+        </details>
+        <details>
+          <summary>Can you match my brand colour?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="faq-a"><p>We press in multiple house inks, or blind with no ink at all. For a specific Pantone shade, message us on WhatsApp before you order.</p></div>
+        </details>
+        <details>
+          <summary>How long does it take?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="faq-a"><p>We dispatch within <?= e(DISPATCH) ?> of your proof being approved, with free tracked delivery across India.</p></div>
+        </details>
+        <details>
+          <summary>Why does each card look slightly different?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="faq-a"><p>Each card is pressed one at a time, so the depth of the impression and the ink vary a little from card to card. That small variation is what makes letterpress feel handmade.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>

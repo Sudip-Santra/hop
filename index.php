@@ -58,13 +58,16 @@ include __DIR__ . '/partials/head.php';
   <!-- Products -->
   <section id="products" class="wrap" data-route="">
     <div class="sec-head grid rv">
-      <p class="label">(01) Products</p>
-      <h2>Use once. <em>Serve well.</em></h2>
-      <p class="side">Stocked in common sizes and packed in bulk. Ask for samples before a large order.</p>
+      <p class="label">(01) Our work</p>
+      <h2>See the work. <em>Feel the press.</em></h2>
+      <div class="side">
+        <p>Recent cards from the studio — single and multiple inks, blind pressed, and designed to each client’s brief.</p>
+        <a href="gallery" class="text-link">View all <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
     </div>
     <div class="grid collections">
       <a href="products/paper-plates" class="card c-lg rv">
-        <figure class="ph"><img src="assets/paper-plate.jpg" alt="Stacks of printed floral buffet paper plates, fluted plates, and silver snack plates" loading="lazy"><span class="no label">01</span></figure>
+        <figure class="ph"><video src="assets/videos/crispy-business-card.mp4" poster="assets/videos/crispy-business-card.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Crispy business card by House of Press: a contour-line pattern blind letterpressed into thick white cotton paper, with the name printed in black ink"></video><span class="no label">01</span></figure>
         <div class="meta"><div><h3>Paper plates</h3><p>Round plates for meals, snacks and buffets, in a range of sizes.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
       <a href="products/paper-cups" class="card c-sm rv">

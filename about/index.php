@@ -29,23 +29,26 @@ $v = '../assets/videos/';
     </div>
   </div>
 
-  <!-- Who we are -->
-  <section class="story">
-    <div class="wrap grid">
-      <figure class="story-img rv"><video src="<?= $v ?>hero.mp4" poster="<?= $v ?>hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Letterpress business cards from House of Press, pressed into thick cotton paper in one and two inks"></video></figure>
-      <div class="story-body">
-        <div class="rv">
-          <p class="label">(01) Who we are</p>
-          <h2>Slow by design. <em>Felt for years.</em></h2>
-        </div>
-        <div class="story-cols rv">
-          <p>Letterpress is relief printing, the method behind nearly every book, poster and calling card for centuries. Type and artwork stand raised on a plate, and the press pushes them into the paper.</p>
-          <p class="muted">Soft cotton takes that push beautifully, so your words sit just below the surface and catch the light. It is slower than printing flat. That is the point.</p>
-        </div>
-        <div class="a-sign rv">
-          <span class="label">The studio</span>
+  <!-- Who we are: two split rows, photo beside a coloured panel -->
+  <section class="a-split">
+    <div class="a-split-row">
+      <figure class="a-split-img"><img src="<?= $v ?>about1.webp" alt="Freshly pressed cotton sheets drying on a wooden rack in the House of Press studio, beside jars of ink and a roller" loading="lazy" width="1344" height="768"></figure>
+      <div class="a-split-panel is-red rv">
+        <p class="label">Who we are</p>
+        <h2>Slow by design. <em>Felt for years.</em></h2>
+        <p>Letterpress is relief printing, the method behind nearly every book, poster and calling card for centuries. Type and artwork stand raised on a plate, and the press pushes them into the paper.</p>
+        <a href="../gallery/" class="btn paper">See the work <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
+    </div>
+    <div class="a-split-row is-flip">
+      <figure class="a-split-img"><img src="<?= $v ?>about2.webp" alt="A House of Press printer inking a block of type by hand with an orange roller" loading="lazy" width="1344" height="768"></figure>
+      <div class="a-split-panel rv">
+        <p class="label">The craft</p>
+        <h2>Pressed <em>by hand</em>.</h2>
+        <p>Soft cotton takes that push beautifully, so your words sit just below the surface and catch the light. It is slower than printing flat. That is the point.</p>
+        <div class="a-split-sign">
           <b>House of Press</b>
-          <span>Letterpress &amp; Design · Andheri East, Mumbai</span>
+          <span class="label">Letterpress &amp; Design · Andheri East, Mumbai</span>
         </div>
       </div>
     </div>
@@ -54,7 +57,7 @@ $v = '../assets/videos/';
   <!-- What we press -->
   <section class="wrap">
     <div class="sec-head grid rv">
-      <p class="label">(02) What we press</p>
+      <p class="label">What we press</p>
       <h2>One press, <em>many kinds of card</em>.</h2>
       <p class="side">Business and brand cards in one ink or several, blind pressed, or made to your own design.</p>
     </div>
@@ -97,7 +100,7 @@ $v = '../assets/videos/';
   <section class="a-work">
     <div class="wrap">
       <div class="sec-head grid rv">
-        <p class="label">(03) How we work</p>
+        <p class="label">How we work</p>
         <h2>Slow, <em>on purpose</em>.</h2>
         <p class="side">No rush and no shortcuts: a proof, a press and your approval.</p>
       </div>

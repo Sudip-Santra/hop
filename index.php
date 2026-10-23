@@ -100,7 +100,7 @@ include __DIR__ . '/partials/head.php';
   <!-- Products -->
   <section id="products" class="wrap" data-route="">
     <div class="sec-head grid rv">
-      <p class="label">(01) Our work</p>
+      <p class="label">Our work</p>
       <h2>See the work. <em>Feel the press.</em></h2>
       <div class="side">
         <p>Recent cards from the studio — single and multiple inks, blind pressed, and designed to each client’s brief.</p>
@@ -141,7 +141,7 @@ include __DIR__ . '/partials/head.php';
       <figure class="story-img rv"><video src="assets/videos/about-studio.mp4" poster="assets/videos/about-studio.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Inside the House of Press letterpress studio: gloved hands set up a vintage platen press and check a printing plate against the light"></video></figure>
       <div class="story-body">
         <div class="rv">
-          <p class="label">(02) About House of Press</p>
+          <p class="label">About House of Press</p>
           <h2>In a hurry? <em>Not the place for you.</em></h2>
         </div>
         <div class="story-cols rv">
@@ -162,7 +162,7 @@ include __DIR__ . '/partials/head.php';
   <section id="who-we-press-for" class="clients" data-route="">
     <div class="wrap">
       <div class="sec-head grid rv">
-        <p class="label">(03) Who we press for</p>
+        <p class="label">Who we press for</p>
         <h2>Pressed for people who <em>notice</em>.</h2>
         <p class="side">Same paper, same inks, same press, so your next box matches the last one.</p>
       </div>
@@ -178,7 +178,7 @@ include __DIR__ . '/partials/head.php';
   <!-- Process -->
   <section id="how-to-order" class="wrap" data-route="how-to-order">
     <div class="sec-head grid rv">
-      <p class="label">(04) How to order</p>
+      <p class="label">How to order</p>
       <h2>Four steps, <em>no rush</em>.</h2>
       <p class="side">Message us on WhatsApp or send an enquiry — we’ll take it from there.</p>
     </div>
@@ -194,7 +194,7 @@ include __DIR__ . '/partials/head.php';
   <section id="enquiry-home" class="contact" data-route="">
     <div class="wrap grid">
       <div class="contact-head rv">
-        <p class="label">(05) Enquiry</p>
+        <p class="label">Enquiry</p>
         <h2 style="margin-top:18px">Have a card in mind? <em>Let’s talk.</em></h2>
         <p class="lead">Prices for our standard cards are on the business cards page. For anything custom — your own design, a special ink or a larger run — tell us here and we’ll reply on WhatsApp.</p>
         <div class="details">
@@ -242,7 +242,7 @@ include __DIR__ . '/partials/head.php';
   <section class="c-faq dark">
     <div class="wrap grid">
       <div class="c-faq-head rv">
-        <p class="label">(06) Questions</p>
+        <p class="label">Questions</p>
         <h2>Before you <em>order</em>.</h2>
       </div>
       <div class="c-faq-list rv">

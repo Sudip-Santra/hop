@@ -66,29 +66,29 @@ include __DIR__ . '/partials/head.php';
       </div>
     </div>
     <div class="grid collections">
-      <a href="products/paper-plates" class="card c-lg rv">
+      <a href="gallery" class="card c-lg rv">
         <figure class="ph"><video src="assets/videos/crispy-business-card.mp4" poster="assets/videos/crispy-business-card.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Crispy business card by House of Press: a contour-line pattern blind letterpressed into thick white cotton paper, with the name printed in black ink"></video><span class="no label">01</span></figure>
-        <div class="meta"><div><h3>Paper plates</h3><p>Round plates for meals, snacks and buffets, in a range of sizes.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+        <div class="meta"><div><h3>Crispy business card</h3><p>For Uru Living: contour lines blind pressed deep into cotton, the details in a single black ink.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="products/paper-cups" class="card c-sm rv">
-        <figure class="ph"><img src="assets/paper-cups.jpg" alt="Assortment of disposable paper cups for Indian chai, coffee, and beverages" loading="lazy"><span class="no label">02</span></figure>
-        <div class="meta"><div><h3>Paper cups</h3><p>For tea, coffee, water and juice.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+      <a href="gallery" class="card c-sm rv">
+        <figure class="ph"><img src="assets/videos/sakshi-jain.jpg" alt="Sakshi Jain architect business card by House of Press, letterpressed in olive-green ink on thick white cotton paper" loading="lazy"><span class="no label">02</span></figure>
+        <div class="meta"><div><h3>Sakshi Jain, Architect</h3><p>Olive-green ink, crisp lines on soft cotton.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="products/bowls" class="card c-sm rv">
-        <figure class="ph"><img src="assets/paper-bowl.jpg" alt="Kraft paper curry and takeaway food bowls with lids and silver dona bowls" loading="lazy"><span class="no label">03</span></figure>
-        <div class="meta"><div><h3>Bowls</h3><p>For curries, desserts and takeaway.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+      <a href="gallery" class="card c-sm rv">
+        <figure class="ph"><img src="assets/videos/urmil-nisar.jpg" alt="Bhanu Cospack business card for Urmil Nisar, letterpressed in blue ink on cotton paper and held up straight off the House of Press press" loading="lazy"><span class="no label">03</span></figure>
+        <div class="meta"><div><h3>Bhanu Cospack</h3><p>Our first ever run, pressed in blue.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="products/areca" class="card c-sm rv">
-        <figure class="ph"><img src="assets/areca-plates.jpg" alt="Natural areca palm leaf plates and bowls showing organic woodgrain texture" loading="lazy"><span class="no label">04</span></figure>
-        <div class="meta"><div><h3>Areca leaf plates</h3><p>Natural, sturdy, plastic-free.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+      <a href="gallery" class="card c-sm rv">
+        <figure class="ph"><img src="assets/videos/hero-poster.jpg" alt="Letterpress business cards by House of Press laid out together, pressed in orange, black and green inks on white cotton paper" loading="lazy"><span class="no label">04</span></figure>
+        <div class="meta"><div><h3>Studio cards</h3><p>Orange, black and green, fresh off the press.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
       <div class="card c-sm cta rv">
-        <span class="label" style="color:var(--butter)">05 — Something else?</span>
+        <span class="label" style="color:var(--butter)">05 — Your card</span>
         <div>
-          <h3>Need a size or item <em>not listed?</em></h3>
-          <p>Send us your list and quantities. We’ll tell you what we can supply.</p>
+          <h3>Have a design <em>in mind?</em></h3>
+          <p>Send your logo, artwork or a rough idea. We’ll set it, send a proof on WhatsApp, and press it once you approve.</p>
         </div>
-        <a href="products/" class="btn paper">See all products <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a href="contact/" class="btn paper">Start your card <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       </div>
     </div>
   </section>

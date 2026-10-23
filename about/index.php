@@ -131,23 +131,23 @@ include __DIR__ . '/../partials/head.php';
     <div class="wrap grid">
       <div class="a-visit-text">
         <div class="rv">
-          <p class="label">(05) Visit the shop</p>
-          <h2>Come by <em>Pajifond</em>.</h2>
-          <p class="lead muted">See the stock in person, check sizes and pick up your order.</p>
+          <p class="label">(05) Visit the studio</p>
+          <h2>Come by <em>the press</em>.</h2>
+          <p class="lead muted">See the paper, feel the cards and talk through your design in person.</p>
         </div>
         <div class="details rv">
-          <div><span class="label">Address</span>Shop No. 3, Seagull Apartment,<br>Pajifond, Margao, Goa 403601</div>
-          <div><span class="label">Proprietor</span>Mr Kantilal Bagrecha</div>
+          <div><span class="label">Address</span><?= ADDRESS_1 ?><br><?= ADDRESS_2 ?></div>
+          <div><span class="label">Studio hours</span><?= e(HOURS) ?></div>
           <div><span class="label">Phone</span><a href="tel:<?= PHONE_TEL ?>"><?= PHONE_DISPLAY ?></a></div>
-          <div><span class="label">Directions</span><a href="<?= MAPS_URL ?>" target="_blank" rel="noopener">Open in Maps <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          <div><span class="label">Email</span><a href="mailto:<?= EMAIL ?>"><?= EMAIL ?></a></div>
         </div>
         <div class="a-visit-act rv">
-          <a class="btn wa-btn" href="https://wa.me/<?= WHATSAPP ?>?text=Hi%20K%20K%20Marketing%2C%20I%27d%20like%20to%20know%20more%20about%20your%20products." target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Message on WhatsApp</a>
-          <a class="btn line" href="tel:<?= PHONE_TEL ?>">Call the shop</a>
+          <a class="btn wa-btn" href="https://wa.me/<?= WHATSAPP ?>?text=Hi%20House%20of%20Press%2C%20I%27d%20like%20to%20visit%20the%20studio." target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Message on WhatsApp</a>
+          <a class="btn line" href="tel:<?= PHONE_TEL ?>">Call the studio</a>
         </div>
       </div>
       <div class="a-map rv">
-        <iframe title="Map: K K Marketing, Pajifond, Margao" src="https://maps.google.com/maps?q=Seagull%20Apartment%2C%20Pajifond%2C%20Margao%2C%20Goa%20403601&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Map: House of Press, Andheri East, Mumbai" src="<?= MAPS_EMBED ?>" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </section>

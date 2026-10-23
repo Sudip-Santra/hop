@@ -23,15 +23,15 @@ form.addEventListener('submit', (e) => {
   }
   const date = val('date') ? new Date(val('date') + 'T00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
   const lines = [
-    `Hi K K Marketing, I'm ${val('name')} (${val('phone')}).`,
-    `Buying for: ${val('type')}`,
-    f.getAll('products').length && `Products: ${f.getAll('products').join(', ')}`,
-    `Pickup / delivery: ${val('collect')}`,
+    `Hi House of Press, I'm ${val('name')} (${val('phone')}).`,
+    `Looking for: ${val('type')}`,
+    f.getAll('finishes').length && `Finishes: ${f.getAll('finishes').join(', ')}`,
+    `Quantity: ${val('qty')}`,
     date && `Needed by: ${date}`,
-    val('area') && `Area: ${val('area')}`,
-    val('need') && `\nNeed:\n${val('need')}`,
+    val('area') && `City: ${val('area')}`,
+    val('need') && `\nDetails:\n${val('need')}`,
     cartLines.length && f.get('cart') && `\nFrom my cart:\n${cartLines.join('\n')}`,
-    '\nPlease share rates and availability.',
+    '\nPlease share options and pricing.',
   ].filter(Boolean);
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
 });

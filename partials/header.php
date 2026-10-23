@@ -49,6 +49,6 @@ $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi House of Pr
       <a href="<?= e($waHello) ?>" class="btn wa-btn" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
       <a href="tel:<?= PHONE_TEL ?>" class="btn line">Call <?= PHONE_DISPLAY ?></a>
     </div>
-    <p class="m-addr"><span class="label">Visit</span>Shop No. 3, Seagull Apartment, Pajifond, Margao, Goa 403601</p>
+    <p class="m-addr"><span class="label">Visit</span><?= ADDRESS_1 ?> <?= ADDRESS_2 ?></p>
   </div>
 </div>

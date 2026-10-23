@@ -105,8 +105,15 @@ if (routeEls.some(el => el.dataset.route)) {
     announce(el);
   };
 
+  // Arriving from another page of this site scrolls smoothly down to the section;
+  // a direct visit or a reload opens straight at it.
   const initial = sectionFor(location.pathname);
-  if (initial) requestAnimationFrame(() => go(initial, false));
+  let fromSite = false;
+  try {
+    const ref = new URL(document.referrer);
+    fromSite = ref.origin === location.origin && ref.pathname !== location.pathname;
+  } catch {}
+  if (initial) requestAnimationFrame(() => go(initial, fromSite));
 
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href]');
@@ -153,4 +160,23 @@ document.querySelectorAll('.c-faq details').forEach((d) => {
       body.animate([{ height: '0px', opacity: 0 }, { height: body.offsetHeight + 'px', opacity: 1 }], { duration: 420, easing: 'cubic-bezier(.2,.7,0,1)' });
     }
   });
+});
+
+// Questions: lists with data-batch show that many at a time, with a Load more button for the rest
+document.querySelectorAll('.c-faq-list[data-batch]').forEach((list) => {
+  const n = Number(list.dataset.batch);
+  const items = [...list.querySelectorAll('details')];
+  const more = list.querySelector('.c-faq-more');
+  let shown = n;
+  const update = () => {
+    items.forEach((d, i) => { d.hidden = i >= shown; });
+    more.hidden = shown >= items.length;
+  };
+  more.querySelector('button').addEventListener('click', () => {
+    const next = items[shown];
+    shown += n;
+    update();
+    next?.querySelector('summary').focus();
+  });
+  update();
 });

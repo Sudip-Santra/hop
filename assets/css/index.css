@@ -880,7 +880,6 @@ html.cart-lock { overflow: hidden; }
   background: var(--black); color: var(--paper); transition: background .2s;
 }
 .c-ic .i { width: 20px; height: 20px; }
-.c-way.is-wa .c-ic { background: #1da851; }
 .c-way-text .label { display: block; color: var(--ink-2); margin-bottom: 4px; }
 .c-way-text b { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.05; transition: color .2s; }
 .c-way .arr { width: 18px; height: 18px; color: var(--ink-2); transition: transform .3s var(--ease), color .2s; }
@@ -992,6 +991,8 @@ form.c-form { grid-column: 6 / span 7; }
 .c-faq.dark summary:hover,
 .c-faq.dark details[open]:not(.closing) summary { color: var(--butter); }
 .c-faq.dark details p { color: rgba(244, 239, 230, .68); }
+.c-faq-more { padding-top: 32px; }
+.c-faq-more[hidden] { display: none; }
 
 /* ==========================================================================
    32. Responsive (contact)

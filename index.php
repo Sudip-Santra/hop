@@ -21,18 +21,18 @@ include __DIR__ . '/partials/head.php';
   <div class="hero wrap grid" data-route="">
     <div class="hero-text">
       <div>
-        <p class="label muted rv">Paper plates · Bowls · Cups · Leaf plates</p>
-        <h1 class="rv" style="margin-top:20px">Disposables for <em>every</em> plate you serve.</h1>
-        <p class="lead muted rv">Paper plates, bowls and cups supplied in bulk from Margao — for caterers, hotels, restaurants, events and shops across Goa.</p>
+        <p class="label muted rv">Business cards · Brand cards · Letterpress studio</p>
+        <h1 class="rv" style="margin-top:20px">Cards that leave a lasting <em>impression.</em></h1>
+        <p class="lead muted rv">Business and brand cards pressed by hand into thick cotton paper — with a proof on WhatsApp before we print, and free delivery across India.</p>
         <div class="hero-actions rv">
-          <a href="products/" class="btn">See products <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a href="products/" class="btn">See cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
           <a href="https://wa.me/<?= WHATSAPP ?>" class="btn line">WhatsApp us</a>
         </div>
       </div>
       <div class="hero-facts rv">
-        <div><b>2015</b><span>Registered</span></div>
-        <div><b>Margao</b><span>Goa, India</span></div>
-        <div><b>Bulk</b><span>&amp; retail supply</span></div>
+        <div><b>600 gsm</b><span>Cotton paper</span></div>
+        <div><b>Multiple inks</b><span>Or blind, with no ink</span></div>
+        <div><b>Custom</b><span>Designed to your brief</span></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -41,8 +41,8 @@ include __DIR__ . '/partials/head.php';
       </div>
       <span class="tag label">The range</span>
       <div class="chip rv">
-        <span class="label">Bulk pricing</span>
-        <p>Order by the carton for weddings, events and daily service.</p>
+        <span class="label">Proof first</span>
+        <p>Approve your card on WhatsApp before it touches the press.</p>
       </div>
     </div>
   </div>
@@ -50,8 +50,8 @@ include __DIR__ . '/partials/head.php';
   <!-- Marquee -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Paper plates</span><span>Buffet plates</span><span>Paper bowls</span><span>Paper cups</span><span>Tea cups</span><span>Areca leaf plates</span><span>Leaf bowls</span><span>Party supplies</span>
-      <span>Paper plates</span><span>Buffet plates</span><span>Paper bowls</span><span>Paper cups</span><span>Tea cups</span><span>Areca leaf plates</span><span>Leaf bowls</span><span>Party supplies</span>
+      <span>Business cards</span><span>Brand cards</span><span>Letterpress</span><span>Cotton paper</span><span>Blind pressed</span><span>Painted edges</span><span>Custom designs</span><span>Proof on WhatsApp</span>
+      <span>Business cards</span><span>Brand cards</span><span>Letterpress</span><span>Cotton paper</span><span>Blind pressed</span><span>Painted edges</span><span>Custom designs</span><span>Proof on WhatsApp</span>
     </div>
   </div>
 

@@ -792,6 +792,9 @@ html.cart-lock { overflow: hidden; }
 .a-head-text { grid-column: 1 / span 8; }
 .a-head h1 { font-size: clamp(44px, 5.6vw, 88px); margin-top: 20px; }
 .a-head h1 em { color: var(--red); }
+/* Line break used on large screens only */
+.br-lg { display: none; }
+@media (min-width: 1081px) { .br-lg { display: inline; } }
 .a-head-lead { grid-column: 9 / span 4; align-self: end; padding-bottom: 8px; }
 .a-head-img { position: relative; margin-top: 56px; aspect-ratio: 21 / 9; overflow: hidden; background: var(--paper-2); }
 .a-head-img img { object-position: center 45%; animation: settle 1.6s var(--ease) forwards; transform: scale(1.06); }

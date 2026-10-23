@@ -28,8 +28,8 @@ DirectorySlash On
   RewriteRule ^products/([a-z-]+)$ products/index.php [L,QSA]
 
   # Home sections: /how-to-order etc. is the home page, opened at that section
-  RewriteRule ^(who-we-supply|how-to-order)/$ /$1 [L,R=301]
-  RewriteRule ^(who-we-supply|how-to-order)$ index.php [L,QSA]
+  RewriteRule ^(gallery|how-to-order)/$ /$1 [L,R=301]
+  RewriteRule ^(gallery|how-to-order)$ index.php [L,QSA]
 
   # Old-style /products.html etc. -> folder URLs
   RewriteRule ^(products|about|contact)\.html$ /$1/ [L,R=301]

@@ -1,18 +1,18 @@
 <?php
 // Announcement bar + sticky header (+ mobile menu). The link for $page gets aria-current.
 $nav = [
-    'products' => ['Products', $base . 'products/'],
+    'products' => ['Business cards', $base . 'products/'], // TODO: own page later
     'about'    => ['About', $base . 'about/'],
-    'clients'  => ['Who we supply', $base . 'who-we-supply'],
+    'gallery'  => ['Gallery', $base . 'gallery'],
     'process'  => ['How to order', $base . 'how-to-order'],
     'contact'  => ['Contact', $base . 'contact/'],
 ];
-$waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketing, I'd like to know more about your products.");
+$waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi House of Press, I'd like to know more about your business cards.");
 ?>
 <div class="bar">
   <div class="wrap">
-    <span class="label">Disposable plates, bowls &amp; cups — Margao, Goa</span>
-    <span class="label hide-sm">Supplying since 2015 · Bulk orders welcome</span>
+    <span class="label">Free delivery across India</span>
+    <span class="label hide-sm">A proof on WhatsApp before we print · Pressed by hand on cotton paper</span>
   </div>
 </div>
 
@@ -26,7 +26,7 @@ $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketi
     </div>
     <div class="nav-cta">
       <a href="tel:<?= PHONE_TEL ?>" class="btn line">Call</a>
-      <a href="<?= $base ?>contact/" class="btn">Get a rate <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a href="<?= $base ?>products/" class="btn">Order cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="m-menu">
         <svg class="i i-open" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="i i-close" aria-hidden="true"><use href="#i-x"/></svg>
@@ -45,7 +45,7 @@ $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketi
 <?php endforeach; ?>
     </ol>
     <div class="m-cta">
-      <a href="<?= $base ?>contact/" class="btn">Get a rate <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a href="<?= $base ?>products/" class="btn">Order cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       <a href="<?= e($waHello) ?>" class="btn wa-btn" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
       <a href="tel:<?= PHONE_TEL ?>" class="btn line">Call <?= PHONE_DISPLAY ?></a>
     </div>

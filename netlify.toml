@@ -14,8 +14,8 @@
   status = 301
 
 [[redirects]]
-  from = "/who-we-supply/"
-  to = "/who-we-supply"
+  from = "/gallery/"
+  to = "/gallery"
   status = 301
 
 [[redirects]]

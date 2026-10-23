@@ -533,7 +533,7 @@ form h3 { margin-bottom: 24px; }
   .hero-facts b { font-size: 26px; }
   .footer__nav { grid-template-columns: 1fr 1fr; row-gap: 24px; }
 }
-/* Smallest phones (320–400px): logo + Get a rate + menu button on one line without overlap */
+/* Smallest phones (320–400px): logo + Order cards + menu button on one line without overlap */
 @media (max-width: 400px) {
   .logo-svg { height: 30px; }
   .nav-cta { gap: 6px; }

@@ -1,21 +1,22 @@
 <?php
-// Footer + scripts. Optional: $scripts = ['products.js'] for page-specific JS.
+// Footer, cart and scripts. Optional: $scripts = ['gallery.js'] for page-specific JS,
+// $noFooter = true to leave out the footer itself (checkout).
 
 $footerNav = [
   'Shop' => [
-    ['All business cards', 'business-cards'],
-    ['Blind',       'business-cards?finish=standard&paper=pearl&ink=blind&qty=100'],
-    ['Classic',     'business-cards?finish=standard&paper=pearl&ink=black&qty=100'],
-    ['Extra thick', 'business-cards?finish=thick&paper=pearl&ink=red&qty=100'],
+    ['Business cards', 'business-cards/'],
+    ['How to order',   'how-to-order'],
+    ['Checkout',       'checkout/'],
   ],
   'Studio' => [
-    ['The craft', 'the-craft'],
-    ['Questions', 'faq'],
-    ['Contact',   'contact/'],
+    ['About',   'about/'],
+    ['Gallery', 'gallery/'],
+    ['Contact', 'contact/'],
   ],
 ];
 $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
 ?>
+<?php if (empty($noFooter)): ?>
 <footer class="footer">
   <div class="wrap footer__top">
     <div class="footer__intro">
@@ -84,7 +85,10 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
     </ul>
   </div>
 </footer>
+<?php endif; ?>
+<?php include __DIR__ . '/cart.php'; ?>
 <script src="<?= $base ?>assets/js/main.js"></script>
+<script src="<?= $base ?>assets/js/cart.js"></script>
 <?php foreach ($scripts ?? [] as $script): ?>
 <script src="<?= $base ?>assets/js/<?= $script ?>"></script>
 <?php endforeach; ?>

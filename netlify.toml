@@ -7,11 +7,18 @@
 [build.environment]
   PHP_VERSION = "8.3"
 
-# Section URLs live without a trailing slash (relative links depend on it)
+# The old catalogue
 [[redirects]]
-  from = "/products/:range/"
-  to = "/products/:range"
+  from = "/products/*"
+  to = "/business-cards/"
   status = 301
+
+[[redirects]]
+  from = "/products"
+  to = "/business-cards/"
+  status = 301
+
+# Section URLs live without a trailing slash (relative links depend on it)
 
 [[redirects]]
   from = "/how-to-order/"
@@ -31,7 +38,7 @@
 
 [[redirects]]
   from = "/products.html"
-  to = "/products/"
+  to = "/business-cards/"
   status = 301
 
 [[redirects]]

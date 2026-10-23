@@ -8,13 +8,9 @@ if (str_starts_with($path, '/partials/')) {
     http_response_code(403);
     exit('Forbidden');
 }
-if (preg_match('#^/products/([a-z-]+)/$#', $path, $m)) {
-    header('Location: /products/' . $m[1], true, 301);
+if (preg_match('#^/products(/.*)?$#', $path)) {
+    header('Location: /business-cards/', true, 301); // the old catalogue
     exit;
-}
-if (preg_match('#^/products/[a-z-]+$#', $path)) {
-    require __DIR__ . '/products/index.php';
-    return true;
 }
 if (preg_match('#^/(how-to-order)/$#', $path, $m)) {
     header('Location: /' . $m[1], true, 301);
@@ -25,7 +21,7 @@ if (preg_match('#^/(how-to-order)$#', $path)) {
     return true;
 }
 // Folder pages without the trailing slash: /contact -> /contact/ (Apache does this itself)
-if (preg_match('#^/(products|about|contact|gallery)$#', $path, $m)) {
+if (preg_match('#^/(business-cards|checkout|about|contact|gallery)$#', $path, $m)) {
     header('Location: /' . $m[1] . '/', true, 301);
     exit;
 }

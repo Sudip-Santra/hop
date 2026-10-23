@@ -1,5 +1,5 @@
 # K K Marketing — Apache config
-# Pages live as folder/index.php (shared parts in partials/), so URLs stay clean: /  and  /products/
+# Pages live as folder/index.php (shared parts in partials/), so URLs stay clean: /  and  /about/
 
 DirectoryIndex index.php index.html
 Options -Indexes
@@ -17,22 +17,19 @@ DirectorySlash On
   RewriteRule ^partials/ - [F,L]
   RewriteRule ^router\.php$ - [F,L]
 
-  # /index.php -> /   and   /products/index.php -> /products/
+  # /index.php -> /   and   /about/index.php -> /about/
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.(php|html)[\s?] [NC]
   RewriteRule ^(.*/)?index\.(php|html)$ /%1 [L,R=301,NE]
 
-  # Product ranges: /products/paper-plates is the products page, opened at that range.
-  # A trailing slash would break the page's relative links, so drop it.
-  RewriteRule ^products/([a-z-]+)/$ /products/$1 [L,R=301]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^products/([a-z-]+)$ products/index.php [L,QSA]
+  # The old catalogue: every /products address goes to the business cards page
+  RewriteRule ^products(/.*)?$ /business-cards/ [L,R=301]
 
   # Home sections: /how-to-order is the home page, opened at that section
   RewriteRule ^(how-to-order)/$ /$1 [L,R=301]
   RewriteRule ^(how-to-order)$ index.php [L,QSA]
 
-  # Old-style /products.html etc. -> folder URLs
-  RewriteRule ^(products|about|contact|gallery)\.html$ /$1/ [L,R=301]
+  # Old-style /about.html etc. -> folder URLs
+  RewriteRule ^(about|contact|gallery)\.html$ /$1/ [L,R=301]
 </IfModule>
 
 # Compression

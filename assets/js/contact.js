@@ -1,17 +1,8 @@
-// Contact page: enquiry form -> WhatsApp message, optionally with the products-page cart.
+// Contact page: enquiry form -> WhatsApp message.
 // Needs WHATSAPP from main.js.
 
 const form = document.getElementById('contact-form');
 const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
-
-// Cart saved by products.js: { "item (size)": packs }
-let cart = {};
-try { cart = JSON.parse(localStorage.getItem('kk-cart')) || {}; } catch {}
-const cartLines = Object.entries(cart).filter(([, n]) => n > 0).map(([item, n]) => `• ${item} — ${plural(n, 'pack')}`);
-if (cartLines.length) {
-  document.getElementById('c-cart').hidden = false;
-  document.getElementById('c-cart-sum').textContent = `(${plural(cartLines.length, 'item')})`;
-}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -30,7 +21,6 @@ form.addEventListener('submit', (e) => {
     date && `Needed by: ${date}`,
     val('area') && `City: ${val('area')}`,
     val('need') && `\nDetails:\n${val('need')}`,
-    cartLines.length && f.get('cart') && `\nFrom my cart:\n${cartLines.join('\n')}`,
     '\nPlease share options and pricing.',
   ].filter(Boolean);
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');

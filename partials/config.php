@@ -24,6 +24,10 @@ const INSTAGRAM = 'houseofpress.in';                 // handle, without the @
 const HOURS     = 'Monday to Friday, 9am – 7pm';
 const DISPATCH  = '7–10 working days';              // TODO: after proof approval
 
+// Business cards: price in rupees for each quantity (GST and delivery included)
+const CARD_PRICES = [100 => 2499, 200 => 4499, 500 => 9999, 1000 => 17999];
+const DESIGN_FEE  = 3000; // studio designs the card
+
 function e(string $s): string
 {
     return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');

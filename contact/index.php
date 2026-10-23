@@ -113,11 +113,6 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
         <label class="field"><span class="label">City</span><input name="area" placeholder="e.g. Mumbai, Bengaluru, Pune" autocomplete="address-level2"></label>
         <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members"></textarea></label>
 
-        <label class="c-cart" id="c-cart" hidden>
-          <input type="checkbox" name="cart" checked>
-          <span>Add my cart from the products page <b id="c-cart-sum"></b></span>
-        </label>
-
         <div class="form-foot">
           <small>Opens WhatsApp with your message.</small>
           <button type="submit" class="btn wa-btn"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Send on WhatsApp</button>

@@ -76,7 +76,7 @@ addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mMenu.hidden) { 
 matchMedia('(min-width: 1081px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 
 // Links to the page you're on (logo on home, "back to top") scroll up instead of reloading
-const pageBase = location.pathname.replace(/[^/]*$/, ''); // "/", "/products/", "/about/"
+const pageBase = location.pathname.replace(/[^/]*$/, ''); // "/", "/gallery/", "/about/"
 const smoothOrInstant = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
 const isPlainClick = (e, a) => a && !e.metaKey && !e.ctrlKey && !e.shiftKey && a.target !== '_blank' && a.origin === location.origin;
 document.addEventListener('click', (e) => {

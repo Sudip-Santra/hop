@@ -62,7 +62,7 @@ $v = '../assets/videos/';
       <p class="side">Business and brand cards in one ink or several, blind pressed, or made to your own design.</p>
     </div>
     <div class="a-ranges">
-        <a class="a-range rv" href="../products/">
+        <a class="a-range rv" href="../business-cards/">
           <figure><img src="<?= $v ?>urmil-nisar.jpg" alt="" loading="lazy" style="object-position:center 40%"></figure>
           <span class="label">01</span>
           <h3>Business cards</h3>

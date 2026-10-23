@@ -1,0 +1,113 @@
+// Cart on every page: floating button, right-hand drawer, saved in this browser.
+// Other scripts use window.hopCart: add(), lines(), totals(), clear(), open(), describe(), price().
+(() => {
+  const config = JSON.parse(document.getElementById('hop-prices').textContent);
+  const STORE = 'hop-cart';
+  const MAX_SETS = 50;
+  const rupees = (n) => '₹' + n.toLocaleString('en-IN');
+
+  // A line is one choice of card: { qty: 100, design: false, sets: 1 }
+  let lines = [];
+  try { lines = (JSON.parse(localStorage.getItem(STORE)) || []).filter((l) => config.cards[l.qty]); } catch {}
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(lines)); } catch {} };
+
+  const price = (l) => (config.cards[l.qty] + (l.design ? config.design : 0)) * l.sets;
+  const describe = (l) => `${l.qty} cards · ${l.design ? 'Studio design' : 'Your artwork'}`;
+  const totals = () => ({
+    sets: lines.reduce((n, l) => n + l.sets, 0),
+    total: lines.reduce((n, l) => n + price(l), 0),
+  });
+
+  const fab = document.getElementById('cart-fab');
+  const drawer = document.getElementById('cart');
+  const scrim = document.getElementById('cart-scrim');
+  const list = document.getElementById('cart-list');
+  const listeners = [];
+
+  function render() {
+    const { sets, total } = totals();
+    document.getElementById('cart-count').textContent = sets;
+    document.getElementById('cart-total').textContent = rupees(total);
+    document.getElementById('cart-empty').hidden = lines.length > 0;
+    document.getElementById('cart-foot').hidden = lines.length === 0;
+    fab.classList.toggle('show', lines.length > 0 || drawer.classList.contains('open'));
+
+    list.innerHTML = '';
+    lines.forEach((l, i) => {
+      const li = document.createElement('li');
+      li.className = 'cart-item';
+      li.innerHTML = `
+        <div class="ci-body"><h3>Letterpress business cards</h3><p class="label"></p><b class="ci-price"></b></div>
+        <div class="ci-act">
+          <div class="qty">
+            <button type="button" class="q-dec" aria-label="One set less"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
+            <output></output>
+            <button type="button" class="q-inc" aria-label="One set more"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          </div>
+          <button type="button" class="ci-del" aria-label="Remove"><svg class="i" aria-hidden="true"><use href="#i-trash-2"/></svg></button>
+        </div>`;
+      li.querySelector('.label').textContent = describe(l) + (l.sets > 1 ? ` · ${l.sets} sets` : '');
+      li.querySelector('.ci-price').textContent = rupees(price(l));
+      li.querySelector('output').textContent = l.sets;
+      li.querySelector('.q-inc').addEventListener('click', () => setSets(i, l.sets + 1));
+      li.querySelector('.q-dec').addEventListener('click', () => setSets(i, l.sets - 1));
+      li.querySelector('.ci-del').addEventListener('click', () => setSets(i, 0));
+      list.appendChild(li);
+    });
+    listeners.forEach((fn) => fn());
+  }
+
+  function setSets(i, n) {
+    if (n <= 0) lines.splice(i, 1);
+    else lines[i].sets = Math.min(MAX_SETS, n);
+    save(); render();
+  }
+
+  // Same quantity and design choice adds to the existing line
+  function add({ qty, design, sets = 1 }) {
+    const same = lines.find((l) => l.qty === qty && l.design === design);
+    if (same) same.sets = Math.min(MAX_SETS, same.sets + sets);
+    else lines.push({ qty, design, sets: Math.min(MAX_SETS, sets) });
+    save(); render();
+    fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump');
+  }
+
+  let lastFocus = null;
+  function open() {
+    lastFocus = document.activeElement;
+    drawer.classList.add('open'); scrim.classList.add('open');
+    drawer.removeAttribute('inert'); drawer.setAttribute('aria-hidden', 'false');
+    fab.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('cart-lock');
+    render();
+    document.getElementById('cart-close').focus();
+  }
+  function close() {
+    drawer.classList.remove('open'); scrim.classList.remove('open');
+    drawer.setAttribute('inert', ''); drawer.setAttribute('aria-hidden', 'true');
+    fab.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('cart-lock');
+    render();
+    lastFocus?.focus();
+  }
+  fab.addEventListener('click', open);
+  scrim.addEventListener('click', close);
+  document.getElementById('cart-close').addEventListener('click', close);
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('open')) close(); });
+  document.getElementById('cart-clear').addEventListener('click', () => { lines = []; save(); render(); });
+
+  // Another tab changed the cart
+  addEventListener('storage', (e) => {
+    if (e.key !== STORE) return;
+    try { lines = JSON.parse(e.newValue) || []; } catch { lines = []; }
+    render();
+  });
+
+  window.hopCart = {
+    config, rupees, price, describe, totals, add, open, setSets,
+    lines: () => lines.map((l) => ({ ...l })),
+    clear: () => { lines = []; save(); render(); },
+    onChange: (fn) => { listeners.push(fn); fn(); },
+  };
+  render();
+})();

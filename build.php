@@ -5,8 +5,8 @@
  *   php build.php
  *
  * Section URLs come from the pages themselves: each data-route="slug" found on a page
- * becomes its own file, e.g. /products/paper-plates -> dist/products/paper-plates.html
- * (Netlify serves /products/paper-plates from that file).
+ * becomes its own file, e.g. /how-to-order -> dist/how-to-order.html
+ * (Netlify serves /how-to-order from that file).
  */
 
 // Child mode: render one page as if it were requested at $argv[2]
@@ -23,7 +23,8 @@ $out  = $root . '/dist';
 // Each page: URL, PHP source, output file
 $pages = [
     ['/',         'index.php',          'index.html'],
-    ['/products/', 'products/index.php', 'products/index.html'],
+    ['/business-cards/', 'business-cards/index.php', 'business-cards/index.html'],
+    ['/checkout/',  'checkout/index.php',  'checkout/index.html'],
     ['/about/',    'about/index.php',    'about/index.html'],
     ['/contact/',  'contact/index.php',  'contact/index.html'],
     ['/gallery/',  'gallery/index.php',  'gallery/index.html'],

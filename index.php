@@ -67,7 +67,7 @@ include __DIR__ . '/partials/head.php';
         <h1 class="rv" style="margin-top:20px">Cards that leave a lasting <em>impression.</em></h1>
         <p class="lead muted rv">Business and brand cards pressed by hand into thick cotton paper — with a proof on WhatsApp before we print, and free delivery across India.</p>
         <div class="hero-actions rv">
-          <a href="products/" class="btn">See cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a href="business-cards/" class="btn">See cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
           <a href="https://wa.me/<?= WHATSAPP ?>" class="btn line">WhatsApp us</a>
         </div>
       </div>

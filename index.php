@@ -153,34 +153,41 @@ include __DIR__ . '/partials/head.php';
     <div class="wrap grid">
       <div class="contact-head rv">
         <p class="label">(05) Enquiry</p>
-        <h2 style="margin-top:18px">Planning an event? <em>Let’s talk.</em></h2>
-        <p class="lead">Tell us what you need. We’ll reply on WhatsApp with rates and availability.</p>
-        <!-- TODO: add real phone number -->
+        <h2 style="margin-top:18px">Have a card in mind? <em>Let’s talk.</em></h2>
+        <p class="lead">Prices for our standard cards are on the business cards page. For anything custom — your own design, a special ink or a larger run — tell us here and we’ll reply on WhatsApp.</p>
         <div class="details">
-          <div><span class="label">Contact</span>Mr Kantilal Bagrecha</div>
-          <div><span class="label">Phone</span><a href="tel:<?= PHONE_TEL ?>"><?= PHONE_DISPLAY ?></a></div>
-          <div><span class="label">Visit</span>Shop No. 3, Seagull Apartment,<br>Pajifond, Margao, Goa 403601</div>
-          <div><span class="label">Directions</span><a href="<?= MAPS_URL ?>" target="_blank" rel="noopener">Open in Maps <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          <div><span class="label">WhatsApp</span><a href="https://wa.me/<?= WHATSAPP ?>" target="_blank" rel="noopener"><?= PHONE_DISPLAY ?></a></div>
+          <div><span class="label">Email</span><a href="mailto:<?= EMAIL ?>"><?= EMAIL ?></a></div>
+          <div><span class="label">Instagram</span><a href="https://instagram.com/<?= INSTAGRAM ?>" target="_blank" rel="noopener">@<?= INSTAGRAM ?> <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+          <div><span class="label">Studio hours</span><?= e(HOURS) ?></div>
         </div>
       </div>
 
       <form id="enquiry" class="rv" novalidate>
-        <h3>Ask for a rate</h3>
+        <h3>Start an enquiry</h3>
         <div class="field-row">
           <label class="field"><span class="label">Name</span><input name="name" required autocomplete="name"></label>
           <label class="field"><span class="label">Phone</span><input name="phone" type="tel" required autocomplete="tel"></label>
         </div>
         <div class="field">
-          <span class="label">I’m buying for</span>
+          <span class="label">I’m looking for</span>
           <div class="chips">
-            <label><input type="radio" name="type" value="Catering / event" checked><span>Catering / event</span></label>
-            <label><input type="radio" name="type" value="Hotel / restaurant"><span>Hotel / restaurant</span></label>
-            <label><input type="radio" name="type" value="Food stall / café"><span>Stall / café</span></label>
-            <label><input type="radio" name="type" value="Shop / resale"><span>Shop / resale</span></label>
-            <label><input type="radio" name="type" value="Home / party"><span>Home / party</span></label>
+            <label><input type="radio" name="type" value="Business cards" checked><span>Business cards</span></label>
+            <label><input type="radio" name="type" value="Brand cards"><span>Brand cards</span></label>
+            <label><input type="radio" name="type" value="A custom design"><span>Custom design</span></label>
+            <label><input type="radio" name="type" value="Something else"><span>Something else</span></label>
           </div>
         </div>
-        <label class="field"><span class="label">What do you need?</span><textarea name="need" placeholder="e.g. 1,000 paper plates, 500 bowls, 2,000 tea cups"></textarea></label>
+        <div class="field">
+          <span class="label">Roughly how many?</span>
+          <div class="chips">
+            <label><input type="radio" name="qty" value="100" checked><span>100</span></label>
+            <label><input type="radio" name="qty" value="250"><span>250</span></label>
+            <label><input type="radio" name="qty" value="500"><span>500</span></label>
+            <label><input type="radio" name="qty" value="More than 500"><span>500+</span></label>
+          </div>
+        </div>
+        <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members"></textarea></label>
         <div class="form-foot">
           <small>Opens WhatsApp with your message.</small>
           <button type="submit" class="btn red">Send enquiry <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>

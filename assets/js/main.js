@@ -56,7 +56,7 @@ document.getElementById('enquiry')?.addEventListener('submit', (e) => {
     e.target.querySelector(name ? '[name=phone]' : '[name=name]').focus();
     return;
   }
-  const msg = `Hi K K Marketing, I'm ${name} (${phone}).\nBuying for: ${f.get('type')}\nNeed: ${(f.get('need') || '').trim() || '—'}`;
+  const msg = `Hi House of Press, I'm ${name} (${phone}).\nLooking for: ${f.get('type')}\nQuantity: ${f.get('qty')}\nDetails: ${(f.get('need') || '').trim() || '—'}`;
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 });
 

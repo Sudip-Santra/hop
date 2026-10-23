@@ -2,6 +2,7 @@
 /**
  * Page start: <head>, <body>, icon sprite and header.
  * Expects: $page (nav key), $base ('' at root, '../' one level down), $title, $description.
+ * Optional: $jsonLd, an array of schema.org objects printed as structured data.
  */
 require_once __DIR__ . '/config.php';
 
@@ -15,20 +16,31 @@ $self = '/' . ($page === 'home' ? '' : $page . '/');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($title) ?></title>
 <meta name="description" content="<?= e($description) ?>">
+<link rel="canonical" href="<?= SITE_URL . $self ?>">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#f4efe6">
 <link rel="icon" href="<?= $base ?>assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="House of Press">
+<meta property="og:site_name" content="<?= SITE_NAME ?>">
+<meta property="og:locale" content="en_IN">
 <meta property="og:title" content="<?= e($title) ?>">
 <meta property="og:description" content="<?= e($description) ?>">
 <meta property="og:url" content="<?= SITE_URL . $self ?>">
 <meta property="og:image" content="<?= SITE_URL ?>/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="<?= SITE_NAME ?> wordmark in red on cream">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= e($title) ?>">
+<meta name="twitter:description" content="<?= e($description) ?>">
+<meta name="twitter:image" content="<?= SITE_URL ?>/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= $base ?>assets/css/index.css">
+<?php foreach ($jsonLd ?? [] as $ld): ?>
+<script type="application/ld+json"><?= json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) ?></script>
+<?php endforeach; ?>
 </head>
 <body id="top" class="page-<?= e($page) ?>" data-whatsapp="<?= WHATSAPP ?>">
 

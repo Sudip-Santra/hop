@@ -9,6 +9,13 @@ const MAPS_URL      = 'https://maps.app.goo.gl/i9pEjtyYjYRvbVRX9';
 const MAPS_EMBED    = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.860229025897!2d72.8763116!3d19.113786699999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9c8b7ac3693%3A0x6efeb091a3ec8bf5!2sHouse%20Of%20Press!5e0!3m2!1sen!2sin!4v1792756300160!5m2!1sen!2sin';
 const ADDRESS_1     = 'Shop 19, Mubarak Building, Saifee Park,';
 const ADDRESS_2     = 'Marol Church Rd, Andheri East, Mumbai 400059';
+// The same address in parts, for search engines (structured data on the home page)
+const ADDRESS_STREET = 'Shop 19, Mubarak Building, Saifee Park, Marol Church Rd';
+const ADDRESS_AREA   = 'Andheri East';
+const ADDRESS_CITY   = 'Mumbai';
+const ADDRESS_REGION = 'Maharashtra';
+const ADDRESS_PIN    = '400059';
+const GEO            = [19.1137867, 72.8763116]; // from the Google Maps embed
 const SITE_URL      = 'https://houseofpress.in'; // no trailing slash; used for share-preview links
 
 const SITE_NAME = 'House of Press';

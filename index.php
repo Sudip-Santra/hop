@@ -1,8 +1,8 @@
 <?php
 $page        = 'home';
 $base        = '';
-$title       = 'K K Marketing — Disposable Plates, Bowls & Cups';
-$description = 'K K Marketing, Margao, Goa — supplier and trader of disposable plates, paper plates, bowls and cups since 2015. Bulk supply for caterers, hotels, restaurants, events and shops.';
+$title       = 'House of Press — Letterpress Business Cards in Mumbai';
+$description = 'Letterpress business and brand cards pressed by hand into thick cotton paper in Mumbai. Custom designs, a WhatsApp proof first, and free delivery across India.';
 
 // /how-to-order opens this page at that section (see .htaccess / router.php)
 $sections = [
@@ -10,8 +10,51 @@ $sections = [
 ];
 $slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
 if (isset($sections[$slug])) {
-    $title = $sections[$slug] . ' — K K Marketing, Margao';
+    $title = $sections[$slug] . ' — House of Press, letterpress business cards';
 }
+
+// Structured data: lets search engines show the studio's address, hours and phone
+require_once __DIR__ . '/partials/config.php';
+$jsonLd = [
+    [
+        '@context' => 'https://schema.org',
+        '@type' => 'LocalBusiness',
+        '@id' => SITE_URL . '/#studio',
+        'name' => SITE_NAME,
+        'description' => $description,
+        'url' => SITE_URL . '/',
+        'logo' => SITE_URL . '/assets/logo.svg',
+        'image' => [SITE_URL . '/assets/og-image.png', SITE_URL . '/assets/videos/hero-poster.jpg'],
+        'telephone' => PHONE_TEL,
+        'email' => EMAIL,
+        'address' => [
+            '@type' => 'PostalAddress',
+            'streetAddress' => ADDRESS_STREET,
+            'addressLocality' => ADDRESS_AREA . ', ' . ADDRESS_CITY,
+            'addressRegion' => ADDRESS_REGION,
+            'postalCode' => ADDRESS_PIN,
+            'addressCountry' => 'IN',
+        ],
+        'geo' => ['@type' => 'GeoCoordinates', 'latitude' => GEO[0], 'longitude' => GEO[1]],
+        'hasMap' => MAPS_URL,
+        'openingHoursSpecification' => [[
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            'opens' => '09:00',
+            'closes' => '19:00',
+        ]],
+        'areaServed' => ['@type' => 'Country', 'name' => 'India'],
+        'knowsAbout' => ['Letterpress printing', 'Business cards', 'Brand cards', 'Blind debossing', 'Cotton paper'],
+        'sameAs' => ['https://instagram.com/' . INSTAGRAM],
+    ],
+    [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => SITE_NAME,
+        'url' => SITE_URL . '/',
+        'publisher' => ['@id' => SITE_URL . '/#studio'],
+    ],
+];
 include __DIR__ . '/partials/head.php';
 ?>
 

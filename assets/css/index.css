@@ -1018,3 +1018,114 @@ form.c-form { grid-column: 6 / span 7; }
   .c-ic { width: 44px; height: 44px; }
   .c-faq details p { padding-right: 0; }
 }
+
+/* ==========================================================================
+   33. Gallery page — head, masonry wall, lightbox
+   ========================================================================== */
+.g-head { padding-top: 48px; padding-bottom: 56px; align-items: end; }
+.g-head-text { grid-column: 1 / span 7; }
+.g-head h1 { font-size: clamp(44px, 5.6vw, 88px); margin-top: 20px; }
+.g-head h1 em { color: var(--red); }
+.g-head .lead { margin-top: 24px; }
+.g-filter { grid-column: 9 / span 4; justify-content: flex-end; padding-bottom: 6px; }
+
+.g-wall { padding-top: 0; }
+/* Masonry: gallery.js places each tile in the shortest column (.is-masonry).
+   Without the script, CSS columns give the same look in source order. */
+.g-grid { columns: 4 260px; column-gap: 16px; }
+.g-item { break-inside: avoid; margin-bottom: 16px; }
+.g-item[hidden] { display: none; }
+.g-grid.is-masonry { columns: auto; display: flex; align-items: flex-start; gap: 16px; }
+.g-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.g-col .g-item { margin-bottom: 0; }
+.g-open {
+  position: relative; display: block; width: 100%; overflow: hidden;
+  border: 0; padding: 0; background: var(--paper-2); cursor: zoom-in; color: var(--paper);
+}
+.g-tall .g-open { aspect-ratio: 9 / 16; }
+.g-portrait .g-open { aspect-ratio: 4 / 5; }
+.g-classic .g-open { aspect-ratio: 3 / 4; }
+.g-square .g-open { aspect-ratio: 1 / 1; }
+.g-open img, .g-open video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 1s var(--ease);
+}
+.g-open:hover img, .g-open:hover video { transform: scale(1.04); }
+.g-open:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.g-play { position: absolute; top: 12px; left: 12px; background: var(--paper); color: var(--ink); padding: 4px 8px; }
+/* Caption rises in on hover; always shown on touch screens */
+.g-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 4px;
+  padding: 40px 16px 14px; text-align: left;
+  background: linear-gradient(transparent, rgba(23, 21, 18, .72));
+  opacity: 0; transform: translateY(8px); transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.g-cap b { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.1; }
+.g-cap .label { color: rgba(244, 239, 230, .8); }
+.g-open:hover .g-cap, .g-open:focus-visible .g-cap { opacity: 1; transform: none; }
+@media (hover: none) { .g-cap { opacity: 1; transform: none; } }
+
+.g-wall { padding-bottom: 96px; }
+.g-end { background: var(--ink); color: var(--paper); padding: 96px 0 0; }
+.g-end-main { align-items: end; padding-bottom: 72px; }
+.g-end-text { grid-column: 1 / span 7; }
+.g-end-text .label { color: var(--butter); }
+.g-end-text h2 { margin-top: 18px; font-size: clamp(44px, 5.6vw, 88px); line-height: .98; }
+.g-end-text h2 em { color: var(--butter); }
+.g-end-act { grid-column: 9 / span 4; display: flex; flex-direction: column; align-items: flex-start; gap: 28px; padding-bottom: 8px; }
+.g-end-act p { color: rgba(244, 239, 230, .72); font-size: 15.5px; line-height: 1.6; }
+.g-end-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+/* On black: the red button lightens on hover instead of turning black */
+.g-end .btn.red:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.g-end .btn.line { color: var(--paper); border-color: rgba(244, 239, 230, .3); gap: 10px; }
+.g-end .btn.line:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.g-end-steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(244, 239, 230, .2); }
+.g-end-steps li { display: flex; flex-direction: column; gap: 6px; padding: 28px 24px 56px 0; }
+.g-end-steps li + li { padding-left: 24px; border-left: 1px solid rgba(244, 239, 230, .14); }
+.g-end-steps .label { color: var(--butter); margin-bottom: 6px; }
+.g-end-steps b { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 1.9vw, 28px); line-height: 1.1; }
+.g-end-steps span:last-child { font-size: 14px; color: rgba(244, 239, 230, .62); }
+
+.g-box {
+  border: 0; padding: 0; margin: auto; max-width: min(92vw, 1100px); max-height: 92vh;
+  background: var(--ink); color: var(--paper); overflow: hidden;
+}
+.g-box::backdrop { background: rgba(23, 21, 18, .82); }
+.g-box[open] { display: flex; flex-direction: column; animation: g-in .35s var(--ease); }
+@keyframes g-in { from { opacity: 0; transform: scale(.97); } }
+.g-box-stage { display: grid; place-items: center; min-height: 0; flex: 1; background: #000; }
+.g-box-stage img, .g-box-stage video {
+  display: block; width: auto; height: auto; max-width: min(92vw, 1100px); max-height: calc(92vh - 72px); object-fit: contain;
+}
+.g-box-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 16px; }
+.g-box-cap { display: flex; flex-direction: column; gap: 2px; }
+.g-box-cap b { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.1; }
+.g-box-cap .label { color: rgba(244, 239, 230, .62); }
+.g-box-nav { display: flex; align-items: center; gap: 6px; }
+.g-box-nav .label { color: rgba(244, 239, 230, .62); margin-right: 8px; }
+.g-box-nav button {
+  width: 40px; height: 40px; display: grid; place-items: center; cursor: pointer;
+  background: transparent; color: var(--paper); border: 1px solid rgba(244, 239, 230, .25); transition: background .2s, border-color .2s;
+}
+.g-box-nav button:hover { background: var(--red); border-color: var(--red); }
+
+@media (max-width: 1080px) {
+  .g-head-text, .g-filter { grid-column: 1 / -1; }
+  .g-filter { justify-content: flex-start; margin-top: 32px; }
+  .g-end-text, .g-end-act { grid-column: 1 / -1; }
+  .g-end-act { margin-top: 32px; }
+  .g-end-act p { max-width: 52ch; }
+}
+@media (max-width: 560px) {
+  .g-grid { columns: 2; column-gap: 10px; }
+  .g-item { margin-bottom: 10px; }
+  .g-grid.is-masonry, .g-col { gap: 10px; }
+  .g-cap { padding: 28px 10px 10px; }
+  .g-cap b { font-size: 17px; }
+  .g-box-cap b { font-size: 18px; }
+  .g-end { padding-top: 72px; }
+  .g-end-steps { grid-template-columns: 1fr; }
+  .g-end-steps li, .g-end-steps li + li { padding: 20px 0; border-left: 0; }
+  .g-end-steps li + li { border-top: 1px solid rgba(244, 239, 230, .14); }
+  .g-end-steps li:last-child { padding-bottom: 48px; }
+}

@@ -27,12 +27,12 @@ DirectorySlash On
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^products/([a-z-]+)$ products/index.php [L,QSA]
 
-  # Home sections: /how-to-order etc. is the home page, opened at that section
-  RewriteRule ^(gallery|how-to-order)/$ /$1 [L,R=301]
-  RewriteRule ^(gallery|how-to-order)$ index.php [L,QSA]
+  # Home sections: /how-to-order is the home page, opened at that section
+  RewriteRule ^(how-to-order)/$ /$1 [L,R=301]
+  RewriteRule ^(how-to-order)$ index.php [L,QSA]
 
   # Old-style /products.html etc. -> folder URLs
-  RewriteRule ^(products|about|contact)\.html$ /$1/ [L,R=301]
+  RewriteRule ^(products|about|contact|gallery)\.html$ /$1/ [L,R=301]
 </IfModule>
 
 # Compression

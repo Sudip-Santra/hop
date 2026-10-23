@@ -4,9 +4,8 @@ $base        = '';
 $title       = 'K K Marketing — Disposable Plates, Bowls & Cups';
 $description = 'K K Marketing, Margao, Goa — supplier and trader of disposable plates, paper plates, bowls and cups since 2015. Bulk supply for caterers, hotels, restaurants, events and shops.';
 
-// /gallery and /how-to-order open this page at that section (see .htaccess / router.php)
+// /how-to-order opens this page at that section (see .htaccess / router.php)
 $sections = [
-    'gallery'      => 'Gallery',
     'how-to-order' => 'How to order',
 ];
 $slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
@@ -62,23 +61,23 @@ include __DIR__ . '/partials/head.php';
       <h2>See the work. <em>Feel the press.</em></h2>
       <div class="side">
         <p>Recent cards from the studio — single and multiple inks, blind pressed, and designed to each client’s brief.</p>
-        <a href="gallery" class="text-link">View all <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a href="gallery/" class="text-link">View all <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       </div>
     </div>
     <div class="grid collections">
-      <a href="gallery" class="card c-lg rv">
+      <a href="gallery/" class="card c-lg rv">
         <figure class="ph"><video src="assets/videos/crispy-business-card.mp4" poster="assets/videos/crispy-business-card.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Crispy business card by House of Press: a contour-line pattern blind letterpressed into thick white cotton paper, with the name printed in black ink"></video><span class="no label">01</span></figure>
         <div class="meta"><div><h3>Crispy business card</h3><p>For Uru Living: contour lines blind pressed deep into cotton, the details in a single black ink.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="gallery" class="card c-sm rv">
+      <a href="gallery/" class="card c-sm rv">
         <figure class="ph"><img src="assets/videos/sakshi-jain.jpg" alt="Sakshi Jain architect business card by House of Press, letterpressed in olive-green ink on thick white cotton paper" loading="lazy"><span class="no label">02</span></figure>
         <div class="meta"><div><h3>Sakshi Jain, Architect</h3><p>Olive-green ink, crisp lines on soft cotton.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="gallery" class="card c-sm rv">
+      <a href="gallery/" class="card c-sm rv">
         <figure class="ph"><img src="assets/videos/urmil-nisar.jpg" alt="Bhanu Cospack business card for Urmil Nisar, letterpressed in blue ink on cotton paper and held up straight off the House of Press press" loading="lazy"><span class="no label">03</span></figure>
         <div class="meta"><div><h3>Bhanu Cospack</h3><p>Our first ever run, pressed in blue.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="gallery" class="card c-sm rv">
+      <a href="gallery/" class="card c-sm rv">
         <figure class="ph"><img src="assets/videos/hero-poster.jpg" alt="Letterpress business cards by House of Press laid out together, pressed in orange, black and green inks on white cotton paper" loading="lazy"><span class="no label">04</span></figure>
         <div class="meta"><div><h3>Studio cards</h3><p>Orange, black and green, fresh off the press.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
@@ -117,7 +116,7 @@ include __DIR__ . '/partials/head.php';
   </section>
 
   <!-- Clients -->
-  <section id="gallery" class="clients" data-route="gallery">
+  <section id="who-we-press-for" class="clients" data-route="">
     <div class="wrap">
       <div class="sec-head grid rv">
         <p class="label">(03) Who we press for</p>

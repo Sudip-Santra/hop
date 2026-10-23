@@ -3,7 +3,7 @@
 $nav = [
     'products' => ['Business cards', $base . 'products/'], // TODO: own page later
     'about'    => ['About', $base . 'about/'],
-    'gallery'  => ['Gallery', $base . 'gallery'],
+    'gallery'  => ['Gallery', $base . 'gallery/'],
     'process'  => ['How to order', $base . 'how-to-order'],
     'contact'  => ['Contact', $base . 'contact/'],
 ];

@@ -14,11 +14,6 @@
   status = 301
 
 [[redirects]]
-  from = "/gallery/"
-  to = "/gallery"
-  status = 301
-
-[[redirects]]
   from = "/how-to-order/"
   to = "/how-to-order"
   status = 301

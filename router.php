@@ -16,16 +16,16 @@ if (preg_match('#^/products/[a-z-]+$#', $path)) {
     require __DIR__ . '/products/index.php';
     return true;
 }
-if (preg_match('#^/(gallery|how-to-order)/$#', $path, $m)) {
+if (preg_match('#^/(how-to-order)/$#', $path, $m)) {
     header('Location: /' . $m[1], true, 301);
     exit;
 }
-if (preg_match('#^/(gallery|how-to-order)$#', $path)) {
+if (preg_match('#^/(how-to-order)$#', $path)) {
     require __DIR__ . '/index.php';
     return true;
 }
 // Folder pages without the trailing slash: /contact -> /contact/ (Apache does this itself)
-if (preg_match('#^/(products|about|contact)$#', $path, $m)) {
+if (preg_match('#^/(products|about|contact|gallery)$#', $path, $m)) {
     header('Location: /' . $m[1] . '/', true, 301);
     exit;
 }

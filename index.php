@@ -64,7 +64,7 @@ include __DIR__ . '/partials/head.php';
     <div class="hero-text">
       <div>
         <p class="label muted rv">Business cards · Brand cards · Letterpress studio</p>
-        <h1 class="rv" style="margin-top:20px">Cards that leave a lasting <em>impression.</em></h1>
+        <h1 class="rv" style="margin-top:28px">Cards that leave a lasting <em>impression.</em></h1>
         <p class="lead muted rv">Business and brand cards pressed by hand into thick cotton paper — with a proof on WhatsApp before we print, and free delivery across India.</p>
         <div class="hero-actions rv">
           <a href="business-cards/" class="btn">See cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
@@ -150,7 +150,7 @@ include __DIR__ . '/partials/head.php';
         </div>
         <div class="stats rv">
           <div><b>40K+</b><span class="label">Instagram followers</span></div>
-          <div><b>600 gsm</b><span class="label">Cotton paper</span></div>
+          <div><b>5K+</b><span class="label">Cards pressed</span></div>
           <div><b>1 sheet</b><span class="label">Pressed at a time</span></div>
         </div>
         <a href="about/" class="btn paper rv" style="align-self:flex-start">More about us <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>

@@ -21,7 +21,7 @@ if (preg_match('#^/(how-to-order)$#', $path)) {
     return true;
 }
 // Folder pages without the trailing slash: /contact -> /contact/ (Apache does this itself)
-if (preg_match('#^/(business-cards|checkout|about|contact|gallery)$#', $path, $m)) {
+if (preg_match('#^/(business-cards|checkout|about|contact|gallery|shipping-and-returns|privacy|terms)$#', $path, $m)) {
     header('Location: /' . $m[1] . '/', true, 301);
     exit;
 }

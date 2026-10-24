@@ -527,8 +527,13 @@ form h3 { margin-bottom: 24px; }
 }
 .footer__legal { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 24px; list-style: none; }
 .footer__legal li { white-space: nowrap; }
-.footer__legal a { color: var(--ink-2); transition: color .2s; }
-.footer__legal a:hover { color: var(--red); }
+.footer__legal a {
+  color: var(--ink-2); padding-bottom: 2px;
+  /* The same drawn underline as the footer nav, growing in from the left */
+  background: linear-gradient(var(--red), var(--red)) no-repeat left bottom / 0 1px;
+  transition: background-size .2s var(--ease), color .16s ease;
+}
+.footer__legal a:hover { color: var(--red); background-size: 100% 1px; }
 
 /* ==========================================================================
    16. Utility: Scroll reveal
@@ -1324,4 +1329,47 @@ form.co { grid-column: auto; background: none; padding: 0; } /* not the enquiry 
   .co-head { padding: 16px 0 16px; }
   .co-half, .co-third { grid-column: span 6; }
   .co-sec { padding: 24px 0 28px; }
+}
+
+/* ==========================================================================
+   36. Legal pages — shipping & returns, privacy, terms (partials/legal.php)
+   A contents list that stays in view beside the reading column.
+   ========================================================================== */
+.lg-head { padding-top: 48px; padding-bottom: 56px; border-bottom: 1px solid var(--ink); }
+.lg-head h1 { margin-top: 20px; }
+.lg-head h1 em { color: var(--red); }
+.lg-head .lead { margin-top: 24px; max-width: 56ch; }
+.lg-updated { margin-top: 24px; }
+.lg-body { padding-top: 56px; padding-bottom: 120px; align-items: start; }
+.lg-toc { grid-column: 1 / span 3; position: sticky; top: 96px; height: auto; } /* not the header nav's 60px */
+.lg-toc .label { color: var(--ink-2); }
+.lg-toc ol { list-style: none; margin-top: 16px; border-top: 1px solid var(--line); }
+.lg-toc li { border-bottom: 1px solid var(--line); }
+.lg-toc a { display: flex; align-items: baseline; gap: 12px; padding: 10px 0; font-size: 14.5px; transition: color .2s; }
+.lg-toc a .label { color: var(--red); }
+.lg-toc a:hover { color: var(--red); }
+.lg-text { grid-column: 5 / span 7; }
+.lg-text section { padding: 0; scroll-margin-top: 96px; }
+.lg-text section + section { margin-top: 48px; }
+.lg-text h2 {
+  font-family: var(--sans); letter-spacing: var(--tight); font-size: clamp(24px, 2.2vw, 30px); line-height: 1.15;
+  padding-bottom: 14px; margin-bottom: 18px; border-bottom: 1px solid var(--line);
+}
+.lg-text p, .lg-text li { font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+.lg-text p + p, .lg-text ul + p, .lg-text p + ul { margin-top: 14px; }
+.lg-text ul { padding-left: 20px; }
+.lg-text li + li { margin-top: 8px; }
+.lg-text b { font-weight: 600; color: var(--ink); }
+.lg-text a, .lg-ask a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+.lg-text a:hover, .lg-ask a:hover { color: var(--red); }
+.lg-ask { margin-top: 64px; padding: 24px; background: var(--paper-2); }
+.lg-ask p { color: var(--ink); }
+@media (max-width: 860px) {
+  .lg-toc { display: none; }
+  .lg-text { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .lg-head { padding-top: 32px; padding-bottom: 40px; }
+  .lg-body { padding-top: 40px; padding-bottom: 80px; }
+  .lg-text section + section { margin-top: 40px; }
 }

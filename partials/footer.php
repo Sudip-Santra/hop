@@ -79,9 +79,9 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
   <div class="wrap footer__base">
     <p>© <?= date('Y') ?> <?= SITE_NAME ?>. Prices include GST and delivery within India.</p>
     <ul class="footer__legal">
-      <li><a href="<?= $base ?>shipping-and-returns">Shipping &amp; returns</a></li>
-      <li><a href="<?= $base ?>privacy">Privacy policy</a></li>
-      <li><a href="<?= $base ?>terms">Terms &amp; conditions</a></li>
+      <li><a href="<?= $base ?>shipping-and-returns/">Shipping &amp; returns</a></li>
+      <li><a href="<?= $base ?>privacy/">Privacy policy</a></li>
+      <li><a href="<?= $base ?>terms/">Terms &amp; conditions</a></li>
     </ul>
   </div>
 </footer>

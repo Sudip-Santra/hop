@@ -28,6 +28,9 @@ $pages = [
     ['/about/',    'about/index.php',    'about/index.html'],
     ['/contact/',  'contact/index.php',  'contact/index.html'],
     ['/gallery/',  'gallery/index.php',  'gallery/index.html'],
+    ['/shipping-and-returns/', 'shipping-and-returns/index.php', 'shipping-and-returns/index.html'],
+    ['/privacy/',  'privacy/index.php',  'privacy/index.html'],
+    ['/terms/',    'terms/index.php',    'terms/index.html'],
 ];
 
 function render(string $url, string $src): string

@@ -582,9 +582,19 @@ form h3 { margin-bottom: 24px; }
 }
 @media (max-width: 560px) {
   .card.c-sm, .client, .step { grid-column: 1 / -1; }
+  /* One column: the video card, the black card and the studio video take the photos' 4:5 shape */
+  .card.c-lg .ph, .card.cta, .story-img { aspect-ratio: 4 / 5; }
   .story-cols, .details, .field-row { grid-template-columns: 1fr; }
   .stats b { font-size: 36px; }
   .hero-facts b { font-size: 26px; }
+  /* Facts and stats slide sideways on one line, bleeding to the screen edges */
+  .hero-facts, .stats {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: max-content; column-gap: 32px;
+    margin-left: calc(var(--pad) * -1); margin-right: calc(var(--pad) * -1); padding: 0 var(--pad);
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--pad); scrollbar-width: none;
+  }
+  .hero-facts::-webkit-scrollbar, .stats::-webkit-scrollbar { display: none; }
+  .hero-facts div, .stats div { padding-right: 0; scroll-snap-align: start; white-space: nowrap; }
   .footer__nav { grid-template-columns: 1fr 1fr; row-gap: 24px; }
 }
 /* Smallest phones (320–400px): logo + Order cards + menu button on one line without overlap */

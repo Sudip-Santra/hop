@@ -648,7 +648,7 @@ html.cart-lock { overflow: hidden; }
 .cart-list { list-style: none; flex: 1; overflow-y: auto; padding: 0 24px; }
 .cart-item { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .ci-body { min-width: 0; }
-.ci-body h3 { font-size: 21px; letter-spacing: .01em; }
+.ci-body h3 { font-size: 21px; letter-spacing: var(--tight); }
 .ci-body .label { font-size: 10px; color: var(--ink-2); margin-top: 4px; }
 .ci-act { display: flex; align-items: center; gap: 6px; flex: none; }
 .cart-item .qty { height: 32px; }
@@ -1145,9 +1145,9 @@ form.co { grid-column: auto; background: none; padding: 0; } /* not the enquiry 
 .co-sec { padding: 32px 0 36px; }
 .co-sec + .co-sec { border-top: 1px solid var(--line); }
 .co-sec-head { margin-bottom: 20px; }
-.co-sec-head h2 { font-size: 26px; line-height: 1.1; }
+.co-sec-head h2 { font-family: var(--sans); font-size: 26px; line-height: 1.1; letter-spacing: var(--tight); }
 .co-sec-head h2 i, .co-field span i { font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--ink-2); }
-.co-sec-head p { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+.co-sec-head p { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 15px; color: var(--ink-2); }
 .co-sec-head p .i { width: 16px; height: 16px; color: var(--red); }
 
 .co-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
@@ -1155,7 +1155,7 @@ form.co { grid-column: auto; background: none; padding: 0; } /* not the enquiry 
 .co-half { grid-column: span 3; }
 .co-third { grid-column: span 2; }
 .co-field { display: flex; flex-direction: column; gap: 6px; }
-.co-field > span { font-size: 12.5px; color: var(--ink-2); }
+.co-field > span { font-size: 14px; color: var(--ink-2); }
 .co-field input, .co-field textarea {
   width: 100%; height: 36px; padding: 0 12px;
   border: 1px solid rgba(23, 21, 18, .2); background: transparent; color: var(--ink);
@@ -1175,7 +1175,7 @@ form.co { grid-column: auto; background: none; padding: 0; } /* not the enquiry 
 .co-field .co-tel input { height: 100%; border: 0; flex: 1; min-width: 0; letter-spacing: .02em; }
 .co-end { display: none; }
 /* Searchable dropdown (state, city) */
-.co-field > label { font-size: 12.5px; color: var(--ink-2); }
+.co-field > label { font-size: 14px; color: var(--ink-2); }
 .co-combo { position: relative; }
 .co-combo input { padding-right: 32px; }
 .co-combo > .i { position: absolute; right: 10px; top: 11px; width: 14px; height: 14px; color: var(--ink-2); pointer-events: none; transition: transform .2s; }
@@ -1203,7 +1203,7 @@ form.co { grid-column: auto; background: none; padding: 0; } /* not the enquiry 
 /* Your order */
 .co-sum { border-left: 1px solid var(--line); padding: 32px 0 32px 40px; position: sticky; top: 61px; align-self: start; }
 .co-sum-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 16px; }
-.co-sum-head h2 { font-size: 26px; line-height: 1.1; }
+.co-sum-head h2 { font-family: var(--sans); font-size: 26px; line-height: 1.1; letter-spacing: var(--tight); }
 .co-link { font-size: 13px; color: var(--ink-2); border-bottom: 1px solid currentColor; transition: color .2s; }
 .co-link:hover { color: var(--red); }
 

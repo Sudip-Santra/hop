@@ -4,13 +4,43 @@
 /* ==========================================================================
    01. Tokens
    ========================================================================== */
+/* Fonts are self-hosted and preloaded in partials/head.php, so they usually
+   arrive before first paint. Sen and JetBrains Mono are the latin subsets. */
+@font-face {
+  font-family: "Sen";
+  src: url("../fonts/sen.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 /* The free (FFP) cut of Megalito draws every digit but 0 as a placeholder
-   ornament, so it is kept off all ten digits; numbers fall through to Sen. */
+   ornament, so it is kept off all ten digits; numbers fall through to Sen.
+   No system font is close to it, so headings wait for it (block) rather
+   than flash in a different face; it is 16 KB and preloaded. */
 @font-face {
   font-family: "Megalito Slab";
   src: url("../fonts/megalito-slab.woff2") format("woff2");
   unicode-range: U+0000-002F, U+003A-10FFFF;
-  font-display: swap;
+  font-display: block;
+}
+/* Local fonts resized to Sen's and JetBrains Mono's metrics, so text
+   keeps its place if a web font swaps in late */
+@font-face {
+  font-family: "Sen Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica");
+  size-adjust: 104.24%; ascent-override: 90.12%; descent-override: 25.29%; line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Mono Fallback";
+  src: local("Courier New"), local("Courier");
+  size-adjust: 99.98%; ascent-override: 102.02%; descent-override: 30%; line-gap-override: 0%;
 }
 
 :root {
@@ -28,10 +58,10 @@
 
   --pad: 40px;
   --gutter: 24px;
-  --slab: "Megalito Slab", "Sen", Georgia, serif;
+  --slab: "Megalito Slab", "Sen", "Sen Fallback", sans-serif;
   --tight: -.035em; /* large Sen titles */
-  --sans: "Sen", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --sans: "Sen", "Sen Fallback", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "JetBrains Mono", "Mono Fallback", ui-monospace, monospace;
   --ease: cubic-bezier(.2, .7, 0, 1);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }

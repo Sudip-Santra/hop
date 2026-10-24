@@ -2,9 +2,16 @@
 // WhatsApp number comes from partials/config.php via <body data-whatsapp>
 const WHATSAPP = document.body.dataset.whatsapp;
 
-// Hero video: hold on the poster frame for visitors who ask for less motion
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('video[autoplay]').forEach((v) => { v.removeAttribute('autoplay'); v.pause(); });
+// Looping videos: fetched and played only while on screen, so first load stays light.
+// Visitors who ask for less motion keep the poster frame.
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const videoWatch = new IntersectionObserver((entries) => {
+    entries.forEach(({ target: v, isIntersecting }) => {
+      if (isIntersecting) v.play().catch(() => {});
+      else v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  document.querySelectorAll('video[data-autoplay]').forEach((v) => videoWatch.observe(v));
 }
 
 // Overlay scrollbar (mouse/trackpad only; touch keeps the native one)

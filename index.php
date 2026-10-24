@@ -1,6 +1,7 @@
 <?php
 $page        = 'home';
 $base        = '';
+$preloadImage = 'assets/videos/hero-poster.jpg';
 $title       = 'House of Press — Letterpress Business Cards in Mumbai';
 $description = 'Letterpress business and brand cards pressed by hand into thick cotton paper in Mumbai. Custom designs, a WhatsApp proof first, and free delivery across India.';
 
@@ -79,7 +80,7 @@ include __DIR__ . '/partials/head.php';
     </div>
     <div class="hero-visual">
       <div class="main hero-showcase">
-        <video class="hero-media" src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Letterpress business cards from House of Press, pressed into thick cotton paper in one and two inks"></video>
+        <video class="hero-media" src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Letterpress business cards from House of Press, pressed into thick cotton paper in one and two inks"></video>
       </div>
       <span class="tag label">Off the press</span>
       <div class="chip rv">
@@ -109,7 +110,7 @@ include __DIR__ . '/partials/head.php';
     </div>
     <div class="grid collections">
       <a href="gallery/" class="card c-lg rv">
-        <figure class="ph"><video src="assets/videos/crispy-business-card.mp4" poster="assets/videos/crispy-business-card.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Crispy business card by House of Press: a contour-line pattern blind letterpressed into thick white cotton paper, with the name printed in black ink"></video><span class="no label">01</span></figure>
+        <figure class="ph"><video src="assets/videos/crispy-business-card.mp4" poster="assets/videos/crispy-business-card.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Crispy business card by House of Press: a contour-line pattern blind letterpressed into thick white cotton paper, with the name printed in black ink"></video><span class="no label">01</span></figure>
         <div class="meta"><div><h3>Crispy business card</h3><p>For Uru Living: contour lines blind pressed deep into cotton, the details in a single black ink.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
       <a href="gallery/" class="card c-sm rv">
@@ -138,7 +139,7 @@ include __DIR__ . '/partials/head.php';
   <!-- Story -->
   <section id="about" class="story" data-route="">
     <div class="wrap grid">
-      <figure class="story-img rv"><video src="assets/videos/about-studio.mp4" poster="assets/videos/about-studio.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Inside the House of Press letterpress studio: gloved hands set up a vintage platen press and check a printing plate against the light"></video></figure>
+      <figure class="story-img rv"><video src="assets/videos/about-studio.mp4" poster="assets/videos/about-studio.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Inside the House of Press letterpress studio: gloved hands set up a vintage platen press and check a printing plate against the light"></video></figure>
       <div class="story-body">
         <div class="rv">
           <p class="label">About House of Press</p>

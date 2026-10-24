@@ -2,7 +2,8 @@
 /**
  * Page start: <head>, <body>, icon sprite and header.
  * Expects: $page (nav key), $base ('' at root, '../' one level down), $title, $description.
- * Optional: $jsonLd, an array of schema.org objects printed as structured data.
+ * Optional: $jsonLd, an array of schema.org objects printed as structured data;
+ *           $preloadImage, the above-the-fold image to fetch first (the LCP).
  */
 require_once __DIR__ . '/config.php';
 
@@ -34,9 +35,12 @@ $self = '/' . ($page === 'home' ? '' : $page . '/');
 <meta name="twitter:title" content="<?= e($title) ?>">
 <meta name="twitter:description" content="<?= e($description) ?>">
 <meta name="twitter:image" content="<?= SITE_URL ?>/assets/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="<?= $base ?>assets/fonts/megalito-slab.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= $base ?>assets/fonts/sen.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= $base ?>assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+<?php if (!empty($preloadImage)): ?>
+<link rel="preload" href="<?= $base . $preloadImage ?>" as="image" fetchpriority="high">
+<?php endif; ?>
 <link rel="stylesheet" href="<?= $base ?>assets/css/index.css">
 <?php foreach ($jsonLd ?? [] as $ld): ?>
 <script type="application/ld+json"><?= json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) ?></script>

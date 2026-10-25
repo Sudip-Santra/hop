@@ -35,7 +35,7 @@ $self = '/' . ($page === 'home' ? '' : $page . '/');
 <meta name="twitter:title" content="<?= e($title) ?>">
 <meta name="twitter:description" content="<?= e($description) ?>">
 <meta name="twitter:image" content="<?= SITE_URL ?>/assets/og-image.png">
-<link rel="preload" href="<?= $base ?>assets/fonts/megalito-slab.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= $base ?>assets/fonts/inter-display.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= $base ?>assets/fonts/sen.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= $base ?>assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
 <?php if (!empty($preloadImage)): ?>

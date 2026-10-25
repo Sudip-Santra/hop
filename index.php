@@ -66,7 +66,7 @@ include __DIR__ . '/partials/head.php';
       <div>
         <p class="label muted rv">Business cards</p>
         <h1 class="rv" style="margin-top:28px">Cards that leave a lasting <em>impression.</em></h1>
-        <p class="lead muted rv">Business and brand cards pressed by hand into thick cotton paper — with a proof on WhatsApp before we print, and free delivery across India.</p>
+        <p class="lead muted rv">Business and brand cards <strong>pressed by hand</strong> into thick cotton paper — with <strong>a proof on WhatsApp before we print</strong>, and free delivery across India.</p>
         <div class="hero-actions rv">
           <a href="business-cards/" class="btn">See cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
           <a href="https://wa.me/<?= WHATSAPP ?>" class="btn line">WhatsApp us</a>
@@ -146,8 +146,8 @@ include __DIR__ . '/partials/head.php';
           <h2>In a hurry? <em>Not the place for you.</em></h2>
         </div>
         <div class="story-cols rv">
-          <p>House of Press is a letterpress studio for business cards and brand cards. Every card is pressed by hand into thick cotton paper, one sheet at a time, so your words sit just below the surface where you can feel them.</p>
-          <p class="muted">It takes longer than printing flat. That is the point. Every order starts with a proof on WhatsApp, and nothing touches the press until you approve it.</p>
+          <p>House of Press is a letterpress studio for business cards and brand cards. Every card is <strong>pressed by hand</strong> into thick cotton paper, <strong>one sheet at a time</strong>, so your words sit just below the surface where you can feel them.</p>
+          <p class="muted">It takes longer than printing flat. That is the point. Every order starts with <strong>a proof on WhatsApp</strong>, and nothing touches the press until you approve it.</p>
         </div>
         <div class="stats rv">
           <div><b>40K+</b><span class="label">Instagram followers</span></div>
@@ -197,7 +197,7 @@ include __DIR__ . '/partials/head.php';
       <div class="contact-head rv">
         <p class="label">Enquiry</p>
         <h2 style="margin-top:18px">Have a card in mind? <em>Let’s talk.</em></h2>
-        <p class="lead">Prices for our standard cards are on the business cards page. For anything custom — your own design, a special ink or a larger run — tell us here and we’ll reply on WhatsApp.</p>
+        <p class="lead">Prices for our standard cards are on the <a href="business-cards/">business cards page</a>. For anything custom — your own design, a special ink or a larger run — tell us here and we’ll reply on WhatsApp.</p>
         <div class="details">
           <div><span class="label">WhatsApp</span><a href="https://wa.me/<?= WHATSAPP ?>" target="_blank" rel="noopener"><?= PHONE_DISPLAY ?></a></div>
           <div><span class="label">Email</span><a href="mailto:<?= EMAIL ?>"><?= EMAIL ?></a></div>

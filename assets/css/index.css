@@ -219,6 +219,7 @@ html.menu-lock { overflow: hidden; }
 .hero-text { grid-column: 1 / span 6; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
 .hero-text h1 em { color: var(--red); }
 .hero-text .lead { margin-top: 28px; }
+.hero-text .lead strong { color: var(--black); font-weight: 600; }
 .hero-actions { display: flex; gap: 8px; margin-top: 32px; flex-wrap: wrap; }
 .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
 .hero-facts div { padding: 16px 16px 0 0; }
@@ -322,6 +323,7 @@ section { padding: 112px 0; }
    ========================================================================== */
 .story { background: var(--red); color: var(--paper); }
 .story .muted { color: rgba(244, 239, 230, .72); }
+.story-cols strong { color: var(--butter); font-weight: 600; }
 .story-img { grid-column: 1 / span 5; aspect-ratio: 4 / 5; overflow: hidden; position: relative; }
 .story-img video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .story-body { grid-column: 7 / span 6; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
@@ -365,6 +367,8 @@ section { padding: 112px 0; }
 .contact-head { grid-column: 1 / span 5; }
 .contact-head h2 em { color: var(--red); }
 .contact-head .lead { margin-top: 20px; color: var(--ink-2); }
+.contact-head .lead a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+.contact-head .lead a:hover { color: var(--red-deep); }
 .details { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
 .details div { padding: 16px 16px 20px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
 .details .label { display: block; margin-bottom: 8px; color: var(--ink-2); }

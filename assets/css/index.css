@@ -774,16 +774,16 @@ html.cart-lock { overflow: hidden; }
 /* ==========================================================================
    25. Component: About — range strip (links into the catalogue)
    ========================================================================== */
-.a-ranges { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px var(--gutter); }
-.a-range { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; align-items: baseline; }
+.a-ranges { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px var(--gutter); }
+.a-range { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: baseline; }
 .a-range figure { grid-column: 1 / -1; aspect-ratio: 3 / 4; overflow: hidden; background: var(--paper-2); margin-bottom: 14px; }
 .a-range img { transition: transform 1s var(--ease); }
 .a-range:hover img { transform: scale(1.05); }
-.a-range .label { color: var(--red); }
 .a-range h3 { font-size: clamp(17px, 1.4vw, 20px); transition: color .2s; }
 .a-range .go { display: inline-flex; transition: transform .3s var(--ease), color .2s; }
 .a-range:hover h3, .a-range:hover .go { color: var(--red); }
 .a-range:hover .go { transform: translateX(4px); }
+.a-range-note { grid-column: 1 / -1; margin-top: 6px; color: var(--ink-2); }
 .a-more { margin-top: 56px; display: flex; justify-content: center; }
 
 /* ==========================================================================
@@ -811,8 +811,11 @@ html.cart-lock { overflow: hidden; }
 .a-split-panel .btn { margin-top: 8px; }
 .a-split-panel.is-red .btn.paper:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .a-split-sign { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 12px; padding-top: 18px; border-top: 1px solid var(--line); }
-.a-split-sign b { font-family: var(--sans); letter-spacing: var(--tight); font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.05; }
+.a-split-sign b { font-family: var(--sans); letter-spacing: var(--tight); font-weight: 500; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.05; }
 .a-split-sign .label { color: var(--ink-2); }
+/* About titles sit a step heavier than elsewhere */
+.page-about main h2, .page-about main h3 { font-weight: 450; }
+.page-about main h1 { font-weight: 500; }
 @media (max-width: 860px) {
   .a-split-row, .a-split-row.is-flip { grid-template-columns: 1fr; }
   .a-split-row.is-flip .a-split-img { order: 0; }
@@ -839,7 +842,7 @@ html.cart-lock { overflow: hidden; }
    28. Responsive (about)
    ========================================================================== */
 @media (max-width: 1080px) {
-  .a-ranges { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .a-ranges { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 860px) {
   .a-head { padding-top: 28px; padding-bottom: 72px; }

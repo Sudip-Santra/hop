@@ -58,42 +58,36 @@ $v = '../assets/videos/';
   <section class="wrap">
     <div class="sec-head grid rv">
       <p class="label">What we press</p>
-      <h2>One press, <em>many kinds of card</em>.</h2>
-      <p class="side">Business and brand cards in one ink or several, blind pressed, or made to your own design.</p>
+      <h2>Cards <em>off our press</em>.</h2>
+      <p class="side">A few recent cards: single and multiple inks, blind pressed, and designed to each client’s brief.</p>
     </div>
     <div class="a-ranges">
-        <a class="a-range rv" href="../business-cards/">
-          <figure><img src="<?= $v ?>urmil-nisar.jpg" alt="" loading="lazy" style="object-position:center 40%"></figure>
-          <span class="label">01</span>
-          <h3>Business cards</h3>
+        <a class="a-range rv" href="../gallery/">
+          <figure><img src="<?= $v ?>crispy-business-card.jpg" alt="Crispy business card for Uru Living, contour lines blind letterpressed into thick white cotton paper" loading="lazy" style="object-position:center 45%"></figure>
+          <h3>Crispy business card</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+          <p class="a-range-note label">Uru Living · Blind pressed</p>
         </a>
         <a class="a-range rv" href="../gallery/">
-          <figure><img src="<?= $v ?>hero-poster.jpg" alt="" loading="lazy" style="object-position:center 35%"></figure>
-          <span class="label">02</span>
-          <h3>Brand cards</h3>
+          <figure><img src="<?= $v ?>sakshi-jain.jpg" alt="Sakshi Jain architect business card, letterpressed in olive-green ink on cotton paper" loading="lazy" style="object-position:center 45%"></figure>
+          <h3>Sakshi Jain, Architect</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+          <p class="a-range-note label">Olive-green ink</p>
         </a>
         <a class="a-range rv" href="../gallery/">
-          <figure><img src="<?= $v ?>crispy-business-card.jpg" alt="" loading="lazy" style="object-position:center 45%"></figure>
-          <span class="label">03</span>
-          <h3>Blind pressed</h3>
+          <figure><img src="<?= $v ?>urmil-nisar.jpg" alt="Bhanu Cospack business card for Urmil Nisar, letterpressed in blue ink on cotton paper" loading="lazy" style="object-position:center 40%"></figure>
+          <h3>Bhanu Cospack</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+          <p class="a-range-note label">Blue ink · Our first run</p>
         </a>
-        <a class="a-range rv" href="../contact/">
-          <figure><img src="<?= $v ?>sakshi-jain.jpg" alt="" loading="lazy" style="object-position:center 45%"></figure>
-          <span class="label">04</span>
-          <h3>Custom design</h3>
+        <a class="a-range rv" href="../gallery/">
+          <figure><img src="<?= $v ?>hero-poster.jpg" alt="Letterpress business cards laid out together, pressed in orange, black and green inks" loading="lazy" style="object-position:center 35%"></figure>
+          <h3>Studio cards</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-        </a>
-        <a class="a-range rv" href="../how-to-order">
-          <figure><img src="<?= $v ?>about-studio.jpg" alt="" loading="lazy" style="object-position:center"></figure>
-          <span class="label">05</span>
-          <h3>How it’s made</h3>
-          <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+          <p class="a-range-note label">Orange, black and green inks</p>
         </a>
     </div>
-    <div class="a-more rv"><a class="btn" href="../gallery/">See the work <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+    <div class="a-more rv"><a class="btn" href="../gallery/">See all the work <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
   </section>
 
   <!-- How we work -->

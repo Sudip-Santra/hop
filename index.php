@@ -64,7 +64,7 @@ include __DIR__ . '/partials/head.php';
   <div class="hero wrap grid" data-route="">
     <div class="hero-text">
       <div>
-        <p class="label muted rv">Business cards · Brand cards · Letterpress studio</p>
+        <p class="label muted rv">Business cards</p>
         <h1 class="rv" style="margin-top:28px">Cards that leave a lasting <em>impression.</em></h1>
         <p class="lead muted rv">Business and brand cards pressed by hand into thick cotton paper — with a proof on WhatsApp before we print, and free delivery across India.</p>
         <div class="hero-actions rv">

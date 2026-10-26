@@ -905,6 +905,9 @@ section {
   line-height: 1;
   margin-bottom: 8px;
 }
+.stats .label {
+  font-family: var(--display);
+}
 
 /* ==========================================================================
    12. Component: Clients

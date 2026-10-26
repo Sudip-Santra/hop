@@ -50,9 +50,58 @@ include __DIR__ . '/../partials/head.php';
         </div>
       </section>
 
-      <form class="co" id="co-form" novalidate>
+      <form class="co" id="co-form" novalidate data-dispatch="<?= e(DISPATCH) ?>" data-rush-dispatch="<?= e(RUSH_DISPATCH) ?>">
         <!-- Details -->
         <div class="co-main">
+          <section class="co-sec" aria-labelledby="co-s-speed">
+            <div class="co-sec-head">
+              <h2 id="co-s-speed">How soon?</h2>
+              <p>Every card is pressed by hand, so standard is the usual pace. In a hurry? Rush puts yours first.</p>
+            </div>
+            <div class="co-speed" role="radiogroup" aria-labelledby="co-s-speed">
+              <label>
+                <input type="radio" name="speed" value="standard" checked>
+                <span>
+                  <b>Standard</b>
+                  <small>Dispatched in <?= nums(DISPATCH) ?> after your proof</small>
+                  <em>Free</em>
+                </span>
+              </label>
+              <label>
+                <input type="radio" name="speed" value="rush">
+                <span>
+                  <b>Rush</b>
+                  <small>Dispatched in <?= nums(RUSH_DISPATCH) ?> after your proof</small>
+                  <em>+<b class="num">₹<?= number_format(RUSH_FEE) ?></b></em>
+                </span>
+              </label>
+            </div>
+            <!-- Calendar: green days are reachable with standard, red ones only with rush -->
+            <div class="co-cal" id="co-cal" data-standard-days="<?= DISPATCH_DAYS ?>" data-rush-days="<?= RUSH_DISPATCH_DAYS ?>">
+              <input type="hidden" name="needby" id="co-needby">
+              <div class="co-cal-top">
+                <p class="co-cal-q">Need it dispatched by a date? <span>Optional</span></p>
+                <div class="co-cal-nav">
+                  <button type="button" id="co-cal-prev" aria-label="Previous month"><svg class="i" aria-hidden="true">
+                      <use href="#i-chevron-left" />
+                    </svg></button>
+                  <b id="co-cal-month" aria-live="polite"></b>
+                  <button type="button" id="co-cal-next" aria-label="Next month"><svg class="i" aria-hidden="true">
+                      <use href="#i-chevron-right" />
+                    </svg></button>
+                </div>
+              </div>
+              <div class="co-cal-week" aria-hidden="true"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+              <div class="co-cal-grid" id="co-cal-grid" role="group" aria-label="Dispatch dates"></div>
+              <ul class="co-cal-key">
+                <li><i class="k-std" aria-hidden="true"></i><span>Standard, free</span></li>
+                <li><i class="k-rush" aria-hidden="true"></i><span>Rush only, +<b class="num">₹<?= number_format(RUSH_FEE) ?></b></span></li>
+                <li><i class="k-off" aria-hidden="true"></i><span>Too soon</span></li>
+              </ul>
+              <p class="co-cal-note" id="co-cal-note" aria-live="polite">Counted from today, weekends included, as if your proof is approved today.</p>
+            </div>
+          </section>
+
           <section class="co-sec" aria-labelledby="co-s1">
             <div class="co-sec-head">
               <h2 id="co-s1">Contact</h2>
@@ -123,6 +172,10 @@ include __DIR__ . '/../partials/head.php';
             <div>
               <dt>Subtotal</dt>
               <dd id="co-sub">₹0</dd>
+            </div>
+            <div id="co-rush-row" hidden>
+              <dt>Rush</dt>
+              <dd id="co-rush">₹0</dd>
             </div>
             <div>
               <dt>Delivery</dt>

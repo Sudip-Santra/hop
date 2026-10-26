@@ -23,10 +23,15 @@ const EMAIL     = 'hello@houseofpress.in';           // TODO: real address
 const INSTAGRAM = 'houseofpress.in';                 // handle, without the @
 const HOURS     = 'Monday to Friday, 9am – 7pm';
 const DISPATCH  = '7–10 working days';              // TODO: after proof approval
+const DISPATCH_DAYS = 10; // the longest standard wait in days, weekends included (keep in step with DISPATCH)
 
 // Business cards: price in rupees for each quantity (GST and delivery included)
 const CARD_PRICES = [100 => 2499, 200 => 4499, 500 => 9999, 1000 => 17999];
 const DESIGN_FEE  = 3000; // studio designs the card
+// Rush: the order jumps the queue, one flat fee per order (not per card)
+const RUSH_FEE      = 1500;                 // TODO: confirm the amount
+const RUSH_DISPATCH = '3–4 working days';   // TODO: confirm; after proof approval, like DISPATCH
+const RUSH_DISPATCH_DAYS = 4;               // the longest rush wait in days, weekends included (keep in step with RUSH_DISPATCH)
 
 function e(string $s): string
 {

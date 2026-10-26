@@ -3,7 +3,7 @@
 // Included on every page by footer.php; assets/js/cart.js runs it. On the checkout page
 // the button is hidden by CSS, since the order summary is already on screen.
 ?>
-<script id="hop-prices" type="application/json"><?= json_encode(['cards' => CARD_PRICES, 'design' => DESIGN_FEE, 'checkout' => $base . 'checkout/', 'product' => $base . 'business-cards/']) ?></script>
+<script id="hop-prices" type="application/json"><?= json_encode(['cards' => CARD_PRICES, 'design' => DESIGN_FEE, 'rush' => RUSH_FEE, 'checkout' => $base . 'checkout/', 'product' => $base . 'business-cards/']) ?></script>
 <button type="button" class="cart-fab" id="cart-fab" aria-label="Open cart" aria-controls="cart" aria-expanded="false">
   <svg class="i" aria-hidden="true"><use href="#i-shopping-cart"/></svg>
   <span class="cart-count" id="cart-count">0</span>

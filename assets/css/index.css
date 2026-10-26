@@ -2347,16 +2347,22 @@ html.cart-lock {
 }
 .c-way-text .label {
   display: block;
+  font-family: var(--display);
   color: var(--ink-2);
   margin-bottom: 4px;
 }
 .c-way-text b {
-  font-family: var(--sans);
+  font-family: var(--display);
   letter-spacing: var(--tight);
   font-weight: 400;
   font-size: clamp(24px, 2.2vw, 32px);
   line-height: 1.05;
   transition: color 0.2s;
+}
+/* The phone number stays mono, like every other number */
+.c-way-text .c-num {
+  font-family: var(--mono);
+  letter-spacing: -0.04em;
 }
 .c-way .arr {
   width: 18px;
@@ -2412,8 +2418,8 @@ html.cart-lock {
   font-size: 14.5px;
 }
 .c-next span {
-  font-family: var(--sans);
-  letter-spacing: var(--tight);
+  font-family: var(--mono);
+  letter-spacing: -0.04em;
   font-size: 22px;
   line-height: 1;
   color: var(--red);
@@ -2423,6 +2429,33 @@ form.c-form {
 }
 .c-form .field-row {
   align-items: end;
+}
+.c-form .label {
+  font-family: var(--display);
+}
+/* Required mark: a small red star raised to the top of the label */
+.c-form .req {
+  font-style: normal;
+  color: var(--red);
+  margin-left: 2px;
+}
+/* Numbers in the form stay mono: quantities, calendar days, the phone field */
+.c-form .num,
+.c-form [name="phone"],
+.c-form .dp-grid button {
+  font-family: var(--mono);
+}
+.c-form [aria-invalid="true"] {
+  border-color: var(--red);
+}
+.field-error {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--red);
+}
+.field-error[hidden] {
+  display: none;
 }
 
 /* Date picker (replaces the native calendar) */

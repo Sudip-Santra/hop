@@ -32,7 +32,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
         <span class="c-ic"><svg class="i" aria-hidden="true">
             <use href="#i-phone" />
           </svg></span>
-        <span class="c-way-text"><span class="label">Call</span><b><?= PHONE_DISPLAY ?></b></span>
+        <span class="c-way-text"><span class="label">Call</span><b class="c-num"><?= PHONE_DISPLAY ?></b></span>
         <svg class="i arr" aria-hidden="true">
           <use href="#i-arrow-up-right" />
         </svg>
@@ -53,7 +53,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
   <section class="c-enquiry">
     <div class="wrap grid">
       <div class="c-enquiry-head rv">
-        <p class="label">(01) Enquiry</p>
+        <p class="label">Enquiry</p>
         <h2>Tell us about your <em>card</em>.</h2>
         <p class="muted">Fill in what you know. The form opens WhatsApp with your message ready to send - nothing is stored on this website.</p>
         <ol class="c-next">
@@ -65,8 +65,8 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
 
       <form id="contact-form" class="c-form rv" novalidate>
         <div class="field-row">
-          <label class="field"><span class="label">Name *</span><input name="name" required autocomplete="name"></label>
-          <label class="field"><span class="label">Phone *</span><input name="phone" type="tel" required autocomplete="tel"></label>
+          <label class="field"><span class="label">Name<i class="req" aria-hidden="true">*</i></span><input name="name" required minlength="2" maxlength="60" autocomplete="name" aria-describedby="err-name"><small class="field-error" id="err-name" hidden></small></label>
+          <label class="field"><span class="label">Phone<i class="req" aria-hidden="true">*</i></span><input name="phone" type="tel" inputmode="numeric" required autocomplete="tel" placeholder="10-digit mobile number" aria-describedby="err-phone"><small class="field-error" id="err-phone" hidden></small></label>
         </div>
 
         <div class="field">
@@ -93,10 +93,10 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
           <div class="field">
             <span class="label">Roughly how many?</span>
             <div class="chips">
-              <label><input type="radio" name="qty" value="100" checked><span>100</span></label>
-              <label><input type="radio" name="qty" value="250"><span>250</span></label>
-              <label><input type="radio" name="qty" value="500"><span>500</span></label>
-              <label><input type="radio" name="qty" value="More than 500"><span>500+</span></label>
+              <label><input type="radio" name="qty" value="100" checked><span class="num">100</span></label>
+              <label><input type="radio" name="qty" value="250"><span class="num">250</span></label>
+              <label><input type="radio" name="qty" value="500"><span class="num">500</span></label>
+              <label><input type="radio" name="qty" value="More than 500"><span class="num">500+</span></label>
             </div>
           </div>
           <div class="field dp" id="dp">
@@ -128,8 +128,8 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
           </div>
         </div>
 
-        <label class="field"><span class="label">City</span><input name="area" placeholder="e.g. Mumbai, Bengaluru, Pune" autocomplete="address-level2"></label>
-        <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members"></textarea></label>
+        <label class="field"><span class="label">City</span><input name="area" maxlength="60" placeholder="e.g. Mumbai, Bengaluru, Pune" autocomplete="address-level2"></label>
+        <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members" aria-describedby="err-need"></textarea><small class="field-error" id="err-need" aria-live="polite" hidden></small></label>
 
         <div class="form-foot">
           <small>Opens WhatsApp with your message.</small>
@@ -146,7 +146,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
     <div class="wrap grid">
       <div class="a-visit-text">
         <div class="rv">
-          <p class="label">(02) The studio</p>
+          <p class="label">The studio</p>
           <h2>Come by <em>the press</em>.</h2>
           <p class="lead muted">See the paper, feel the cards and talk through your design. We deliver free across India too.</p>
         </div>
@@ -167,7 +167,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
   <section class="c-faq dark">
     <div class="wrap grid">
       <div class="c-faq-head rv">
-        <p class="label">(03) Questions</p>
+        <p class="label">Questions</p>
         <h2>Before you <em>order</em>.</h2>
       </div>
       <div class="c-faq-list rv" data-batch="6">

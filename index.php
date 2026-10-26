@@ -154,7 +154,7 @@ include __DIR__ . '/partials/head.php';
         </div>
       </a>
       <div class="card c-sm cta rv">
-        <span class="label" style="color:var(--butter)">05 - Your card</span>
+        <span class="label" style="color:var(--butter)"><b class="num">05</b> - Your card</span>
         <div>
           <h3>Have a design <em>in mind?</em></h3>
           <p>Send your logo, artwork or a rough idea. We’ll set it, send a proof on WhatsApp, and press it once you approve.</p>

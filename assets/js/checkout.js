@@ -14,6 +14,16 @@
   const TYPES = ['image/png', 'image/jpeg', 'image/webp'];
   const keyOf = (l) => `${l.qty}-${l.design ? 'design' : 'own'}`;
   const files = new Map(); // line key -> File
+  // A design uploaded on the business cards page (kept in this tab) goes on each own-artwork card
+  let kept = null;
+  try {
+    const a = JSON.parse(sessionStorage.getItem('hop-art'));
+    if (a) {
+      const bytes = Uint8Array.from(atob(a.data.split(',')[1]), (c) => c.charCodeAt(0));
+      kept = new File([bytes], a.name, { type: a.type });
+    }
+  } catch {}
+  const removed = new Set(); // cards whose kept design was taken off here
   const sizeOf = (b) => (b > 1e6 ? (b / 1e6).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1e3)) + ' KB');
   const cards = (n) => `${n.toLocaleString('en-IN')} cards`;
 
@@ -53,6 +63,7 @@
       box.innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-pen"/></svg><p>Our studio designs this card and sends you a proof.</p>';
       return;
     }
+    if (kept && !files.has(key) && !removed.has(key)) files.set(key, kept);
     const file = files.get(key);
     if (file) {
       box.className = 'co-art is-file';
@@ -61,7 +72,7 @@
         <button type="button" class="co-art-x" aria-label="Remove file"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>`;
       box.querySelector('b').textContent = file.name;
       box.querySelector('p span').textContent = `${sizeOf(file.size)} · attached`;
-      box.querySelector('.co-art-x').addEventListener('click', () => { files.delete(key); renderArt(box, l); });
+      box.querySelector('.co-art-x').addEventListener('click', () => { files.delete(key); removed.add(key); renderArt(box, l); });
       return;
     }
     box.className = 'co-art is-upload';

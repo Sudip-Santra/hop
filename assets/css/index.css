@@ -38,6 +38,12 @@
     U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
     U+2215, U+FEFF, U+FFFD;
 }
+/* Clarendon: only the name on the drawn sample card (business cards page) */
+@font-face {
+  font-family: "Clarendon";
+  src: url("../fonts/clarendon.woff2") format("woff2");
+  font-display: swap;
+}
 /* Local fonts resized to Sen's and JetBrains Mono's metrics, so text
    keeps its place if a web font swaps in late */
 @font-face {
@@ -3327,19 +3333,184 @@ form.c-form {
   background: #fff;
 }
 .bc-info {
-  grid-column: 3 / span 8;
+  grid-column: 7 / span 6;
+  padding-right: 64px; /* breathing room before the page's right edge */
 }
-/* Same size as the other page titles. On wide screens it stays on one line and may run
-   past the column's right edge into the empty space beside it. */
+/* Breadcrumb hugs its text here (no 60px nav height), so the title sits closer */
+.bc-info .crumbs {
+  height: auto;
+  padding-top: 22px; /* the space it had above its text inside the 60px */
+}
+/* Smaller than the other page titles: it shares the screen with the card */
 .bc-info h1 {
-  font-size: clamp(37px, 4.8vw, 75px);
+  font-size: clamp(34px, 3.2vw, 52px);
   margin-top: 20px;
   line-height: 1;
 }
-@media (min-width: 1081px) {
-  .bc-info h1 {
-    white-space: nowrap;
-  }
+
+/* Card preview (left): stays in view while the options scroll past */
+.bc-preview {
+  grid-column: 1 / span 6;
+  position: sticky;
+  top: 120px;
+  display: grid;
+  justify-items: center; /* even space on both sides of the card */
+  gap: 24px;
+  padding-top: 40px;
+}
+/* Capped so the card keeps air around it on wide screens; the caption matches its width */
+.bc-preview > * {
+  width: 100%;
+  max-width: 500px;
+}
+.bc-preview-cap {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+#pcard-cap-lead {
+  display: block; /* the sample note on one line, the specs on the next */
+}
+.bc-preview-cap b.num {
+  font-weight: inherit;
+  white-space: nowrap; /* "3.5 × 2" stays together */
+}
+/* The drawn card: Pearl White cotton, type in Press Black, shaded so it reads as
+   pressed into the sheet. Sizes are in container units so it scales as one piece. */
+.pcard {
+  --card-paper: #f7f4ec;
+  --card-ink: #231f20;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3.5 / 2;
+  container-type: inline-size;
+  overflow: hidden;
+  background: var(--card-paper) url("../brand/cotton.webp") 0 0 / 512px;
+  background-blend-mode: multiply;
+  border-radius: 2px;
+  color: var(--card-ink);
+  font-family: "Sen", var(--sans);
+  text-align: left;
+  box-shadow:
+    0 1px 1px rgb(35 31 32 / 0.1),
+    0 14px 28px -12px rgb(35 31 32 / 0.38);
+}
+.pcard p {
+  text-shadow:
+    0 0.22cqw 0 rgb(255 255 255 / 0.6),
+    0 -0.12cqw 0 rgb(0 0 0 / 0.28);
+}
+.pcard-front {
+  position: absolute;
+  inset: 10% 8.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pcard-name {
+  font-family: "Clarendon", Georgia, "Times New Roman", serif;
+  font-size: 6.4cqw;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.pcard-role {
+  margin-top: 1.6cqw;
+  font-size: 3cqw;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.pcard-details {
+  font-size: 3.1cqw;
+  line-height: 1.55;
+}
+/* An uploaded design fills the card; multiply lets white backgrounds become the paper */
+.pcard-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.pcard-art[hidden],
+.pcard-front[hidden] {
+  display: none;
+}
+
+/* Upload, under the design choice (own artwork only) */
+.bc-upload {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  margin-top: 12px;
+}
+.bc-upload[hidden] {
+  display: none;
+}
+.bc-up {
+  position: relative;
+  gap: 10px;
+  cursor: pointer;
+}
+.bc-up input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.bc-up[hidden] {
+  display: none;
+}
+.bc-up:focus-within {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+.bc-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  font-size: 14px;
+}
+.bc-file[hidden] {
+  display: none;
+}
+.bc-file span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bc-file-x {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.bc-file-x:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+.bc-up-hint {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.bc-up-hint b.num {
+  font-weight: inherit;
+}
+.bc-up-err {
+  font-size: 13px;
+  color: var(--red);
+}
+.bc-up-err[hidden] {
+  display: none;
 }
 .bc-info h1 em {
   color: var(--red);
@@ -3358,7 +3529,7 @@ form.c-form {
   font-family: "JetBrains Mono", var(--sans);
   letter-spacing: -0.04em;
   font-weight: 400;
-  font-size: clamp(26px, 2.2vw, 34px);
+  font-size: clamp(24px, 1.8vw, 30px);
   line-height: 1;
 }
 .bc-price .label {
@@ -3542,16 +3713,32 @@ form.co {
 }
 
 @media (max-width: 1080px) {
+  /* Stacked: the card on top, the options under it */
+  .bc-preview {
+    grid-column: 2 / span 10;
+    position: static;
+    justify-items: center;
+    padding: 24px 0 40px;
+  }
+  .bc-info .crumbs {
+    padding-top: 8px;
+  }
   .bc-info {
     grid-column: 2 / span 10;
+    padding-right: 0;
   }
 }
 @media (max-width: 560px) {
   .bc {
     padding-top: 28px;
   }
+  .bc-preview,
   .bc-info {
     grid-column: 1 / -1;
+  }
+  .bc-preview {
+    gap: 20px;
+    padding: 8px 0 32px;
   }
   .bc-4 {
     grid-template-columns: 1fr 1fr;

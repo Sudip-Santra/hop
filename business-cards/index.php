@@ -38,6 +38,25 @@ $rupees = fn(int $n) => '₹' . number_format($n);
 
 <main>
   <div class="bc wrap grid">
+    <!-- Card preview: a drawn sample card, or the customer's uploaded design pressed onto it -->
+    <div class="bc-preview">
+      <div class="pcard" id="pcard" role="img" aria-label="A sample card, Press Black ink on Pearl White cotton">
+        <div class="pcard-front" id="pcard-sample">
+          <div>
+            <p class="pcard-name">Meera Iyer</p>
+            <p class="pcard-role">Architect</p>
+          </div>
+          <div class="pcard-details">
+            <p>+91 98765 43210</p>
+            <p>meera@iyerstudio.in</p>
+            <p>Bandra West, Mumbai</p>
+          </div>
+        </div>
+        <img class="pcard-art" id="pcard-art" alt="" hidden>
+      </div>
+      <p class="bc-preview-cap" id="pcard-cap"><span id="pcard-cap-lead">Sample wording; yours goes on the proof.</span> <b class="num">3.5 × 2</b> in (<b class="num">89 × 51</b> mm), <b class="num">600</b> gsm cotton, Pearl White.</p>
+    </div>
+
     <!-- Choose and buy -->
     <div class="bc-info">
       <nav class="crumbs label rv" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span aria-current="page">Business cards</span></nav>
@@ -59,6 +78,26 @@ $rupees = fn(int $n) => '₹' . number_format($n);
           <div class="bc-choices bc-2">
             <label><input type="radio" name="design" value="no" checked><span>No, I’ll send my artwork</span></label>
             <label><input type="radio" name="design" value="yes"><span><em>Yes (+<b class="num"><?= $rupees(DESIGN_FEE) ?></b>)</em></span></label>
+          </div>
+          <!-- Own artwork: upload it to see it on the card. Only shown for "I'll send my artwork". -->
+          <div class="bc-upload" id="bc-upload">
+            <label class="btn line bc-up" id="bc-up">
+              <svg class="i" aria-hidden="true">
+                <use href="#i-upload" />
+              </svg>Upload your design
+              <input type="file" id="bc-file" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp">
+            </label>
+            <p class="bc-file" id="bc-file-row" hidden>
+              <svg class="i" aria-hidden="true">
+                <use href="#i-file" />
+              </svg>
+              <span id="bc-file-name"></span>
+              <button type="button" class="bc-file-x" id="bc-file-x" aria-label="Remove file"><svg class="i" aria-hidden="true">
+                  <use href="#i-x" />
+                </svg></button>
+            </p>
+            <p class="bc-up-hint">PNG, JPG or WEBP · up to <b class="num">1</b> MB. You’ll see it on the card, and it goes with your order.</p>
+            <p class="bc-up-err" id="bc-up-err" role="alert" hidden></p>
           </div>
         </fieldset>
 

@@ -456,8 +456,11 @@ nav {
   }
 }
 .m-menu .wrap {
-  padding-top: 8px;
-  padding-bottom: 32px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--pad);
+  padding-bottom: var(--pad);
 }
 .m-links {
   list-style: none;
@@ -501,23 +504,14 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin-top: 28px;
+  margin-top: auto; /* sits at the bottom of the menu */
+  padding-top: 28px;
 }
 .m-cta .btn {
   justify-content: center;
 }
 .m-cta .btn.line {
   grid-column: 1 / -1;
-}
-.m-addr {
-  margin-top: 24px;
-  font-size: 14px;
-  color: var(--ink-2);
-}
-.m-addr .label {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--ink);
 }
 html.menu-lock {
   overflow: hidden;
@@ -1395,8 +1389,6 @@ form h3 {
     justify-content: center;
   }
   .bar .label {
-    font-size: 9.5px;
-    letter-spacing: 0.05em;
     text-align: center;
   }
   .hero {
@@ -1560,6 +1552,12 @@ form h3 {
 }
 .crumbs [aria-current] {
   color: var(--ink);
+}
+/* On mobile, shorten the 60px height the header's nav rule gives every <nav> */
+@media (max-width: 860px) {
+  .crumbs {
+    height: 32px;
+  }
 }
 
 .qty {
@@ -2439,8 +2437,8 @@ form.c-form {
   color: var(--red);
   margin-left: 2px;
 }
-/* Numbers in the form stay mono: quantities, calendar days, the phone field */
-.c-form .num,
+/* Numbers stay mono: quantities, calendar days, phone numbers */
+.num,
 .c-form [name="phone"],
 .c-form .dp-grid button {
   font-family: var(--mono);
@@ -3183,7 +3181,7 @@ form.c-form {
    past the column's right edge into the empty space beside it. */
 .bc-info h1 {
   font-size: clamp(37px, 4.8vw, 75px);
-  margin-top: 4px;
+  margin-top: 20px;
   line-height: 1;
 }
 @media (min-width: 1081px) {

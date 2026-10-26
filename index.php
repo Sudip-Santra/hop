@@ -83,10 +83,6 @@ include __DIR__ . '/partials/head.php';
         <video class="hero-media" src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Letterpress business cards from House of Press, pressed into thick cotton paper in one and two inks"></video>
       </div>
       <span class="tag label">Off the press</span>
-      <div class="chip rv">
-        <span class="label">Proof first</span>
-        <p>Approve your card on WhatsApp before it touches the press.</p>
-      </div>
     </div>
   </div>
 

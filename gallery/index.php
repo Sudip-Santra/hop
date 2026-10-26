@@ -108,8 +108,8 @@ $images = ['hero' => 'hero-poster.jpg'];
   <div class="g-box-stage" id="g-box-stage"></div>
   <div class="g-box-bar">
     <p class="g-box-cap"><b id="g-box-name"></b><span class="label" id="g-box-note"></span></p>
+    <span class="label g-box-count" id="g-box-count" aria-live="polite"></span>
     <div class="g-box-nav">
-      <span class="label" id="g-box-count" aria-live="polite"></span>
       <button type="button" id="g-box-prev" aria-label="Previous"><svg class="i" aria-hidden="true">
           <use href="#i-chevron-left" />
         </svg></button>

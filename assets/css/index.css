@@ -623,6 +623,7 @@ html.menu-lock {
   background: var(--paper);
   padding: 6px 12px;
   z-index: 3;
+  font-family: var(--display);
   letter-spacing: 0.08em;
 }
 
@@ -1404,7 +1405,7 @@ form h3 {
     margin-top: 40px;
   }
   .hero-visual .main {
-    inset: 0 0 48px 32px;
+    inset: 0;
   }
   section {
     padding: 80px 0;
@@ -1964,6 +1965,7 @@ html.cart-lock {
   bottom: 0;
   background: var(--paper);
   padding: 8px 12px;
+  font-family: var(--display);
 }
 .a-facts {
   display: grid;
@@ -2171,6 +2173,10 @@ html.cart-lock {
   line-height: 1.05;
 }
 .a-split-sign .label {
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--ink-2);
 }
 /* About titles sit a step heavier than elsewhere */
@@ -2298,6 +2304,14 @@ html.cart-lock {
   }
   .a-range h3 {
     font-size: 16px;
+  }
+  .a-range .go .i {
+    width: 16px;
+    height: 16px;
+  }
+  .a-range-note {
+    font-size: 13px;
+    line-height: 1.35;
   }
 }
 
@@ -2888,8 +2902,12 @@ form.c-form {
   background: var(--paper);
   color: var(--ink);
   padding: 4px 8px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
 }
-/* Caption rises in on hover; always shown on touch screens */
+/* Caption rises in on hover; touch screens see it in the opened view instead */
 .g-cap {
   position: absolute;
   left: 0;
@@ -2925,12 +2943,6 @@ form.c-form {
 .g-open:focus-visible .g-cap {
   opacity: 1;
   transform: none;
-}
-@media (hover: none) {
-  .g-cap {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 .g-wall {
@@ -3014,9 +3026,9 @@ form.c-form {
   margin-bottom: 6px;
 }
 .g-end-steps b {
-  font-family: var(--sans);
+  font-family: var(--display);
   letter-spacing: var(--tight);
-  font-weight: 400;
+  font-weight: 450;
   font-size: clamp(22px, 1.9vw, 28px);
   line-height: 1.1;
 }
@@ -3078,31 +3090,39 @@ form.c-form {
   gap: 2px;
 }
 .g-box-cap b {
-  font-family: var(--sans);
+  font-family: var(--display);
   letter-spacing: var(--tight);
   font-weight: 400;
   font-size: 22px;
   line-height: 1.1;
 }
 .g-box-cap .label {
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
   color: rgba(244, 239, 230, 0.62);
 }
+.g-box-count {
+  flex: none;
+  color: rgba(244, 239, 230, 0.62);
+}
+/* Prev / next / close float over the top-right corner of the picture */
 .g-box-nav {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
   display: flex;
-  align-items: center;
   gap: 6px;
 }
-.g-box-nav .label {
-  color: rgba(244, 239, 230, 0.62);
-  margin-right: 8px;
-}
 .g-box-nav button {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: transparent;
+  background: rgba(23, 21, 18, 0.72);
   color: var(--paper);
   border: 1px solid rgba(244, 239, 230, 0.25);
   transition:
@@ -3154,6 +3174,14 @@ form.c-form {
   }
   .g-box-cap b {
     font-size: 18px;
+  }
+  .g-box-nav {
+    top: 8px;
+    right: 8px;
+  }
+  .g-box-nav button {
+    width: 28px;
+    height: 28px;
   }
   .g-end {
     padding-top: 72px;

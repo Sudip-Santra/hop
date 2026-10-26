@@ -19,6 +19,49 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
     .forEach((v) => videoWatch.observe(v));
 }
 
+// Instagram reels (home): hold the mouse and drag to slide the strip. Touch swipes natively.
+// A drag doesn't count as a click, so letting go never opens a reel.
+const reelsTrack = document.getElementById("reels-track");
+if (reelsTrack) {
+  reelsTrack.classList.add("is-draggable");
+  let startX = 0, startScroll = 0, down = false, dragged = false;
+  reelsTrack.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    down = true;
+    dragged = false;
+    startX = e.clientX;
+    startScroll = reelsTrack.scrollLeft;
+  });
+  addEventListener("pointermove", (e) => {
+    if (!down) return;
+    const dx = e.clientX - startX;
+    if (!dragged && Math.abs(dx) < 5) return; // a small wobble is still a click
+    dragged = true;
+    reelsTrack.classList.add("is-dragging");
+    reelsTrack.scrollLeft = startScroll - dx;
+  });
+  addEventListener("pointerup", () => {
+    if (!down) return;
+    down = false;
+    reelsTrack.classList.remove("is-dragging"); // snapping comes back and settles on a card
+  });
+  reelsTrack.addEventListener("click", (e) => {
+    if (dragged) { e.preventDefault(); dragged = false; }
+  }, true);
+  reelsTrack.addEventListener("dragstart", (e) => e.preventDefault()); // no ghost image of the link
+
+  // Each reel shows its thumbnail and plays only while the mouse is over it;
+  // leaving rewinds it so the thumbnail comes back
+  reelsTrack.querySelectorAll(".reel video").forEach((v) => {
+    const reel = v.closest(".reel");
+    reel.addEventListener("mouseenter", () => v.play().catch(() => {}));
+    reel.addEventListener("mouseleave", () => {
+      v.pause();
+      v.load(); // back to the poster frame
+    });
+  });
+}
+
 // Overlay scrollbar (mouse/trackpad only; touch keeps the native one)
 if (matchMedia("(pointer: fine)").matches) {
   const root = document.documentElement,

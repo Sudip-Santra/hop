@@ -366,6 +366,47 @@ include __DIR__ . '/partials/head.php';
       </div>
     </div>
   </section>
+
+  <!-- Instagram reels: the studio videos, repeated, in a strip you swipe or drag sideways -->
+  <?php
+  $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
+  $reels = [
+    ['hero',                 'hero-poster',          'Cards in multiple inks, fresh off the press'],
+    ['crispy-business-card', 'crispy-business-card', 'Crispy business card, blind pressed for Uru Living'],
+    ['about-studio',         'about-studio',         'Setting up the platen press in the studio'],
+  ];
+  ?>
+  <section class="reels" aria-labelledby="reels-title">
+    <div class="wrap">
+      <div class="sec-head grid rv">
+        <p class="label">Instagram</p>
+        <h2 id="reels-title">Pressed on camera.</h2>
+        <div class="side">
+          <p>New cards, ink mixing and the press at work, posted from the studio in Mumbai.</p>
+          <a href="<?= $instagramUrl ?>" class="text-link" target="_blank" rel="noopener">Follow @<?= INSTAGRAM ?> <svg class="i" aria-hidden="true">
+              <use href="#i-arrow-up-right" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="reels-track rv" id="reels-track" tabindex="0" aria-label="Instagram reels, scroll sideways">
+      <?php for ($i = 0; $i < 3; $i++): foreach ($reels as [$file, $poster, $caption]): ?>
+        <a class="reel" href="<?= $instagramUrl ?>" target="_blank" rel="noopener" aria-label="<?= e($caption) ?>, on Instagram">
+          <video src="assets/videos/<?= $file ?>.mp4" poster="assets/videos/<?= $poster ?>.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <svg class="i reel-ig" aria-hidden="true">
+            <use href="#i-instagram" />
+          </svg>
+        </a>
+      <?php endforeach; endfor; ?>
+      <a class="reel reel-follow" href="<?= $instagramUrl ?>" target="_blank" rel="noopener">
+        <svg class="i" aria-hidden="true">
+          <use href="#i-instagram" />
+        </svg>
+        <b>Follow us on Instagram</b>
+        <span>@<?= INSTAGRAM ?></span>
+      </a>
+    </div>
+  </section>
 </main>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>

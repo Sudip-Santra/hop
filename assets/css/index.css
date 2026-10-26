@@ -2064,6 +2064,10 @@ html.cart-lock {
 .a-range-note {
   grid-column: 1 / -1;
   margin-top: 6px;
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--ink-2);
 }
 .a-more {
@@ -2904,13 +2908,17 @@ form.c-form {
     transform 0.3s var(--ease);
 }
 .g-cap b {
-  font-family: var(--sans);
+  font-family: var(--display);
   letter-spacing: var(--tight);
   font-weight: 400;
   font-size: 22px;
   line-height: 1.1;
 }
 .g-cap .label {
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
   color: rgba(244, 239, 230, 0.8);
 }
 .g-open:hover .g-cap,

@@ -132,14 +132,11 @@ img {
   z-index: 200;
   width: 4px;
   background: #8a8378;
-  transition:
-    width 0.2s var(--ease),
-    background 0.2s;
+  transition: width 0.2s var(--ease);
 }
 .sb-thumb:hover,
 .sb-thumb.drag {
   width: 7px;
-  background: var(--red);
 }
 ::selection {
   background: var(--red);

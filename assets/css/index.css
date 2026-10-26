@@ -4043,9 +4043,17 @@ form.co {
   position: sticky;
   top: 96px;
   height: auto;
+  font-family: var(--display);
 } /* not the header nav's 60px */
-.lg-toc .label {
+.lg-toc > .label {
+  font-family: var(--display);
   color: var(--ink-2);
+}
+/* Contents links glide to their section (unless reduced motion is on) */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.lg-toc) {
+    scroll-behavior: smooth;
+  }
 }
 .lg-toc ol {
   list-style: none;
@@ -4128,8 +4136,11 @@ form.co {
   color: var(--ink);
 }
 @media (max-width: 860px) {
+  /* Contents sit above the text instead of beside it */
   .lg-toc {
-    display: none;
+    grid-column: 1 / -1;
+    position: static;
+    margin-bottom: 48px;
   }
   .lg-text {
     grid-column: 1 / -1;

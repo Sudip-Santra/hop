@@ -1177,7 +1177,7 @@ form h3 {
 }
 .footer__title,
 .footer__facts dt {
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 11px;
   font-weight: 500;
   line-height: 1.25;
@@ -1222,6 +1222,9 @@ form h3 {
   margin-top: 4px;
   font-size: 13px;
   line-height: 1.4;
+}
+.footer b.num {
+  font-weight: inherit;
 }
 
 /* The wordmark, blind pressed: three copies of its outline stacked. A light
@@ -3210,6 +3213,12 @@ form.c-form {
   padding-bottom: 112px;
   align-items: start;
 }
+/* Business cards page sits on white; the header and mobile menu follow so there's no cream strip */
+.page-business-cards,
+.page-business-cards header,
+.page-business-cards .m-menu {
+  background: #fff;
+}
 .bc-info {
   grid-column: 3 / span 8;
 }
@@ -3238,13 +3247,15 @@ form.c-form {
   border-bottom: 1px solid var(--red);
 }
 .bc-price b {
-  font-family: var(--sans);
-  letter-spacing: var(--tight);
+  /* Digits from JetBrains Mono; the ₹ isn't in it, so it falls through to Sen's fallbacks as before */
+  font-family: "JetBrains Mono", var(--sans);
+  letter-spacing: -0.04em;
   font-weight: 400;
   font-size: clamp(26px, 2.2vw, 34px);
   line-height: 1;
 }
 .bc-price .label {
+  font-family: var(--display);
   color: var(--ink-2);
 }
 
@@ -3280,6 +3291,7 @@ form.co {
   flex-direction: column;
 }
 .bc-opt legend {
+  font-family: var(--display);
   color: var(--ink-2);
   margin-bottom: 8px;
 }
@@ -3331,13 +3343,11 @@ form.co {
   outline-offset: 2px;
 }
 
+/* Sets stepper, then Buy it now and Add to cart side by side */
 .bc-buy {
   display: flex;
   gap: 8px;
   margin-top: 4px;
-}
-.bc-buy + .bc-now {
-  margin-top: -18px;
 }
 .bc-sets {
   height: 48px;
@@ -3349,15 +3359,23 @@ form.co {
   width: 52px;
   font-size: 15px;
 }
-.bc-buy .bc-add {
+.bc-buy .bc-add,
+.bc-buy .bc-now {
   flex: 1;
   height: 48px;
   justify-content: center;
   gap: 10px;
 }
-.bc-now {
-  height: 48px;
-  justify-content: center;
+/* Phones: the stepper gets its own row, the two buttons share the next */
+@media (max-width: 560px) {
+  .bc-buy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .bc-sets {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
 }
 .bc-now:hover {
   background: var(--ink);
@@ -3380,7 +3398,8 @@ form.co {
   color: var(--ink-2);
 }
 .bc-motto {
-  font-family: var(--sans);
+  font-family: var(--display);
+  font-weight: 450;
   letter-spacing: var(--tight);
   font-size: clamp(24px, 2vw, 30px);
   line-height: 1.1;
@@ -3401,7 +3420,16 @@ form.co {
   border-bottom: 1px solid var(--line);
   font-size: 14.5px;
 }
+/* Numbers inside choices and specs: mono, but not bold */
+.bc-choices b.num,
+.bc-specs b.num {
+  font-weight: inherit;
+}
+.bc-choices b.num {
+  font-family: "JetBrains Mono", var(--sans); /* ₹ in the design fee keeps its old font */
+}
 .bc-specs dt {
+  font-family: var(--display);
   color: var(--ink-2);
   padding-top: 2px;
 }

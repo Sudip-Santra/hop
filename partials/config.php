@@ -32,3 +32,14 @@ function e(string $s): string
 {
     return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 }
+
+/**
+ * Escapes text and wraps each number (a range, or a time like 9am) in <b class="num"> so it sets in mono.
+ *
+ * Example: nums('7–10 working days') → '<b class="num">7–10</b> working days'
+ * Example: nums('9am – 7pm') → '<b class="num">9am</b> – <b class="num">7pm</b>'
+ */
+function nums(string $s): string
+{
+    return preg_replace('/\d+(?:[–-]\d+)?(?:am|pm)?/u', '<b class="num">$0</b>', e($s));
+}

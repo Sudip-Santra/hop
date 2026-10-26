@@ -42,14 +42,14 @@ $rupees = fn(int $n) => '₹' . number_format($n);
     <div class="bc-info">
       <nav class="crumbs label rv" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span aria-current="page">Business cards</span></nav>
       <h1 class="rv">Custom Letterpress <em>Business Cards</em></h1>
-      <p class="bc-price rv"><b id="bc-price"><?= $rupees($from) ?></b><span class="label">GST and delivery included</span></p>
+      <p class="bc-price rv"><b id="bc-price" class="num"><?= $rupees($from) ?></b><span class="label">GST and delivery included</span></p>
 
       <form id="bc-form" class="bc-form rv" novalidate>
         <fieldset class="bc-opt">
           <legend class="label">Quantity</legend>
           <div class="bc-choices bc-4">
             <?php foreach (CARD_PRICES as $qty => $p): ?>
-              <label><input type="radio" name="qty" value="<?= $qty ?>" <?= $qty === array_key_first(CARD_PRICES) ? ' checked' : '' ?>><span><?= number_format($qty) ?> cards</span></label>
+              <label><input type="radio" name="qty" value="<?= $qty ?>" <?= $qty === array_key_first(CARD_PRICES) ? ' checked' : '' ?>><span><em><b class="num"><?= number_format($qty) ?></b> cards</em></span></label>
             <?php endforeach; ?>
           </div>
         </fieldset>
@@ -58,7 +58,7 @@ $rupees = fn(int $n) => '₹' . number_format($n);
           <legend class="label">Design service</legend>
           <div class="bc-choices bc-2">
             <label><input type="radio" name="design" value="no" checked><span>No, I’ll send my artwork</span></label>
-            <label><input type="radio" name="design" value="yes"><span>Yes (+<?= $rupees(DESIGN_FEE) ?>)</span></label>
+            <label><input type="radio" name="design" value="yes"><span><em>Yes (+<b class="num"><?= $rupees(DESIGN_FEE) ?></b>)</em></span></label>
           </div>
         </fieldset>
 
@@ -72,13 +72,13 @@ $rupees = fn(int $n) => '₹' . number_format($n);
                 <use href="#i-plus" />
               </svg></button>
           </div>
+          <button type="button" class="btn red bc-now" id="bc-now">Buy it now <svg class="i arr" aria-hidden="true">
+              <use href="#i-arrow-right" />
+            </svg></button>
           <button type="submit" class="btn bc-add"><svg class="i" aria-hidden="true">
               <use href="#i-shopping-cart" />
             </svg>Add to cart</button>
         </div>
-        <button type="button" class="btn red bc-now" id="bc-now">Buy it now <svg class="i arr" aria-hidden="true">
-            <use href="#i-arrow-right" />
-          </svg></button>
         <p class="bc-added" id="bc-added" role="status" aria-live="polite"></p>
       </form>
 
@@ -91,11 +91,11 @@ $rupees = fn(int $n) => '₹' . number_format($n);
       <dl class="bc-specs rv">
         <div>
           <dt class="label">Size</dt>
-          <dd>89 × 51 mm, standard business card</dd>
+          <dd><b class="num">89 × 51</b> mm, standard business card</dd>
         </div>
         <div>
           <dt class="label">Paper</dt>
-          <dd>600 gsm cotton</dd>
+          <dd><b class="num">600</b> gsm cotton</dd>
         </div>
         <div>
           <dt class="label">Ink</dt>
@@ -107,7 +107,7 @@ $rupees = fn(int $n) => '₹' . number_format($n);
         </div>
         <div>
           <dt class="label">Dispatch</dt>
-          <dd><?= e(DISPATCH) ?> after your proof</dd>
+          <dd><?= nums(DISPATCH) ?> after your proof</dd>
         </div>
         <div>
           <dt class="label">Delivery</dt>

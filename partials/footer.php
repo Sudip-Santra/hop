@@ -55,11 +55,11 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
   <dl class="wrap footer__facts">
     <div>
       <dt>Studio hours</dt>
-      <dd><?= e(HOURS) ?></dd>
+      <dd><?= nums(HOURS) ?></dd>
     </div>
     <div>
       <dt>Dispatch</dt>
-      <dd><?= e(DISPATCH) ?> after your proof</dd>
+      <dd><?= nums(DISPATCH) ?> after your proof</dd>
     </div>
     <div>
       <dt>Delivery</dt>
@@ -77,7 +77,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
   </div>
 
   <div class="wrap footer__base">
-    <p>© <?= date('Y') ?> <?= SITE_NAME ?>. Prices include GST and delivery within India.</p>
+    <p>© <b class="num"><?= date('Y') ?></b> <?= SITE_NAME ?>. Prices include GST and delivery within India.</p>
     <ul class="footer__legal">
       <li><a href="<?= $base ?>shipping-and-returns/">Shipping &amp; returns</a></li>
       <li><a href="<?= $base ?>privacy/">Privacy policy</a></li>

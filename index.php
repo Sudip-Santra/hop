@@ -173,7 +173,7 @@ include __DIR__ . '/partials/head.php';
       <div class="story-body">
         <div class="rv">
           <p class="label">About House of Press</p>
-          <h2>In a hurry? <em>Not the place for you.</em></h2>
+          <h2>Pressed deep. <em>Made to last.</em></h2>
         </div>
         <div class="story-cols rv">
           <p>House of Press is a letterpress studio for business cards and brand cards. Every card is <strong>pressed by hand</strong> into thick cotton paper, <strong>one sheet at a time</strong>, so your words sit just below the surface where you can feel them.</p>

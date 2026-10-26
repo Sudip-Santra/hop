@@ -127,7 +127,7 @@ $rupees = fn(int $n) => '₹' . number_format($n);
       </form>
 
       <div class="bc-copy rv">
-        <p class="bc-motto">In a hurry? <em>Not the place for you.</em></p>
+        <p class="bc-motto">By hand, <em>one sheet at a time.</em></p>
         <p>Every card is letterpressed by hand, a craft that is centuries old: deep impressions, textured cotton paper, and ink you can feel as much as see. Choose your quantity, decide whether our studio designs your card from scratch or you send your own artwork, and we’ll take it from there.</p>
         <p>Delivery is included across India. After you place your order, we confirm the details with you on WhatsApp within 24 hours, before your cards go to press.</p>
       </div>

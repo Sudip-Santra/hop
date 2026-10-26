@@ -40,21 +40,26 @@ $rupees = fn(int $n) => '₹' . number_format($n);
   <div class="bc wrap grid">
     <!-- Card preview: a drawn sample card, or the customer's uploaded design pressed onto it -->
     <div class="bc-preview">
-      <div class="pcard" id="pcard" role="img" aria-label="A sample card, Press Black ink on Pearl White cotton">
-        <div class="pcard-front" id="pcard-sample">
-          <div>
-            <p class="pcard-name">Meera Iyer</p>
-            <p class="pcard-role">Architect</p>
+      <div class="pcard" id="pcard" role="img" aria-label="A House of Press card in black ink with a red rule, on Pearl White cotton">
+        <div class="pcard-front pcard-hop" id="pcard-sample">
+          <div class="pcard-brand">
+            <p class="pcard-name">House of Press</p>
+            <p class="pcard-role">Letterpress studio</p>
           </div>
-          <div class="pcard-details">
-            <p>+91 98765 43210</p>
-            <p>meera@iyerstudio.in</p>
-            <p>Bandra West, Mumbai</p>
+          <div class="pcard-foot">
+            <div class="pcard-details">
+              <p><?= PHONE_DISPLAY ?></p>
+              <p><?= EMAIL ?></p>
+            </div>
+            <div class="pcard-details pcard-right">
+              <p>@<?= INSTAGRAM ?></p>
+              <p>Andheri East, Mumbai</p>
+            </div>
           </div>
         </div>
         <img class="pcard-art" id="pcard-art" alt="" hidden>
       </div>
-      <p class="bc-preview-cap" id="pcard-cap"><span id="pcard-cap-lead">Sample wording; yours goes on the proof.</span> <b class="num">3.5 × 2</b> in (<b class="num">89 × 51</b> mm), <b class="num">600</b> gsm cotton, Pearl White.</p>
+      <p class="bc-preview-cap" id="pcard-cap"><span id="pcard-cap-lead">Our own card, as a sample; yours goes on the proof.</span> <b class="num">3.5 × 2</b> in (<b class="num">89 × 51</b> mm), <b class="num">600</b> gsm cotton, Pearl White.</p>
     </div>
 
     <!-- Choose and buy -->

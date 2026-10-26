@@ -41,8 +41,8 @@
     sample.hidden = !!mine;
     artImg.hidden = !mine;
     if (mine) artImg.src = art.data;
-    capLead.textContent = mine ? 'Your design on Pearl White cotton; the proof shows exactly how it presses.' : 'Sample wording; yours goes on the proof.';
-    card.setAttribute('aria-label', mine ? `Your design, ${art.name}, on a card` : 'A sample card, Press Black ink on Pearl White cotton');
+    capLead.textContent = mine ? 'Your design on Pearl White cotton; the proof shows exactly how it presses.' : 'Our own card, as a sample; yours goes on the proof.';
+    card.setAttribute('aria-label', mine ? `Your design, ${art.name}, on a card` : 'A House of Press card in black ink with a red rule, on Pearl White cotton');
     upBtn.hidden = !!art;
     fileRow.hidden = !art;
     if (art) document.getElementById('bc-file-name').textContent = art.name;

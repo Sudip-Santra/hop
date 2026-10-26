@@ -3408,15 +3408,7 @@ form.c-form {
   flex-direction: column;
   justify-content: space-between;
 }
-.pcard-name {
-  font-family: "Clarendon", Georgia, "Times New Roman", serif;
-  font-size: 6.4cqw;
-  line-height: 1.1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
 .pcard-role {
-  margin-top: 1.6cqw;
   font-size: 3cqw;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -3424,6 +3416,38 @@ form.c-form {
 .pcard-details {
   font-size: 3.1cqw;
   line-height: 1.55;
+}
+/* The House of Press sample: name and details in black ink, a red rule between */
+.pcard-hop {
+  inset: 12% 8% 10%;
+}
+.pcard-name {
+  font-family: "Clarendon", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: 6cqw;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pcard-hop .pcard-role {
+  margin-top: 2.4cqw;
+  font-size: 2.5cqw;
+  letter-spacing: 0.14em;
+}
+.pcard-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 4cqw;
+  padding-top: 3cqw;
+  border-top: 0.35cqw solid #a51e23; /* a rule in the same red as the wordmark */
+}
+.pcard-hop .pcard-details {
+  font-size: 2.8cqw;
+  line-height: 1.6;
+}
+.pcard-right {
+  text-align: right;
 }
 /* An uploaded design fills the card; multiply lets white backgrounds become the paper */
 .pcard-art {

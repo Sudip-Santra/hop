@@ -255,12 +255,12 @@ include __DIR__ . '/partials/head.php';
         <h2 style="margin-top:18px">Have a card in mind? <em>Let’s talk.</em></h2>
         <p class="lead">Prices for our standard cards are on the <a href="business-cards/">business cards page</a>. For anything custom - your own design, a special ink or a larger run - tell us here and we’ll reply on WhatsApp.</p>
         <div class="details">
-          <div><span class="label">WhatsApp</span><a href="https://wa.me/<?= WHATSAPP ?>" target="_blank" rel="noopener"><?= PHONE_DISPLAY ?></a></div>
+          <div><span class="label">WhatsApp</span><a href="https://wa.me/<?= WHATSAPP ?>" target="_blank" rel="noopener" class="num"><?= PHONE_DISPLAY ?></a></div>
           <div><span class="label">Email</span><a href="mailto:<?= EMAIL ?>"><?= EMAIL ?></a></div>
           <div><span class="label">Instagram</span><a href="https://instagram.com/<?= INSTAGRAM ?>" target="_blank" rel="noopener">@<?= INSTAGRAM ?> <svg class="i" aria-hidden="true">
                 <use href="#i-arrow-up-right" />
               </svg></a></div>
-          <div><span class="label">Studio hours</span><?= e(HOURS) ?></div>
+          <div><span class="label">Studio hours</span><?= nums(HOURS) ?></div>
         </div>
       </div>
 
@@ -282,10 +282,10 @@ include __DIR__ . '/partials/head.php';
         <div class="field">
           <span class="label">Roughly how many?</span>
           <div class="chips">
-            <label><input type="radio" name="qty" value="100" checked><span>100</span></label>
-            <label><input type="radio" name="qty" value="250"><span>250</span></label>
-            <label><input type="radio" name="qty" value="500"><span>500</span></label>
-            <label><input type="radio" name="qty" value="More than 500"><span>500+</span></label>
+            <label><input type="radio" name="qty" value="100" checked><span class="num">100</span></label>
+            <label><input type="radio" name="qty" value="250"><span class="num">250</span></label>
+            <label><input type="radio" name="qty" value="500"><span class="num">500</span></label>
+            <label><input type="radio" name="qty" value="More than 500"><span class="num">500+</span></label>
           </div>
         </div>
         <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members"></textarea></label>

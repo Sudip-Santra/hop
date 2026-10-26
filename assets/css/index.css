@@ -2458,8 +2458,16 @@ form.c-form {
   color: var(--red);
   margin-left: 2px;
 }
+/* Home enquiry: labels in the heading font */
+.contact .label {
+  font-family: var(--display);
+}
+.contact b.num {
+  font-weight: inherit;
+}
 /* Numbers stay mono: quantities, calendar days, phone numbers */
 .num,
+#enquiry [name="phone"],
 .c-form [name="phone"],
 .c-form .dp-grid button {
   font-family: var(--mono);

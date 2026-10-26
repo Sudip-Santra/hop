@@ -1,7 +1,7 @@
 <?php
 $page        = 'shipping-and-returns';
 $base        = '../';
-$title       = 'Shipping & Returns — House of Press';
+$title       = 'Shipping & Returns - House of Press';
 $description = 'How House of Press ships letterpress business cards across India, when an order can be cancelled, and what happens if a card arrives damaged or misprinted.';
 include __DIR__ . '/../partials/head.php';
 

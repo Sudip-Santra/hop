@@ -1,7 +1,7 @@
 <?php
 $page        = 'checkout';
 $base        = '../';
-$title       = 'Checkout — House of Press';
+$title       = 'Checkout - House of Press';
 $description = 'Complete your House of Press letterpress business card order.';
 $scripts     = ['combobox.js', 'checkout.js'];
 $noFooter    = true;
@@ -20,22 +20,32 @@ include __DIR__ . '/../partials/head.php';
       <section class="co-state" id="co-empty" hidden>
         <h2>Your cart is <em>empty</em>.</h2>
         <p>Choose a quantity and whether you’d like our studio to design your card.</p>
-        <a href="../business-cards/" class="btn">Choose your cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a href="../business-cards/" class="btn">Choose your cards <svg class="i arr" aria-hidden="true">
+            <use href="#i-arrow-right" />
+          </svg></a>
       </section>
 
       <!-- Order placed -->
       <section class="co-state" id="co-done" hidden tabindex="-1">
-        <span class="co-tick" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span>
+        <span class="co-tick" aria-hidden="true"><svg class="i">
+            <use href="#i-check" />
+          </svg></span>
         <p class="label">Order <span id="co-ref"></span></p>
         <h2>Thank you. <em>We’ve got it.</em></h2>
-        <p>Your order has opened in WhatsApp. Press send so it reaches the studio — we’ll confirm the details and share your proof there within 24 hours.</p>
+        <p>Your order has opened in WhatsApp. Press send so it reaches the studio - we’ll confirm the details and share your proof there within 24 hours.</p>
         <div class="co-done-files" id="co-done-files" hidden>
-          <p><svg class="i" aria-hidden="true"><use href="#i-file"/></svg><span><b>Your artwork:</b> <span id="co-done-names"></span></span></p>
+          <p><svg class="i" aria-hidden="true">
+              <use href="#i-file" />
+            </svg><span><b>Your artwork:</b> <span id="co-done-names"></span></span></p>
           <p class="co-muted" id="co-done-how">Attach it in the same WhatsApp chat so we can set your card.</p>
-          <button type="button" class="btn line" id="co-share" hidden><svg class="i" aria-hidden="true"><use href="#i-upload"/></svg>Share artwork to WhatsApp</button>
+          <button type="button" class="btn line" id="co-share" hidden><svg class="i" aria-hidden="true">
+              <use href="#i-upload" />
+            </svg>Share artwork to WhatsApp</button>
         </div>
         <div class="co-done-act">
-          <a href="#" class="btn red" id="co-resend" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Open WhatsApp again</a>
+          <a href="#" class="btn red" id="co-resend" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true">
+              <use href="#i-whatsapp" />
+            </svg>Open WhatsApp again</a>
           <a href="../" class="btn line">Back to home</a>
         </div>
       </section>
@@ -67,7 +77,9 @@ include __DIR__ . '/../partials/head.php';
                 <label for="co-state">State</label>
                 <div class="co-combo">
                   <input id="co-state" name="state" required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="co-state-list" placeholder="Search state" spellcheck="false">
-                  <svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-chevron-down" />
+                  </svg>
                   <ul class="co-list" id="co-state-list" role="listbox" aria-label="States" hidden></ul>
                 </div>
               </div>
@@ -75,7 +87,9 @@ include __DIR__ . '/../partials/head.php';
                 <label for="co-city">City</label>
                 <div class="co-combo">
                   <input id="co-city" name="city" required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="co-city-list" placeholder="Choose a state first" spellcheck="false">
-                  <svg class="i" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-chevron-down" />
+                  </svg>
                   <ul class="co-list" id="co-city-list" role="listbox" aria-label="Cities" hidden></ul>
                 </div>
               </div>
@@ -88,7 +102,7 @@ include __DIR__ . '/../partials/head.php';
               <h2 id="co-s3">On the card</h2>
               <p>Tell us what to print. You can also share it on WhatsApp later.</p>
             </div>
-            <label class="co-field"><span class="sr-only">What should the card say?</span><textarea name="details" rows="3" placeholder="Name, title, phone, email, address — and any ink colour you have in mind"></textarea></label>
+            <label class="co-field"><span class="sr-only">What should the card say?</span><textarea name="details" rows="3" placeholder="Name, title, phone, email, address - and any ink colour you have in mind"></textarea></label>
           </section>
 
           <!-- Phones: the order sits above the form, so the button repeats here -->
@@ -106,13 +120,22 @@ include __DIR__ . '/../partials/head.php';
           </div>
           <ol class="co-items" id="co-items"></ol>
           <dl class="co-rows">
-            <div><dt>Subtotal</dt><dd id="co-sub">₹0</dd></div>
-            <div><dt>Delivery</dt><dd>Free</dd></div>
-            <div class="co-total"><dt>Total <span>incl. GST</span></dt><dd id="co-total">₹0</dd></div>
+            <div>
+              <dt>Subtotal</dt>
+              <dd id="co-sub">₹0</dd>
+            </div>
+            <div>
+              <dt>Delivery</dt>
+              <dd>Free</dd>
+            </div>
+            <div class="co-total">
+              <dt>Total <span>incl. GST</span></dt>
+              <dd id="co-total">₹0</dd>
+            </div>
           </dl>
           <p class="co-error" id="co-error" role="alert" hidden></p>
           <button type="submit" class="btn red co-place">Pay and Confirm Order</button>
-          <p class="co-note">Your order is sent to the studio on WhatsApp. Nothing is charged here — we confirm payment with you there, after your proof.</p>
+          <p class="co-note">Your order is sent to the studio on WhatsApp. Nothing is charged here - we confirm payment with you there, after your proof.</p>
         </aside>
       </form>
     </div>

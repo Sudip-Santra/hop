@@ -1,7 +1,7 @@
 <?php
 $page        = 'about';
 $base        = '../';
-$title       = 'About — House of Press, letterpress studio in Mumbai';
+$title       = 'About - House of Press, letterpress studio in Mumbai';
 $description = 'House of Press is a letterpress studio in Andheri East, Mumbai, pressing business and brand cards by hand into thick cotton paper, one sheet at a time.';
 include __DIR__ . '/../partials/head.php';
 $v = '../assets/videos/';
@@ -37,7 +37,9 @@ $v = '../assets/videos/';
         <p class="label">Who we are</p>
         <h2>Slow by design. <em>Felt for years.</em></h2>
         <p>Letterpress is relief printing, the method behind nearly every book, poster and calling card for centuries. Type and artwork stand raised on a plate, and the press pushes them into the paper.</p>
-        <a href="../gallery/" class="btn paper">See the work <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a href="../gallery/" class="btn paper">See the work <svg class="i arr" aria-hidden="true">
+            <use href="#i-arrow-right" />
+          </svg></a>
       </div>
     </div>
     <div class="a-split-row is-flip">
@@ -62,32 +64,42 @@ $v = '../assets/videos/';
       <p class="side">A few recent cards: single and multiple inks, blind pressed, and designed to each client’s brief.</p>
     </div>
     <div class="a-ranges">
-        <a class="a-range rv" href="../gallery/">
-          <figure><img src="<?= $v ?>crispy-business-card.jpg" alt="Crispy business card for Uru Living, contour lines blind letterpressed into thick white cotton paper" loading="lazy" style="object-position:center 45%"></figure>
-          <h3>Crispy business card</h3>
-          <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          <p class="a-range-note label">Uru Living · Blind pressed</p>
-        </a>
-        <a class="a-range rv" href="../gallery/">
-          <figure><img src="<?= $v ?>sakshi-jain.jpg" alt="Sakshi Jain architect business card, letterpressed in olive-green ink on cotton paper" loading="lazy" style="object-position:center 45%"></figure>
-          <h3>Sakshi Jain, Architect</h3>
-          <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          <p class="a-range-note label">Olive-green ink</p>
-        </a>
-        <a class="a-range rv" href="../gallery/">
-          <figure><img src="<?= $v ?>urmil-nisar.jpg" alt="Bhanu Cospack business card for Urmil Nisar, letterpressed in blue ink on cotton paper" loading="lazy" style="object-position:center 40%"></figure>
-          <h3>Bhanu Cospack</h3>
-          <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          <p class="a-range-note label">Blue ink · Our first run</p>
-        </a>
-        <a class="a-range rv" href="../gallery/">
-          <figure><img src="<?= $v ?>hero-poster.jpg" alt="Letterpress business cards laid out together, pressed in orange, black and green inks" loading="lazy" style="object-position:center 35%"></figure>
-          <h3>Studio cards</h3>
-          <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          <p class="a-range-note label">Orange, black and green inks</p>
-        </a>
+      <a class="a-range rv" href="../gallery/">
+        <figure><img src="<?= $v ?>crispy-business-card.jpg" alt="Crispy business card for Uru Living, contour lines blind letterpressed into thick white cotton paper" loading="lazy" style="object-position:center 45%"></figure>
+        <h3>Crispy business card</h3>
+        <span class="go"><svg class="i" aria-hidden="true">
+            <use href="#i-arrow-right" />
+          </svg></span>
+        <p class="a-range-note label">Uru Living · Blind pressed</p>
+      </a>
+      <a class="a-range rv" href="../gallery/">
+        <figure><img src="<?= $v ?>sakshi-jain.jpg" alt="Sakshi Jain architect business card, letterpressed in olive-green ink on cotton paper" loading="lazy" style="object-position:center 45%"></figure>
+        <h3>Sakshi Jain, Architect</h3>
+        <span class="go"><svg class="i" aria-hidden="true">
+            <use href="#i-arrow-right" />
+          </svg></span>
+        <p class="a-range-note label">Olive-green ink</p>
+      </a>
+      <a class="a-range rv" href="../gallery/">
+        <figure><img src="<?= $v ?>urmil-nisar.jpg" alt="Bhanu Cospack business card for Urmil Nisar, letterpressed in blue ink on cotton paper" loading="lazy" style="object-position:center 40%"></figure>
+        <h3>Bhanu Cospack</h3>
+        <span class="go"><svg class="i" aria-hidden="true">
+            <use href="#i-arrow-right" />
+          </svg></span>
+        <p class="a-range-note label">Blue ink · Our first run</p>
+      </a>
+      <a class="a-range rv" href="../gallery/">
+        <figure><img src="<?= $v ?>hero-poster.jpg" alt="Letterpress business cards laid out together, pressed in orange, black and green inks" loading="lazy" style="object-position:center 35%"></figure>
+        <h3>Studio cards</h3>
+        <span class="go"><svg class="i" aria-hidden="true">
+            <use href="#i-arrow-right" />
+          </svg></span>
+        <p class="a-range-note label">Orange, black and green inks</p>
+      </a>
     </div>
-    <div class="a-more rv"><a class="btn" href="../gallery/">See all the work <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+    <div class="a-more rv"><a class="btn" href="../gallery/">See all the work <svg class="i arr" aria-hidden="true">
+          <use href="#i-arrow-right" />
+        </svg></a></div>
   </section>
 
   <!-- How we work -->
@@ -99,10 +111,22 @@ $v = '../assets/videos/';
         <p class="side">No rush and no shortcuts: a proof, a press and your approval.</p>
       </div>
       <div class="grid steps">
-        <div class="step rv"><span class="n">01</span><h3>Proof first</h3><p>We set your card and send a proof on WhatsApp before anything is pressed.</p></div>
-        <div class="step rv"><span class="n">02</span><h3>Ink by hand</h3><p>Ink is mixed for your order and worked onto the rollers.</p></div>
-        <div class="step rv"><span class="n">03</span><h3>One sheet at a time</h3><p>Each sheet is fed and pressed on its own, deep into the cotton.</p></div>
-        <div class="step rv"><span class="n">04</span><h3>Finished by hand</h3><p>Trimmed, checked and wrapped, then sent free across India.</p></div>
+        <div class="step rv"><span class="n">01</span>
+          <h3>Proof first</h3>
+          <p>We set your card and send a proof on WhatsApp before anything is pressed.</p>
+        </div>
+        <div class="step rv"><span class="n">02</span>
+          <h3>Ink by hand</h3>
+          <p>Ink is mixed for your order and worked onto the rollers.</p>
+        </div>
+        <div class="step rv"><span class="n">03</span>
+          <h3>One sheet at a time</h3>
+          <p>Each sheet is fed and pressed on its own, deep into the cotton.</p>
+        </div>
+        <div class="step rv"><span class="n">04</span>
+          <h3>Finished by hand</h3>
+          <p>Trimmed, checked and wrapped, then sent free across India.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -118,8 +142,12 @@ $v = '../assets/videos/';
         <div class="g-end-act rv">
           <p>Send your logo, artwork or a rough idea. We’ll set it, send a proof on WhatsApp, and press it once you approve.</p>
           <div class="g-end-btns">
-            <a href="../contact/" class="btn red">Start your card <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-            <a href="https://wa.me/<?= WHATSAPP ?>?text=<?= rawurlencode("Hi House of Press, I'd like to talk about a card design.") ?>" class="btn line" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp us</a>
+            <a href="../contact/" class="btn red">Start your card <svg class="i arr" aria-hidden="true">
+                <use href="#i-arrow-right" />
+              </svg></a>
+            <a href="https://wa.me/<?= WHATSAPP ?>?text=<?= rawurlencode("Hi House of Press, I'd like to talk about a card design.") ?>" class="btn line" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true">
+                <use href="#i-whatsapp" />
+              </svg>WhatsApp us</a>
           </div>
         </div>
       </div>

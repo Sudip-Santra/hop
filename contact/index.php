@@ -1,7 +1,7 @@
 <?php
 $page        = 'contact';
 $base        = '../';
-$title       = 'Contact — House of Press, letterpress business cards';
+$title       = 'Contact - House of Press, letterpress business cards';
 $description = 'Contact House of Press about letterpress business and brand cards: WhatsApp, call, email or Instagram. Tell us about your card and we’ll reply with options and a proof.';
 $scripts     = ['contact.js'];
 include __DIR__ . '/../partials/head.php';
@@ -20,19 +20,31 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
     </div>
     <div class="c-ways rv">
       <a class="c-way" href="<?= e($waHello) ?>" target="_blank" rel="noopener">
-        <span class="c-ic"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
+        <span class="c-ic"><svg class="i" aria-hidden="true">
+            <use href="#i-whatsapp" />
+          </svg></span>
         <span class="c-way-text"><span class="label">WhatsApp</span><b>Message us</b></span>
-        <svg class="i arr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+        <svg class="i arr" aria-hidden="true">
+          <use href="#i-arrow-up-right" />
+        </svg>
       </a>
       <a class="c-way" href="tel:<?= PHONE_TEL ?>">
-        <span class="c-ic"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <span class="c-ic"><svg class="i" aria-hidden="true">
+            <use href="#i-phone" />
+          </svg></span>
         <span class="c-way-text"><span class="label">Call</span><b><?= PHONE_DISPLAY ?></b></span>
-        <svg class="i arr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+        <svg class="i arr" aria-hidden="true">
+          <use href="#i-arrow-up-right" />
+        </svg>
       </a>
       <a class="c-way" href="<?= $instagramUrl ?>" target="_blank" rel="noopener">
-        <span class="c-ic"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></span>
+        <span class="c-ic"><svg class="i" aria-hidden="true">
+            <use href="#i-instagram" />
+          </svg></span>
         <span class="c-way-text"><span class="label">Instagram</span><b>@<?= INSTAGRAM ?></b></span>
-        <svg class="i arr" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+        <svg class="i arr" aria-hidden="true">
+          <use href="#i-arrow-up-right" />
+        </svg>
       </a>
     </div>
   </div>
@@ -43,7 +55,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
       <div class="c-enquiry-head rv">
         <p class="label">(01) Enquiry</p>
         <h2>Tell us about your <em>card</em>.</h2>
-        <p class="muted">Fill in what you know. The form opens WhatsApp with your message ready to send — nothing is stored on this website.</p>
+        <p class="muted">Fill in what you know. The form opens WhatsApp with your message ready to send - nothing is stored on this website.</p>
         <ol class="c-next">
           <li><span>01</span>You send the message on WhatsApp.</li>
           <li><span>02</span>We reply with options and set your proof.</li>
@@ -92,13 +104,19 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
             <input type="hidden" name="date" id="dp-value">
             <button type="button" class="dp-field" id="dp-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="dp-pop" aria-labelledby="dp-label dp-text">
               <span id="dp-text" class="is-empty">Pick a date</span>
-              <svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg>
+              <svg class="i" aria-hidden="true">
+                <use href="#i-calendar" />
+              </svg>
             </button>
             <div class="dp-pop" id="dp-pop" role="dialog" aria-label="Choose a date" hidden>
               <div class="dp-head">
-                <button type="button" class="dp-nav" id="dp-prev" aria-label="Previous month"><svg class="i" aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
+                <button type="button" class="dp-nav" id="dp-prev" aria-label="Previous month"><svg class="i" aria-hidden="true">
+                    <use href="#i-chevron-left" />
+                  </svg></button>
                 <b id="dp-month" aria-live="polite"></b>
-                <button type="button" class="dp-nav" id="dp-next" aria-label="Next month"><svg class="i" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>
+                <button type="button" class="dp-nav" id="dp-next" aria-label="Next month"><svg class="i" aria-hidden="true">
+                    <use href="#i-chevron-right" />
+                  </svg></button>
               </div>
               <div class="dp-week label" aria-hidden="true"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
               <div class="dp-grid" id="dp-grid"></div>
@@ -115,7 +133,9 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
 
         <div class="form-foot">
           <small>Opens WhatsApp with your message.</small>
-          <button type="submit" class="btn wa-btn"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>Send on WhatsApp</button>
+          <button type="submit" class="btn wa-btn"><svg class="i wa-i" aria-hidden="true">
+              <use href="#i-whatsapp" />
+            </svg>Send on WhatsApp</button>
         </div>
       </form>
     </div>
@@ -152,56 +172,108 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
       </div>
       <div class="c-faq-list rv" data-batch="6">
         <details>
-          <summary>What is letterpress?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Relief printing: a raised plate is inked and pressed into paper with real force. The words sit slightly below the surface of the card, so you can feel them with your fingertips.</p></div>
+          <summary>What is letterpress?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Relief printing: a raised plate is inked and pressed into paper with real force. The words sit slightly below the surface of the card, so you can feel them with your fingertips.</p>
+          </div>
         </details>
         <details>
-          <summary>Will I see my card before it’s pressed?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Yes. We send a proof to your WhatsApp. Nothing goes to press until you approve it, and you can ask for changes first.</p></div>
+          <summary>Will I see my card before it’s pressed?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Yes. We send a proof to your WhatsApp. Nothing goes to press until you approve it, and you can ask for changes first.</p>
+          </div>
         </details>
         <details>
-          <summary>Do I need a design ready?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>No. Send your own print-ready design, or tell us what should be on the card and the studio will set it for you.</p></div>
+          <summary>Do I need a design ready?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>No. Send your own print-ready design, or tell us what should be on the card and the studio will set it for you.</p>
+          </div>
         </details>
         <details>
-          <summary>Which file should I send?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>A vector PDF, AI, EPS or SVG works best, with text converted to outlines. Letterpress can’t print photographs or soft gradients, so keep the artwork to solid shapes and lines.</p></div>
+          <summary>Which file should I send?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>A vector PDF, AI, EPS or SVG works best, with text converted to outlines. Letterpress can’t print photographs or soft gradients, so keep the artwork to solid shapes and lines.</p>
+          </div>
         </details>
         <details>
-          <summary>Can you match my brand colour?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>We press in multiple house inks, or blind with no ink at all. For a specific Pantone shade, message us on WhatsApp before you order.</p></div>
+          <summary>Can you match my brand colour?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>We press in multiple house inks, or blind with no ink at all. For a specific Pantone shade, message us on WhatsApp before you order.</p>
+          </div>
         </details>
         <details>
-          <summary>How long does it take?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>We dispatch within <?= e(DISPATCH) ?> of your proof being approved, with free tracked delivery across India.</p></div>
+          <summary>How long does it take?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>We dispatch within <?= e(DISPATCH) ?> of your proof being approved, with free tracked delivery across India.</p>
+          </div>
         </details>
         <details>
-          <summary>What size are the cards?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Every card is 89 × 51 mm, the standard business-card size.</p></div>
+          <summary>What size are the cards?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Every card is 89 × 51 mm, the standard business-card size.</p>
+          </div>
         </details>
         <details>
-          <summary>What paper do you use?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Thick 600 gsm cotton, soft enough to hold a deep impression. For extra weight, we join two sheets into a 1,200 gsm card and paint every edge by hand.</p></div>
+          <summary>What paper do you use?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Thick 600 gsm cotton, soft enough to hold a deep impression. For extra weight, we join two sheets into a 1,200 gsm card and paint every edge by hand.</p>
+          </div>
         </details>
         <details>
-          <summary>What does blind pressed mean?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>The plate is pressed with no ink at all. Only the impression remains, catching the light as the card moves.</p></div>
+          <summary>What does blind pressed mean?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>The plate is pressed with no ink at all. Only the impression remains, catching the light as the card moves.</p>
+          </div>
         </details>
         <details>
-          <summary>What is the smallest order?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Orders start at 100 cards. Ask on WhatsApp if you need a different quantity.</p></div>
+          <summary>What is the smallest order?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Orders start at 100 cards. Ask on WhatsApp if you need a different quantity.</p>
+          </div>
         </details>
         <details>
-          <summary>Why does each card look slightly different?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Each card is pressed one at a time, so the depth of the impression and the ink vary a little from card to card. That small variation is what makes letterpress feel handmade.</p></div>
+          <summary>Why does each card look slightly different?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Each card is pressed one at a time, so the depth of the impression and the ink vary a little from card to card. That small variation is what makes letterpress feel handmade.</p>
+          </div>
         </details>
         <details>
-          <summary>Can I reorder the same card later?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Yes. We keep your approved design on file, so a reorder matches the last box.</p></div>
+          <summary>Can I reorder the same card later?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Yes. We keep your approved design on file, so a reorder matches the last box.</p>
+          </div>
         </details>
         <details>
-          <summary>Do you deliver outside India?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Not yet. We deliver anywhere in India, free of charge.</p></div>
+          <summary>Do you deliver outside India?<svg class="i" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg></summary>
+          <div class="faq-a">
+            <p>Not yet. We deliver anywhere in India, free of charge.</p>
+          </div>
         </details>
         <div class="c-faq-more"><button type="button" class="btn paper">Load more</button></div>
       </div>

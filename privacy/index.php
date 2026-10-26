@@ -1,7 +1,7 @@
 <?php
 $page        = 'privacy';
 $base        = '../';
-$title       = 'Privacy Policy — House of Press';
+$title       = 'Privacy Policy - House of Press';
 $description = 'What personal details House of Press collects when you order or enquire, why, who sees them and how long we keep them.';
 include __DIR__ . '/../partials/head.php';
 

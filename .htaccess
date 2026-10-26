@@ -1,4 +1,4 @@
-# K K Marketing — Apache config
+# K K Marketing - Apache config
 # Pages live as folder/index.php (shared parts in partials/), so URLs stay clean: /  and  /about/
 
 DirectoryIndex index.php index.html

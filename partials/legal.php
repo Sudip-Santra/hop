@@ -16,7 +16,7 @@
     <nav class="crumbs label rv" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span aria-current="page"><?= e(html_entity_decode(strip_tags($legalTitle))) ?></span></nav>
     <h1 class="rv"><?= $legalTitle ?></h1>
     <p class="lead muted rv"><?= e($legalLead) ?></p>
-    <p class="label muted lg-updated rv">Last updated <?= e($updated) ?></p>
+    <p class="label muted lg-updated rv">Last updated <?= nums($updated) ?></p>
   </div>
 
   <div class="lg-body wrap grid">

@@ -4740,8 +4740,13 @@ form.co {
   margin-top: 24px;
   max-width: 56ch;
 }
+/* Words in the display font; nums() keeps the date's numbers in mono */
 .lg-updated {
   margin-top: 24px;
+  font-family: var(--display);
+}
+.lg-updated b.num {
+  font-weight: inherit;
 }
 .lg-body {
   padding-top: 56px;

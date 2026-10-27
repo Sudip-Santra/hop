@@ -2034,7 +2034,7 @@ html.cart-lock {
   position: absolute;
   left: 0;
   bottom: 0;
-  background: var(--paper);
+  background: #fff;
   padding: 8px 12px;
   font-family: var(--display);
 }

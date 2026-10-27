@@ -2246,12 +2246,6 @@ html.cart-lock {
 .page-contact .a-visit {
   background: #fff;
 }
-/* Home: How to order, white to the viewport edges past the .wrap max-width */
-#how-to-order {
-  background: #fff;
-  box-shadow: 0 0 0 100vmax #fff;
-  clip-path: inset(0 -100vmax);
-}
 .a-visit h2 {
   margin-top: 18px;
 }

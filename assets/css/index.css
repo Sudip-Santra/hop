@@ -1688,6 +1688,7 @@ html.cart-lock {
   border-bottom: 1px solid var(--ink);
 }
 .cart-head .label {
+  font-family: var(--display);
   color: var(--ink-2);
 }
 .cart-head h2 {
@@ -1728,6 +1729,10 @@ html.cart-lock {
   overflow-y: auto;
   padding: 0 24px;
 }
+/* An empty list gives its space to the empty-cart message */
+.cart-list:empty {
+  display: none;
+}
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -1737,7 +1742,40 @@ html.cart-lock {
   border-bottom: 1px solid var(--line);
 }
 .ci-body {
+  flex: 1;
   min-width: 0;
+}
+/* The uploaded design, card-shaped: an image thumbnail, or a file icon for a PDF */
+.ci-art {
+  flex: none;
+  width: 64px;
+  aspect-ratio: 3.5 / 2;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #f7f4ec; /* the card's Pearl White */
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+.ci-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.ci-art .i {
+  width: 18px;
+  height: 18px;
+}
+.ci-file {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ci-file[hidden] {
+  display: none;
 }
 .ci-body h3 {
   font-size: 18px;
@@ -1779,11 +1817,70 @@ html.cart-lock {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 32px 24px;
+  align-items: center;
+  justify-content: center; /* icon, line and button in the middle of the drawer */
+  text-align: center;
+  padding: 32px 32px 48px;
   font-size: 14.5px;
   color: var(--ink-2);
+}
+/* Two blank Pearl White cards, the top one with the wordmark blind pressed in
+   (paper-coloured type, a dark wall above and a lit wall below, as in the footer) */
+.cart-empty-stack {
+  position: relative;
+  width: 196px;
+  aspect-ratio: 3.5 / 2;
+  margin-bottom: 36px;
+}
+.cart-empty-stack::before,
+.cart-empty-card {
+  position: absolute;
+  inset: 0;
+  background: #f7f4ec url("../brand/cotton.webp") 0 0 / 512px;
+  background-blend-mode: multiply;
+  box-shadow:
+    0 1px 1px rgb(35 31 32 / 0.1),
+    0 14px 24px -12px rgb(35 31 32 / 0.35);
+}
+.cart-empty-stack::before {
+  content: "";
+  transform: rotate(5deg) translate(10px, 4px);
+}
+.cart-empty-card {
+  display: grid;
+  place-items: center;
+  transform: rotate(-4deg);
+}
+.cart-empty-card span {
+  font-family: "Clarendon", Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #efebe2;
+  text-shadow:
+    0 -1.5px 0 rgb(23 21 18 / 0.26),
+    0 1.5px 0 rgb(255 255 255 / 0.9);
+}
+.cart-empty h3 {
+  font-size: 24px;
+  color: var(--ink);
+}
+.cart-empty > p:not(.label) {
+  max-width: 30ch;
+  margin-top: 10px;
+  line-height: 1.55;
+}
+.cart-empty .btn {
+  margin-top: 28px;
+}
+.cart-empty-from {
+  margin-top: 16px;
+  font-family: var(--display);
+  color: var(--ink-2);
+}
+.cart-empty-from b.num {
+  font-family: "JetBrains Mono", var(--sans); /* ₹ as on the business cards page */
+  font-weight: inherit;
 }
 .cart-empty[hidden],
 .cart-foot[hidden] {
@@ -4128,6 +4225,14 @@ form.co {
 .co-art.is-file p {
   flex: 1;
   min-width: 0;
+}
+.co-art-thumb {
+  flex: none;
+  width: 84px;
+  aspect-ratio: 3.5 / 2;
+  object-fit: contain;
+  background: #f7f4ec; /* the card's Pearl White */
+  border: 1px solid var(--line);
 }
 .co-art.is-file b {
   display: block;

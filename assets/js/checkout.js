@@ -65,10 +65,16 @@
     const file = files.get(key);
     if (file) {
       box.className = 'co-art is-file';
-      box.innerHTML = `<svg class="i" aria-hidden="true"><use href="#i-file"/></svg>
+      // A thumbnail of an image, card-shaped; a file icon for a PDF
+      box.innerHTML = `${file.type.startsWith('image/') ? '<img class="co-art-thumb" alt="">' : '<svg class="i" aria-hidden="true"><use href="#i-file"/></svg>'}
         <p><b></b><span></span></p>
         <button type="button" class="co-art-x" aria-label="Remove file"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>`;
       box.querySelector('b').textContent = file.name;
+      const thumb = box.querySelector('.co-art-thumb');
+      if (thumb) {
+        thumb.src = URL.createObjectURL(file);
+        thumb.onload = () => URL.revokeObjectURL(thumb.src);
+      }
       box.querySelector('p span').innerHTML = `${sizeOf(file.size).replace(/^[\d.]+/, num)} · attached`;
       box.querySelector('.co-art-x').addEventListener('click', () => { files.delete(key); removed.add(key); renderArt(box, l); });
       return;

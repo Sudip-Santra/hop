@@ -12,6 +12,10 @@
   try { lines = load(localStorage.getItem(STORE)); } catch {}
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(lines)); } catch {} };
 
+  // The design uploaded on the business cards page, kept in this tab by product.js:
+  // { name, type, data } with data as a data: URL. It goes on every own-artwork card.
+  const art = () => { try { return JSON.parse(sessionStorage.getItem('hop-art')); } catch { return null; } };
+
   const price = (l) => config.cards[l.qty] + (l.design ? config.design : 0);
   const describe = (l) => `${l.qty} cards · ${l.design ? 'Studio design' : 'Your artwork'}`;
   const totals = () => ({
@@ -34,17 +38,35 @@
     fab.classList.toggle('show', lines.length > 0 || drawer.classList.contains('open'));
 
     list.innerHTML = '';
+    const a = art();
     lines.forEach((l, i) => {
       const li = document.createElement('li');
       li.className = 'cart-item';
       li.innerHTML = `
-        <div class="ci-body"><h3>Letterpress business cards</h3><p class="label"></p><b class="ci-price"></b></div>
+        <div class="ci-body"><h3>Letterpress business cards</h3><p class="label"></p><p class="ci-file" hidden></p><b class="ci-price"></b></div>
         <div class="ci-act">
           <button type="button" class="ci-del" aria-label="Remove"><svg class="i" aria-hidden="true"><use href="#i-trash-2"/></svg></button>
         </div>`;
       // The card count in mono (.num), the words around it in the label font
       li.querySelector('.label').innerHTML = `<b class="num">${l.qty}</b> cards · ${l.design ? 'Studio design' : 'Your artwork'}`;
       li.querySelector('.ci-price').textContent = rupees(price(l));
+      // Own artwork with an upload: a thumbnail of it (a file icon for a PDF) and its name
+      if (!l.design && a) {
+        const thumb = document.createElement('span');
+        thumb.className = 'ci-art';
+        if (a.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.src = a.data;
+          img.alt = '';
+          thumb.appendChild(img);
+        } else {
+          thumb.innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-file"/></svg>';
+        }
+        li.prepend(thumb);
+        const file = li.querySelector('.ci-file');
+        file.textContent = a.name;
+        file.hidden = false;
+      }
       li.querySelector('.ci-del').addEventListener('click', () => remove(i));
       list.appendChild(li);
     });

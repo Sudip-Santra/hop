@@ -327,9 +327,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(
-    --paper
-  ); /* solid, so it looks the same however far you scroll */
+  background: #fff; /* solid, so it looks the same however far you scroll */
   border-bottom: 1px solid var(--line);
 }
 nav {
@@ -529,6 +527,10 @@ html.menu-lock {
 .hero {
   padding-top: 56px;
   padding-bottom: 72px;
+  /* White to the viewport edges, past the .wrap max-width */
+  background: #fff;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
 }
 .hero-text {
   grid-column: 1 / span 6;
@@ -1715,7 +1717,7 @@ html.cart-lock {
   width: min(440px, 100vw);
   display: flex;
   flex-direction: column;
-  background: var(--paper);
+  background: #fff;
   color: var(--ink);
   transform: translateX(100%);
   transition: transform 0.5s var(--ease);
@@ -1940,6 +1942,10 @@ html.cart-lock {
 .a-head {
   padding-top: 48px;
   padding-bottom: 96px;
+  /* White to the viewport edges, past the .wrap max-width */
+  background: #fff;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
 }
 .a-head-text {
   grid-column: 1 / span 8;
@@ -2237,6 +2243,15 @@ html.cart-lock {
   display: flex;
   flex-direction: column;
 }
+.page-contact .a-visit {
+  background: #fff;
+}
+/* Home: How to order, white to the viewport edges past the .wrap max-width */
+#how-to-order {
+  background: #fff;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
+}
 .a-visit h2 {
   margin-top: 18px;
 }
@@ -2259,6 +2274,7 @@ html.cart-lock {
   grid-column: 7 / span 6;
   min-height: 480px;
   background: var(--paper-2);
+  border: 1px solid rgba(23, 21, 18, 0.025); /* barely there, a sixth of --line */
 }
 .a-map iframe {
   display: block;
@@ -2340,6 +2356,10 @@ html.cart-lock {
   padding-top: 48px;
   padding-bottom: 96px;
   align-items: end;
+  /* White to the viewport edges, past the .wrap max-width */
+  background: #fff;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
 }
 .c-head-text {
   grid-column: 1 / span 6;
@@ -3338,7 +3358,15 @@ form.c-form {
 /* Business cards page sits on white; the header and mobile menu follow so there's no cream strip */
 .page-business-cards,
 .page-business-cards header,
-.page-business-cards .m-menu {
+.page-business-cards .m-menu,
+.page-gallery,
+.page-gallery .m-menu,
+.page-terms,
+.page-terms .m-menu,
+.page-privacy,
+.page-privacy .m-menu,
+.page-shipping-and-returns,
+.page-shipping-and-returns .m-menu {
   background: #fff;
 }
 .bc-info {
@@ -4782,7 +4810,7 @@ form.co {
 .lg-ask {
   margin-top: 64px;
   padding: 24px;
-  background: var(--paper-2);
+  background: var(--paper);
 }
 .lg-ask p {
   color: var(--ink);

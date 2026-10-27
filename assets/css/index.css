@@ -3373,10 +3373,15 @@ form.c-form {
     0 1px 1px rgb(35 31 32 / 0.1),
     0 14px 28px -12px rgb(35 31 32 / 0.38);
 }
+/* Debossed type, as the footer wordmark: hard walls, no blur. A dark wall along each
+   letter's top edge and a lit wall along its bottom, both the impression's depth. */
+.pcard {
+  --press-depth: 0.4cqw;
+}
 .pcard p {
   text-shadow:
-    0 0.22cqw 0 rgb(255 255 255 / 0.6),
-    0 -0.12cqw 0 rgb(0 0 0 / 0.28);
+    0 calc(var(--press-depth) * -1) 0 rgb(23 21 18 / 0.26),
+    0 var(--press-depth) 0 rgb(255 255 255 / 0.9);
 }
 .pcard-front {
   position: absolute;
@@ -3418,6 +3423,20 @@ form.c-form {
   gap: 4cqw;
   padding-top: 3cqw;
   border-top: 0.35cqw solid #a51e23; /* a rule in the same red as the wordmark */
+  position: relative;
+}
+/* The rule pressed in the same way */
+.pcard-foot::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.35cqw;
+  height: 0.35cqw;
+  box-shadow:
+    0 calc(var(--press-depth) * -1) 0 rgb(23 21 18 / 0.26),
+    0 var(--press-depth) 0 rgb(255 255 255 / 0.9);
+  pointer-events: none;
 }
 .pcard-hop .pcard-details {
   font-size: 2.8cqw;

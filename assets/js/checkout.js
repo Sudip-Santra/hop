@@ -10,8 +10,8 @@
   const itemsEl = document.getElementById('co-items');
   const errors = [document.getElementById('co-error'), document.getElementById('co-error-end')];
   const MAX_MB = 1;
-  const ACCEPT = '.png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp';
-  const TYPES = ['image/png', 'image/jpeg', 'image/webp'];
+  const ACCEPT = '.png,.jpg,.jpeg,.webp,.pdf,image/png,image/jpeg,image/webp,application/pdf';
+  const TYPES = ['image/png', 'image/jpeg', 'image/webp', 'application/pdf'];
   const keyOf = (l) => `${l.qty}-${l.design ? 'design' : 'own'}`;
   const files = new Map(); // line key -> File
   // A design uploaded on the business cards page (kept in this tab) goes on each own-artwork card
@@ -78,14 +78,14 @@
         <svg class="i" aria-hidden="true"><use href="#i-upload"/></svg>Upload design
         <input type="file" accept="${ACCEPT}">
       </label>
-      <p>PNG, JPG or WEBP · up to ${num(MAX_MB)} MB</p>
+      <p>PNG, JPG, WEBP or PDF · up to ${num(MAX_MB)} MB</p>
       <p class="co-art-err" role="alert" hidden></p>`;
     box.querySelector('input').addEventListener('change', (e) => {
       const f = e.target.files[0];
       if (!f) return;
       const err = box.querySelector('.co-art-err');
       const fail = (text) => { err.textContent = text; err.hidden = false; e.target.value = ''; };
-      if (!TYPES.includes(f.type)) return fail('Please choose a PNG, JPG or WEBP image.');
+      if (!TYPES.includes(f.type)) return fail('Please choose a PNG, JPG, WEBP or PDF file.');
       if (f.size > MAX_MB * 1024 * 1024) return fail(`That image is ${sizeOf(f.size)}. Choose one up to ${MAX_MB} MB, or send it on WhatsApp.`);
       files.set(key, f);
       renderArt(box, l);

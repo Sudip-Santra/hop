@@ -16,7 +16,8 @@
   // tab (sessionStorage) so the checkout page attaches it to the order.
   const ART = 'hop-art';
   const MAX_MB = 1;
-  const TYPES = ['image/png', 'image/jpeg', 'image/webp'];
+  const TYPES = ['image/png', 'image/jpeg', 'image/webp', 'application/pdf'];
+  const isPdf = (a) => a?.type === 'application/pdf';
   const card = document.getElementById('pcard');
   const sample = document.getElementById('pcard-sample');
   const artImg = document.getElementById('pcard-art');
@@ -30,15 +31,18 @@
   let art = null; // { name, type, data } with data as a data: URL
   try { art = JSON.parse(sessionStorage.getItem(ART)); } catch {}
 
-  // The card shows the upload only while "I'll send my artwork" is chosen
+  // The card shows the upload only while "I'll send my artwork" is chosen.
+  // A PDF can't be drawn on the card, so the sample stays and the file is just attached.
   function showPreview() {
     const own = !choice().design;
-    const mine = own && art;
+    const mine = own && art && !isPdf(art);
     upload.hidden = !own;
     sample.hidden = !!mine;
     artImg.hidden = !mine;
     if (mine) artImg.src = art.data;
-    capLead.textContent = mine ? 'Your design on Pearl White cotton; the proof shows exactly how it presses.' : 'Our own card, as a sample; yours goes on the proof.';
+    capLead.textContent = mine ? 'Your design on Pearl White cotton; the proof shows exactly how it presses.'
+      : own && art ? 'Your PDF is attached; the proof shows exactly how it presses.'
+      : 'Our own card, as a sample; yours goes on the proof.';
     card.setAttribute('aria-label', mine ? `Your design, ${art.name}, on a card` : 'A House of Press card in black ink with a red rule, on Pearl White cotton');
     upBtn.hidden = !!art;
     fileRow.hidden = !art;
@@ -50,7 +54,7 @@
     fileIn.value = ''; // choosing the same file again still fires change
     if (!f) return;
     const fail = (text) => { upErr.textContent = text; upErr.hidden = false; };
-    if (!TYPES.includes(f.type)) return fail('Please choose a PNG, JPG or WEBP image.');
+    if (!TYPES.includes(f.type)) return fail('Please choose a PNG, JPG, WEBP or PDF file.');
     if (f.size > MAX_MB * 1024 * 1024) return fail(`That image is ${sizeOf(f.size)}. Choose one up to ${MAX_MB} MB, or send it on WhatsApp.`);
     upErr.hidden = true;
     const reader = new FileReader();

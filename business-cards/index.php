@@ -58,8 +58,7 @@ $rupees = fn(int $n) => '₹' . number_format($n);
           </div>
         </div>
         <img class="pcard-art" id="pcard-art" alt="" hidden>
-      </div>
-      <p class="bc-preview-cap" id="pcard-cap"><span id="pcard-cap-lead">Our own card, as a sample; yours goes on the proof.</span> <b class="num">3.5 × 2</b> in (<b class="num">89 × 51</b> mm), <b class="num">600</b> gsm cotton, Pearl White.</p>
+      </div>      <p class="bc-preview-cap" id="pcard-cap"><span id="pcard-cap-lead">Our own card, as a sample; yours goes on the proof.</span></p>
     </div>
 
     <!-- Choose and buy -->
@@ -90,7 +89,7 @@ $rupees = fn(int $n) => '₹' . number_format($n);
               <svg class="i" aria-hidden="true">
                 <use href="#i-upload" />
               </svg>Upload your design
-              <input type="file" id="bc-file" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp">
+              <input type="file" id="bc-file" accept=".png,.jpg,.jpeg,.webp,.pdf,image/png,image/jpeg,image/webp,application/pdf">
             </label>
             <p class="bc-file" id="bc-file-row" hidden>
               <svg class="i" aria-hidden="true">
@@ -101,7 +100,7 @@ $rupees = fn(int $n) => '₹' . number_format($n);
                   <use href="#i-x" />
                 </svg></button>
             </p>
-            <p class="bc-up-hint">PNG, JPG or WEBP · up to <b class="num">1</b> MB. You’ll see it on the card, and it goes with your order.</p>
+            <p class="bc-up-hint">PNG, JPG, WEBP or PDF · up to <b class="num">1</b> MB. You’ll see an image on the card, and your file goes with your order.</p>
             <p class="bc-up-err" id="bc-up-err" role="alert" hidden></p>
           </div>
         </fieldset>

@@ -4240,7 +4240,8 @@ form.co {
   background: #f7f4ec; /* the card's Pearl White */
   border: 1px solid var(--line);
 }
-.co-art.is-file b {
+/* The file name only, not the size's .num inside the span */
+.co-art.is-file p > b {
   display: block;
   font-weight: 500;
   font-size: 13px;

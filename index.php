@@ -196,7 +196,7 @@ include __DIR__ . '/partials/head.php';
     <div class="wrap">
       <div class="sec-head grid rv">
         <p class="label">Who we press for</p>
-        <h2>Pressed for people who <em>notice</em>.</h2>
+        <h2>For people who <em>notice</em>.</h2>
         <p class="side">Same paper, same inks, same press, so your next box matches the last one.</p>
       </div>
       <div class="grid client-list">

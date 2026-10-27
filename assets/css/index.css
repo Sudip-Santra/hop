@@ -930,6 +930,9 @@ section {
 .clients .sec-head .side {
   color: rgba(244, 239, 230, 0.62);
 }
+.clients .sec-head h2 em {
+  color: var(--butter);
+}
 .client-list {
   border-top: 1px solid rgba(244, 239, 230, 0.2);
 }
@@ -1353,6 +1356,9 @@ form h3 {
 @media (min-width: 1081px) {
   .m-menu {
     display: none;
+  }
+  .clients .sec-head {
+    margin-bottom: 88px;
   }
 }
 @media (max-width: 1080px) {

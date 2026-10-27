@@ -24,7 +24,7 @@ $v = '../assets/videos/';
     <div class="a-facts rv">
       <div><b>600 gsm</b><span>Cotton paper</span></div>
       <div><b>1 sheet</b><span>Pressed at a time</span></div>
-      <div><b>40K+</b><span>Following on Instagram</span></div>
+      <div><b>42K+</b><span>Following on Instagram</span></div>
       <div><b>Free</b><span>Delivery across India</span></div>
     </div>
   </div>

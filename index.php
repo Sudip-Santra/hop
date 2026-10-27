@@ -180,7 +180,7 @@ include __DIR__ . '/partials/head.php';
           <p class="muted">It takes longer than printing flat. That is the point. Every order starts with <strong>a proof on WhatsApp</strong>, and nothing touches the press until you approve it.</p>
         </div>
         <div class="stats rv">
-          <div><b>40K+</b><span class="label">Instagram followers</span></div>
+          <div><b>42K+</b><span class="label">Instagram followers</span></div>
           <div><b>5K+</b><span class="label">Cards pressed</span></div>
           <div><b>1 sheet</b><span class="label">Pressed at a time</span></div>
         </div>
@@ -391,13 +391,14 @@ include __DIR__ . '/partials/head.php';
     </div>
     <div class="reels-track rv" id="reels-track" tabindex="0" aria-label="Instagram reels, scroll sideways">
       <?php for ($i = 0; $i < 3; $i++): foreach ($reels as [$file, $poster, $caption]): ?>
-        <a class="reel" href="<?= $instagramUrl ?>" target="_blank" rel="noopener" aria-label="<?= e($caption) ?>, on Instagram">
-          <video src="assets/videos/<?= $file ?>.mp4" poster="assets/videos/<?= $poster ?>.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-          <svg class="i reel-ig" aria-hidden="true">
-            <use href="#i-instagram" />
-          </svg>
-        </a>
-      <?php endforeach; endfor; ?>
+          <a class="reel" href="<?= $instagramUrl ?>" target="_blank" rel="noopener" aria-label="<?= e($caption) ?>, on Instagram">
+            <video src="assets/videos/<?= $file ?>.mp4" poster="assets/videos/<?= $poster ?>.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+            <svg class="i reel-ig" aria-hidden="true">
+              <use href="#i-instagram" />
+            </svg>
+          </a>
+      <?php endforeach;
+      endfor; ?>
       <a class="reel reel-follow" href="<?= $instagramUrl ?>" target="_blank" rel="noopener">
         <svg class="i" aria-hidden="true">
           <use href="#i-instagram" />

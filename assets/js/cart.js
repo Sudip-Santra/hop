@@ -3,18 +3,19 @@
 (() => {
   const config = JSON.parse(document.getElementById('hop-prices').textContent);
   const STORE = 'hop-cart';
-  const MAX_SETS = 50;
   const rupees = (n) => '₹' + n.toLocaleString('en-IN');
 
-  // A line is one choice of card: { qty: 100, design: false, sets: 1 }
+  // A line is one choice of card: { qty: 100, design: false }. The quantity is the number of cards.
+  // Older saved carts also carry a sets count; it is dropped here.
+  const load = (raw) => (JSON.parse(raw) || []).filter((l) => config.cards[l.qty]).map(({ qty, design }) => ({ qty, design }));
   let lines = [];
-  try { lines = (JSON.parse(localStorage.getItem(STORE)) || []).filter((l) => config.cards[l.qty]); } catch {}
+  try { lines = load(localStorage.getItem(STORE)); } catch {}
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(lines)); } catch {} };
 
-  const price = (l) => (config.cards[l.qty] + (l.design ? config.design : 0)) * l.sets;
+  const price = (l) => config.cards[l.qty] + (l.design ? config.design : 0);
   const describe = (l) => `${l.qty} cards · ${l.design ? 'Studio design' : 'Your artwork'}`;
   const totals = () => ({
-    sets: lines.reduce((n, l) => n + l.sets, 0),
+    count: lines.length,
     total: lines.reduce((n, l) => n + price(l), 0),
   });
 
@@ -25,8 +26,8 @@
   const listeners = [];
 
   function render() {
-    const { sets, total } = totals();
-    document.getElementById('cart-count').textContent = sets;
+    const { count, total } = totals();
+    document.getElementById('cart-count').textContent = count;
     document.getElementById('cart-total').textContent = rupees(total);
     document.getElementById('cart-empty').hidden = lines.length > 0;
     document.getElementById('cart-foot').hidden = lines.length === 0;
@@ -39,35 +40,25 @@
       li.innerHTML = `
         <div class="ci-body"><h3>Letterpress business cards</h3><p class="label"></p><b class="ci-price"></b></div>
         <div class="ci-act">
-          <div class="qty">
-            <button type="button" class="q-dec" aria-label="One set less"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
-            <output></output>
-            <button type="button" class="q-inc" aria-label="One set more"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
-          </div>
           <button type="button" class="ci-del" aria-label="Remove"><svg class="i" aria-hidden="true"><use href="#i-trash-2"/></svg></button>
         </div>`;
-      li.querySelector('.label').textContent = describe(l) + (l.sets > 1 ? ` · ${l.sets} sets` : '');
+      // The card count in mono (.num), the words around it in the label font
+      li.querySelector('.label').innerHTML = `<b class="num">${l.qty}</b> cards · ${l.design ? 'Studio design' : 'Your artwork'}`;
       li.querySelector('.ci-price').textContent = rupees(price(l));
-      li.querySelector('output').textContent = l.sets;
-      li.querySelector('.q-inc').addEventListener('click', () => setSets(i, l.sets + 1));
-      li.querySelector('.q-dec').addEventListener('click', () => setSets(i, l.sets - 1));
-      li.querySelector('.ci-del').addEventListener('click', () => setSets(i, 0));
+      li.querySelector('.ci-del').addEventListener('click', () => remove(i));
       list.appendChild(li);
     });
     listeners.forEach((fn) => fn());
   }
 
-  function setSets(i, n) {
-    if (n <= 0) lines.splice(i, 1);
-    else lines[i].sets = Math.min(MAX_SETS, n);
+  function remove(i) {
+    lines.splice(i, 1);
     save(); render();
   }
 
-  // Same quantity and design choice adds to the existing line
-  function add({ qty, design, sets = 1 }) {
-    const same = lines.find((l) => l.qty === qty && l.design === design);
-    if (same) same.sets = Math.min(MAX_SETS, same.sets + sets);
-    else lines.push({ qty, design, sets: Math.min(MAX_SETS, sets) });
+  // The same quantity and design choice is already in the cart, so it isn't added twice
+  function add({ qty, design }) {
+    if (!lines.some((l) => l.qty === qty && l.design === design)) lines.push({ qty, design });
     save(); render();
     fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump');
   }
@@ -99,12 +90,12 @@
   // Another tab changed the cart
   addEventListener('storage', (e) => {
     if (e.key !== STORE) return;
-    try { lines = JSON.parse(e.newValue) || []; } catch { lines = []; }
+    try { lines = load(e.newValue); } catch { lines = []; }
     render();
   });
 
   window.hopCart = {
-    config, rupees, price, describe, totals, add, open, setSets,
+    config, rupees, price, describe, totals, add, open, remove,
     lines: () => lines.map((l) => ({ ...l })),
     clear: () => { lines = []; save(); render(); },
     onChange: (fn) => { listeners.push(fn); fn(); },

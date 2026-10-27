@@ -42,21 +42,13 @@
         <b class="co-item-price"></b>
       </div>
       <div class="co-item-row co-item-act">
-        <div class="qty" role="group" aria-label="Sets">
-          <button type="button" class="q-dec" aria-label="One set less"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
-          <output></output>
-          <button type="button" class="q-inc" aria-label="One set more"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
-        </div>
         <button type="button" class="co-remove">Remove</button>
       </div>
       <div class="co-art"></div>`;
     li.querySelector('.co-item-name b').innerHTML = `${cards(l.qty)}, letterpress`;
-    li.querySelector('.co-item-name span').innerHTML = `${l.design ? 'Studio design' : 'Your artwork'} · ${num(l.sets)} ${l.sets === 1 ? 'set' : 'sets'}`;
+    li.querySelector('.co-item-name span').textContent = l.design ? 'Studio design' : 'Your artwork';
     li.querySelector('.co-item-price').textContent = cart.rupees(cart.price(l));
-    li.querySelector('output').textContent = l.sets;
-    li.querySelector('.q-inc').addEventListener('click', () => cart.setSets(i, l.sets + 1));
-    li.querySelector('.q-dec').addEventListener('click', () => cart.setSets(i, l.sets - 1));
-    li.querySelector('.co-remove').addEventListener('click', () => cart.setSets(i, 0));
+    li.querySelector('.co-remove').addEventListener('click', () => cart.remove(i));
     renderArt(li.querySelector('.co-art'), l);
     return li;
   }
@@ -275,7 +267,7 @@
     const msg = [
       `Hi House of Press, I'd like to place an order (${ref}).`,
       '',
-      ...lines.map((l) => `• ${l.qty} letterpress business cards, ${art(l)}${l.sets > 1 ? ` × ${l.sets} sets` : ''}: ${cart.rupees(cart.price(l))}`),
+      ...lines.map((l) => `• ${l.qty} letterpress business cards, ${art(l)}: ${cart.rupees(cart.price(l))}`),
       isRush() ? `Rush, dispatched in ${form.dataset.rushDispatch} after the proof: ${cart.rupees(rushFee)}` : `Standard, dispatched in ${form.dataset.dispatch} after the proof`,
       picked ? `Dispatch by: ${longDate(picked)}` : null,
       `Total: ${cart.rupees(total)} (GST and delivery included)`,

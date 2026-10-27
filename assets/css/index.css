@@ -1581,53 +1581,6 @@ form h3 {
   }
 }
 
-.qty {
-  display: inline-flex;
-  height: 36px;
-  border: 1px solid var(--ink);
-}
-.qty button {
-  width: 32px;
-  display: grid;
-  place-items: center;
-  background: transparent;
-  border: 0;
-  color: var(--ink);
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-.qty button:hover {
-  background: var(--ink);
-  color: var(--paper);
-}
-.qty .i {
-  width: 13px;
-  height: 13px;
-}
-.qty input {
-  width: 40px;
-  border: 0;
-  border-left: 1px solid var(--line);
-  border-right: 1px solid var(--line);
-  background: transparent;
-  text-align: center;
-  font: 500 14px var(--mono);
-  color: var(--ink);
-  -moz-appearance: textfield;
-  appearance: textfield;
-  outline: none;
-}
-.qty input::-webkit-outer-spin-button,
-.qty input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.qty input:focus {
-  background: var(--paper);
-}
-
 /* ==========================================================================
    21. Component: Cart (floating button + right drawer), every page
    ========================================================================== */
@@ -1790,30 +1743,19 @@ html.cart-lock {
   font-size: 18px;
 }
 .ci-body .label {
+  font-family: var(--display);
   font-size: 10px;
   color: var(--ink-2);
   margin-top: 4px;
+}
+.ci-body .label b.num {
+  font-weight: inherit;
 }
 .ci-act {
   display: flex;
   align-items: center;
   gap: 6px;
   flex: none;
-}
-.cart-item .qty {
-  height: 32px;
-}
-.cart-item .qty button {
-  width: 28px;
-}
-.cart-item .qty output {
-  width: 34px;
-  display: grid;
-  place-items: center;
-  font: 500 13px var(--mono);
-  color: var(--red);
-  border-left: 1px solid var(--line);
-  border-right: 1px solid var(--line);
 }
 .ci-del {
   width: 32px;
@@ -1850,6 +1792,7 @@ html.cart-lock {
 .ci-price {
   display: block;
   margin-top: 6px;
+  font-family: "JetBrains Mono", var(--sans); /* ₹ as on the business cards page */
   font-weight: 500;
   font-size: 14.5px;
 }
@@ -1865,7 +1808,6 @@ html.cart-lock {
 .cart-foot {
   padding: 20px 24px 24px;
   border-top: 1px solid var(--ink);
-  background: var(--paper-2);
 }
 .cart-total {
   display: flex;
@@ -1873,9 +1815,11 @@ html.cart-lock {
   align-items: baseline;
 }
 .cart-total .label {
+  font-family: var(--display);
   color: var(--ink-2);
 }
 .cart-total b {
+  font-family: "JetBrains Mono", var(--sans); /* ₹ as on the business cards page */
   font-weight: 500;
   font-size: 15px;
 }
@@ -3360,7 +3304,9 @@ form.c-form {
 .page-privacy,
 .page-privacy .m-menu,
 .page-shipping-and-returns,
-.page-shipping-and-returns .m-menu {
+.page-shipping-and-returns .m-menu,
+.page-checkout,
+.page-checkout .m-menu {
   background: #fff;
 }
 .bc-info {
@@ -3676,21 +3622,11 @@ form.co {
   outline-offset: 2px;
 }
 
-/* Sets stepper, then Buy it now and Add to cart side by side */
+/* Buy it now and Add to cart side by side */
 .bc-buy {
   display: flex;
   gap: 8px;
   margin-top: 4px;
-}
-.bc-sets {
-  height: 48px;
-}
-.bc-sets button {
-  width: 44px;
-}
-.bc-sets input {
-  width: 52px;
-  font-size: 15px;
 }
 .bc-buy .bc-add,
 .bc-buy .bc-now {
@@ -3698,17 +3634,6 @@ form.co {
   height: 48px;
   justify-content: center;
   gap: 10px;
-}
-/* Phones: the stepper gets its own row, the two buttons share the next */
-@media (max-width: 560px) {
-  .bc-buy {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .bc-sets {
-    grid-column: 1 / -1;
-    justify-self: start;
-  }
 }
 .bc-now:hover {
   background: var(--ink);
@@ -4121,25 +4046,6 @@ form.co {
   align-items: center;
   margin-top: 12px;
 }
-.co-item .qty {
-  height: 28px;
-  border-color: rgba(23, 21, 18, 0.25);
-}
-.co-item .qty button {
-  width: 26px;
-}
-.co-item .qty .i {
-  width: 11px;
-  height: 11px;
-}
-.co-item .qty output {
-  width: 30px;
-  display: grid;
-  place-items: center;
-  font: 500 12px var(--mono);
-  border-left: 1px solid var(--line);
-  border-right: 1px solid var(--line);
-}
 .co-remove {
   background: none;
   border: 0;
@@ -4242,13 +4148,12 @@ form.co {
   height: 14px;
 }
 
-/* Checkout numbers in mono: prices, totals, sets, the +91, phone and PIN. The ₹ isn't in
+/* Checkout numbers in mono: prices, totals, the +91, phone and PIN. The ₹ isn't in
    JetBrains Mono, so it falls through to the body font's fallbacks as elsewhere. */
 .co-item-price,
 #co-sub,
 #co-rush,
 .co-total-inline,
-.co-item .qty output,
 .co-tel b,
 .co [name="phone"],
 .co [name="pin"],

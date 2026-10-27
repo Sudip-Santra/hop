@@ -107,15 +107,6 @@ $rupees = fn(int $n) => '₹' . number_format($n);
         </fieldset>
 
         <div class="bc-buy">
-          <div class="qty bc-sets" aria-label="Number of sets">
-            <button type="button" class="q-dec" aria-label="One set less"><svg class="i" aria-hidden="true">
-                <use href="#i-minus" />
-              </svg></button>
-            <input name="sets" type="number" min="1" max="50" value="1" inputmode="numeric" aria-label="Sets">
-            <button type="button" class="q-inc" aria-label="One set more"><svg class="i" aria-hidden="true">
-                <use href="#i-plus" />
-              </svg></button>
-          </div>
           <button type="button" class="btn red bc-now" id="bc-now">Buy it now <svg class="i arr" aria-hidden="true">
               <use href="#i-arrow-right" />
             </svg></button>

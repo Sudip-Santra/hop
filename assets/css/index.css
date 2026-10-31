@@ -38,6 +38,28 @@
     U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
     U+2215, U+FEFF, U+FFFD;
 }
+/* Instrument Sans (latin subset, variable 400–700): body text */
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/instrument-sans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+/* Instrument Serif (latin subset, 400 only): h1, h2, h3 */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../fonts/instrument-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
 /* Clarendon: only the name on the drawn sample card (business cards page) */
 @font-face {
   font-family: "Clarendon";
@@ -80,7 +102,8 @@
   --gutter: 24px;
   --display: "Inter Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --tight: -0.035em; /* large Sen titles */
-  --sans: "Sen", "Sen Fallback", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: "JetBrains Mono", "Mono Fallback", ui-monospace, monospace;
   --ease: cubic-bezier(0.2, 0.7, 0, 1);
 }
@@ -177,18 +200,20 @@ p.label:has(+ h1, + h2, + h3) {
 .muted {
   color: var(--ink-2);
 }
-/* Inter Display for every heading; small ones get less negative tracking */
+/* Instrument Serif for every heading; small ones get less negative tracking */
 h1,
 h2,
 h3 {
-  font-family: var(--display);
+  font-family: var(--serif);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
+  /* Instrument Serif ships only in 400: a hairline stroke reads one step bolder */
+  -webkit-text-stroke: 0.012em currentColor;
 }
 h1,
 h2 {
   line-height: 0.92;
-  letter-spacing: -0.045em;
+  letter-spacing: 0;
 }
 h1 {
   font-size: clamp(41px, 6vw, 95px);
@@ -3906,7 +3931,7 @@ form.co {
 .co-sec-head h2 {
   font-size: 22px;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 .co-sec-head h2 i,
 .co-field span i {
@@ -4122,7 +4147,7 @@ form.co {
 .co-sum-head h2 {
   font-size: 22px;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 .co-link {
   font-size: 13px;
@@ -4803,7 +4828,7 @@ form.co {
   margin-top: 48px;
 }
 .lg-text h2 {
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   font-size: clamp(20px, 1.9vw, 26px);
   line-height: 1.15;
   padding-bottom: 14px;

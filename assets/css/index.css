@@ -1858,8 +1858,7 @@ html.cart-lock {
 .cart-empty-card {
   position: absolute;
   inset: 0;
-  background: #f7f4ec url("../brand/cotton.webp") 0 0 / 512px;
-  background-blend-mode: multiply;
+  background: #f8f7f5 url("../brand/cotton-paper.webp") 0 0 / 38.48% auto; /* as the sample card */
   box-shadow:
     0 1px 1px rgb(35 31 32 / 0.1),
     0 14px 24px -12px rgb(35 31 32 / 0.35);
@@ -3471,15 +3470,15 @@ form.c-form {
 /* The drawn card: Pearl White cotton, type in Press Black, shaded so it reads as
    pressed into the sheet. Sizes are in container units so it scales as one piece. */
 .pcard {
-  --card-paper: #f7f4ec;
+  --card-paper: #f8f7f5; /* cotton, a touch brighter than the mockup so it reads white on a white page */
   --card-ink: #231f20;
   position: relative;
   width: 100%;
   aspect-ratio: 3.5 / 2;
   container-type: inline-size;
   overflow: hidden;
-  background: var(--card-paper) url("../brand/cotton.webp") 0 0 / 512px;
-  background-blend-mode: multiply;
+  /* The mockup's own paper, tiled at its scale: one 1000px tile is 38.48% of its 2599px card */
+  background: var(--card-paper) url("../brand/cotton-paper.webp") 0 0 / 38.48% auto;
   border-radius: 2px;
   color: var(--card-ink);
   font-family: "Sen", var(--sans);
@@ -3488,15 +3487,26 @@ form.c-form {
     0 1px 1px rgb(35 31 32 / 0.1),
     0 14px 28px -12px rgb(35 31 32 / 0.38);
 }
-/* Debossed type, as the footer wordmark: hard walls, no blur. A dark wall along each
-   letter's top edge and a lit wall along its bottom, both the impression's depth. */
+/* Pressed ink, measured off the letterpress card mockup (sizes in card widths):
+   - the ink is charcoal and takes the paper's grain (press-grain.webp, overlaid on the ink colour,
+     tiled at the paper's scale so the specks line up in size)
+   - a thin dark wall hugs each letter, darkest along its top (~0.13cqw)
+   - a soft lit lip sits outside it, widest below and to the left (~0.25-0.45cqw) */
 .pcard {
-  --press-depth: 0.4cqw;
+  --press-ink: #262827;
+  --press-grain: url("../brand/press-grain.webp") 0 0 / 38.48cqw auto;
+  --press-edge:
+    drop-shadow(0 -0.07cqw 0.05cqw rgb(23 21 18 / 0.32))
+    drop-shadow(0 0 0.07cqw rgb(23 21 18 / 0.26))
+    drop-shadow(-0.1cqw 0.22cqw 0.14cqw rgb(255 255 255 / 0.95));
 }
 .pcard p {
-  text-shadow:
-    0 calc(var(--press-depth) * -1) 0 rgb(23 21 18 / 0.26),
-    0 var(--press-depth) 0 rgb(255 255 255 / 0.9);
+  color: transparent;
+  background: var(--press-grain), var(--press-ink);
+  background-blend-mode: overlay;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: var(--press-edge);
 }
 .pcard-front {
   position: absolute;
@@ -3536,21 +3546,20 @@ form.c-form {
   justify-content: space-between;
   align-items: end;
   gap: 4cqw;
-  padding-top: 3cqw;
-  border-top: 0.35cqw solid #a51e23; /* a rule in the same red as the wordmark */
+  padding-top: 3.35cqw;
   position: relative;
 }
-/* The rule pressed in the same way */
+/* The rule in the wordmark's red, pressed and grained like the type */
 .pcard-foot::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: -0.35cqw;
+  top: 0;
   height: 0.35cqw;
-  box-shadow:
-    0 calc(var(--press-depth) * -1) 0 rgb(23 21 18 / 0.26),
-    0 var(--press-depth) 0 rgb(255 255 255 / 0.9);
+  background: var(--press-grain), #a51e23;
+  background-blend-mode: overlay;
+  filter: var(--press-edge);
   pointer-events: none;
 }
 .pcard-hop .pcard-details {

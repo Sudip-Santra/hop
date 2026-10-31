@@ -1,13 +1,16 @@
 // Cart on every page: floating button, right-hand drawer, saved in this browser.
-// Other scripts use window.hopCart: add(), lines(), totals(), clear(), open(), describe(), price().
+// Other scripts use window.hopCart: add(), lines(), totals(), clear(), open(), describe(), price(),
+// colours(), and note()/setNote() for the order's note to the studio.
 (() => {
   const config = JSON.parse(document.getElementById('hop-prices').textContent);
   const STORE = 'hop-cart';
   const rupees = (n) => '₹' + n.toLocaleString('en-IN');
 
-  // A line is one choice of card: { qty: 100, design: false }. The quantity is the number of cards.
-  // Older saved carts also carry a sets count; it is dropped here.
-  const load = (raw) => (JSON.parse(raw) || []).filter((l) => config.cards[l.qty]).map(({ qty, design }) => ({ qty, design }));
+  // A line is one choice of card: { qty: 100, colors: 1, design: false }. The quantity is the number
+  // of cards; colors is 1 or 2 inks (same price). Older saved carts may carry a sets count (dropped
+  // here) or no colors (read as 1).
+  const load = (raw) => (JSON.parse(raw) || []).filter((l) => config.cards[l.qty])
+    .map(({ qty, colors, design }) => ({ qty, colors: colors === 2 ? 2 : 1, design }));
   let lines = [];
   try { lines = load(localStorage.getItem(STORE)); } catch {}
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(lines)); } catch {} };
@@ -16,8 +19,14 @@
   // { name, type, data } with data as a data: URL. It goes on every own-artwork card.
   const art = () => { try { return JSON.parse(sessionStorage.getItem('hop-art')); } catch { return null; } };
 
+  // One note for the whole order, written on the business cards page and sent with the order
+  const NOTE = 'hop-note';
+  const note = () => { try { return localStorage.getItem(NOTE) || ''; } catch { return ''; } };
+  const setNote = (v) => { try { v.trim() ? localStorage.setItem(NOTE, v) : localStorage.removeItem(NOTE); } catch {} };
+
   const price = (l) => config.cards[l.qty] + (l.design ? config.design : 0);
-  const describe = (l) => `${l.qty} cards · ${l.design ? 'Studio design' : 'Your artwork'}`;
+  const colours = (l) => (l.colors === 2 ? '2 colours' : '1 colour');
+  const describe = (l) => `${l.qty} cards - ${colours(l)} - ${l.design ? 'Studio design' : 'Your artwork'}`;
   const totals = () => ({
     count: lines.length,
     total: lines.reduce((n, l) => n + price(l), 0),
@@ -43,12 +52,12 @@
       const li = document.createElement('li');
       li.className = 'cart-item';
       li.innerHTML = `
-        <div class="ci-body"><h3>Letterpress business cards</h3><p class="label"></p><p class="ci-file" hidden></p><b class="ci-price"></b></div>
+        <div class="ci-body"><h3>Letterpress business cards</h3><p class="ci-meta"></p><p class="ci-file" hidden></p><b class="ci-price"></b></div>
         <div class="ci-act">
           <button type="button" class="ci-del" aria-label="Remove"><svg class="i" aria-hidden="true"><use href="#i-trash-2"/></svg></button>
         </div>`;
-      // The card count in mono (.num), the words around it in the label font
-      li.querySelector('.label').innerHTML = `<b class="num">${l.qty}</b> cards · ${l.design ? 'Studio design' : 'Your artwork'}`;
+      // The numbers in mono (.num), the words around them in the body font
+      li.querySelector('.ci-meta').innerHTML = `<b class="num">${l.qty}</b> cards · <b class="num">${l.colors}</b> ${l.colors === 2 ? 'colours' : 'colour'} · ${l.design ? 'Studio design' : 'Your artwork'}`;
       li.querySelector('.ci-price').textContent = rupees(price(l));
       // Own artwork with an upload: a thumbnail of it (a file icon for a PDF) and its name
       if (!l.design && a) {
@@ -78,9 +87,9 @@
     save(); render();
   }
 
-  // The same quantity and design choice is already in the cart, so it isn't added twice
-  function add({ qty, design }) {
-    if (!lines.some((l) => l.qty === qty && l.design === design)) lines.push({ qty, design });
+  // The same quantity, colours and design choice is already in the cart, so it isn't added twice
+  function add({ qty, colors = 1, design }) {
+    if (!lines.some((l) => l.qty === qty && l.colors === colors && l.design === design)) lines.push({ qty, colors, design });
     save(); render();
     fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump');
   }
@@ -117,7 +126,7 @@
   });
 
   window.hopCart = {
-    config, rupees, price, describe, totals, add, open, remove,
+    config, rupees, price, colours, describe, totals, add, open, remove, note, setNote,
     lines: () => lines.map((l) => ({ ...l })),
     clear: () => { lines = []; save(); render(); },
     onChange: (fn) => { listeners.push(fn); fn(); },

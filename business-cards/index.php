@@ -34,6 +34,8 @@ $jsonLd = [[
 ]];
 include __DIR__ . '/../partials/head.php';
 $rupees = fn(int $n) => '₹' . number_format($n);
+// Per-card price of the smallest pack: each bigger pack's "Save %" is measured against it
+$basePer = CARD_PRICES[array_key_first(CARD_PRICES)] / array_key_first(CARD_PRICES);
 ?>
 
 <main>
@@ -69,19 +71,43 @@ $rupees = fn(int $n) => '₹' . number_format($n);
 
       <form id="bc-form" class="bc-form rv" novalidate>
         <fieldset class="bc-opt">
-          <legend class="label">Quantity</legend>
-          <div class="bc-choices bc-4">
-            <?php foreach (CARD_PRICES as $qty => $p): ?>
-              <label><input type="radio" name="qty" value="<?= $qty ?>" <?= $qty === array_key_first(CARD_PRICES) ? ' checked' : '' ?>><span><em><b class="num"><?= number_format($qty) ?></b> cards</em></span></label>
+          <legend class="bc-step">Choose quantity</legend>
+          <div class="bc-choices bc-2 bc-tiles">
+            <?php foreach (CARD_PRICES as $qty => $p):
+              $per  = $p / $qty;
+              $save = (int) round((1 - $per / $basePer) * 100); ?>
+              <label><input type="radio" name="qty" value="<?= $qty ?>" <?= $qty === array_key_first(CARD_PRICES) ? ' checked' : '' ?>>
+                <span class="bc-tile">
+                  <?php if ($save > 0): ?><i class="bc-tag">Save <b class="num"><?= $save ?>%</b></i><?php endif; ?>
+                  <?php if ($qty === POPULAR_QTY): ?><i class="bc-tag is-pop">Popular</i><?php endif; ?>
+                  <b class="bc-tile-big"><?= number_format($qty) ?></b>
+                  <small>cards</small>
+                  <b class="bc-tile-price num"><?= $rupees($p) ?></b>
+                  <small><b class="num">₹<?= number_format($per, 2) ?></b> per card</small>
+                </span>
+              </label>
             <?php endforeach; ?>
           </div>
         </fieldset>
 
         <fieldset class="bc-opt">
-          <legend class="label">Design service</legend>
-          <div class="bc-choices bc-2">
-            <label><input type="radio" name="design" value="no" checked><span>No, I’ll send my artwork</span></label>
-            <label><input type="radio" name="design" value="yes"><span><em>Yes (+<b class="num"><?= $rupees(DESIGN_FEE) ?></b>)</em></span></label>
+          <legend class="bc-step">Choose colours</legend>
+          <div class="bc-choices bc-2 bc-tiles">
+            <label><input type="radio" name="colors" value="1" checked><span class="bc-tile"><b class="bc-tile-big">1</b><small>colour</small></span></label>
+            <label><input type="radio" name="colors" value="2"><span class="bc-tile"><b class="bc-tile-big">2</b><small>colours</small></span></label>
+          </div>
+          <p class="bc-hint">One or two inks, same price.</p>
+        </fieldset>
+
+        <fieldset class="bc-opt">
+          <legend class="bc-step">Artwork</legend>
+          <div class="bc-choices bc-tiles bc-rows">
+            <label><input type="radio" name="design" value="yes">
+              <span class="bc-tile"><strong>Design service <i class="bc-fee">+<b class="num"><?= $rupees(DESIGN_FEE) ?></b></i></strong><small>Our studio designs your card from scratch: typography, layout and artwork.</small></span>
+            </label>
+            <label><input type="radio" name="design" value="no" checked>
+              <span class="bc-tile"><strong>I’ll upload my design</strong><small>Send your own artwork, ready for the press.</small></span>
+            </label>
           </div>
           <!-- Own artwork: upload it to see it on the card. Only shown for "I'll send my artwork". -->
           <div class="bc-upload" id="bc-upload">
@@ -103,6 +129,12 @@ $rupees = fn(int $n) => '₹' . number_format($n);
             <p class="bc-up-hint">PNG, JPG, WEBP or PDF · up to <b class="num">1</b> MB. You’ll see an image on the card, and your file goes with your order.</p>
             <p class="bc-up-err" id="bc-up-err" role="alert" hidden></p>
           </div>
+        </fieldset>
+
+        <fieldset class="bc-opt">
+          <legend class="bc-step">Notes for the studio</legend>
+          <textarea class="bc-notes" id="bc-notes" name="notes" rows="3" aria-label="Notes for the studio" placeholder="Paper preference, ink colours, special instructions…"></textarea>
+          <p class="bc-hint">Goes to the studio with your order.</p>
         </fieldset>
 
         <div class="bc-buy">
@@ -148,6 +180,22 @@ $rupees = fn(int $n) => '₹' . number_format($n);
           <dd>Free across India, with tracking</dd>
         </div>
       </dl>
+    </div>
+  </div>
+
+  <!-- Bottom strip: the current choice and the same two buttons, shown while the form's own
+       buttons are out of view (product.js) -->
+  <div class="bc-bar" id="bc-bar" inert>
+    <div class="wrap bc-bar-in">
+      <p class="bc-bar-sum"><b class="num" id="bc-bar-price"><?= $rupees($from) ?></b><span id="bc-bar-desc"></span></p>
+      <div class="bc-bar-act">
+        <button type="button" class="btn red" id="bc-bar-now">Buy it now <svg class="i arr" aria-hidden="true">
+            <use href="#i-arrow-right" />
+          </svg></button>
+        <button type="button" class="btn" id="bc-bar-add"><svg class="i" aria-hidden="true">
+            <use href="#i-shopping-cart" />
+          </svg>Add to cart</button>
+      </div>
     </div>
   </div>
 </main>

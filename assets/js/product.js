@@ -8,9 +8,17 @@
   // ---------- Choice and price
   const choice = () => ({
     qty: Number(form.querySelector('[name=qty]:checked').value),
+    colors: Number(form.querySelector('[name=colors]:checked').value),
     design: form.querySelector('[name=design]:checked').value === 'yes',
   });
-  const update = () => { priceEl.textContent = cart.rupees(cart.price(choice())); };
+  const barPrice = document.getElementById('bc-bar-price');
+  const barDesc = document.getElementById('bc-bar-desc');
+  const update = () => {
+    const c = choice();
+    priceEl.textContent = barPrice.textContent = cart.rupees(cart.price(c));
+    // Numbers in mono (.num); the text is built from our own values, so innerHTML is safe
+    barDesc.innerHTML = cart.describe(c).replace(/\d[\d,]*/g, '<b class="num">$&</b>');
+  };
 
   // ---------- Artwork: an uploaded design replaces the sample on the card, and is kept in this
   // tab (sessionStorage) so the checkout page attaches it to the order.
@@ -76,6 +84,11 @@
 
   form.addEventListener('change', update);
 
+  // ---------- Notes for the studio: one note for the whole order, saved as it's typed
+  const notes = document.getElementById('bc-notes');
+  notes.value = cart.note();
+  notes.addEventListener('input', () => cart.setNote(notes.value));
+
   // ---------- Buy
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -88,6 +101,17 @@
     cart.add(choice());
     location.href = cart.config.checkout;
   });
+
+  // ---------- Bottom strip: shown only while the form's own buttons are out of view
+  const bar = document.getElementById('bc-bar');
+  document.getElementById('bc-bar-add').addEventListener('click', () => form.requestSubmit());
+  document.getElementById('bc-bar-now').addEventListener('click', () => document.getElementById('bc-now').click());
+  new IntersectionObserver(([entry]) => {
+    const show = !entry.isIntersecting;
+    bar.classList.toggle('show', show);
+    bar.inert = !show;
+    document.documentElement.classList.toggle('bc-bar-on', show);
+  }).observe(form.querySelector('.bc-buy'));
 
   update();
 })();

@@ -28,6 +28,8 @@ const DISPATCH_DAYS = 10; // the longest standard wait in days, weekends include
 // Business cards: price in rupees for each quantity (GST and delivery included)
 const CARD_PRICES = [100 => 2499, 200 => 4499, 500 => 9999, 1000 => 17999];
 const DESIGN_FEE  = 3000; // studio designs the card
+const POPULAR_QTY = 500;  // quantity tagged "Popular" on the business cards page
+// One or two ink colours cost the same; the choice travels with the order
 // Rush: the order jumps the queue, one flat fee per order (not per card)
 const RUSH_FEE      = 1500;                 // TODO: confirm the amount
 const RUSH_DISPATCH = '3–4 working days';   // TODO: confirm; after proof approval, like DISPATCH

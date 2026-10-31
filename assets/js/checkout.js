@@ -12,7 +12,7 @@
   const MAX_MB = 1;
   const ACCEPT = '.png,.jpg,.jpeg,.webp,.pdf,image/png,image/jpeg,image/webp,application/pdf';
   const TYPES = ['image/png', 'image/jpeg', 'image/webp', 'application/pdf'];
-  const keyOf = (l) => `${l.qty}-${l.design ? 'design' : 'own'}`;
+  const keyOf = (l) => `${l.qty}-${l.colors}-${l.design ? 'design' : 'own'}`;
   const files = new Map(); // line key -> File
   // A design uploaded on the business cards page (kept in this tab) goes on each own-artwork card
   let kept = null;
@@ -46,7 +46,7 @@
       </div>
       <div class="co-art"></div>`;
     li.querySelector('.co-item-name b').innerHTML = `${cards(l.qty)}, letterpress`;
-    li.querySelector('.co-item-name span').textContent = l.design ? 'Studio design' : 'Your artwork';
+    li.querySelector('.co-item-name span').textContent = `${cart.colours(l)} · ${l.design ? 'Studio design' : 'Your artwork'}`;
     li.querySelector('.co-item-price').textContent = cart.rupees(cart.price(l));
     li.querySelector('.co-remove').addEventListener('click', () => cart.remove(i));
     renderArt(li.querySelector('.co-art'), l);
@@ -273,7 +273,7 @@
     const msg = [
       `Hi House of Press, I'd like to place an order (${ref}).`,
       '',
-      ...lines.map((l) => `• ${l.qty} letterpress business cards, ${art(l)}: ${cart.rupees(cart.price(l))}`),
+      ...lines.map((l) => `• ${l.qty} letterpress business cards, ${cart.colours(l)}, ${art(l)}: ${cart.rupees(cart.price(l))}`),
       isRush() ? `Rush, dispatched in ${form.dataset.rushDispatch} after the proof: ${cart.rupees(rushFee)}` : `Standard, dispatched in ${form.dataset.dispatch} after the proof`,
       picked ? `Dispatch by: ${longDate(picked)}` : null,
       `Total: ${cart.rupees(total)} (GST and delivery included)`,
@@ -283,6 +283,7 @@
       `Email: ${val('email')}`,
       `Deliver to: ${[val('address'), val('address2'), val('city'), val('state'), val('pin')].filter(Boolean).join(', ')}`,
       val('details') ? `\nOn the card:\n${val('details')}` : null,
+      cart.note().trim() ? `\nNotes for the studio:\n${cart.note().trim()}` : null,
     ].filter((x) => x !== null).join('\n');
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener');
@@ -305,6 +306,7 @@
     const done = document.getElementById('co-done');
     done.hidden = false;
     cart.clear();
+    cart.setNote(''); // the note went with this order
     done.focus();
     scrollTo({ top: 0 });
   });

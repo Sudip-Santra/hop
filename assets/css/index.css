@@ -3125,8 +3125,8 @@ form.c-form {
     transform 0.3s var(--ease);
 }
 .g-cap b {
-  font-family: var(--display);
-  letter-spacing: var(--tight);
+  font-family: var(--serif);
+  letter-spacing: 0;
   font-weight: 400;
   font-size: 22px;
   line-height: 1.1;
@@ -3289,8 +3289,8 @@ form.c-form {
   gap: 2px;
 }
 .g-box-cap b {
-  font-family: var(--display);
-  letter-spacing: var(--tight);
+  font-family: var(--serif);
+  letter-spacing: 0;
   font-weight: 400;
   font-size: 22px;
   line-height: 1.1;

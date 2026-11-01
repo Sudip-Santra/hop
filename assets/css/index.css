@@ -1672,6 +1672,17 @@ form h3 {
   }
 }
 @media (max-width: 560px) {
+  /* On a phone: narrower side margins for the header (every page) and the home, about, gallery
+     and contact pages, so the photos and words get more of the screen */
+  .bar,
+  header,
+  .m-menu,
+  .page-home main,
+  .page-about main,
+  .page-gallery main,
+  .page-contact main {
+    --pad: 15px;
+  }
   .step {
     grid-column: 1 / -1;
   }

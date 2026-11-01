@@ -655,15 +655,15 @@ html.menu-lock {
 }
 .hero-facts b {
   display: block;
-  font-family: var(--display);
-  letter-spacing: -0.02em;
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: 32px;
+  font-size: 38px; /* the serif sets smaller than the sans it replaced */
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  -webkit-text-stroke: 0.012em currentColor; /* one step bolder, like the headings */
 }
 .hero-facts span {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--ink-2);
 }
 
@@ -1699,7 +1699,7 @@ form h3 {
     font-size: 36px;
   }
   .hero-facts b {
-    font-size: 26px;
+    font-size: 31px;
   }
   /* Facts and stats slide sideways on one line, bleeding to the screen edges */
   .hero-facts,
@@ -2968,10 +2968,9 @@ form.c-form {
   padding: 20px 0;
   cursor: pointer;
   list-style: none;
-  font-family: var(--sans);
-  letter-spacing: var(--tight);
-  font-size: clamp(18px, 1.5vw, 22px);
-  line-height: 1.2;
+  font-family: var(--serif);
+  font-size: clamp(22px, 1.9vw, 28px); /* the serif sets smaller than the sans it replaced */
+  line-height: 1.15;
   transition: color 0.2s;
 }
 .c-faq summary::-webkit-details-marker {

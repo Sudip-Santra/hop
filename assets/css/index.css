@@ -3445,7 +3445,7 @@ form.c-form {
   position: sticky;
   top: 120px;
   display: grid;
-  justify-items: center; /* even space on both sides of the card */
+  justify-items: start; /* the design column starts on the page edge, in line with the logo and the strip */
   gap: 24px;
   padding-top: 40px;
 }
@@ -3470,7 +3470,9 @@ form.c-form {
 /* The drawn card: Pearl White cotton, type in Press Black, shaded so it reads as
    pressed into the sheet. Sizes are in container units so it scales as one piece. */
 .pcard {
-  --card-paper: #f8f7f5; /* cotton, a touch brighter than the mockup so it reads white on a white page */
+  --card-paper: #ffffff; /* the paper's base colour; the cotton texture multiplies over it */
+  --card-accent: #a51e23;
+  --blind-ink: color-mix(in srgb, var(--card-paper) 90%, #000); /* blind: no ink, just the impression */
   --card-ink: #231f20;
   position: relative;
   width: 100%;
@@ -3479,6 +3481,7 @@ form.c-form {
   overflow: hidden;
   /* The mockup's own paper, tiled at its scale: one 1000px tile is 38.48% of its 2599px card */
   background: var(--card-paper) url("../brand/cotton-paper.webp") 0 0 / 38.48% auto;
+  background-blend-mode: multiply;
   border-radius: 2px;
   color: var(--card-ink);
   font-family: "Sen", var(--sans);
@@ -3495,10 +3498,30 @@ form.c-form {
 .pcard {
   --press-ink: #262827;
   --press-grain: url("../brand/press-grain.webp") 0 0 / 38.48cqw auto;
+  --press-wall: rgb(23 21 18 / 0.32);
+  --press-halo: rgb(23 21 18 / 0.26);
+  --press-lip: rgb(255 255 255 / 0.95);
   --press-edge:
-    drop-shadow(0 -0.07cqw 0.05cqw rgb(23 21 18 / 0.32))
-    drop-shadow(0 0 0.07cqw rgb(23 21 18 / 0.26))
-    drop-shadow(-0.1cqw 0.22cqw 0.14cqw rgb(255 255 255 / 0.95));
+    drop-shadow(0 -0.07cqw 0.05cqw var(--press-wall))
+    drop-shadow(0 0 0.07cqw var(--press-halo))
+    drop-shadow(-0.1cqw 0.22cqw 0.14cqw var(--press-lip));
+}
+/* Tinted and dark papers catch less light along the lip, and their walls read deeper */
+.pcard[data-tone="soft"] {
+  --press-lip: rgb(255 255 255 / 0.6);
+}
+.pcard[data-tone="mid"] {
+  --press-wall: rgb(23 21 18 / 0.4);
+  --press-lip: rgb(255 255 255 / 0.22);
+}
+.pcard[data-tone="dark"] {
+  --press-wall: rgb(0 0 0 / 0.5);
+  --press-halo: rgb(0 0 0 / 0.4);
+  --press-lip: rgb(255 255 255 / 0.08);
+}
+/* Accent ink: text marked .acc prints in it */
+.pcard .acc {
+  --press-ink: var(--card-accent);
 }
 .pcard p {
   color: transparent;
@@ -3549,18 +3572,15 @@ form.c-form {
   padding-top: 3.35cqw;
   position: relative;
 }
-/* The rule in the wordmark's red, pressed and grained like the type */
-.pcard-foot::before {
-  content: "";
+/* The rule in the accent ink (the wordmark's red by default), pressed and grained like the type */
+.pcard-rule {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   height: 0.35cqw;
-  background: var(--press-grain), #a51e23;
+  background: var(--press-grain), var(--card-accent);
   background-blend-mode: overlay;
-  filter: var(--press-edge);
-  pointer-events: none;
 }
 .pcard-hop .pcard-details {
   font-size: 2.8cqw;
@@ -3569,6 +3589,597 @@ form.c-form {
 .pcard-right {
   text-align: right;
 }
+/* The fronts of every design sit in one layer; only the chosen one shows */
+.pcard-designs {
+  position: absolute;
+  inset: 0;
+}
+.pcard-designs[hidden] {
+  display: none;
+}
+/* Pressed lines and marks (rules, rings, bars) in the accent ink */
+.pcard .acc-line {
+  filter: var(--press-edge);
+}
+
+/* Paul Allen: centred small capitals, the phone in the top corner */
+.pcard-allen {
+  inset: 9% 7% 8%;
+  align-items: center;
+  text-align: center;
+  font-family: var(--serif);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+.al-phone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2.3cqw;
+  letter-spacing: 0.08em;
+}
+.al-co {
+  margin-top: 4cqw;
+}
+.al-company {
+  font-size: 3.4cqw;
+  letter-spacing: 0.2em;
+}
+.al-dept,
+.al-title {
+  margin-top: 0.8cqw;
+  font-size: 2.2cqw;
+}
+.al-name {
+  font-size: 4.6cqw;
+  letter-spacing: 0.18em;
+}
+.al-foot {
+  font-size: 2.1cqw;
+  line-height: 1.55;
+}
+
+/* Monogram: initials in a pressed ring, the person to its right */
+.pcard-mono {
+  inset: 12% 8%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7cqw;
+}
+.mo-mark {
+  flex: none;
+  width: 26cqw;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 0.5cqw solid var(--card-accent);
+}
+.pcard .mo-mark {
+  border-radius: 50% !important; /* the global square corners don't apply to the ring */
+}
+.mo-initials {
+  font-family: var(--serif);
+  font-size: 10cqw;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.mo-name {
+  font-family: var(--serif);
+  font-size: 5.2cqw;
+  line-height: 1.05;
+}
+.mo-title {
+  margin-top: 1.2cqw;
+  font-size: 2.2cqw;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.mo-details {
+  margin-top: 4cqw;
+  font-size: 2.4cqw;
+  line-height: 1.6;
+}
+
+/* Statement: a big brand name across the foot, the details small above */
+.pcard-stmt {
+  inset: 9% 7% 8%;
+  font-family: var(--sans);
+}
+.st-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 4cqw;
+}
+.st-name {
+  font-size: 3.2cqw;
+  font-weight: 600;
+}
+.st-title {
+  font-size: 2.3cqw;
+}
+.st-details {
+  text-align: right;
+  font-size: 2.2cqw;
+  line-height: 1.55;
+}
+.st-bar {
+  display: block;
+  width: 12cqw;
+  height: 1.2cqw;
+  margin-bottom: 2.4cqw;
+  background: var(--press-grain), var(--card-accent);
+  background-blend-mode: overlay;
+}
+.st-word {
+  font-size: 12.5cqw;
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.035em;
+}
+
+/* Minimal: a centred name over a short rule, one line of details at the foot */
+.pcard-min {
+  inset: 10% 8%;
+  align-items: center;
+  text-align: center;
+}
+.mi-centre {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mi-name {
+  font-family: var(--serif);
+  font-size: 6.6cqw;
+  line-height: 1;
+}
+.mi-rule {
+  width: 9cqw;
+  height: 0.35cqw;
+  margin: 2.6cqw 0 2.2cqw;
+  background: var(--press-grain), var(--card-accent);
+  background-blend-mode: overlay;
+}
+.mi-title {
+  font-size: 2.3cqw;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.mi-details {
+  font-family: var(--mono);
+  font-size: 2.1cqw;
+}
+
+/* ---------- Playground: thumbnails of each design, then the editor once one is picked */
+.bc-preview.is-editing {
+  position: static; /* the editor makes the column taller than the screen, so it scrolls with the page */
+}
+/* The designs in a column on the card's left; the caption and editor line up under the card */
+.bc-preview > .bc-stage,
+.bc-preview > .bc-preview-cap,
+.bc-preview > .ce-hint {
+  max-width: 668px; /* the 500px card plus the 132px column and its 36px gap */
+}
+.bc-stage {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  align-items: center;
+  gap: 36px;
+}
+.bc-preview > .bc-preview-cap,
+.bc-preview > .ce-hint {
+  padding-left: 168px;
+}
+.pg-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pg-thumb {
+  display: grid;
+  gap: 6px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink-2);
+  text-align: center;
+}
+.pg-thumb .pcard-mini {
+  display: block;
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+  box-shadow:
+    0 1px 1px rgb(35 31 32 / 0.1),
+    0 6px 12px -6px rgb(35 31 32 / 0.35);
+  transition: outline-color 0.2s;
+}
+.pg-thumb:hover .pcard-mini {
+  outline-color: var(--line);
+}
+.pg-thumb[aria-pressed="true"] .pcard-mini {
+  outline: 2px solid var(--ink);
+}
+.pg-thumb:focus-visible {
+  outline: none;
+}
+.pg-thumb:focus-visible .pcard-mini {
+  outline: 2px solid var(--red);
+}
+.pg-thumb-name {
+  font-size: 12px;
+  line-height: 1.2;
+}
+.pg-thumb[aria-pressed="true"] .pg-thumb-name {
+  color: var(--ink);
+}
+.pg-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pg-sw {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: var(--sw);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.2s;
+}
+.pg-sw:hover {
+  outline-color: var(--line);
+}
+.pg-sw[aria-pressed="true"] {
+  outline-color: var(--ink);
+}
+.pg-sw:focus-visible {
+  outline-color: var(--red);
+}
+/* Blind: no ink, shown as a struck-through swatch */
+.pg-sw.is-blind {
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), var(--ink-2) 50%, transparent calc(50% + 1px)),
+    #fff;
+}
+/* ---------- Card editor (card-editor.js): items on the card move, resize and take typing */
+.bc-stage {
+  position: relative; /* holds the selection box, outside the card's clipping */
+}
+.pcard-front.is-free:not([hidden]) {
+  inset: 0;
+  display: block;
+}
+.pcard.is-editable [data-field],
+.pcard.is-editable .acc-line {
+  cursor: move;
+  touch-action: none; /* a drag on the card moves the item, not the page */
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pcard.is-editable [data-field]:hover,
+.pcard.is-editable .acc-line:hover {
+  outline: 1px dashed rgb(165 30 35 / 0.5);
+  outline-offset: 2px;
+}
+.pcard.is-editable [contenteditable] {
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  caret-color: var(--red); /* the ink is drawn through the text, so the caret needs its own colour */
+  outline: none;
+}
+.ce-sel {
+  position: absolute;
+  z-index: 4;
+  border: 1px solid var(--red);
+  pointer-events: none;
+}
+.ce-sel[hidden] {
+  display: none;
+}
+.ce-handle {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 1px solid var(--red);
+  cursor: nwse-resize;
+  touch-action: none;
+  pointer-events: auto;
+}
+/* Floating bars: the card's (paper, inks, add, reset) and a selected item's, beside what they act on */
+.ce-bar {
+  position: absolute;
+  z-index: 6;
+  display: grid;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px -12px rgb(23 21 18 / 0.35);
+}
+.ce-bar[hidden],
+.ce-bar [hidden] {
+  display: none !important;
+}
+.ce-bar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.ce-bar-label {
+  width: 46px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.ce-bar .pg-swatches {
+  gap: 6px;
+}
+.ce-bar .pg-sw {
+  width: 22px;
+  height: 22px;
+}
+.ce-btn {
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.ce-btn:hover {
+  border-color: var(--ink);
+}
+.ce-btn[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.ce-bold {
+  font-weight: 700;
+}
+.ce-italic {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+}
+/* Font picker: a button showing the font in itself, and a list of every font set in itself */
+.ce-dd {
+  position: relative;
+}
+.ce-dd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 160px;
+}
+.ce-dd-btn .i {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--ink-2);
+}
+.ce-dd-val {
+  max-width: 132px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14.5px;
+}
+.ce-dd-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 2;
+  display: grid;
+  width: 250px;
+  max-height: 320px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4px 0 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 34px -14px rgb(23 21 18 / 0.4);
+}
+/* A hairline scrollbar in the font list (Chrome, Safari, Edge; Firefox gets its thinnest) */
+.ce-dd-list::-webkit-scrollbar {
+  width: 3px;
+}
+.ce-dd-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ce-dd-list::-webkit-scrollbar-thumb {
+  background: rgb(23 21 18 / 0.28);
+}
+.ce-dd-list::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+}
+@supports not selector(::-webkit-scrollbar) {
+  .ce-dd-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(23 21 18 / 0.28) transparent;
+  }
+}
+.ce-dd-group {
+  padding: 10px 14px 4px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.ce-dd-opt {
+  padding: 7px 14px;
+  background: none;
+  border: 0;
+  font-size: 18px;
+  line-height: 1.25;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.ce-dd-opt:hover,
+.ce-dd-opt:focus-visible {
+  background: var(--paper);
+  outline: none;
+}
+.ce-dd-opt[aria-selected="true"] {
+  background: var(--paper-2);
+}
+/* Custom colour: a rainbow swatch that opens the picker */
+.pg-sw.ce-custom {
+  background: conic-gradient(from 90deg, #e53935, #fdd835, #43a047, #1e88e5, #8e24aa, #e53935);
+}
+.pg-sw.ce-custom[aria-pressed="true"] {
+  background:
+    linear-gradient(var(--sw), var(--sw)) center / 12px 12px no-repeat,
+    conic-gradient(from 90deg, #e53935, #fdd835, #43a047, #1e88e5, #8e24aa, #e53935);
+}
+.ce-cp {
+  display: grid;
+  gap: 10px;
+  width: 236px;
+  padding-top: 4px;
+}
+.ce-cp-sv {
+  --hue: hsl(0 100% 50%);
+  position: relative;
+  height: 130px;
+  background:
+    linear-gradient(to top, #000, transparent),
+    linear-gradient(to right, #fff, var(--hue));
+  cursor: crosshair;
+  touch-action: none;
+}
+.ce-cp-hue {
+  position: relative;
+  height: 12px;
+  background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+  cursor: ew-resize;
+  touch-action: none;
+}
+.ce-cp-dot,
+.ce-cp-knob {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.pcard .ce-cp-dot,
+.ce-cp-dot {
+  border-radius: 50% !important;
+}
+.ce-cp-knob {
+  top: 50%;
+  height: 18px;
+  width: 8px;
+}
+.ce-cp-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ce-cp-prev {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+}
+.ce-cp-hex {
+  flex: 1;
+  min-width: 0;
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-family: var(--mono);
+  font-size: 13px;
+  text-transform: lowercase;
+  color: var(--ink);
+}
+.ce-cp-hex:focus {
+  border-color: var(--ink);
+  outline: none;
+}
+/* Delete: a red outlined bin */
+.ce-del {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  padding: 0;
+  border-color: var(--red);
+  color: var(--red);
+}
+.ce-del .i {
+  width: 15px;
+  height: 15px;
+}
+.ce-del:hover {
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+}
+.ce-hint {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+@media (max-width: 560px) {
+  /* Phones: the card on top, a little wider than the text column; the designs under it in a row
+     that swipes sideways, edge to edge, so each one is big enough to read */
+  .bc-stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    width: calc(100% + 16px);
+    margin-inline: -8px;
+  }
+  .pg-thumbs {
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-inline: calc(8px - var(--pad));
+    padding: 5px var(--pad) 8px; /* room for the picked one's outline */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--pad);
+    scrollbar-width: none;
+  }
+  .pg-thumbs::-webkit-scrollbar {
+    display: none;
+  }
+  .pg-thumb {
+    flex: none;
+    width: 128px;
+    scroll-snap-align: start;
+  }
+  .bc-preview > .bc-preview-cap,
+  .bc-preview > .ce-hint {
+    padding-left: 0;
+  }
+}
+
 /* An uploaded design fills the card; multiply lets white backgrounds become the paper */
 .pcard-art {
   position: absolute;
@@ -3906,132 +4517,78 @@ form.co {
   margin-top: -20px;
 }
 
-/* Bottom strip with the buy buttons, slid in while the form's own buttons are out of view */
-.bc-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
+/* Stuck to the bottom of the screen (sticky) until their place in the form scrolls into view;
+   while stuck, a white band with a top edge so they read as a bar over the page */
+.bc-buy {
+  position: sticky;
   bottom: 0;
-  z-index: 60; /* under the cart button and drawer */
+  z-index: 5;
+  padding: 14px 0;
+}
+.bc-buy::before {
+  content: "";
+  position: absolute;
+  inset: 0 -20px;
+  z-index: -1;
   background: #fff;
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -8px 24px rgba(23, 21, 18, 0.06);
-  transform: translateY(100%);
-  visibility: hidden;
-  transition:
-    transform 0.35s var(--ease),
-    visibility 0s 0.35s;
+  border-top: 1px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.bc-bar.show {
-  transform: none;
-  visibility: visible;
-  transition: transform 0.35s var(--ease);
+.bc-buy.is-stuck::before {
+  border-top-color: var(--line);
+  box-shadow: 0 -12px 24px -16px rgb(23 21 18 / 0.25);
 }
-.bc-bar-in {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-.bc-bar-sum {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  min-width: 0;
-}
-.bc-bar-sum > b {
-  font-family: "JetBrains Mono", var(--sans);
-  letter-spacing: -0.04em;
-  font-weight: 400;
-  font-size: 22px;
-}
-.bc-bar-sum span b {
-  font-weight: inherit;
-}
-.bc-bar-sum span {
-  font-size: 14px;
-  color: var(--ink-2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.bc-bar-act {
-  display: flex;
-  gap: 8px;
-  flex: none;
-}
-.bc-bar-act .btn {
-  height: 48px;
-  min-width: 180px;
-  justify-content: center;
-  gap: 10px;
-}
-/* The cart button rises above the strip while it shows */
-.bc-bar-on .cart-fab {
-  bottom: 96px;
-  transition:
-    opacity 0.35s var(--ease),
-    transform 0.45s var(--ease),
-    background 0.2s,
-    bottom 0.35s var(--ease);
-}
-@media (max-width: 720px) {
-  .bc-bar-sum span {
-    display: none;
-  }
-  .bc-bar-act .btn {
-    min-width: 0;
-    padding-left: 14px;
-    padding-right: 14px;
+/* Stacked (one column): the buttons run the full width, so the cart button rises above them */
+@media (max-width: 1080px) {
+  .bc-buy-stuck .cart-fab {
+    bottom: 92px;
+    transition:
+      opacity 0.35s var(--ease),
+      transform 0.45s var(--ease),
+      background 0.2s,
+      bottom 0.35s var(--ease);
   }
 }
 
-.bc-copy {
+/* Help, under the form: a box with a line to the studio on WhatsApp */
+.bc-help {
   margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  font-size: 15.5px;
-  line-height: 1.65;
+  padding: 26px 28px;
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+}
+.bc-help-title {
+  font-size: clamp(22px, 1.7vw, 26px);
+  line-height: 1.15;
+}
+.bc-help p {
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--ink-2);
 }
-.bc-motto {
-  font-family: var(--display);
-  font-weight: 450;
-  letter-spacing: var(--tight);
-  font-size: clamp(24px, 2vw, 30px);
-  line-height: 1.1;
-  color: var(--ink);
-}
-.bc-motto em {
+.bc-help-link {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--red);
 }
-.bc-specs {
-  margin-top: 36px;
-  border-top: 1px solid var(--ink);
+.bc-help-link .i {
+  width: 18px;
+  height: 18px;
 }
-.bc-specs div {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 14.5px;
+.bc-help-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
-/* Numbers inside choices and specs: mono, but not bold */
-.bc-choices b.num,
-.bc-specs b.num {
-  font-weight: inherit;
-}
+/* Numbers inside choices: mono, but not bold */
 .bc-choices b.num {
+  font-weight: inherit;
   font-family: "JetBrains Mono", var(--sans); /* ₹ in the design fee keeps its old font */
-}
-.bc-specs dt {
-  font-family: var(--display);
-  color: var(--ink-2);
-  padding-top: 2px;
 }
 
 @media (max-width: 1080px) {
@@ -4059,14 +4616,14 @@ form.co {
     grid-column: 1 / -1;
   }
   .bc-preview {
-    gap: 20px;
-    padding: 8px 0 32px;
+    gap: 24px; /* the design row to the hint below it */
+    padding: 8px 0 36px;
   }
   .bc-2 .bc-tile {
     padding: 28px 8px 14px;
   }
-  .bc-specs div {
-    grid-template-columns: 92px 1fr;
+  .bc-help {
+    padding: 22px 20px;
   }
 }
 

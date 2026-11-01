@@ -1112,15 +1112,20 @@ section {
 }
 .stats b {
   display: block;
-  font-family: var(--display);
-  letter-spacing: -0.02em;
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(36px, 3.4vw, 52px);
+  font-size: 38px; /* the same as the hero stats (.hero-facts) */
   line-height: 1;
   margin-bottom: 8px;
+  -webkit-text-stroke: 0.012em currentColor;
 }
+/* The note under each stat: plain body text, like the hero stats' notes */
 .stats .label {
-  font-family: var(--display);
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 /* ==========================================================================
@@ -1696,7 +1701,7 @@ form h3 {
     grid-template-columns: 1fr;
   }
   .stats b {
-    font-size: 36px;
+    font-size: 31px;
   }
   .hero-facts b {
     font-size: 31px;
@@ -2254,15 +2259,15 @@ html.cart-lock {
 }
 .a-facts b {
   display: block;
-  font-family: var(--display);
-  letter-spacing: -0.02em;
+  font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(28px, 2.6vw, 40px);
+  font-size: 38px; /* the same as the home page stats (.hero-facts) */
+  -webkit-text-stroke: 0.012em currentColor; /* one step bolder, like the home page stats */
   line-height: 1;
   margin-bottom: 8px;
 }
 .a-facts span {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--ink-2);
 }
 
@@ -2575,6 +2580,9 @@ html.cart-lock {
   }
 }
 @media (max-width: 560px) {
+  .a-facts b {
+    font-size: 31px; /* the same as the home page stats on a phone */
+  }
   .a-ranges {
     grid-template-columns: 1fr 1fr;
     gap: 32px 16px;

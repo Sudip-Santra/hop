@@ -183,10 +183,10 @@ $basePer = CARD_PRICES[array_key_first(CARD_PRICES)] / array_key_first(CARD_PRIC
         <fieldset class="bc-opt">
           <legend class="bc-step">Artwork</legend>
           <div class="bc-choices bc-tiles bc-rows">
-            <label><input type="radio" name="design" value="yes">
+            <label><input type="radio" name="design" value="yes" checked>
               <span class="bc-tile"><strong>Design service <i class="bc-fee">+<b class="num"><?= $rupees(DESIGN_FEE) ?></b></i></strong><small>Our studio designs your card from scratch: typography, layout and artwork.</small></span>
             </label>
-            <label><input type="radio" name="design" value="no" checked>
+            <label><input type="radio" name="design" value="no">
               <span class="bc-tile"><strong>I’ll upload my design</strong><small>Send your own artwork, ready for the press.</small></span>
             </label>
           </div>

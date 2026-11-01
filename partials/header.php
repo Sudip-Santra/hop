@@ -4,7 +4,6 @@ $nav = [
   'business-cards' => ['Business cards', $base . 'business-cards/'],
   'about'    => ['About', $base . 'about/'],
   'gallery'  => ['Gallery', $base . 'gallery/'],
-  'process'  => ['How to order', $base . 'how-to-order'],
   'contact'  => ['Contact', $base . 'contact/'],
 ];
 $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi House of Press, I'd like to know more about your business cards.");

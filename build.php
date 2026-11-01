@@ -5,8 +5,8 @@
  *   php build.php
  *
  * Section URLs come from the pages themselves: each data-route="slug" found on a page
- * becomes its own file, e.g. /how-to-order -> dist/how-to-order.html
- * (Netlify serves /how-to-order from that file).
+ * becomes its own file, e.g. /some-section -> dist/some-section.html
+ * (Netlify serves /some-section from that file).
  */
 
 // Child mode: render one page as if it were requested at $argv[2]

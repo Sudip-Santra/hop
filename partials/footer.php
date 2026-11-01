@@ -5,7 +5,6 @@
 $footerNav = [
   'Shop' => [
     ['Business cards', 'business-cards/'],
-    ['How to order',   'how-to-order'],
     ['Checkout',       'checkout/'],
   ],
   'Studio' => [

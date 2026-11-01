@@ -5,15 +5,6 @@ $preloadImage = 'assets/videos/hero-poster.jpg';
 $title       = 'House of Press - Letterpress Business Cards in Mumbai';
 $description = 'Letterpress business and brand cards pressed by hand into thick cotton paper in Mumbai. Custom designs, a WhatsApp proof first, and free delivery across India.';
 
-// /how-to-order opens this page at that section (see .htaccess / router.php)
-$sections = [
-  'how-to-order' => 'How to order',
-];
-$slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
-if (isset($sections[$slug])) {
-  $title = $sections[$slug] . ' - House of Press, letterpress business cards';
-}
-
 // Structured data: lets search engines show the studio's address, hours and phone
 require_once __DIR__ . '/partials/config.php';
 $jsonLd = [
@@ -191,62 +182,6 @@ include __DIR__ . '/partials/head.php';
     </div>
   </section>
 
-  <!-- Clients -->
-  <section id="who-we-press-for" class="clients" data-route="">
-    <div class="wrap">
-      <div class="sec-head grid rv">
-        <p class="label">Who we press for</p>
-        <h2>For people who <em>notice</em>.</h2>
-        <p class="side">Same paper, same inks, same press, so your next box matches the last one.</p>
-      </div>
-      <div class="grid client-list">
-        <div class="client rv">
-          <h3>Founders &amp; businesses</h3>
-          <p class="muted">A card that says you’re here to stay.</p>
-        </div>
-        <div class="client rv">
-          <h3>Architects &amp; designers</h3>
-          <p class="muted">Clean lines, pressed as precisely as you draw them.</p>
-        </div>
-        <div class="client rv">
-          <h3>Studios &amp; agencies</h3>
-          <p class="muted">Cards for the whole team, in one run.</p>
-        </div>
-        <div class="client rv">
-          <h3>Brands &amp; makers</h3>
-          <p class="muted">Brand cards and notes that carry your mark.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process -->
-  <section id="how-to-order" class="wrap" data-route="how-to-order">
-    <div class="sec-head grid rv">
-      <p class="label">How to order</p>
-      <h2>Four steps, <em>no rush</em>.</h2>
-      <p class="side">Message us on WhatsApp or send an enquiry - we’ll take it from there.</p>
-    </div>
-    <div class="grid steps">
-      <div class="step rv"><span class="n">01</span>
-        <h3>Choose your card</h3>
-        <p>Pick a style and quantity, or send us your own design.</p>
-      </div>
-      <div class="step rv"><span class="n">02</span>
-        <h3>Approve your proof</h3>
-        <p>We send a proof on WhatsApp. Nothing moves until you say yes.</p>
-      </div>
-      <div class="step rv"><span class="n">03</span>
-        <h3>We press it</h3>
-        <p>Ink mixed for your order, each sheet pressed by hand, one at a time.</p>
-      </div>
-      <div class="step rv"><span class="n">04</span>
-        <h3>Delivered to you</h3>
-        <p>Trimmed, checked and sent with tracking, free across India.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact -->
   <section id="enquiry-home" class="contact" data-route="">
     <div class="wrap grid">
@@ -271,21 +206,19 @@ include __DIR__ . '/partials/head.php';
           <label class="field"><span class="label">Phone</span><input name="phone" type="tel" required autocomplete="tel"></label>
         </div>
         <div class="field">
-          <span class="label">I’m looking for</span>
-          <div class="chips">
-            <label><input type="radio" name="type" value="Business cards" checked><span>Business cards</span></label>
-            <label><input type="radio" name="type" value="Brand cards"><span>Brand cards</span></label>
-            <label><input type="radio" name="type" value="A custom design"><span>Custom design</span></label>
-            <label><input type="radio" name="type" value="Something else"><span>Something else</span></label>
-          </div>
-        </div>
-        <div class="field">
           <span class="label">Roughly how many?</span>
           <div class="chips">
             <label><input type="radio" name="qty" value="100" checked><span class="num">100</span></label>
             <label><input type="radio" name="qty" value="250"><span class="num">250</span></label>
             <label><input type="radio" name="qty" value="500"><span class="num">500</span></label>
             <label><input type="radio" name="qty" value="More than 500"><span class="num">500+</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label">Number of colours</span>
+          <div class="chips">
+            <label><input type="radio" name="colours" value="1 colour" checked><span><b class="num">1</b>&nbsp;colour</span></label>
+            <label><input type="radio" name="colours" value="2 colours"><span><b class="num">2</b>&nbsp;colours</span></label>
           </div>
         </div>
         <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members"></textarea></label>
@@ -367,47 +300,6 @@ include __DIR__ . '/partials/head.php';
     </div>
   </section>
 
-  <!-- Instagram reels: the studio videos, repeated, in a strip you swipe or drag sideways -->
-  <?php
-  $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
-  $reels = [
-    ['hero',                 'hero-poster',          'Cards in multiple inks, fresh off the press'],
-    ['crispy-business-card', 'crispy-business-card', 'Crispy business card, blind pressed for Uru Living'],
-    ['about-studio',         'about-studio',         'Setting up the platen press in the studio'],
-  ];
-  ?>
-  <section class="reels" aria-labelledby="reels-title">
-    <div class="wrap">
-      <div class="sec-head grid rv">
-        <p class="label">Instagram</p>
-        <h2 id="reels-title">Pressed on camera.</h2>
-        <div class="side">
-          <p>New cards, ink mixing and the press at work, posted from the studio in Mumbai.</p>
-          <a href="<?= $instagramUrl ?>" class="text-link" target="_blank" rel="noopener">Follow @<?= INSTAGRAM ?> <svg class="i" aria-hidden="true">
-              <use href="#i-arrow-up-right" />
-            </svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="reels-track rv" id="reels-track" tabindex="0" aria-label="Instagram reels, scroll sideways">
-      <?php for ($i = 0; $i < 3; $i++): foreach ($reels as [$file, $poster, $caption]): ?>
-          <a class="reel" href="<?= $instagramUrl ?>" target="_blank" rel="noopener" aria-label="<?= e($caption) ?>, on Instagram">
-            <video src="assets/videos/<?= $file ?>.mp4" poster="assets/videos/<?= $poster ?>.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-            <svg class="i reel-ig" aria-hidden="true">
-              <use href="#i-instagram" />
-            </svg>
-          </a>
-      <?php endforeach;
-      endfor; ?>
-      <a class="reel reel-follow" href="<?= $instagramUrl ?>" target="_blank" rel="noopener">
-        <svg class="i" aria-hidden="true">
-          <use href="#i-instagram" />
-        </svg>
-        <b>Follow us on Instagram</b>
-        <span>@<?= INSTAGRAM ?></span>
-      </a>
-    </div>
-  </section>
 </main>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>

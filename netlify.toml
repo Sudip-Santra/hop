@@ -18,11 +18,15 @@
   to = "/business-cards/"
   status = 301
 
-# Section URLs live without a trailing slash (relative links depend on it)
+# The old How to order section: its address goes to the home page
+[[redirects]]
+  from = "/how-to-order"
+  to = "/"
+  status = 301
 
 [[redirects]]
   from = "/how-to-order/"
-  to = "/how-to-order"
+  to = "/"
   status = 301
 
 # Old addresses

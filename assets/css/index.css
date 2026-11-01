@@ -48,6 +48,82 @@
     U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
     U+2215, U+FEFF, U+FFFD;
 }
+/* Jost (latin, variable 400–700): the Paul Allen card on the business cards page, so it only
+   downloads there */
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/jost.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+/* Source Sans 3 (latin, variable 400–700): the Meishi card on the business cards page */
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("../fonts/source-sans-3.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+/* Zilla Slab (latin, 500 and 600): the name and firm on the Meishi card */
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../fonts/zilla-slab-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../fonts/zilla-slab-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+/* Space Grotesk (latin, variable 400–700): the Statement card's name and brand */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("../fonts/space-grotesk.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+/* Sacramento (latin): the handwritten name on the Script card */
+@font-face {
+  font-family: "Sacramento";
+  src: url("../fonts/sacramento.woff2") format("woff2");
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+/* EB Garamond (latin, variable 400–500): everything else on the Script card */
+@font-face {
+  font-family: "EB Garamond";
+  src: url("../fonts/eb-garamond.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
 /* Clarendon: only the name on the drawn sample card (business cards page) */
 @font-face {
   font-family: "Clarendon";
@@ -3530,6 +3606,10 @@ form.c-form {
   -webkit-background-clip: text;
   background-clip: text;
   filter: var(--press-edge);
+  /* The ink is painted inside the line's box, and deep descenders (the y in a display serif) hang
+     below it: room underneath, given back so nothing moves */
+  padding-bottom: 0.25em;
+  margin-bottom: -0.25em;
 }
 .pcard-front {
   position: absolute;
@@ -3602,154 +3682,230 @@ form.c-form {
   filter: var(--press-edge);
 }
 
-/* Paul Allen: centred small capitals, the phone in the top corner */
+/* Paul Allen, measured off the pressed original: Jost (its geometric sans), every line placed where
+   the original has it. Tops are the letters' cap line as a share of the card's height, less the
+   space above the capitals in a line of Jost (about 0.2em); sizes are card widths (cqw). */
 .pcard-allen {
-  inset: 9% 7% 8%;
-  align-items: center;
-  text-align: center;
-  font-family: var(--serif);
+  inset: 0;
+  display: block;
+  font-family: "Jost", var(--sans);
+  font-weight: 600;
+  line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+}
+.pcard-allen p {
+  position: absolute;
+  white-space: nowrap;
 }
 .al-phone {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 2.3cqw;
-  letter-spacing: 0.08em;
-}
-.al-co {
-  margin-top: 4cqw;
-}
-.al-company {
-  font-size: 3.4cqw;
-  letter-spacing: 0.2em;
-}
-.al-dept,
-.al-title {
-  margin-top: 0.8cqw;
-  font-size: 2.2cqw;
-}
-.al-name {
-  font-size: 4.6cqw;
-  letter-spacing: 0.18em;
-}
-.al-foot {
-  font-size: 2.1cqw;
-  line-height: 1.55;
-}
-
-/* Monogram: initials in a pressed ring, the person to its right */
-.pcard-mono {
-  inset: 12% 8%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 7cqw;
-}
-.mo-mark {
-  flex: none;
-  width: 26cqw;
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border: 0.5cqw solid var(--card-accent);
-}
-.pcard .mo-mark {
-  border-radius: 50% !important; /* the global square corners don't apply to the ring */
-}
-.mo-initials {
-  font-family: var(--serif);
-  font-size: 10cqw;
-  line-height: 1;
+  left: 9.4%;
+  top: calc(12.7% - 0.62cqw);
+  font-size: 3.05cqw;
   letter-spacing: 0.02em;
 }
-.mo-name {
-  font-family: var(--serif);
-  font-size: 5.2cqw;
-  line-height: 1.05;
+.al-company,
+.al-dept {
+  right: 9%;
+  text-align: right;
 }
-.mo-title {
-  margin-top: 1.2cqw;
-  font-size: 2.2cqw;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.al-company {
+  top: calc(11% - 0.74cqw);
+  font-size: 3.7cqw;
+  letter-spacing: 0.01em;
 }
-.mo-details {
-  margin-top: 4cqw;
-  font-size: 2.4cqw;
-  line-height: 1.6;
+.al-dept {
+  top: calc(17.6% - 0.4cqw);
+  font-size: 2cqw;
+  letter-spacing: 0.015em;
+}
+.al-name,
+.al-title,
+.al-addr,
+.al-fax {
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.al-name {
+  top: calc(43% - 0.86cqw);
+  font-size: 4.3cqw;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+}
+.al-title {
+  top: calc(51.8% - 0.63cqw);
+  font-size: 3.3cqw;
+  font-weight: 400;
+  text-transform: none;
+}
+.al-addr {
+  top: calc(78.3% - 0.6cqw);
+  font-size: 2.95cqw;
+  letter-spacing: -0.005em;
+}
+.al-fax {
+  top: calc(85.7% - 0.6cqw);
+  font-size: 2.85cqw;
+  letter-spacing: -0.01em;
 }
 
-/* Statement: a big brand name across the foot, the details small above */
-.pcard-stmt {
-  inset: 9% 7% 8%;
-  font-family: var(--sans);
+/* Meishi, after the Japanese business card: Source Sans 3 (the name and firm in Zilla Slab), the name large at centre left over its
+   designation, the firm top right, five lines of address and contacts in a block bottom right.
+   Tops are the letters' top as a share of the card's height, less the space above them in a line
+   of Source Sans (about 0.2em); sizes are card widths (cqw). */
+.pcard-meishi {
+  inset: 0;
+  display: block;
+  font-family: "Source Sans 3", var(--sans);
+  line-height: 1;
 }
-.st-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 4cqw;
+.pcard-meishi p {
+  position: absolute;
+  white-space: pre;
 }
-.st-name {
-  font-size: 3.2cqw;
+/* The name and the firm in Zilla Slab; the rest stays in Source Sans */
+/* The firm starts on the same line as the address block below it */
+.me-brand {
+  left: 60%;
+  top: calc(16.3% - 0.66cqw);
+  font-family: "Zilla Slab", Georgia, serif;
+  font-size: 3.5cqw;
   font-weight: 600;
+  letter-spacing: 0.08em;
 }
-.st-title {
+.me-name {
+  left: 9%;
+  top: calc(43.2% - 1.3cqw);
+  font-family: "Zilla Slab", Georgia, serif;
+  font-size: 7cqw;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.me-title {
+  left: 9%;
+  top: calc(56.8% - 0.46cqw);
   font-size: 2.3cqw;
 }
-.st-details {
-  text-align: right;
-  font-size: 2.2cqw;
-  line-height: 1.55;
+.me-line {
+  left: 60%;
+  font-size: 2.35cqw;
 }
-.st-bar {
+.me-l1 { top: calc(66.8% - 0.47cqw); }
+.me-l2 { top: calc(72% - 0.47cqw); }
+.me-l3 { top: calc(77.2% - 0.47cqw); }
+.me-l4 { top: calc(82.4% - 0.47cqw); }
+.me-l5 { top: calc(87.6% - 0.47cqw); }
+
+/* Statement: charcoal stock, white ink. Space Grotesk for the person and the brand, JetBrains Mono for
+   the details; the brand is one big word along the foot under a short accent bar. */
+.pcard-stmt {
+  inset: 0;
   display: block;
-  width: 12cqw;
-  height: 1.2cqw;
-  margin-bottom: 2.4cqw;
+  font-family: "Space Grotesk", var(--sans);
+  line-height: 1;
+}
+.pcard-stmt p {
+  position: absolute;
+  white-space: pre;
+}
+.st-name {
+  left: 7%;
+  top: 12%;
+  font-size: 3.3cqw;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.st-title {
+  left: 7%;
+  top: 19.5%;
+  font-size: 2.2cqw;
+  font-weight: 400;
+}
+.st-d {
+  right: 7%;
+  font-family: var(--mono);
+  font-size: 1.9cqw;
+  text-align: right;
+}
+.st-d1 { top: 12.4%; }
+.st-d2 { top: 18.2%; }
+.st-d3 { top: 24%; }
+.st-bar {
+  position: absolute;
+  left: 7%;
+  top: 61%;
+  width: 9cqw;
+  height: 1cqw;
   background: var(--press-grain), var(--card-accent);
   background-blend-mode: overlay;
 }
 .st-word {
-  font-size: 12.5cqw;
+  left: 6.2%; /* the N's stem lines up optically with the bar and the name */
+  top: 67.5%;
+  font-size: 14cqw;
   font-weight: 700;
-  line-height: 0.85;
-  letter-spacing: -0.035em;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
 }
 
-/* Minimal: a centred name over a short rule, one line of details at the foot */
-.pcard-min {
-  inset: 10% 8%;
-  align-items: center;
-  text-align: center;
-}
-.mi-centre {
-  margin: auto 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.mi-name {
-  font-family: var(--serif);
-  font-size: 6.6cqw;
+/* Script: Pearl white stock, black ink. A handwritten first name (Sacramento) centred over the
+   title and phone, the studio top left, a monogram in a pressed oval on the right, email and
+   website in the foot corners; everything but the name in EB Garamond. */
+.pcard-script {
+  inset: 0;
+  display: block;
+  font-family: "EB Garamond", Georgia, serif;
   line-height: 1;
 }
-.mi-rule {
-  width: 9cqw;
-  height: 0.35cqw;
-  margin: 2.6cqw 0 2.2cqw;
-  background: var(--press-grain), var(--card-accent);
-  background-blend-mode: overlay;
+.pcard-script p {
+  position: absolute;
+  white-space: pre;
 }
-.mi-title {
-  font-size: 2.3cqw;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+.sc-studio {
+  left: 7%;
+  top: 9.5%;
+  font-size: 2.7cqw;
 }
-.mi-details {
-  font-family: var(--mono);
-  font-size: 2.1cqw;
+.sc-tag {
+  right: 7%;
+  top: 9.5%;
+  font-size: 2.7cqw;
+  font-style: italic;
+  text-align: right;
+}
+.sc-name,
+.sc-title,
+.sc-phone {
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.sc-name {
+  top: 24%;
+  font-family: "Sacramento", cursive;
+  font-size: 15cqw;
+  line-height: 1.1;
+}
+.sc-title {
+  top: 53.5%;
+  font-size: 2.7cqw;
+}
+.sc-phone {
+  top: 60%;
+  font-size: 2.7cqw;
+  letter-spacing: 0.02em;
+}
+.sc-email,
+.sc-web {
+  top: 84%;
+  font-size: 2.5cqw;
+}
+.sc-email {
+  left: 7%;
+}
+.sc-web {
+  right: 7%;
+  text-align: right;
 }
 
 /* ---------- Playground: thumbnails of each design, then the editor once one is picked */

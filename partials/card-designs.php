@@ -13,6 +13,7 @@
 // impression's lip catches: full on white, less on tinted stock, almost none on dark.
 const CARD_PAPERS = [
     'pearl'    => ['Pearl white', '#ffffff', 'light'],
+    'ash'      => ['Ivory',       '#f3ece5', 'light'], // the Paul Allen card's paper
     'bone'     => ['Bone',        '#efe4cd', 'soft'],
     'blush'    => ['Blush',       '#f0d9d0', 'soft'],
     'kraft'    => ['Kraft',       '#c4a079', 'mid'],
@@ -48,29 +49,50 @@ function card_front(string $id): string
                 . '<div class="pcard-details pcard-right">' . $f('social', 'Social', '@' . INSTAGRAM) . $f('place', 'Place', 'Andheri East, Mumbai') . '</div></div>';
             $class = 'pcard-hop';
             break;
-        case 'allen': // the famous one: centred small capitals, phone in the corner
-            $body = $f('phone', 'Phone', '212 555 6342', 'al-phone')
-                . '<div class="al-co">' . $f('company', 'Company', 'Pierce & Pierce', 'al-company') . $f('dept', 'Department', 'Mergers and Acquisitions', 'al-dept') . '</div>'
-                . '<div class="al-person">' . $f('name', 'Name', 'Paul Allen', 'al-name') . $f('title', 'Title', 'Vice President', 'al-title') . '</div>'
-                . '<div class="al-foot">' . $f('address', 'Address', '358 Exchange Place New York, N.Y. 10099') . $f('fax', 'Fax and telex', 'Fax 212 555 6390 Telex 10 4534') . '</div>';
+        case 'allen': // the famous one, set as the pressed original: a geometric sans, the phone top
+                      // left, the firm top right, the name centred, the address along the foot
+            $body = $f('phone', 'Phone', '212.555.6342', 'al-phone')
+                . $f('company', 'Company', 'Pierce & Pierce', 'al-company')
+                . $f('dept', 'Department', 'Mergers and Acquisitions', 'al-dept')
+                . $f('name', 'Name', 'Paul Allen', 'al-name')
+                . $f('title', 'Title', 'Vice President', 'al-title')
+                . $f('address', 'Address', '358 Exchange Place New York N.Y. 10006', 'al-addr')
+                . $f('fax', 'Fax and telex', 'Fax 212.555.6390 Telex 10 4534', 'al-fax');
             $class = 'pcard-allen';
             break;
-        case 'monogram': // initials in a pressed ring, the person beside it
-            $body = '<div class="mo-mark acc-line">' . $f('initials', 'Initials', 'AK', 'mo-initials acc') . '</div>'
-                . '<div class="mo-text">' . $f('name', 'Name', 'Aanya Kapoor', 'mo-name') . $f('title', 'Title', 'Interior Architect', 'mo-title acc')
-                . '<div class="mo-details">' . $f('phone', 'Phone', '+91 98200 41275') . $f('email', 'Email', 'aanya@kapoorstudio.in') . $f('place', 'Place', 'Bandra West, Mumbai') . '</div></div>';
-            $class = 'pcard-mono';
+        case 'meishi': // the Japanese meishi: the name large at centre left over the designation,
+                       // the firm top right, the address and contacts in a block bottom right
+            $body = $f('brand', 'Brand', 'KAPOOR STUDIO', 'me-brand')
+                . $f('name', 'Name', 'Aanya Kapoor', 'me-name')
+                . $f('title', 'Designation', 'Interior Architect', 'me-title')
+                . $f('pin', 'Pin code', 'Pin 400050', 'me-line me-l1')
+                . $f('address', 'Address', 'Hill Road, Bandra West, Mumbai', 'me-line me-l2')
+                . $f('phone', 'Phone', 'phone  +91 98200 41275', 'me-line me-l3')
+                . $f('email', 'Email', 'mail  aanya@kapoorstudio.in', 'me-line me-l4')
+                . $f('web', 'Website', 'URL  kapoorstudio.in', 'me-line me-l5');
+            $class = 'pcard-meishi';
             break;
-        case 'statement': // a big brand name across the foot, details small above
-            $body = '<div class="st-top"><div>' . $f('name', 'Name', 'Rohan Mehta', 'st-name') . $f('title', 'Title', 'Founder', 'st-title') . '</div>'
-                . '<div class="st-details">' . $f('phone', 'Phone', '+91 99300 18842') . $f('email', 'Email', 'rohan@northfield.co') . $f('web', 'Website', 'northfield.co') . '</div></div>'
-                . '<div class="st-brand"><span class="st-bar acc-line"></span>' . $f('brand', 'Brand', 'Northfield', 'st-word') . '</div>';
+        case 'statement': // bold and modern: who and how to reach them small across the top,
+                          // the brand as one big word along the foot under an accent bar
+            $body = $f('name', 'Name', 'Rohan Mehta', 'st-name')
+                . $f('title', 'Title', 'Founder & Creative Director', 'st-title')
+                . $f('phone', 'Phone', '+91 99300 18842', 'st-d st-d1')
+                . $f('email', 'Email', 'rohan@northfield.co', 'st-d st-d2')
+                . $f('web', 'Website', 'northfield.co', 'st-d st-d3')
+                . '<span class="st-bar acc-line"></span>'
+                . $f('brand', 'Brand', 'Northfield', 'st-word');
             $class = 'pcard-stmt';
             break;
-        default: // minimal: a centred name over a short rule, one line of details
-            $body = '<div class="mi-centre">' . $f('name', 'Name', 'Meera Iyer', 'mi-name') . '<span class="mi-rule acc-line"></span>' . $f('title', 'Title', 'Photographer', 'mi-title') . '</div>'
-                . $f('details', 'Details', '+91 90040 66218 · meera@iyer.studio', 'mi-details');
-            $class = 'pcard-min';
+        default: // script: a handwritten first name centred over the title and phone, the studio
+                 // top left, what the studio shoots top right, email and website in the foot corners
+            $body = $f('studio', 'Studio', 'Iyer Photo Studio', 'sc-studio')
+                . $f('tag', 'Specialty', 'Weddings & Portraits', 'sc-tag')
+                . $f('name', 'Name', 'Meera', 'sc-name')
+                . $f('title', 'Title', 'Senior Photographer', 'sc-title')
+                . $f('phone', 'Phone', '+91 90040 66218', 'sc-phone')
+                . $f('email', 'Email', 'meera.iyer@gmail.com', 'sc-email')
+                . $f('web', 'Website', 'www.iyerstudio.in', 'sc-web');
+            $class = 'pcard-script';
             $id = 'minimal';
     }
     return '<div class="pcard-front ' . $class . '" data-design="' . $id . '">' . $body . '</div>';
@@ -79,10 +101,10 @@ function card_front(string $id): string
 // Thumbnail order, with each design's starting paper, ink and accent
 const CARD_DESIGNS = [
     'house'     => ['House',      'pearl',    'black', 'red'],
-    'allen'     => ['Paul Allen', 'bone',     'black', 'black'],
-    'monogram'  => ['Monogram',   'pearl',    'navy',  'gold'],
+    'allen'     => ['Paul Allen', 'ash',      'black', 'black'],
+    'meishi'    => ['Meishi',     'pearl',    'black', 'black'],
     'statement' => ['Statement',  'charcoal', 'white', 'orange'],
-    'minimal'   => ['Minimal',    'blush',    'forest', 'forest'],
+    'minimal'   => ['Script',     'pearl',    'black', 'black'],
 ];
 
 /**

@@ -26,6 +26,10 @@
     ['Studio', 'Clarendon', '"Clarendon", Georgia, serif'],
     ['Studio', 'Sen', '"Sen", "Sen Fallback", sans-serif'],
     ['Studio', 'JetBrains Mono', 'var(--mono)'],
+    ['Studio', 'Zilla Slab', '"Zilla Slab", Georgia, serif'],
+    ['Studio', 'Jost', '"Jost", sans-serif'],
+    ['Studio', 'Source Sans 3', '"Source Sans 3", sans-serif'],
+    ['Studio', 'Sacramento', '"Sacramento", cursive'],
     ['Serif', 'Playfair Display', 'serif', 'Playfair+Display:ital,wght@0,400;0,700;1,400;1,700'],
     ['Serif', 'Cormorant Garamond', 'serif', 'Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700'],
     ['Serif', 'EB Garamond', 'serif', 'EB+Garamond:ital,wght@0,400;0,700;1,400;1,700'],
@@ -314,14 +318,10 @@
     else setCq(el, 'left', cq(el, 'left') + dx);
   }
 
-  // ---------- Resizing: text scales its size, shapes their box (the ring stays round)
+  // ---------- Resizing: text scales its size, shapes their box
   function resize(el, dx, dy, from) {
     if (isText(el)) {
       setCq(el, 'fontSize', Math.max(1, from.size * (1 + dx / Math.max(from.w, 1))));
-    } else if (el.classList.contains('mo-mark')) {
-      const d = Math.max(4, from.w + Math.max(dx, dy));
-      setCq(el, 'width', d);
-      setCq(el, 'height', d);
     } else {
       setCq(el, 'width', Math.max(1, from.w + dx));
       setCq(el, 'height', Math.max(0.2, from.h + dy));

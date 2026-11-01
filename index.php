@@ -79,11 +79,23 @@ include __DIR__ . '/partials/head.php';
     </div>
   </div>
 
-  <!-- Marquee -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Business cards</span><span>Brand cards</span><span>Letterpress</span><span>Cotton paper</span><span>Blind pressed</span><span>Painted edges</span><span>Custom designs</span><span>Proof on WhatsApp</span>
-      <span>Business cards</span><span>Brand cards</span><span>Letterpress</span><span>Cotton paper</span><span>Blind pressed</span><span>Painted edges</span><span>Custom designs</span><span>Proof on WhatsApp</span>
+  <!-- Clients: the names we've pressed cards for, sliding past on the black strip.
+       Logos are single-colour SVGs in assets/clients, inlined so they take the strip's colour. -->
+  <?php
+  $clients = [
+    ['google', 'Google'],
+    ['apple', 'Apple'],
+    ['amazon', 'Amazon'],
+    ['flipkart', 'Flipkart'],
+    ['ashoka-chakra', 'Government of India'],
+  ];
+  ?>
+  <div class="marquee clients-strip">
+    <p class="sr-only">Brands we’ve pressed cards for: <?= e(implode(', ', array_column($clients, 1))) ?>.</p>
+    <div class="marquee-track" aria-hidden="true">
+      <?php for ($i = 0; $i < 4; $i++): foreach ($clients as [$logo, $name]): ?>
+        <span class="client-logo"><?= $logo ? file_get_contents(__DIR__ . "/assets/clients/$logo.svg") : '' ?><b><?= e($name) ?></b></span>
+      <?php endforeach; endfor; ?>
     </div>
   </div>
 
@@ -171,7 +183,7 @@ include __DIR__ . '/partials/head.php';
           <p class="muted">It takes longer than printing flat. That is the point. Every order starts with <strong>a proof on WhatsApp</strong>, and nothing touches the press until you approve it.</p>
         </div>
         <div class="stats rv">
-          <div><b>42K+</b><span class="label">Instagram followers</span></div>
+          <div><b>43K+</b><span class="label">Instagram followers</span></div>
           <div><b>5K+</b><span class="label">Cards pressed</span></div>
           <div><b>1 sheet</b><span class="label">Pressed at a time</span></div>
         </div>

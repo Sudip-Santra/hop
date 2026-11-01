@@ -565,11 +565,11 @@ nav {
   gap: 8px;
   padding: 16px 0;
   border-bottom: 1px solid var(--line);
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 28px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  -webkit-text-stroke: 0.012em currentColor; /* one step bolder, like the headings */
   transition: color 0.2s;
 }
 .m-links .label {
@@ -4677,8 +4677,7 @@ form.co {
 .bc-now:hover {
   background: var(--ink);
   border-color: var(--ink);
-}
-.bc-added {
+}.bc-added {
   font-size: 13px;
   color: var(--ink-2);
   min-height: 1em;

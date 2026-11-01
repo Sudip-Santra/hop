@@ -88,7 +88,7 @@ include __DIR__ . '/partials/head.php';
     ['apple', 'Apple'],
     ['amazon', 'Amazon'],
     ['flipkart', 'Flipkart'],
-    ['ashoka-chakra', 'Government of India'],
+    ['ashoka-chakra', 'Govt. of India'],
   ];
   ?>
   <div class="marquee clients-strip">

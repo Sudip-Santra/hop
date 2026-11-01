@@ -47,6 +47,7 @@ $jsonLd = [
     'publisher' => ['@id' => SITE_URL . '/#studio'],
   ],
 ];
+$scripts = ['work.js'];
 include __DIR__ . '/partials/head.php';
 ?>
 
@@ -111,62 +112,59 @@ include __DIR__ . '/partials/head.php';
           </svg></a>
       </div>
     </div>
-    <div class="grid collections">
-      <a href="gallery/" class="card c-lg rv">
-        <figure class="ph"><video src="assets/videos/crispy-business-card.mp4" poster="assets/videos/crispy-business-card.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Crispy business card by House of Press: a contour-line pattern blind letterpressed into thick white cotton paper, with the name printed in black ink"></video><span class="no label">01</span></figure>
-        <div class="meta">
-          <div>
-            <h3>Crispy business card</h3>
-            <p>For Uru Living: contour lines blind pressed deep into cotton, the details in a single black ink.</p>
-          </div><span class="go"><svg class="i" aria-hidden="true">
-              <use href="#i-arrow-right" />
-            </svg></span>
-        </div>
-      </a>
-      <a href="gallery/" class="card c-sm rv">
-        <figure class="ph"><img src="assets/videos/sakshi-jain.jpg" alt="Sakshi Jain architect business card by House of Press, letterpressed in olive-green ink on thick white cotton paper" loading="lazy"><span class="no label">02</span></figure>
-        <div class="meta">
-          <div>
-            <h3>Sakshi Jain, Architect</h3>
-            <p>Olive-green ink, crisp lines on soft cotton.</p>
-          </div><span class="go"><svg class="i" aria-hidden="true">
-              <use href="#i-arrow-right" />
-            </svg></span>
-        </div>
-      </a>
-      <a href="gallery/" class="card c-sm rv">
-        <figure class="ph"><img src="assets/videos/urmil-nisar.jpg" alt="Bhanu Cospack business card for Urmil Nisar, letterpressed in blue ink on cotton paper and held up straight off the House of Press press" loading="lazy"><span class="no label">03</span></figure>
-        <div class="meta">
-          <div>
-            <h3>Bhanu Cospack</h3>
-            <p>Our first ever run, pressed in blue.</p>
-          </div><span class="go"><svg class="i" aria-hidden="true">
-              <use href="#i-arrow-right" />
-            </svg></span>
-        </div>
-      </a>
-      <a href="gallery/" class="card c-sm rv">
-        <figure class="ph"><img src="assets/videos/hero-poster.jpg" alt="Letterpress business cards by House of Press laid out together, pressed in orange, black and green inks on white cotton paper" loading="lazy"><span class="no label">04</span></figure>
-        <div class="meta">
-          <div>
-            <h3>Studio cards</h3>
-            <p>Orange, black and green, fresh off the press.</p>
-          </div><span class="go"><svg class="i" aria-hidden="true">
-              <use href="#i-arrow-right" />
-            </svg></span>
-        </div>
-      </a>
-      <div class="card c-sm cta rv">
-        <span class="label" style="color:var(--butter)"><b class="num">05</b> - Your card</span>
-        <div>
-          <h3>Have a design <em>in mind?</em></h3>
-          <p>Send your logo, artwork or a rough idea. We’ll set it, send a proof on WhatsApp, and press it once you approve.</p>
-        </div>
-        <a href="contact/" class="btn paper">Start your card <svg class="i arr" aria-hidden="true">
-            <use href="#i-arrow-right" />
-          </svg></a>
-      </div>
+    <?php
+    // The wall: card photos only, three to a column, in grid areas a–l (see .work-wall), so every
+    // column ends on the same line: four columns wide, like the gallery; three on a tablet, two on
+    // a phone. Photos go down the columns in turn; photo (column + 2 × row) mod 4 never matches a
+    // neighbour four across, even corner to corner.
+    // Each photo: [file in assets/videos, title, notes for each time it appears, crops for each time]
+    $photos = [
+      ['crispy-business-card.jpg', 'Crispy business card',   ['Uru Living · Blind pressed', 'Contour lines, pressed deep', 'Blind pressed into cotton', 'Deep impression, white on white'], ['center', 'center 35%', 'center 60%', 'center 20%']],
+      ['sakshi-jain.jpg',          'Sakshi Jain, Architect', ['Olive-green ink on cotton', 'Shadow and impression', 'Fine lines on soft cotton', 'Olive-green ink'], ['center 40%', 'center 60%', 'center', 'center 30%']],
+      ['hero-poster.jpg',          'Studio cards',           ['Orange, black and green inks', 'A spread of recent work', 'Fresh off the press', 'Cards in many inks'], ['center 30%', 'center 70%', 'center', 'center 50%']],
+      ['urmil-nisar.jpg',          'Bhanu Cospack',          ['Blue ink · Our first run', 'Held up straight off the press', 'Blue ink on cotton', 'Our first ever run'], ['center 40%', 'center 55%', 'center', 'center 30%']],
+    ];
+    $work = [];
+    $seen = [0, 0, 0, 0];
+    for ($k = 0; $k < 12; $k++) {
+      $p = (intdiv($k, 3) + 2 * ($k % 3)) % 4; // column, row
+      [$file, $name, $notes, $crops] = $photos[$p];
+      $n = $seen[$p]++ % 4;
+      $work[] = [$file, $name, $notes[$n], $crops[$n]];
+    }
+    ?>
+    <div class="work-wall">
+      <?php foreach ($work as $i => [$file, $name, $note, $crop]): ?>
+        <?php if ($i === 6): // third in the top row, four across: the prompt to start a card ?>
+          <div class="work-cta w-g rv">
+            <span class="label">Your card</span>
+            <div>
+              <h3>Have a design <em>in mind?</em></h3>
+              <p>Send your logo, artwork or a rough idea. We’ll set it, send a proof on WhatsApp, and press it once you approve.</p>
+            </div>
+            <a href="contact/" class="btn paper">Start your card <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+          </div>
+          <?php continue; endif; ?>
+        <button type="button" class="work-tile w-<?= chr(97 + $i) ?> rv" aria-label="View larger: <?= e($name) ?>, <?= e($note) ?>">
+          <img src="assets/videos/<?= $file ?>" alt="<?= e("$name by House of Press: $note") ?>" loading="lazy" style="object-position: <?= $crop ?>">
+          <span class="work-cap" aria-hidden="true"><b><?= e($name) ?></b><span class="label"><?= e($note) ?></span></span>
+        </button>
+      <?php endforeach; ?>
     </div>
+
+    <!-- Lightbox, the same one the gallery page uses -->
+    <dialog class="g-box" id="g-box" aria-label="Our work, larger">
+      <div class="g-box-stage" id="g-box-stage"></div>
+      <div class="g-box-bar">
+        <p class="g-box-cap"><b id="g-box-name"></b><span class="label" id="g-box-note"></span></p>
+        <span class="label g-box-count" id="g-box-count" aria-live="polite"></span>
+        <div class="g-box-nav">
+          <button type="button" id="g-box-prev" aria-label="Previous"><svg class="i" aria-hidden="true"><use href="#i-chevron-left" /></svg></button>
+          <button type="button" id="g-box-next" aria-label="Next"><svg class="i" aria-hidden="true"><use href="#i-chevron-right" /></svg></button>
+          <button type="button" id="g-box-close" aria-label="Close"><svg class="i" aria-hidden="true"><use href="#i-x" /></svg></button>
+        </div>
+      </div>
+    </dialog>
   </section>
 
   <!-- Story -->

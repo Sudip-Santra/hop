@@ -75,7 +75,7 @@ include __DIR__ . '/partials/head.php';
       <div class="main hero-showcase">
         <video class="hero-media" src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Letterpress business cards from House of Press, pressed into thick cotton paper in one and two inks"></video>
       </div>
-      <span class="tag label">Off the press</span>
+      <span class="tag">Inside House of Press</span>
     </div>
   </div>
 

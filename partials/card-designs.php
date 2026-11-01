@@ -100,11 +100,11 @@ function card_front(string $id): string
 
 // Thumbnail order, with each design's starting paper, ink and accent
 const CARD_DESIGNS = [
-    'house'     => ['House',      'pearl',    'black', 'red'],
-    'allen'     => ['Paul Allen', 'ash',      'black', 'black'],
-    'meishi'    => ['Meishi',     'pearl',    'black', 'black'],
-    'statement' => ['Statement',  'charcoal', 'white', 'orange'],
-    'minimal'   => ['Script',     'pearl',    'black', 'black'],
+    'house'     => ['House of Press', 'pearl',    'black', 'red'],
+    'allen'     => ['Paul Allen',     'ash',      'black', 'black'],
+    'meishi'    => ['Aanya Kapoor',   'pearl',    'black', 'black'],
+    'statement' => ['Rohan Mehta',    'charcoal', 'white', 'orange'],
+    'minimal'   => ['Meera',          'pearl',    'black', 'black'],
 ];
 
 /**

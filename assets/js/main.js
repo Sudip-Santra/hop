@@ -84,7 +84,7 @@ document.getElementById("enquiry")?.addEventListener("submit", (e) => {
     e.target.querySelector(name ? "[name=phone]" : "[name=name]").focus();
     return;
   }
-  const msg = `Hi House of Press, I'm ${name} (${phone}).\nQuantity: ${f.get("qty")}\nColours: ${f.get("colours")}\nDetails: ${(f.get("need") || "").trim() || "-"}`;
+  const msg = `Hi House of Press, I'm ${name} (${phone}).\nQuantity: ${f.get("qty")}\nFinishes: ${f.getAll("finishes").join(", ") || "-"}\nDetails: ${(f.get("need") || "").trim() || "-"}`;
   window.open(
     `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,
     "_blank",

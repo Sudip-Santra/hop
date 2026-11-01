@@ -153,7 +153,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
         <div class="details rv">
           <div><span class="label">Address</span><?= ADDRESS_1 ?><br><?= ADDRESS_2 ?></div>
           <div><span class="label">Studio hours</span><?= e(HOURS) ?></div>
-          <div><span class="label">Phone</span><a href="tel:<?= PHONE_TEL ?>"><?= PHONE_DISPLAY ?></a></div>
+          <div><span class="label">Phone</span><a href="tel:<?= PHONE_TEL ?>" class="num"><?= PHONE_DISPLAY ?></a></div>
           <div><span class="label">Email</span><a href="mailto:<?= EMAIL ?>"><?= EMAIL ?></a></div>
         </div>
       </div>

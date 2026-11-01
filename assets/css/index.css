@@ -1194,6 +1194,7 @@ section {
 .details .label {
   display: block;
   margin-bottom: 8px;
+  font-family: var(--sans); /* the headings of the details read as words, not code */
   color: var(--ink-2);
 }
 .details a:hover {

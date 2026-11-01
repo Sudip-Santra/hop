@@ -225,10 +225,12 @@ include __DIR__ . '/partials/head.php';
           </div>
         </div>
         <div class="field">
-          <span class="label">Number of colours</span>
+          <span class="label">Finishes I like</span>
           <div class="chips">
-            <label><input type="radio" name="colours" value="1 colour" checked><span><b class="num">1</b>&nbsp;colour</span></label>
-            <label><input type="radio" name="colours" value="2 colours"><span><b class="num">2</b>&nbsp;colours</span></label>
+            <label><input type="checkbox" name="finishes" value="One ink"><span>One ink</span></label>
+            <label><input type="checkbox" name="finishes" value="Multiple inks"><span>Multiple inks</span></label>
+            <label><input type="checkbox" name="finishes" value="Blind pressed"><span>Blind pressed</span></label>
+            <label><input type="checkbox" name="finishes" value="Extra thick, painted edges"><span>Extra thick, painted edges</span></label>
           </div>
         </div>
         <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members"></textarea></label>

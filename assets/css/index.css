@@ -2970,6 +2970,7 @@ form.c-form {
   border-bottom: 1px solid var(--line);
 }
 .c-faq summary {
+  -webkit-tap-highlight-color: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;

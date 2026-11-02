@@ -163,7 +163,7 @@ include __DIR__ . '/partials/head.php';
         </div>
       </div>
       <div class="px-actions px-end-actions">
-        <a href="contact/" class="btn red">Start your card <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+        <a href="business-cards/" class="btn red">Start your card <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
         <a href="https://wa.me/<?= WHATSAPP ?>" class="btn line">WhatsApp us</a>
       </div>
     </div>

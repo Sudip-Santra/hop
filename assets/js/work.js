@@ -1,5 +1,5 @@
-// Home page, Our work: each photo on the wall opens larger in the lightbox (the gallery page's),
-// with previous / next and arrow keys.
+// Home page, Fresh off the press: each print opens larger in the lightbox (the gallery page's),
+// with previous / next and arrow keys. A tile's data-name and data-note fill the caption.
 
 const tiles = [...document.querySelectorAll('.work-tile')];
 const box = document.getElementById('g-box');
@@ -16,8 +16,8 @@ function show(i) {
   const img = document.createElement('img');
   Object.assign(img, { src: src.src, alt: src.alt });
   stage.replaceChildren(img);
-  nameEl.textContent = tile.querySelector('.work-cap b').textContent;
-  noteEl.textContent = tile.querySelector('.work-cap .label').textContent;
+  nameEl.textContent = tile.dataset.name;
+  noteEl.textContent = tile.dataset.note;
   countEl.textContent = `${current + 1} / ${tiles.length}`;
 }
 

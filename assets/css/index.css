@@ -5824,3 +5824,396 @@ form.co {
     margin-top: 40px;
   }
 }
+
+/* ==========================================================================
+   37. Home - the press proof. The page is a sheet of cotton paper with the
+   headline pressed into it (the business cards page's pressed-ink recipe, sized
+   in em), "impression." pressed blind, red-pencil printer's notes;
+   then prints on the dark press-room table; then the invitation as a pressed card.
+   Phones first; wider screens at the end.
+   ========================================================================== */
+.px-proof,
+.px-end {
+  --px-paper: #f8f7f5;
+  background: var(--px-paper) url("../brand/cotton-paper.webp") 0 0 / 720px auto;
+  background-blend-mode: multiply;
+}
+
+/* Pressed ink: grain in the ink, a dark wall along each letter's top, a lit lip below-left */
+.px-ink {
+  --press-ink: #262827;
+  color: transparent;
+  background: url("../brand/press-grain.webp") 0 0 / 720px auto, var(--press-ink);
+  background-blend-mode: overlay;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter:
+    drop-shadow(0 -0.012em 0.008em rgb(23 21 18 / 0.32))
+    drop-shadow(0 0 0.01em rgb(23 21 18 / 0.26))
+    drop-shadow(-0.014em 0.03em 0.02em rgb(255 255 255 / 0.95));
+}
+/* Blind: no ink at all, only the shadow of the bite */
+.px-blind {
+  --press-ink: color-mix(in srgb, var(--px-paper, #f8f7f5) 85%, #000);
+}
+.px-red {
+  --press-ink: var(--red);
+}
+
+/* Printer's notes in red pencil */
+.px-note {
+  font-family: "Sacramento", cursive;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--red);
+  transform: rotate(-3deg);
+}
+.px-arrow {
+  width: 54px;
+  height: 36px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -6px;
+}
+
+/* ---------- Proof sheet */
+.px-proof {
+  position: relative;
+  min-height: calc(100svh - 95px);
+  display: flex;
+}
+.px-sheet {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 28px;
+  padding-bottom: 44px;
+}
+.px-slug {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.px-title {
+  margin-top: 28px;
+  font-size: clamp(46px, 13.4vw, 76px);
+  line-height: 0.95;
+  -webkit-text-stroke: 0; /* the press does the weight */
+}
+.px-title span {
+  display: block;
+  /* room for descenders inside the painted box, given back so nothing moves */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+/* Instrument Serif comes in one weight: a stroke in the ink's own colour sets the inked lines bolder */
+.px-title .px-ink:not(.px-blind) {
+  -webkit-text-stroke: 0.013em var(--press-ink);
+}
+.px-title .px-blind {
+  font-size: 1.32em;
+  letter-spacing: -0.01em;
+}
+.px-note-blind {
+  align-self: flex-end;
+  margin-top: 2px;
+  margin-right: 4px;
+}
+.px-note-blind .px-arrow {
+  margin-right: 4px;
+}
+
+.px-foot {
+  display: grid;
+  gap: 28px;
+  margin-top: 28px;
+}
+.px-lead {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 40ch;
+}
+.px-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+/* The video, pinned to the proof with a strip of tape */
+.px-pinned {
+  position: relative;
+  justify-self: end;
+  width: min(66%, 300px);
+  margin-right: 6px;
+  padding: 8px 8px 0;
+  background: #fff;
+  transform: rotate(3deg);
+  box-shadow:
+    0 1px 2px rgb(23 21 18 / 0.15),
+    0 22px 34px -16px rgb(23 21 18 / 0.45);
+}
+.px-pinned video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.px-pinned figcaption {
+  padding: 8px 2px 10px;
+  font-size: 24px;
+  transform: none;
+}
+.px-tape {
+  position: absolute;
+  z-index: 1;
+  top: -13px;
+  left: 50%;
+  width: 96px;
+  height: 26px;
+  background: rgb(240 214 138 / 0.78);
+  transform: translateX(-50%) rotate(-5deg);
+  box-shadow: 0 1px 2px rgb(23 21 18 / 0.12);
+}
+
+/* ---------- Clients, between two rules on the proof's paper */
+.px-clients {
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.clients-strip.px-clients .marquee-track span.client-logo {
+  color: var(--ink);
+}
+
+/* ---------- The press-room table: prints laid down askew; a swipe row on phones */
+.px-table {
+  padding: 56px 0 64px;
+  background: #1b1916;
+  color: var(--paper);
+  overflow: hidden;
+}
+.px-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+.px-table-head h2 {
+  font-size: clamp(40px, 11vw, 60px);
+  line-height: 0.95;
+}
+.px-table-head em {
+  color: var(--butter);
+}
+.px-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.px-more:hover {
+  color: var(--butter);
+}
+.px-prints {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--pad);
+  padding: 36px var(--pad) 28px;
+  scrollbar-width: none;
+}
+.px-prints::-webkit-scrollbar {
+  display: none;
+}
+.px-print {
+  position: relative;
+  display: block;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+  flex: 0 0 62vw;
+  max-width: 280px;
+  margin-right: -10px;
+  padding: 8px 8px 0;
+  background: #fbfaf7;
+  color: var(--ink);
+  scroll-snap-align: start;
+  transform: rotate(var(--tilt));
+  box-shadow: 0 22px 34px -14px rgb(0 0 0 / 0.7);
+  transition: transform 0.45s var(--ease);
+}
+.px-print:last-child {
+  margin-right: 0;
+}
+.px-print:hover,
+.px-print:focus-visible {
+  z-index: 2;
+  transform: rotate(0deg) translateY(-10px) scale(1.03);
+}
+.px-print img {
+  height: auto;
+  aspect-ratio: 4 / 5;
+}
+.px-print-cap {
+  display: flex;
+  gap: 8px;
+  padding: 9px 2px 11px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.px-print-cap .num {
+  color: var(--red);
+}
+
+/* ---------- Closing: the invitation as a pressed card */
+.px-end {
+  padding: 48px 0 64px;
+  text-align: center;
+}
+.px-note-end {
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.px-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  aspect-ratio: 3.5 / 2;
+  container-type: inline-size;
+  background: #fbfaf7 url("../brand/cotton-paper.webp") 0 0 / 38.48% auto;
+  background-blend-mode: multiply;
+  text-align: left;
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) rotate(-1.5deg);
+  transition: transform 0.5s var(--ease);
+  box-shadow:
+    0 1px 1px rgb(35 31 32 / 0.1),
+    0 26px 40px -18px rgb(35 31 32 / 0.45);
+}
+.px-card-face {
+  position: absolute;
+  inset: 8% 7.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.px-card-brand {
+  font-family: var(--sans);
+  font-size: 3cqw;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.px-card-title {
+  font-size: 8.4cqw;
+  line-height: 1;
+  -webkit-text-stroke: 0;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.px-card-title span {
+  padding-bottom: 0.12em;
+}
+.px-card-rule {
+  display: block;
+  width: 12cqw;
+  height: 0.5cqw;
+  margin: 3.2cqw 0;
+  background: var(--red);
+}
+.px-card-text {
+  font-size: 3.4cqw;
+  line-height: 1.4;
+  max-width: 82%;
+}
+.px-card-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 3cqw;
+  font-size: 3cqw;
+}
+.px-card-foot .num {
+  font-family: var(--mono);
+}
+.px-end-actions {
+  justify-content: center;
+  margin-top: 36px;
+}
+
+/* ---------- Wider screens */
+@media (min-width: 861px) {
+  .px-sheet {
+    padding-top: 36px;
+    padding-bottom: 56px;
+  }
+  .px-title {
+    margin-top: 40px;
+    font-size: clamp(64px, 8.2vw, 136px);
+  }
+  .px-note {
+    font-size: 36px;
+  }
+  .px-note-blind {
+    align-self: flex-start;
+    margin-left: 34%;
+  }
+  .px-foot {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    margin-top: auto;
+    padding-top: 24px;
+  }
+  .px-lead {
+    font-size: 18px;
+  }
+  /* The pinned video sits up beside the headline */
+  .px-pinned {
+    position: absolute;
+    top: 96px;
+    right: var(--pad);
+    width: clamp(220px, 21vw, 320px);
+    margin: 0;
+  }
+  .px-table {
+    padding: 88px 0 96px;
+  }
+  .px-table-head h2 {
+    font-size: clamp(56px, 5.6vw, 88px);
+  }
+  .px-prints {
+    justify-content: center;
+    overflow: visible;
+    padding: 56px var(--pad) 8px;
+  }
+  .px-print {
+    flex: 0 1 min(20vw, 290px);
+    max-width: none;
+    margin-right: -1.4vw;
+  }
+  .px-end {
+    padding: 80px 0 96px;
+  }
+}

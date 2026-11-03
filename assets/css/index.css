@@ -6269,7 +6269,7 @@ html.menu-lock .page-home-2 header {
 /* The collage: everything placed in % of the box, so it keeps its shape at any width */
 .sb-collage {
   position: relative;
-  height: 430px;
+  height: 380px;
 }
 .sb-snap {
   position: absolute;

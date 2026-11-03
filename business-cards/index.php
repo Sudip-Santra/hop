@@ -219,7 +219,7 @@ $basePer = CARD_PRICES[array_key_first(CARD_PRICES)] / array_key_first(CARD_PRIC
         </fieldset>
 
         <div class="bc-buy">
-          <button type="button" class="btn red bc-now" id="bc-now">Buy it now <svg class="i arr" aria-hidden="true">
+          <button type="button" class="btn red bc-now" id="bc-now">Acquire <svg class="i arr" aria-hidden="true">
               <use href="#i-arrow-right" />
             </svg></button>
           <button type="submit" class="btn bc-add"><svg class="i" aria-hidden="true">

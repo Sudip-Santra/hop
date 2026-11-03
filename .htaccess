@@ -27,8 +27,12 @@ DirectorySlash On
   # The old How to order section: its address goes to the home page
   RewriteRule ^how-to-order/?$ / [L,R=301]
 
-  # Old-style /about.html etc. -> folder URLs
-  RewriteRule ^(about|contact|gallery)\.html$ /$1/ [L,R=301]
+  # About became The Institution, and the Gallery became The Works
+  RewriteRule ^about(\.html|/.*)?$ /institution/ [L,R=301]
+  RewriteRule ^gallery(\.html|/.*)?$ /works/ [L,R=301]
+
+  # Old-style /contact.html -> folder URL
+  RewriteRule ^contact\.html$ /contact/ [L,R=301]
 </IfModule>
 
 # Compression

@@ -121,7 +121,7 @@ matchMedia("(min-width: 1081px)").addEventListener("change", (e) => {
 });
 
 // Links to the page you're on (logo on home, "back to top") scroll up instead of reloading
-const pageBase = location.pathname.replace(/[^/]*$/, ""); // "/", "/gallery/", "/about/"
+const pageBase = location.pathname.replace(/[^/]*$/, ""); // "/", "/works/", "/institution/"
 const smoothOrInstant = () =>
   matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth";
 const isPlainClick = (e, a) =>

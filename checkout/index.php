@@ -31,7 +31,8 @@ include __DIR__ . '/../partials/head.php';
             <use href="#i-check" />
           </svg></span>
         <p class="label">Order <span id="co-ref"></span></p>
-        <h2>Thank you. <em>We’ve got it.</em></h2>
+        <h2>Thank you for choosing something <em>human-made.</em></h2>
+        <p>Your acquisition supports the people, practices and traditions that keep craftsmanship alive. We hope this is an object you will value for a long time.</p>
         <p>Your order has opened in WhatsApp. Press send so it reaches the studio - we’ll confirm the details and share your proof there within 24 hours.</p>
         <div class="co-done-files" id="co-done-files" hidden>
           <p><svg class="i" aria-hidden="true">
@@ -56,7 +57,7 @@ include __DIR__ . '/../partials/head.php';
           <section class="co-sec" aria-labelledby="co-s-speed">
             <div class="co-sec-head">
               <h2 id="co-s-speed">How soon?</h2>
-              <p>Every card is pressed by hand, so standard is the usual pace. In a hurry? Rush puts yours first.</p>
+              <p>Every card is pressed by hand, so standard is the usual pace. Need it sooner? Rush puts yours first.</p>
             </div>
             <div class="co-speed" role="radiogroup" aria-labelledby="co-s-speed">
               <label>

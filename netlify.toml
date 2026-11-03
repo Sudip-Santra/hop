@@ -47,7 +47,28 @@
 
 [[redirects]]
   from = "/about.html"
-  to = "/about/"
+  to = "/institution/"
+  status = 301
+
+# About became The Institution, and the Gallery became The Works
+[[redirects]]
+  from = "/about/*"
+  to = "/institution/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/institution/"
+  status = 301
+
+[[redirects]]
+  from = "/gallery/*"
+  to = "/works/"
+  status = 301
+
+[[redirects]]
+  from = "/gallery"
+  to = "/works/"
   status = 301
 
 [[redirects]]

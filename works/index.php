@@ -1,8 +1,8 @@
 <?php
-$page        = 'gallery';
+$page        = 'works';
 $base        = '../';
-$title       = 'Gallery - House of Press, letterpress business cards';
-$description = 'Letterpress business and brand cards by House of Press, pressed by hand into thick cotton paper, and a look inside the studio where they are made.';
+$title       = 'The Works - House of Press, Mumbai';
+$description = 'The works of House of Press: printed matter, stationery, objects, editions and collaborations made where design meets craftsmanship. Each piece has a story.';
 $scripts     = ['gallery.js'];
 include __DIR__ . '/../partials/head.php';
 
@@ -33,26 +33,59 @@ $pieces = [
 ];
 // Still image for each file; videos use theirs as the poster. Most are <file>.jpg.
 $images = ['hero' => 'hero-poster.jpg'];
+
+$head = [
+  'slug'  => 'The Works',
+  'title' => ['Objects with', 'a story to tell.'],
+  'lead'  => 'Explore the works of House of Press.',
+  'text'  => ['From printed matter and stationery to collaborative editions and artistic explorations, each collection represents a meeting of material, design and human skill.'],
+];
+// The collections: [name, what's in it, link or null while it's being made]
+$collections = [
+  ['Letterpress & Printed Matter', 'Business and brand cards pressed by hand into thick cotton paper.', 'business-cards/'],
+  ['Stationery & Writing', 'Paper, cards and writing sets for keeping and for sending.', null],
+  ['Objects & Editions', 'Made in small numbers, each one numbered and kept on record.', null],
+  ['Art & Collaborations', 'Work made together with artists, designers and craftspeople.', null],
+];
 ?>
 
 <main>
-  <!-- Page head -->
-  <div class="g-head wrap grid">
-    <div class="g-head-text">
-      <nav class="crumbs label rv" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span aria-current="page">Gallery</span></nav>
-      <h1 class="rv">Cards from <em>the press</em>.</h1>
-      <p class="lead muted rv">Recent business and brand cards, and the studio where they’re made. Select any piece to see it larger.</p>
+  <?php include __DIR__ . '/../partials/page-head.php'; ?>
+
+  <!-- The four collections; the ones still being made say so -->
+  <section class="ip-collections">
+    <div class="wrap">
+      <ol class="ip-coll-list">
+        <?php foreach ($collections as $n => [$name, $what, $href]): ?>
+          <li class="ip-coll<?= $href ? '' : ' is-making' ?>">
+            <span class="num"><?= sprintf('%02d', $n + 1) ?></span>
+            <h2><?= e($name) ?></h2>
+            <p><?= e($what) ?></p>
+            <?php if ($href): ?>
+              <a href="<?= $base . $href ?>" class="px-more">Discover the collection <svg class="i" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            <?php else: ?>
+              <span class="px-note" aria-label="Being made">in the making</span>
+            <?php endif; ?>
+          </li>
+        <?php endforeach; ?>
+      </ol>
     </div>
-    <div class="g-filter chips rv" role="radiogroup" aria-label="Show">
-      <label><input type="radio" name="show" value="all" checked><span>All</span></label>
-      <label><input type="radio" name="show" value="image"><span>Photos</span></label>
-      <label><input type="radio" name="show" value="video"><span>Videos</span></label>
-    </div>
-  </div>
+  </section>
 
   <!-- Masonry grid -->
   <section class="g-wall">
     <div class="wrap">
+      <div class="ip-wall-head">
+        <div>
+          <h2>From <em>the press.</em></h2>
+          <p>Every piece has a purpose. Every process has a story. Select any piece to see it larger.</p>
+        </div>
+        <div class="g-filter chips" role="radiogroup" aria-label="Show">
+          <label><input type="radio" name="show" value="all" checked><span>All</span></label>
+          <label><input type="radio" name="show" value="image"><span>Photos</span></label>
+          <label><input type="radio" name="show" value="video"><span>Videos</span></label>
+        </div>
+      </div>
       <div class="g-grid">
         <?php foreach ($pieces as $i => [$type, $file, $name, $note, $shape, $crop]):
           $poster = $v . ($images[$file] ?? $file . '.jpg');
@@ -74,33 +107,8 @@ $images = ['hero' => 'hero-poster.jpg'];
     </div>
   </section>
 
-  <!-- Closing prompt -->
-  <section class="g-end">
-    <div class="wrap">
-      <div class="g-end-main grid">
-        <div class="g-end-text rv">
-          <p class="label">Your card next</p>
-          <h2>Have a design <em>in mind?</em></h2>
-        </div>
-        <div class="g-end-act rv">
-          <p>Send your logo, artwork or a rough idea. We’ll set it, send a proof on WhatsApp, and press it once you approve.</p>
-          <div class="g-end-btns">
-            <a href="../contact/" class="btn red">Start your card <svg class="i arr" aria-hidden="true">
-                <use href="#i-arrow-right" />
-              </svg></a>
-            <a href="https://wa.me/<?= WHATSAPP ?>?text=<?= rawurlencode("Hi House of Press, I'd like to talk about a card design.") ?>" class="btn line" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true">
-                <use href="#i-whatsapp" />
-              </svg>WhatsApp us</a>
-          </div>
-        </div>
-      </div>
-      <ol class="g-end-steps rv">
-        <li><span class="label">01</span><b>Send your idea</b><span>A logo, artwork or a rough sketch.</span></li>
-        <li><span class="label">02</span><b>Approve the proof</b><span>On WhatsApp, before anything is pressed.</span></li>
-        <li><span class="label">03</span><b>We press and deliver</b><span>By hand, free across India.</span></li>
-      </ol>
-    </div>
-  </section>
+  <?php $next = ['The People', 'people/'];
+  include __DIR__ . '/../partials/page-next.php'; ?>
 </main>
 
 <!-- Lightbox -->

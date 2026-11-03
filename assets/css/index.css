@@ -387,7 +387,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #fff; /* solid, so it looks the same however far you scroll */
+  /* cotton paper, like the pressed sheets; solid, so it looks the same however far you scroll */
+  background: #f8f7f5 url("../brand/cotton-paper.webp") 0 0 / 720px auto;
+  background-blend-mode: multiply;
   border-bottom: 1px solid var(--line);
 }
 nav {
@@ -508,7 +510,10 @@ nav {
   background: #fff;
   overflow-y: auto;
   overscroll-behavior: contain;
-  border-top: 1px solid var(--line);
+}
+/* With the menu open the bar turns white to match it; the bar's own rule is the only line between them */
+html.menu-lock header {
+  background: #fff;
 }
 .m-menu:not([hidden]) {
   animation: m-in 0.4s var(--ease);
@@ -574,7 +579,8 @@ nav {
 .m-cta .btn {
   justify-content: center;
 }
-.m-cta .btn.line {
+/* Shop and Visit / Enquire side by side; WhatsApp the full width below */
+.m-cta .wa-btn {
   grid-column: 1 / -1;
 }
 html.menu-lock {
@@ -5846,7 +5852,7 @@ form.co {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 28px;
+  padding-top: 40px;
   padding-bottom: 44px;
 }
 .px-slug {
@@ -5860,7 +5866,7 @@ form.co {
   color: var(--ink-2);
 }
 .px-title {
-  margin-top: 28px;
+  margin-top: 14px;
   font-size: clamp(46px, 13.4vw, 76px);
   line-height: 0.95;
   -webkit-text-stroke: 0; /* the press does the weight */
@@ -6126,7 +6132,7 @@ form.co {
     padding-bottom: 56px;
   }
   .px-title {
-    margin-top: 40px;
+    margin-top: 20px;
     font-size: clamp(64px, 8.2vw, 136px);
   }
   .px-note {
@@ -6539,5 +6545,692 @@ form.co {
     top: 44px;
     width: 150px;
     transform: rotate(6deg);
+  }
+}
+
+/* ==========================================================================
+   39. The institution: the home page's sections (hm-*) and the institution
+   pages (ip-*: The Institution, Works, People, Archive, Journal, Commissions).
+   Built from the press proof's pieces in section 37: pressed ink, red-pencil
+   notes, tape. Phones first; wider screens at the end.
+   ========================================================================== */
+.ip-head,
+.ip-quote,
+.hm-archive {
+  --px-paper: #f8f7f5;
+  background: var(--px-paper) url("../brand/cotton-paper.webp") 0 0 / 720px auto;
+  background-blend-mode: multiply;
+}
+
+/* ---------- Page head, pressed into cotton */
+.ip-head-in {
+  display: grid;
+  padding-top: 28px;
+  padding-bottom: 48px;
+}
+.ip-title {
+  margin-top: 26px;
+  font-size: clamp(42px, 11.4vw, 68px);
+  line-height: 0.98;
+  -webkit-text-stroke: 0;
+}
+.ip-title span {
+  display: block;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.ip-title .px-ink:not(.px-red),
+.ip-quote-text .px-ink:not(.px-red),
+.ip-pull .px-ink {
+  -webkit-text-stroke: 0.013em var(--press-ink);
+}
+.ip-intro {
+  margin-top: 26px;
+  max-width: 50ch;
+}
+.ip-intro p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.ip-intro p + p {
+  margin-top: 12px;
+}
+.ip-intro .ip-lead {
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.ip-pinned {
+  margin-top: 36px;
+}
+.ip-pinned img {
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* Section titles shared by these pages: serif, the last words in red */
+.ip-sec-head h2,
+.ip-wall-head h2,
+.hm-people-text h2,
+.ip-pillars h2 {
+  font-size: clamp(38px, 10vw, 60px);
+  line-height: 0.98;
+}
+.ip-sec-head em,
+.ip-wall-head em,
+.hm-people-text em,
+.hm-belief-title em,
+.hm-index em {
+  color: var(--red);
+}
+.ip-sec-head .px-note {
+  margin-top: 10px;
+  font-size: 26px;
+}
+
+/* ---------- Body text beside a photo (The Institution) */
+.ip-body {
+  padding: 56px 0 64px;
+}
+.ip-body-in {
+  display: grid;
+  gap: 32px;
+}
+.ip-photo img {
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.ip-text p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 52ch;
+}
+.ip-text p + p {
+  margin-top: 16px;
+}
+.ip-text .ip-pull {
+  margin-top: 32px;
+  font-family: var(--serif);
+  font-size: clamp(32px, 8.4vw, 50px);
+  line-height: 1.04;
+  max-width: 16ch;
+}
+.ip-pull span {
+  display: inline-block;
+  padding-bottom: 0.12em;
+}
+
+/* ---------- Pillars on the studio's red: what we do (home), our principles */
+.ip-pillars {
+  padding: 56px 0 64px;
+  background: var(--red);
+  color: var(--paper);
+}
+.ip-pillars h2 em {
+  color: var(--butter);
+}
+.ip-pillar-list {
+  display: grid;
+  margin-top: 32px;
+  list-style: none;
+}
+.ip-pillar-list li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  column-gap: 8px;
+  padding: 20px 0 24px;
+  border-top: 1px solid rgb(244 239 230 / 0.35);
+}
+.ip-pillar-list .num {
+  grid-row: span 2;
+  padding-top: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--butter);
+}
+.ip-pillar-list h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.05;
+}
+.ip-pillar-list .hm-pillar {
+  font-size: clamp(30px, 8vw, 46px); /* a step under the section title: a word on its own reads larger */
+}
+.ip-pillar-list p {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgb(244 239 230 / 0.85);
+  max-width: 40ch;
+}
+
+/* ---------- Ledger: a ruled, numbered list (what a page will hold) */
+.ip-ledger-sec {
+  padding: 56px 0 64px;
+}
+.ip-ledger-in {
+  display: grid;
+  gap: 28px;
+}
+.ip-ledger {
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+.ip-ledger li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.15;
+}
+.ip-ledger .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--red);
+}
+
+/* ---------- Journal: one blank page per section */
+.ip-notes {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+  list-style: none;
+}
+.ip-notes li {
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
+  padding: 18px 18px 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.ip-notes .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--red);
+}
+.ip-notes h3 {
+  margin-top: auto;
+  padding-top: 32px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1;
+}
+.ip-notes p {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ---------- The Works: the four collections, then the wall */
+.ip-collections {
+  padding: 48px 0 56px;
+}
+.ip-coll-list {
+  display: grid;
+  gap: 0 24px;
+  list-style: none;
+}
+.ip-coll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 18px 0 26px;
+  border-top: 1px solid var(--ink);
+}
+.ip-coll .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--red);
+}
+.ip-coll h2 {
+  margin-top: 14px;
+  font-size: 30px;
+  line-height: 1.05;
+}
+.ip-coll p {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.ip-coll .px-more {
+  margin-top: 16px;
+}
+.ip-coll .px-more:hover {
+  color: var(--red);
+}
+.ip-coll .px-note {
+  margin-top: 12px;
+  font-size: 26px;
+}
+.ip-coll.is-making h2 {
+  color: var(--ink-2);
+}
+.ip-wall-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px 24px;
+  margin-bottom: 24px;
+}
+.ip-wall-head p {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+.ip-wall-head .g-filter {
+  padding-bottom: 0;
+}
+
+/* ---------- A sentence pressed into cotton */
+.ip-quote {
+  padding: 64px 0 72px;
+  text-align: center;
+}
+.ip-quote-text {
+  max-width: 22ch;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-size: clamp(32px, 8.4vw, 60px);
+  line-height: 1.06;
+}
+.ip-quote-text span {
+  padding-bottom: 0.12em;
+}
+.ip-quote-act {
+  margin-top: 28px;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.ip-quote-act a {
+  color: var(--red);
+  border-bottom: 1px solid currentColor;
+}
+
+/* ---------- Continue to the next room */
+.ip-next {
+  height: auto; /* it's a <nav>, which the header's rule sets to 60px */
+  background: var(--ink);
+  color: var(--paper);
+}
+.ip-next a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 0 48px;
+}
+.ip-next .label {
+  color: rgb(244 239 230 / 0.6);
+}
+.ip-next-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  font-family: var(--serif);
+  font-size: clamp(44px, 12vw, 96px);
+  line-height: 1;
+  transition: color 0.3s var(--ease);
+}
+.ip-next-title .i {
+  width: 0.5em;
+  height: 0.5em;
+  transition: transform 0.4s var(--ease);
+}
+.ip-next a:hover .ip-next-title {
+  color: var(--butter);
+}
+.ip-next a:hover .i {
+  transform: translateX(0.12em);
+}
+
+.hm-lead-2 {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 52ch;
+}
+
+/* ---------- Home: our belief */
+.hm-belief {
+  padding: 64px 0 72px;
+}
+.hm-belief-in {
+  display: grid;
+  gap: 28px;
+}
+.hm-belief-title {
+  font-size: clamp(40px, 10.6vw, 64px);
+  line-height: 0.98;
+}
+.hm-big {
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.hm-belief-text p:not(.hm-big):not(.px-note),
+.hm-people-text p:not(.hm-big) {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+.hm-stand {
+  margin-top: 18px;
+}
+.hm-belief-photo {
+  position: relative;
+  justify-self: center;
+  width: 92%;
+  padding: 8px;
+  background: #fff;
+  transform: rotate(-2deg);
+  box-shadow:
+    0 1px 2px rgb(23 21 18 / 0.15),
+    0 22px 34px -16px rgb(23 21 18 / 0.45);
+}
+.hm-belief-photo img {
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* ---------- Home: the works table gets a line of text under its title */
+.px-table-head {
+  flex-wrap: wrap;
+}
+.hm-table-text {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgb(244 239 230 / 0.75);
+  max-width: 50ch;
+}
+
+/* ---------- Home: the people */
+.hm-people {
+  padding: 64px 0 72px;
+}
+.hm-people-in {
+  display: grid;
+  gap: 32px;
+}
+.hm-people-photo img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.hm-people-photo figcaption {
+  margin-top: 10px;
+  font-size: 26px;
+}
+.hm-people-text .hm-big {
+  margin-top: 20px;
+}
+
+/* ---------- Home: the archive, an index card from the drawer */
+.hm-archive {
+  padding: 64px 0 72px;
+}
+.hm-index {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 22px 30px;
+  /* a red rule under the heading, then pale blue lines */
+  background:
+    linear-gradient(var(--red), var(--red)) 0 52px / 100% 1.5px no-repeat,
+    repeating-linear-gradient(180deg, transparent 0 31px, rgb(70 120 180 / 0.2) 31px 32px) 0 52px / 100% calc(100% - 52px) no-repeat,
+    #fffefb;
+  transform: rotate(-1deg);
+  box-shadow:
+    0 1px 2px rgb(23 21 18 / 0.15),
+    0 26px 40px -18px rgb(23 21 18 / 0.45);
+}
+.hm-index-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 52px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.hm-index-tab .num {
+  order: 1;
+  color: var(--red);
+}
+.hm-index h2 {
+  padding-top: 18px;
+  font-size: clamp(32px, 8.4vw, 54px);
+  line-height: 1.05;
+}
+.hm-index p:not(.hm-index-tab):not(.px-note) {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--ink-2);
+}
+.hm-index-note {
+  margin: 4px 0 22px;
+}
+
+/* ---------- Home: the closing card carries two sentences, so it's set a touch smaller */
+#enquiry-home .px-card-title {
+  font-size: 7.2cqw;
+}
+
+/* ---------- Header: five rooms in the navbar on narrower desktops */
+@media (min-width: 1081px) and (max-width: 1320px) {
+  .logo {
+    grid-column: 1 / span 2;
+  }
+  .links {
+    grid-column: 3 / span 7;
+    gap: 22px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- Home: the two opening buttons share one row on phones (no arrow, tighter padding;
+   they still wrap on the very narrowest screens) */
+@media (max-width: 560px) {
+  .px-foot .px-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 0 10px;
+  }
+  .px-foot .px-actions .arr {
+    display: none;
+  }
+}
+
+/* ---------- Two columns where there's room */
+@media (min-width: 561px) {
+  .ip-coll-list,
+  .ip-notes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Wider screens */
+@media (min-width: 861px) {
+  .ip-head-in {
+    padding-top: 36px;
+    padding-bottom: 72px;
+  }
+  .ip-head-in.has-photo {
+    grid-template-columns: minmax(0, 1fr) clamp(240px, 24vw, 340px);
+    column-gap: 6vw;
+  }
+  .ip-head-in.has-photo > :not(.ip-pinned) {
+    grid-column: 1;
+  }
+  .ip-pinned {
+    position: relative;
+    top: auto;
+    right: auto;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    justify-self: stretch;
+    width: auto;
+    margin: 56px 0 0;
+  }
+  .ip-title {
+    margin-top: 40px;
+    font-size: clamp(60px, 6.8vw, 116px);
+  }
+  .ip-intro {
+    margin-top: 36px;
+  }
+  .ip-intro .ip-lead {
+    font-size: 22px;
+  }
+  .ip-sec-head h2,
+  .ip-wall-head h2,
+  .hm-people-text h2,
+  .ip-pillars h2 {
+    font-size: clamp(52px, 5.2vw, 84px);
+  }
+  .ip-body,
+  .ip-pillars,
+  .ip-ledger-sec,
+  .hm-belief,
+  .hm-people,
+  .hm-archive {
+    padding: 96px 0 104px;
+  }
+  .ip-body-in,
+  .ip-ledger-in,
+  .hm-belief-in,
+  .hm-people-in {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+  .ip-photo {
+    grid-column: 1 / span 6;
+  }
+  .ip-text {
+    grid-column: 8 / span 5;
+    align-self: center;
+  }
+  .ip-pillar-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 48px;
+  }
+  .ip-pillar-list.is-five {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .ip-pillar-list li {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    padding: 20px 24px 8px 0;
+  }
+  .ip-pillar-list li + li {
+    padding-left: 20px;
+    border-left: 1px solid rgb(244 239 230 / 0.35);
+  }
+  .ip-pillar-list .num {
+    grid-row: auto;
+    padding: 0 0 28px;
+  }
+  .ip-pillar-list h3 {
+    font-size: clamp(26px, 2.2vw, 34px);
+  }
+  .ip-pillar-list .hm-pillar {
+    font-size: clamp(40px, 4vw, 64px);
+  }
+  .ip-sec-head {
+    grid-column: 1 / span 5;
+  }
+  .ip-ledger {
+    grid-column: 7 / span 6;
+  }
+  .ip-ledger li {
+    font-size: 30px;
+    padding: 18px 0;
+  }
+  .ip-notes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .ip-notes li {
+    min-height: 260px;
+    padding: 22px 24px 28px;
+  }
+  .ip-notes h3 {
+    font-size: 40px;
+  }
+  .ip-collections {
+    padding: 72px 0 88px;
+  }
+  .ip-coll-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .ip-coll h2 {
+    font-size: clamp(28px, 2.4vw, 36px);
+  }
+  .ip-wall-head {
+    margin-bottom: 36px;
+  }
+  .ip-quote {
+    padding: 112px 0 120px;
+  }
+  .ip-next a {
+    padding: 56px 0 64px;
+  }
+  .hm-lead-2 {
+    font-size: 16px;
+  }
+  .hm-belief-title {
+    grid-column: 1 / span 8;
+    font-size: clamp(56px, 5.8vw, 92px);
+  }
+  .hm-belief-text {
+    grid-column: 1 / span 6;
+    margin-top: 24px;
+  }
+  .hm-big {
+    font-size: clamp(26px, 2.2vw, 32px);
+  }
+  .hm-belief-photo {
+    grid-column: 8 / span 5;
+    grid-row: 2;
+    align-self: start;
+    width: auto;
+    margin-top: 32px;
+    transform: rotate(2.5deg);
+  }
+  .hm-people-photo {
+    grid-column: 1 / span 6;
+  }
+  .hm-people-text {
+    grid-column: 8 / span 5;
+    align-self: center;
+  }
+  .hm-index {
+    padding: 0 56px 44px;
+  }
+  .hm-index-tab {
+    font-size: 11px;
   }
 }

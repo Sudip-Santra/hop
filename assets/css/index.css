@@ -6320,6 +6320,12 @@ form.co {
   transform: rotate(-6deg);
   z-index: 1;
 }
+/* On the narrowest phones the note wraps to four lines, so it sits higher to clear the offcut */
+@media (max-width: 400px) {
+  .sb-collage .sb-sticky {
+    top: 41%;
+  }
+}
 /* A torn offcut of cotton with a red-pencil note */
 .sb-offcut {
   position: absolute;

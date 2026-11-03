@@ -6192,6 +6192,13 @@ form.co {
   background: var(--px-paper) url("../brand/cotton-paper.webp") 0 0 / 720px auto;
   background-blend-mode: multiply;
 }
+/* The navbar takes the wall's warmer paper, so the two read as one sheet (the open phone menu still turns it white) */
+.page-home-2 header {
+  background-color: #f4efe6;
+}
+html.menu-lock .page-home-2 header {
+  background: #fff;
+}
 .sb-eyebrow {
   font-family: var(--mono);
   font-size: 11px;
@@ -6351,13 +6358,11 @@ form.co {
   transform: none;
 }
 
-/* ---------- The board: kraft with a little speckle */
+/* ---------- The board: a warm cream sheet with the cotton's fibres */
 .sb-board {
   padding: 52px 0 60px;
-  background:
-    radial-gradient(rgb(23 21 18 / 0.08) 1px, transparent 1.5px) 0 0 / 9px 9px,
-    radial-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1.5px) 4px 5px / 13px 13px,
-    #b9966b;
+  background: #f4e5d0 url("../brand/cotton-paper.webp") 0 0 / 720px auto;
+  background-blend-mode: multiply;
   color: var(--ink);
 }
 .sb-board-head {

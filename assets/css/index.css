@@ -6548,6 +6548,375 @@ form.co {
   }
 }
 
+/* ---------- Home-2 with the institution's content: the sections after the wall.
+   The belief on a notebook page, what we do on sticky notes, the people as a taped
+   photo, the archive as a manila folder. Phones first; wider screens at the end. */
+.sb-lead-2 {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+/* The wall's two buttons share one row on phones, as on the live home */
+@media (max-width: 560px) {
+  .sb-wall-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 0 10px;
+  }
+  .sb-wall-actions .arr {
+    display: none;
+  }
+}
+.sb-belief-title em,
+.sb-people-text em,
+.sb-folder em {
+  color: var(--red);
+}
+
+/* Our belief */
+.sb-belief {
+  padding: 64px 0 72px;
+}
+.sb-belief-in {
+  display: grid;
+  gap: 36px;
+}
+.sb-belief-title {
+  font-size: clamp(40px, 10.6vw, 64px);
+  line-height: 0.98;
+}
+/* A notebook page: pale blue lines and a red margin rule. Everything steps in whole lines (28px,
+   32px wider), and the lines start 6px (8px) above the text, so each line of text sits on a rule */
+.sb-page {
+  position: relative;
+  padding: 41px 20px 26px 48px;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 27px, rgb(70 120 180 / 0.2) 27px 28px) 0 35px / 100% calc(100% - 35px) no-repeat,
+    #fffefb;
+  /* kept square: tilted, the hairline rules break up on screen */
+  box-shadow:
+    0 1px 2px rgb(23 21 18 / 0.15),
+    0 22px 30px -16px rgb(23 21 18 / 0.4);
+}
+.sb-page p {
+  font-size: 15.5px;
+  line-height: 28px;
+  color: var(--ink-2);
+}
+/* The margin rule as its own element, so it stays one clean line when the page is tilted */
+.sb-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 34px;
+  width: 1.5px;
+  background: rgb(165 30 35 / 0.45);
+}
+/* And the red head rule across the top: as far from the top as the margin rule is from the left,
+   and one line above the first line of text */
+.sb-page::after {
+  content: "";
+  position: absolute;
+  top: 34px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: rgb(165 30 35 / 0.45);
+}
+.sb-page p + p {
+  margin-top: 28px; /* skip one line between paragraphs */
+}
+.sb-page .sb-page-big {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--ink);
+}
+.sb-page .sb-page-note {
+  font-size: 28px;
+  line-height: 28px;
+  transform: none;
+}
+.sb-belief-snap {
+  position: relative;
+  justify-self: end;
+  width: 74%;
+  padding: 7px;
+  transform: rotate(-3deg);
+}
+.sb-belief-snap img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* What we do: sticky notes on the red wall */
+.sb-do {
+  padding: 56px 0 72px;
+  background: var(--red);
+  color: var(--paper);
+}
+.sb-do h2 {
+  font-size: clamp(40px, 10vw, 60px);
+  line-height: 0.98;
+}
+.sb-do h2 em {
+  color: var(--butter);
+}
+.sb-notes {
+  display: grid;
+  gap: 32px;
+  margin-top: 40px;
+  list-style: none;
+}
+.sb-note {
+  position: relative;
+  width: 92%;
+  padding: 26px 20px 24px;
+  background: var(--note);
+  color: var(--ink);
+  transform: rotate(var(--tilt));
+  box-shadow: 0 14px 20px -10px rgb(0 0 0 / 0.45);
+}
+.sb-note:nth-child(even) {
+  justify-self: end;
+}
+.sb-note .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--red);
+}
+.sb-note h3 {
+  margin-top: 12px;
+  font-size: clamp(34px, 9vw, 44px);
+  line-height: 1;
+}
+.sb-note p {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: rgb(23 21 18 / 0.78);
+}
+
+/* The works: the board's title now has a line of text under it */
+.sb-board-head {
+  flex-wrap: wrap;
+}
+.sb-board-text {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgb(23 21 18 / 0.75);
+  max-width: 50ch;
+}
+
+/* The people */
+.sb-people {
+  padding: 64px 0 72px;
+}
+.sb-people-in {
+  display: grid;
+  gap: 40px;
+}
+.sb-people-snap {
+  position: relative;
+  padding: 8px 8px 0;
+  transform: rotate(-2deg);
+}
+.sb-people-snap img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.sb-people-snap figcaption {
+  padding: 8px 4px 10px;
+  font-size: 26px;
+  transform: none;
+}
+.sb-people-text h2 {
+  font-size: clamp(40px, 10vw, 60px);
+  line-height: 0.98;
+}
+.sb-people-text .sb-people-big {
+  margin-top: 20px;
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.sb-people-text p {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+
+/* The archive: a manila folder on the dark desk */
+.sb-archive {
+  padding: 72px 0 80px;
+  background: #1b1916;
+}
+.sb-folder {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 30px 22px 34px;
+  background: linear-gradient(170deg, #e2c992, #d6ba80);
+  color: var(--ink);
+  transform: rotate(-1deg);
+  box-shadow: 0 30px 40px -20px rgb(0 0 0 / 0.7);
+}
+.sb-folder-tab {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 30px;
+  padding: 0 22px;
+  background: #e2c992;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  clip-path: polygon(0 100%, 9% 0, 91% 0, 100% 100%);
+}
+.sb-folder-tab .num {
+  color: var(--red);
+}
+.sb-folder h2 {
+  font-size: clamp(32px, 8.4vw, 54px);
+  line-height: 1.05;
+}
+.sb-folder p:not(.sb-folder-tab):not(.px-note) {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(23 21 18 / 0.78);
+}
+.sb-folder-note {
+  margin: 8px 0 22px;
+}
+
+/* The closing sheet: the sticky note sits at the foot, clear of the longer title */
+.sb-sheet-title {
+  font-size: clamp(38px, 10.4vw, 60px);
+}
+
+@media (min-width: 561px) {
+  .sb-notes {
+    grid-template-columns: 1fr 1fr;
+  }
+  .sb-note {
+    width: auto;
+  }
+}
+
+@media (min-width: 861px) {
+  .sb-belief,
+  .sb-people {
+    padding: 96px 0 104px;
+  }
+  .sb-do {
+    padding: 88px 0 104px;
+  }
+  .sb-archive {
+    padding: 112px 0 112px;
+  }
+  .sb-belief-in,
+  .sb-people-in {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+  .sb-belief-title {
+    grid-column: 1 / span 8;
+    font-size: clamp(56px, 5.8vw, 92px);
+  }
+  .sb-page {
+    grid-column: 1 / span 6;
+    padding: 55px 36px 32px 64px;
+    background:
+      repeating-linear-gradient(180deg, transparent 0 31px, rgb(70 120 180 / 0.2) 31px 32px) 0 47px / 100% calc(100% - 47px) no-repeat,
+      #fffefb;
+  }
+  .sb-page::before {
+    left: 46px;
+  }
+  .sb-page::after {
+    top: 46px;
+  }
+  .sb-page p + p {
+    margin-top: 32px;
+  }
+  .sb-page p {
+    font-size: 16px;
+    line-height: 32px;
+  }
+  .sb-page .sb-page-big {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .sb-page .sb-page-note {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .sb-belief-snap {
+    grid-column: 8 / span 5;
+    align-self: start;
+    justify-self: stretch;
+    width: auto;
+    margin-top: 48px;
+    transform: rotate(3deg);
+  }
+  .sb-do h2 {
+    font-size: clamp(56px, 5.6vw, 88px);
+  }
+  .sb-notes {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .sb-note {
+    padding: 30px 22px 30px;
+  }
+  .sb-note:nth-child(even) {
+    margin-top: 28px;
+  }
+  .sb-note h3 {
+    font-size: clamp(34px, 3vw, 46px);
+  }
+  .sb-people-snap {
+    grid-column: 1 / span 6;
+  }
+  .sb-people-text {
+    grid-column: 8 / span 5;
+    align-self: center;
+  }
+  .sb-people-text h2 {
+    font-size: clamp(56px, 5.6vw, 88px);
+  }
+  .sb-people-text .sb-people-big {
+    font-size: clamp(26px, 2.2vw, 32px);
+  }
+  .sb-folder {
+    padding: 48px 56px 52px;
+  }
+  .sb-folder-tab {
+    font-size: 11px;
+  }
+  .sb-sheet-title {
+    font-size: clamp(48px, 4.6vw, 64px);
+  }
+  .sb-sticky-end {
+    top: auto;
+    bottom: 40px;
+    right: 36px;
+  }
+}
+
 /* ==========================================================================
    39. The institution: the home page's sections (hm-*) and the institution
    pages (ip-*: The Institution, Works, People, Archive, Journal, Commissions).

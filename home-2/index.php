@@ -37,11 +37,10 @@ $prints = [
   <div class="sb-wall">
     <div class="wrap sb-wall-in">
       <div class="sb-copy">
-        <p class="sb-eyebrow">Human Made · House of Press, Mumbai</p>
+        <p class="sb-eyebrow">House of Press, Mumbai</p>
         <h1 class="sb-title">
-          <span class="px-ink">Cards that leave</span>
-          <span class="px-ink">a lasting</span>
-          <span class="px-ink px-red">impression.</span>
+          <span class="px-ink">Human made.</span>
+          <span class="px-ink px-red">Honestly kept.</span>
         </h1>
         <p class="sb-lead">A celebration of the human hand, the mind behind the design, and the honesty of the craft.</p>
         <p class="sb-lead-2">We are an institution dedicated to keeping human craftsmanship alive. Through print, objects, art and collaboration, we preserve traditional practices, explore new possibilities and celebrate the people behind the work.</p>
@@ -60,7 +59,7 @@ $prints = [
           <?php endforeach; ?>
         </div>
         <p class="sb-sticky">craft is king, always</p>
-        <p class="sb-offcut"><span class="px-note">human made, honestly kept</span></p>
+        <p class="sb-offcut"><span class="px-note">600 gsm cotton, pressed deep</span></p>
       </div>
     </div>
   </div>
@@ -178,7 +177,7 @@ $prints = [
           <a href="<?= $base ?>commissions/" class="btn red">Discuss a commission <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
           <a href="<?= $base ?>business-cards/" class="btn line">Visit the Shop</a>
         </div>
-        <p class="sb-sticky sb-sticky-end" aria-hidden="true">Human Made. Honestly Kept.</p>
+        <p class="sb-sticky sb-sticky-end" aria-hidden="true">we stand behind the work</p>
       </div>
     </div>
   </section>

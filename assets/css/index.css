@@ -6234,11 +6234,11 @@ form.co {
 .sb-wall-in {
   display: grid;
   gap: 36px;
-  padding-top: 28px;
+  padding-top: 30px;
   padding-bottom: 48px;
 }
 .sb-title {
-  margin-top: 22px;
+  margin-top: 12px;
   font-size: clamp(48px, 13.6vw, 76px);
   line-height: 0.95;
   -webkit-text-stroke: 0;
@@ -6248,8 +6248,8 @@ form.co {
   padding-bottom: 0.12em;
   margin-bottom: -0.12em;
 }
-.sb-title .px-ink:not(.px-red) {
-  -webkit-text-stroke: 0.013em var(--press-ink);
+.sb-title .px-ink {
+  -webkit-text-stroke: 0.013em var(--press-ink); /* both lines, the red as heavy as the black */
 }
 .sb-lead {
   margin-top: 20px;
@@ -6490,7 +6490,7 @@ form.co {
     grid-column: 1 / span 6;
   }
   .sb-title {
-    margin-top: 30px;
+    margin-top: 18px;
     font-size: clamp(64px, 7.4vw, 124px);
   }
   .sb-lead {

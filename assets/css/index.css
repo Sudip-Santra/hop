@@ -6558,15 +6558,21 @@ form.co {
   color: var(--ink-2);
   max-width: 50ch;
 }
-/* The wall's two buttons share one row on phones, as on the live home */
+/* The wall's and the closing sheet's two buttons share one row on phones, as on the live home */
 @media (max-width: 560px) {
-  .sb-wall-actions .btn {
+  .sb-wall-actions .btn,
+  .sb-sheet .sb-actions .btn {
     flex: 1 1 auto;
     justify-content: center;
     padding: 0 10px;
   }
-  .sb-wall-actions .arr {
+  .sb-wall-actions .arr,
+  .sb-sheet .sb-actions .arr {
     display: none;
+  }
+  .sb-sheet {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
 .sb-belief-title em,

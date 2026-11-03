@@ -1,5 +1,5 @@
 <?php
-// Announcement bar + sticky header (+ mobile menu). The link for $page gets aria-current.
+// Sticky header (+ mobile menu). The link for $page gets aria-current.
 $nav = [
   'business-cards' => ['Business cards', $base . 'business-cards/'],
   'about'    => ['About', $base . 'about/'],
@@ -8,13 +8,6 @@ $nav = [
 ];
 $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi House of Press, I'd like to know more about your business cards.");
 ?>
-<div class="bar">
-  <div class="wrap">
-    <span class="label">Free delivery across India</span>
-    <span class="label hide-sm">A proof on WhatsApp before we print · Pressed by hand on cotton paper</span>
-  </div>
-</div>
-
 <header>
   <nav class="wrap grid">
     <a href="/" class="logo" aria-label="House of Press - home"><img class="logo-svg" src="<?= $base ?>assets/logo.svg" alt="House of Press"></a>

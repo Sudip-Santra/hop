@@ -381,37 +381,8 @@ em {
 }
 
 /* ==========================================================================
-   06. Component: Announcement bar & header nav
+   06. Component: Header nav
    ========================================================================== */
-.bar {
-  background: var(--ink);
-  color: var(--paper);
-}
-.bar .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 34px;
-  gap: 16px;
-}
-.bar .label {
-  font-family: var(--sans);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 13px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.bar .dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--red);
-  margin-right: 10px;
-  transform: translateY(-1px);
-}
-
 header {
   position: sticky;
   top: 0;
@@ -534,7 +505,7 @@ nav {
   bottom: 0;
   top: var(--m-top, 61px);
   z-index: 75; /* above the cart button */
-  background: var(--paper);
+  background: #fff;
   overflow-y: auto;
   overscroll-behavior: contain;
   border-top: 1px solid var(--line);
@@ -1566,15 +1537,6 @@ form h3 {
   .nav-cta {
     grid-column: 8 / span 5;
   }
-  .bar .hide-sm {
-    display: none;
-  }
-  .bar .wrap {
-    justify-content: center;
-  }
-  .bar .label {
-    text-align: center;
-  }
   /* The video fills the screen under the header, edge to edge, with the eyebrow and headline
      over its darkened foot; the words, buttons and facts follow below. The text's wrappers step
      aside (display: contents) so the eyebrow and headline can share the video's grid rows. */
@@ -1680,7 +1642,6 @@ form h3 {
 @media (max-width: 560px) {
   /* On a phone: narrower side margins for the header (every page) and the home, about, gallery
      and contact pages, so the photos and words get more of the screen */
-  .bar,
   header,
   .m-menu,
   .page-home main,
@@ -3504,20 +3465,14 @@ form.c-form {
   padding-bottom: 112px;
   align-items: start;
 }
-/* Business cards page sits on white; the header and mobile menu follow so there's no cream strip */
+/* Business cards page sits on white; the header follows so there's no cream strip */
 .page-business-cards,
 .page-business-cards header,
-.page-business-cards .m-menu,
 .page-gallery,
-.page-gallery .m-menu,
 .page-terms,
-.page-terms .m-menu,
 .page-privacy,
-.page-privacy .m-menu,
 .page-shipping-and-returns,
-.page-shipping-and-returns .m-menu,
-.page-checkout,
-.page-checkout .m-menu {
+.page-checkout {
   background: #fff;
 }
 .bc-info {
@@ -5882,7 +5837,7 @@ form.co {
 /* ---------- Proof sheet */
 .px-proof {
   position: relative;
-  min-height: calc(100svh - 95px);
+  min-height: calc(100svh - 61px); /* the screen under the header */
   display: flex;
 }
 .px-sheet {

@@ -31,6 +31,7 @@ $pages = [
     ['/shipping-and-returns/', 'shipping-and-returns/index.php', 'shipping-and-returns/index.html'],
     ['/privacy/',  'privacy/index.php',  'privacy/index.html'],
     ['/terms/',    'terms/index.php',    'terms/index.html'],
+    ['/home-2/',   'home-2/index.php',   'home-2/index.html'], // second home page, to compare (noindex)
 ];
 
 function render(string $url, string $src): string

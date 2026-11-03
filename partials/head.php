@@ -4,6 +4,7 @@
  * Expects: $page (nav key), $base ('' at root, '../' one level down), $title, $description.
  * Optional: $jsonLd, an array of schema.org objects printed as structured data;
  *           $preloadImage, the above-the-fold image to fetch first (the LCP).
+ *           $noindex, true for a page kept out of search (a draft to compare).
  */
 require_once __DIR__ . '/config.php';
 
@@ -18,7 +19,7 @@ $self = '/' . ($page === 'home' ? '' : $page . '/');
 <title><?= e($title) ?></title>
 <meta name="description" content="<?= e($description) ?>">
 <link rel="canonical" href="<?= SITE_URL . $self ?>">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="<?= empty($noindex) ? 'index, follow' : 'noindex, nofollow' ?>">
 <meta name="theme-color" content="#f4efe6">
 <link rel="icon" href="<?= $base ?>assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">

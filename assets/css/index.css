@@ -1645,6 +1645,7 @@ form h3 {
   header,
   .m-menu,
   .page-home main,
+  .page-home-2 main,
   .page-about main,
   .page-gallery main,
   .page-contact main {
@@ -6170,5 +6171,367 @@ form.co {
   }
   .px-end {
     padding: 80px 0 96px;
+  }
+}
+
+/* ==========================================================================
+   38. Home, second version (/home-2/): the studio wall as a scrapbook. The
+   pressed headline (section 37's .px-ink) beside a collage of taped and pinned
+   photos, ink chips, a sticky note and a torn offcut; prints pinned to a kraft
+   board with tape labels; the invitation on a torn sheet. Phones first.
+   ========================================================================== */
+.sb-wall,
+.sb-end {
+  --px-paper: #f4efe6;
+  background: var(--px-paper) url("../brand/cotton-paper.webp") 0 0 / 720px auto;
+  background-blend-mode: multiply;
+}
+.sb-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.sb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+/* A red pushpin */
+.sb-pin {
+  position: absolute;
+  z-index: 2;
+  top: -7px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 30%, #e0545a, var(--red) 55%, #6d1013);
+  box-shadow: 2px 4px 4px rgb(23 21 18 / 0.35);
+}
+/* Butter-yellow sticky note in handwriting */
+.sb-sticky {
+  padding: 16px 14px;
+  background: #f3dc8c;
+  font-family: "Sacramento", cursive;
+  font-size: 24px;
+  line-height: 1.05;
+  color: var(--ink);
+  box-shadow: 0 10px 16px -8px rgb(23 21 18 / 0.35);
+}
+
+/* ---------- The wall */
+.sb-wall-in {
+  display: grid;
+  gap: 36px;
+  padding-top: 28px;
+  padding-bottom: 48px;
+}
+.sb-title {
+  margin-top: 22px;
+  font-size: clamp(48px, 13.6vw, 76px);
+  line-height: 0.95;
+  -webkit-text-stroke: 0;
+}
+.sb-title span {
+  display: block;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.sb-title .px-ink:not(.px-red) {
+  -webkit-text-stroke: 0.013em var(--press-ink);
+}
+.sb-lead {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 42ch;
+}
+
+/* The collage: everything placed in % of the box, so it keeps its shape at any width */
+.sb-collage {
+  position: relative;
+  height: 430px;
+}
+.sb-snap {
+  position: absolute;
+  padding: 7px 7px 26px;
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgb(23 21 18 / 0.15),
+    0 18px 28px -14px rgb(23 21 18 / 0.45);
+}
+.sb-snap img {
+  height: auto;
+  aspect-ratio: 4 / 5;
+}
+.sb-snap-a {
+  left: 2%;
+  top: 4%;
+  width: 54%;
+  transform: rotate(-4deg);
+}
+.sb-snap-b {
+  right: 1%;
+  top: 0;
+  width: 44%;
+  transform: rotate(5deg);
+}
+.sb-chips {
+  position: absolute;
+  left: 4%;
+  bottom: 2%;
+  display: flex;
+}
+.sb-chip {
+  display: flex;
+  flex-direction: column;
+  width: 64px;
+  margin-right: -10px;
+  padding: 5px 5px 0;
+  background: #fff;
+  transform: rotate(var(--tilt));
+  box-shadow: 0 8px 12px -6px rgb(23 21 18 / 0.35);
+}
+.sb-chip i {
+  display: block;
+  height: 46px;
+  background: var(--chip);
+}
+.sb-chip b {
+  padding: 5px 0 6px;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sb-collage .sb-sticky {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  width: 34%;
+  transform: rotate(-6deg);
+  z-index: 1;
+}
+/* A torn offcut of cotton with a red-pencil note */
+.sb-offcut {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  width: 52%;
+  padding: 16px 14px 18px;
+  background: #fbfaf7 url("../brand/cotton-paper.webp") 0 0 / 400px auto;
+  background-blend-mode: multiply;
+  transform: rotate(3deg);
+  clip-path: polygon(0.0% 2.3%, 7.1% 2.8%, 14.3% 4.6%, 21.4% 2.3%, 28.6% 2.5%, 35.7% 2.9%, 42.9% 0.9%, 50.0% 2.6%, 57.1% 3.1%, 64.3% 4.0%, 71.4% 0.5%, 78.6% 1.5%, 85.7% 0.5%, 92.9% 4.0%, 100.0% 3.5%, 100.0% 95.8%, 92.9% 97.8%, 85.7% 97.7%, 78.6% 99.8%, 71.4% 98.8%, 64.3% 99.0%, 57.1% 99.7%, 50.0% 97.4%, 42.9% 99.9%, 35.7% 99.2%, 28.6% 96.9%, 21.4% 96.7%, 14.3% 95.2%, 7.1% 95.1%, 0.0% 99.8%);
+  filter: drop-shadow(0 6px 6px rgb(23 21 18 / 0.2));
+}
+.sb-offcut .px-note {
+  display: block;
+  font-size: 24px;
+  transform: none;
+}
+
+/* ---------- The board: kraft with a little speckle */
+.sb-board {
+  padding: 52px 0 60px;
+  background:
+    radial-gradient(rgb(23 21 18 / 0.08) 1px, transparent 1.5px) 0 0 / 9px 9px,
+    radial-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1.5px) 4px 5px / 13px 13px,
+    #b9966b;
+  color: var(--ink);
+}
+.sb-board-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+.sb-board-head h2 {
+  font-size: clamp(40px, 11vw, 60px);
+}
+.sb-board-head em {
+  color: var(--red);
+}
+.sb-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+.sb-more:hover {
+  color: var(--red);
+}
+.sb-prints {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 16px;
+  margin-top: 36px;
+}
+.sb-print {
+  overflow: visible; /* over .work-tile's: the pin and the label sit outside the print */
+  padding: 7px;
+  background: #fff;
+  color: var(--ink);
+  transform: rotate(var(--tilt));
+  box-shadow: 0 16px 24px -14px rgb(23 21 18 / 0.55);
+  transition: transform 0.45s var(--ease);
+}
+.sb-print:nth-child(even) {
+  margin-top: 22px;
+}
+/* Two by two on a phone: the fifth waits for wider screens */
+@media (max-width: 860px) {
+  .sb-print:nth-child(5) {
+    display: none;
+  }
+}
+.sb-print:hover,
+.sb-print:focus-visible {
+  transform: rotate(0deg) translateY(-6px);
+}
+.sb-print img {
+  height: auto;
+  aspect-ratio: 4 / 5;
+}
+/* The name on a strip of masking tape across the foot */
+.sb-label {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  padding: 4px 12px 2px;
+  background: rgb(240 226 190 / 0.92);
+  font-family: "Sacramento", cursive;
+  font-size: 21px;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 1px 2px rgb(23 21 18 / 0.15);
+}
+
+/* ---------- The invitation */
+.sb-end {
+  padding: 56px 0 72px;
+}
+.sb-sheet {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 44px;
+  background: #fbfaf7 url("../brand/cotton-paper.webp") 0 0 / 600px auto;
+  background-blend-mode: multiply;
+  transform: rotate(-1deg);
+  clip-path: polygon(0.0% 0.5%, 2.8% 0.2%, 5.6% 1.0%, 8.3% 0.1%, 11.1% 0.9%, 13.9% 0.6%, 16.7% 0.1%, 19.4% 0.8%, 22.2% 0.1%, 25.0% 0.7%, 27.8% 0.1%, 30.6% 0.1%, 33.3% 0.7%, 36.1% 1.3%, 38.9% 0.2%, 41.7% 0.4%, 44.4% 1.0%, 47.2% 1.5%, 50.0% 0.9%, 52.8% 0.6%, 55.6% 1.6%, 58.3% 0.1%, 61.1% 1.4%, 63.9% 0.5%, 66.7% 0.2%, 69.4% 0.2%, 72.2% 0.5%, 75.0% 1.3%, 77.8% 0.3%, 80.6% 0.9%, 83.3% 1.0%, 86.1% 0.6%, 88.9% 0.9%, 91.7% 0.1%, 94.4% 0.1%, 97.2% 0.3%, 100.0% 1.1%, 100.0% 98.4%, 97.2% 99.0%, 94.4% 98.9%, 91.7% 99.9%, 88.9% 98.9%, 86.1% 99.2%, 83.3% 98.5%, 80.6% 98.7%, 77.8% 99.3%, 75.0% 99.1%, 72.2% 99.0%, 69.4% 98.9%, 66.7% 99.5%, 63.9% 98.6%, 61.1% 99.1%, 58.3% 98.8%, 55.6% 98.9%, 52.8% 99.9%, 50.0% 99.2%, 47.2% 99.8%, 44.4% 98.8%, 41.7% 99.3%, 38.9% 99.8%, 36.1% 98.4%, 33.3% 99.5%, 30.6% 98.8%, 27.8% 98.6%, 25.0% 99.2%, 22.2% 99.1%, 19.4% 99.6%, 16.7% 98.9%, 13.9% 98.7%, 11.1% 99.5%, 8.3% 99.3%, 5.6% 99.1%, 2.8% 99.5%, 0.0% 99.3%);
+}
+.sb-sheet-note {
+  font-size: 26px;
+}
+.sb-sheet-title {
+  margin-top: 12px;
+  font-size: clamp(42px, 11.5vw, 64px);
+  line-height: 0.98;
+  -webkit-text-stroke: 0;
+}
+.sb-sheet-title span {
+  padding-bottom: 0.12em;
+}
+.sb-sheet-title .px-ink:not(.px-red) {
+  -webkit-text-stroke: 0.013em var(--press-ink);
+}
+.sb-sheet > p:not(.px-note):not(.sb-sticky) {
+  margin-top: 16px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 44ch;
+}
+.sb-sticky-end {
+  display: none;
+}
+
+/* ---------- Wider screens: the collage beside the words */
+@media (min-width: 861px) {
+  .sb-wall {
+    min-height: calc(100svh - 61px);
+    display: flex;
+  }
+  .sb-wall-in {
+    width: 100%;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+  .sb-copy {
+    grid-column: 1 / span 6;
+  }
+  .sb-title {
+    margin-top: 30px;
+    font-size: clamp(64px, 7.4vw, 124px);
+  }
+  .sb-lead {
+    font-size: 18px;
+  }
+  .sb-collage {
+    grid-column: 7 / span 6;
+    height: min(72vh, 620px);
+  }
+  .sb-chip {
+    width: 78px;
+  }
+  .sb-chip i {
+    height: 58px;
+  }
+  .sb-chip b {
+    font-size: 9px;
+  }
+  .sb-sticky {
+    font-size: 28px;
+  }
+  .sb-offcut .px-note {
+    font-size: 30px;
+  }
+  .sb-board {
+    padding: 80px 0 96px;
+  }
+  .sb-board-head h2 {
+    font-size: clamp(56px, 5.6vw, 88px);
+  }
+  .sb-prints {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 28px;
+    margin-top: 48px;
+  }
+  .sb-label {
+    font-size: 24px;
+  }
+  .sb-end {
+    padding: 88px 0 104px;
+  }
+  .sb-sheet {
+    padding: 56px 64px 60px;
+  }
+  .sb-sheet-note {
+    font-size: 32px;
+  }
+  .sb-sticky-end {
+    display: block;
+    position: absolute;
+    right: 40px;
+    top: 44px;
+    width: 150px;
+    transform: rotate(6deg);
   }
 }

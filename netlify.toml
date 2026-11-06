@@ -18,11 +18,15 @@
   to = "/business-cards/"
   status = 301
 
-# Section URLs live without a trailing slash (relative links depend on it)
+# The old How to order section: its address goes to the home page
+[[redirects]]
+  from = "/how-to-order"
+  to = "/"
+  status = 301
 
 [[redirects]]
   from = "/how-to-order/"
-  to = "/how-to-order"
+  to = "/"
   status = 301
 
 # Old addresses
@@ -43,7 +47,28 @@
 
 [[redirects]]
   from = "/about.html"
-  to = "/about/"
+  to = "/institution/"
+  status = 301
+
+# About became The Institution, and the Gallery became The Works
+[[redirects]]
+  from = "/about/*"
+  to = "/institution/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/institution/"
+  status = 301
+
+[[redirects]]
+  from = "/gallery/*"
+  to = "/works/"
+  status = 301
+
+[[redirects]]
+  from = "/gallery"
+  to = "/works/"
   status = 301
 
 [[redirects]]

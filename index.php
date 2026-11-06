@@ -2,279 +2,224 @@
 $page        = 'home';
 $base        = '';
 $preloadImage = 'assets/videos/hero-poster.jpg';
-$title       = 'House of Press — Letterpress Business Cards in Mumbai';
-$description = 'Letterpress business and brand cards pressed by hand into thick cotton paper in Mumbai. Custom designs, a WhatsApp proof first, and free delivery across India.';
-
-// /how-to-order opens this page at that section (see .htaccess / router.php)
-$sections = [
-    'how-to-order' => 'How to order',
-];
-$slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
-if (isset($sections[$slug])) {
-    $title = $sections[$slug] . ' — House of Press, letterpress business cards';
-}
+$title       = 'House of Press - Human Made. Craft and letterpress in Mumbai';
+$description = 'House of Press is an institution in Mumbai dedicated to the preservation, practice and advancement of human craftsmanship, through print, stationery, objects, art and collaboration.';
 
 // Structured data: lets search engines show the studio's address, hours and phone
 require_once __DIR__ . '/partials/config.php';
 $jsonLd = [
-    [
-        '@context' => 'https://schema.org',
-        '@type' => 'LocalBusiness',
-        '@id' => SITE_URL . '/#studio',
-        'name' => SITE_NAME,
-        'description' => $description,
-        'url' => SITE_URL . '/',
-        'logo' => SITE_URL . '/assets/logo.svg',
-        'image' => [SITE_URL . '/assets/og-image.png', SITE_URL . '/assets/videos/hero-poster.jpg'],
-        'telephone' => PHONE_TEL,
-        'email' => EMAIL,
-        'address' => [
-            '@type' => 'PostalAddress',
-            'streetAddress' => ADDRESS_STREET,
-            'addressLocality' => ADDRESS_AREA . ', ' . ADDRESS_CITY,
-            'addressRegion' => ADDRESS_REGION,
-            'postalCode' => ADDRESS_PIN,
-            'addressCountry' => 'IN',
-        ],
-        'geo' => ['@type' => 'GeoCoordinates', 'latitude' => GEO[0], 'longitude' => GEO[1]],
-        'hasMap' => MAPS_URL,
-        'openingHoursSpecification' => [[
-            '@type' => 'OpeningHoursSpecification',
-            'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-            'opens' => '09:00',
-            'closes' => '19:00',
-        ]],
-        'areaServed' => ['@type' => 'Country', 'name' => 'India'],
-        'knowsAbout' => ['Letterpress printing', 'Business cards', 'Brand cards', 'Blind debossing', 'Cotton paper'],
-        'sameAs' => ['https://instagram.com/' . INSTAGRAM],
+  [
+    '@context' => 'https://schema.org',
+    '@type' => 'LocalBusiness',
+    '@id' => SITE_URL . '/#studio',
+    'name' => SITE_NAME,
+    'description' => $description,
+    'url' => SITE_URL . '/',
+    'logo' => SITE_URL . '/assets/logo.svg',
+    'image' => [SITE_URL . '/assets/og-image.png', SITE_URL . '/assets/videos/hero-poster.jpg'],
+    'telephone' => PHONE_TEL,
+    'email' => EMAIL,
+    'address' => [
+      '@type' => 'PostalAddress',
+      'streetAddress' => ADDRESS_STREET,
+      'addressLocality' => ADDRESS_AREA . ', ' . ADDRESS_CITY,
+      'addressRegion' => ADDRESS_REGION,
+      'postalCode' => ADDRESS_PIN,
+      'addressCountry' => 'IN',
     ],
-    [
-        '@context' => 'https://schema.org',
-        '@type' => 'WebSite',
-        'name' => SITE_NAME,
-        'url' => SITE_URL . '/',
-        'publisher' => ['@id' => SITE_URL . '/#studio'],
-    ],
+    'geo' => ['@type' => 'GeoCoordinates', 'latitude' => GEO[0], 'longitude' => GEO[1]],
+    'hasMap' => MAPS_URL,
+    'openingHoursSpecification' => [[
+      '@type' => 'OpeningHoursSpecification',
+      'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      'opens' => '09:00',
+      'closes' => '19:00',
+    ]],
+    'areaServed' => ['@type' => 'Country', 'name' => 'India'],
+    'knowsAbout' => ['Letterpress printing', 'Printed matter', 'Stationery', 'Business cards', 'Blind debossing', 'Cotton paper', 'Craftsmanship'],
+    'sameAs' => ['https://instagram.com/' . INSTAGRAM],
+  ],
+  [
+    '@context' => 'https://schema.org',
+    '@type' => 'WebSite',
+    'name' => SITE_NAME,
+    'url' => SITE_URL . '/',
+    'publisher' => ['@id' => SITE_URL . '/#studio'],
+  ],
 ];
+$scripts = ['home.js', 'work.js'];
 include __DIR__ . '/partials/head.php';
 ?>
 
 <main>
-  <!-- Hero -->
-  <div class="hero wrap grid" data-route="">
-    <div class="hero-text">
-      <div>
-        <p class="label muted rv">Business cards</p>
-        <h1 class="rv" style="margin-top:28px">Cards that leave a lasting <em>impression.</em></h1>
-        <p class="lead muted rv">Business and brand cards <strong>pressed by hand</strong> into thick cotton paper — with <strong>a proof on WhatsApp before we print</strong>, and free delivery across India.</p>
-        <div class="hero-actions rv">
-          <a href="business-cards/" class="btn">See cards <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-          <a href="https://wa.me/<?= WHATSAPP ?>" class="btn line">WhatsApp us</a>
+  <!-- Opening frame: the page is a press proof. The headline is pressed into the cotton in black ink
+       and "impression." is pressed blind (no ink, only the bite of the plate), with the printer's red-pencil
+       notes around it. -->
+  <div class="px-proof" data-route="">
+    <div class="px-sheet wrap">
+      <p class="px-slug">Human Made · House of Press, Mumbai</p>
+
+      <h1 class="px-title">
+        <span class="px-ink">Cards that leave</span>
+        <span class="px-ink">a lasting</span>
+        <span class="px-ink px-blind">impression.</span>
+      </h1>
+      <p class="px-note px-note-blind" aria-hidden="true">
+        <svg viewBox="0 0 60 40" class="px-arrow"><path d="M52 34 C 40 30, 22 26, 10 8 M10 8 l 1 9 M10 8 l 8 3" /></svg>
+        blind, no ink, just the bite
+      </p>
+
+      <div class="px-foot">
+        <div class="px-copy">
+          <p class="px-lead">A celebration of the human hand, the mind behind the design, and the honesty of the craft.</p>
+          <p class="hm-lead-2">We are an institution dedicated to keeping human craftsmanship alive. Through print, objects, art and collaboration, we preserve traditional practices, explore new possibilities and celebrate the people behind the work.</p>
+          <div class="px-actions">
+            <a href="institution/" class="btn">Explore the Institution <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+            <a href="works/" class="btn line">Discover the Works</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-facts rv">
-        <div><b>600 gsm</b><span>Cotton paper</span></div>
-        <div><b>Multiple inks</b><span>Or blind, with no ink</span></div>
-        <div><b>Custom</b><span>Designed to your brief</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="main hero-showcase">
-        <video class="hero-media" src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Letterpress business cards from House of Press, pressed into thick cotton paper in one and two inks"></video>
-      </div>
-      <span class="tag label">Off the press</span>
-      <div class="chip rv">
-        <span class="label">Proof first</span>
-        <p>Approve your card on WhatsApp before it touches the press.</p>
+        <figure class="px-pinned">
+          <span class="px-tape" aria-hidden="true"></span>
+          <video src="assets/videos/hero.mp4" poster="assets/videos/hero-poster.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Letterpress cards from House of Press, pressed by hand into thick cotton paper in one and two inks"></video>
+          <figcaption class="px-note px-note-pin" aria-hidden="true">pressed by hand, every sheet</figcaption>
+        </figure>
       </div>
     </div>
   </div>
 
-  <!-- Marquee -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Business cards</span><span>Brand cards</span><span>Letterpress</span><span>Cotton paper</span><span>Blind pressed</span><span>Painted edges</span><span>Custom designs</span><span>Proof on WhatsApp</span>
-      <span>Business cards</span><span>Brand cards</span><span>Letterpress</span><span>Cotton paper</span><span>Blind pressed</span><span>Painted edges</span><span>Custom designs</span><span>Proof on WhatsApp</span>
-    </div>
-  </div>
-
-  <!-- Products -->
-  <section id="products" class="wrap" data-route="">
-    <div class="sec-head grid rv">
-      <p class="label">Our work</p>
-      <h2>See the work. <em>Feel the press.</em></h2>
-      <div class="side">
-        <p>Recent cards from the studio — single and multiple inks, blind pressed, and designed to each client’s brief.</p>
-        <a href="gallery/" class="text-link">View all <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+  <!-- Our belief -->
+  <section class="hm-belief">
+    <div class="wrap hm-belief-in">
+      <h2 class="hm-belief-title">There is something extraordinary about being <em>made by hand.</em></h2>
+      <div class="hm-belief-text">
+        <p class="hm-big">In a world increasingly shaped by machines, we believe in the value of things made by people.</p>
+        <p>In the time taken. The knowledge passed down. The decisions made by hand. The imperfections that make every creation its own.</p>
+        <p>We believe that an object’s worth extends beyond what it is. It lives in the people, process and purpose behind its making.</p>
+        <p class="px-note hm-stand">This is what we stand for.</p>
       </div>
-    </div>
-    <div class="grid collections">
-      <a href="gallery/" class="card c-lg rv">
-        <figure class="ph"><video src="assets/videos/crispy-business-card.mp4" poster="assets/videos/crispy-business-card.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Crispy business card by House of Press: a contour-line pattern blind letterpressed into thick white cotton paper, with the name printed in black ink"></video><span class="no label">01</span></figure>
-        <div class="meta"><div><h3>Crispy business card</h3><p>For Uru Living: contour lines blind pressed deep into cotton, the details in a single black ink.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
-      </a>
-      <a href="gallery/" class="card c-sm rv">
-        <figure class="ph"><img src="assets/videos/sakshi-jain.jpg" alt="Sakshi Jain architect business card by House of Press, letterpressed in olive-green ink on thick white cotton paper" loading="lazy"><span class="no label">02</span></figure>
-        <div class="meta"><div><h3>Sakshi Jain, Architect</h3><p>Olive-green ink, crisp lines on soft cotton.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
-      </a>
-      <a href="gallery/" class="card c-sm rv">
-        <figure class="ph"><img src="assets/videos/urmil-nisar.jpg" alt="Bhanu Cospack business card for Urmil Nisar, letterpressed in blue ink on cotton paper and held up straight off the House of Press press" loading="lazy"><span class="no label">03</span></figure>
-        <div class="meta"><div><h3>Bhanu Cospack</h3><p>Our first ever run, pressed in blue.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
-      </a>
-      <a href="gallery/" class="card c-sm rv">
-        <figure class="ph"><img src="assets/videos/hero-poster.jpg" alt="Letterpress business cards by House of Press laid out together, pressed in orange, black and green inks on white cotton paper" loading="lazy"><span class="no label">04</span></figure>
-        <div class="meta"><div><h3>Studio cards</h3><p>Orange, black and green, fresh off the press.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
-      </a>
-      <div class="card c-sm cta rv">
-        <span class="label" style="color:var(--butter)">05 — Your card</span>
-        <div>
-          <h3>Have a design <em>in mind?</em></h3>
-          <p>Send your logo, artwork or a rough idea. We’ll set it, send a proof on WhatsApp, and press it once you approve.</p>
-        </div>
-        <a href="contact/" class="btn paper">Start your card <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-      </div>
+      <figure class="hm-belief-photo">
+        <span class="px-tape" aria-hidden="true"></span>
+        <img src="assets/videos/about1.webp" alt="Freshly pressed cotton sheets drying on a wooden rack in the House of Press studio, beside jars of ink and a roller" loading="lazy" width="1344" height="768">
+      </figure>
     </div>
   </section>
 
-  <!-- Story -->
-  <section id="about" class="story" data-route="">
-    <div class="wrap grid">
-      <figure class="story-img rv"><video src="assets/videos/about-studio.mp4" poster="assets/videos/about-studio.jpg" data-autoplay muted loop playsinline preload="none" aria-label="Inside the House of Press letterpress studio: gloved hands set up a vintage platen press and check a printing plate against the light"></video></figure>
-      <div class="story-body">
-        <div class="rv">
-          <p class="label">About House of Press</p>
-          <h2>In a hurry? <em>Not the place for you.</em></h2>
-        </div>
-        <div class="story-cols rv">
-          <p>House of Press is a letterpress studio for business cards and brand cards. Every card is <strong>pressed by hand</strong> into thick cotton paper, <strong>one sheet at a time</strong>, so your words sit just below the surface where you can feel them.</p>
-          <p class="muted">It takes longer than printing flat. That is the point. Every order starts with <strong>a proof on WhatsApp</strong>, and nothing touches the press until you approve it.</p>
-        </div>
-        <div class="stats rv">
-          <div><b>40K+</b><span class="label">Instagram followers</span></div>
-          <div><b>5K+</b><span class="label">Cards pressed</span></div>
-          <div><b>1 sheet</b><span class="label">Pressed at a time</span></div>
-        </div>
-        <a href="about/" class="btn paper rv" style="align-self:flex-start">More about us <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clients -->
-  <section id="who-we-press-for" class="clients" data-route="">
+  <!-- What we do, on the studio's red -->
+  <?php
+  $pillars = [
+    ['Preserve', 'We preserve traditional craftsmanship, techniques and knowledge that deserve to be carried forward.'],
+    ['Create', 'We bring design and craftsmanship together to create objects that challenge conventions and stand the test of time.'],
+    ['Champion', 'We give artists, designers and craftspeople a platform to be recognised, supported and rewarded for their contributions.'],
+    ['Document', 'We record the stories behind the work, ensuring that the people and processes behind every creation are never forgotten.'],
+  ];
+  ?>
+  <section class="ip-pillars">
     <div class="wrap">
-      <div class="sec-head grid rv">
-        <p class="label">Who we press for</p>
-        <h2>Pressed for people who <em>notice</em>.</h2>
-        <p class="side">Same paper, same inks, same press, so your next box matches the last one.</p>
+      <h2>A practice. A platform. <em>An institution.</em></h2>
+      <ol class="ip-pillar-list">
+        <?php foreach ($pillars as $n => [$name, $what]): ?>
+          <li>
+            <span class="num"><?= sprintf('%02d', $n + 1) ?></span>
+            <h3 class="hm-pillar"><?= e($name) ?></h3>
+            <p><?= e($what) ?></p>
+          </li>
+        <?php endforeach; ?>
+      </ol>
+    </div>
+  </section>
+
+  <!-- The works: prints laid out on the dark press-room table, each a little askew; swipe on a phone -->
+  <?php
+  // [photo in assets/videos, job, ink, crop, tilt]
+  $prints = [
+    ['crispy-business-card.jpg', 'Uru Living',    'Blind pressed',   'center 40%', -4],
+    ['sakshi-jain.jpg',          'Sakshi Jain',   'Olive-green ink', 'center 40%', 3],
+    ['hero-poster.jpg',          'Studio run',    'Orange, black and green', 'center', -2],
+    ['urmil-nisar.jpg',          'Bhanu Cospack', 'Blue ink',        'center 40%', 4],
+    ['about-studio.jpg',         'The press',     'Set up by hand',  'center', -3],
+  ];
+  ?>
+  <section id="products" class="px-table" data-route="">
+    <div class="px-table-head wrap">
+      <div>
+        <h2>Made with intention. <em>Kept with meaning.</em></h2>
+        <p class="hm-table-text">A collection of printed matter, stationery, objects and works created through the meeting of design and craftsmanship. Every piece has a purpose. Every process has a story.</p>
       </div>
-      <div class="grid client-list">
-        <div class="client rv"><h3>Founders &amp; businesses</h3><p class="muted">A card that says you’re here to stay.</p></div>
-        <div class="client rv"><h3>Architects &amp; designers</h3><p class="muted">Clean lines, pressed as precisely as you draw them.</p></div>
-        <div class="client rv"><h3>Studios &amp; agencies</h3><p class="muted">Cards for the whole team, in one run.</p></div>
-        <div class="client rv"><h3>Brands &amp; makers</h3><p class="muted">Brand cards and notes that carry your mark.</p></div>
+      <a href="works/" class="px-more">Explore the Collection <svg class="i" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+    </div>
+    <div class="px-prints">
+      <?php foreach ($prints as $n => [$file, $job, $ink, $crop, $tilt]): ?>
+        <button type="button" class="px-print work-tile" style="--tilt: <?= $tilt ?>deg" data-name="<?= e($job) ?>" data-note="<?= e($ink) ?>" aria-label="View larger: <?= e("$job, $ink") ?>">
+          <img src="assets/videos/<?= $file ?>" alt="<?= e("$job by House of Press: $ink") ?>" loading="lazy" style="object-position: <?= $crop ?>">
+          <span class="px-print-cap" aria-hidden="true"><span class="num">No. <?= sprintf('%02d', $n + 1) ?></span><?= e($job) ?></span>
+        </button>
+      <?php endforeach; ?>
+    </div>
+
+    <!-- Lightbox, the same one the Works page uses (work.js) -->
+    <dialog class="g-box" id="g-box" aria-label="The works, larger">
+      <div class="g-box-stage" id="g-box-stage"></div>
+      <div class="g-box-bar">
+        <p class="g-box-cap"><b id="g-box-name"></b><span class="label" id="g-box-note"></span></p>
+        <span class="label g-box-count" id="g-box-count" aria-live="polite"></span>
+        <div class="g-box-nav">
+          <button type="button" id="g-box-prev" aria-label="Previous"><svg class="i" aria-hidden="true"><use href="#i-chevron-left" /></svg></button>
+          <button type="button" id="g-box-next" aria-label="Next"><svg class="i" aria-hidden="true"><use href="#i-chevron-right" /></svg></button>
+          <button type="button" id="g-box-close" aria-label="Close"><svg class="i" aria-hidden="true"><use href="#i-x" /></svg></button>
+        </div>
+      </div>
+    </dialog>
+  </section>
+
+  <!-- The people, beside the hands at work -->
+  <section class="hm-people">
+    <div class="wrap hm-people-in">
+      <figure class="hm-people-photo">
+        <img src="assets/videos/about2.webp" alt="A House of Press printer inking a block of type by hand with an orange roller" loading="lazy" width="1344" height="768">
+        <figcaption class="px-note" aria-hidden="true">the hands that refined it</figcaption>
+      </figure>
+      <div class="hm-people-text">
+        <h2>Behind every great work, <em>there are people.</em></h2>
+        <p class="hm-big">The designer who imagined it. The craftsperson who gave it form. The hands that refined it. The people whose knowledge made it possible.</p>
+        <p>We believe recognition should extend to everyone who contributes. House of Press exists to give these people a platform, an opportunity and a place in its history.</p>
+        <div class="px-actions">
+          <a href="people/" class="btn">Meet the People <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Process -->
-  <section id="how-to-order" class="wrap" data-route="how-to-order">
-    <div class="sec-head grid rv">
-      <p class="label">How to order</p>
-      <h2>Four steps, <em>no rush</em>.</h2>
-      <p class="side">Message us on WhatsApp or send an enquiry — we’ll take it from there.</p>
-    </div>
-    <div class="grid steps">
-      <div class="step rv"><span class="n">01</span><h3>Choose your card</h3><p>Pick a style and quantity, or send us your own design.</p></div>
-      <div class="step rv"><span class="n">02</span><h3>Approve your proof</h3><p>We send a proof on WhatsApp. Nothing moves until you say yes.</p></div>
-      <div class="step rv"><span class="n">03</span><h3>We press it</h3><p>Ink mixed for your order, each sheet pressed by hand, one at a time.</p></div>
-      <div class="step rv"><span class="n">04</span><h3>Delivered to you</h3><p>Trimmed, checked and sent with tracking, free across India.</p></div>
+  <!-- The archive: an index card from the drawer -->
+  <section class="hm-archive">
+    <div class="wrap">
+      <div class="hm-index">
+        <p class="hm-index-tab"><span class="num">No. 0001</span>The Archive</p>
+        <h2>Nothing worth making should be <em>forgotten.</em></h2>
+        <p>An ongoing record of the people, ideas, techniques and works that shape House of Press. A living archive of contributions, discoveries and collaborations.</p>
+        <p class="px-note hm-index-note">Built today. Preserved for generations.</p>
+        <a href="archive/" class="btn line">Enter the Archive <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+      </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="enquiry-home" class="contact" data-route="">
-    <div class="wrap grid">
-      <div class="contact-head rv">
-        <p class="label">Enquiry</p>
-        <h2 style="margin-top:18px">Have a card in mind? <em>Let’s talk.</em></h2>
-        <p class="lead">Prices for our standard cards are on the <a href="business-cards/">business cards page</a>. For anything custom — your own design, a special ink or a larger run — tell us here and we’ll reply on WhatsApp.</p>
-        <div class="details">
-          <div><span class="label">WhatsApp</span><a href="https://wa.me/<?= WHATSAPP ?>" target="_blank" rel="noopener"><?= PHONE_DISPLAY ?></a></div>
-          <div><span class="label">Email</span><a href="mailto:<?= EMAIL ?>"><?= EMAIL ?></a></div>
-          <div><span class="label">Instagram</span><a href="https://instagram.com/<?= INSTAGRAM ?>" target="_blank" rel="noopener">@<?= INSTAGRAM ?> <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
-          <div><span class="label">Studio hours</span><?= e(HOURS) ?></div>
-        </div>
-      </div>
-
-      <form id="enquiry" class="rv" novalidate>
-        <h3>Start an enquiry</h3>
-        <div class="field-row">
-          <label class="field"><span class="label">Name</span><input name="name" required autocomplete="name"></label>
-          <label class="field"><span class="label">Phone</span><input name="phone" type="tel" required autocomplete="tel"></label>
-        </div>
-        <div class="field">
-          <span class="label">I’m looking for</span>
-          <div class="chips">
-            <label><input type="radio" name="type" value="Business cards" checked><span>Business cards</span></label>
-            <label><input type="radio" name="type" value="Brand cards"><span>Brand cards</span></label>
-            <label><input type="radio" name="type" value="A custom design"><span>Custom design</span></label>
-            <label><input type="radio" name="type" value="Something else"><span>Something else</span></label>
+  <!-- Closing statement, pressed into a card that tilts under the pointer (home.js) -->
+  <section id="enquiry-home" class="px-end" data-route="">
+    <div class="wrap">
+      <p class="px-note px-note-end" aria-hidden="true">with love and faith</p>
+      <div class="px-card" id="px-card">
+        <div class="px-card-face">
+          <p class="px-ink px-card-brand">House of Press</p>
+          <div>
+            <h2 class="px-card-title"><span class="px-ink">Love the process.</span> <span class="px-ink px-red">Have faith in the honesty.</span></h2>
+            <span class="px-card-rule" aria-hidden="true"></span>
+            <p class="px-ink px-card-text">We believe in making things with care, standing behind the work and honouring everyone involved in bringing it to life.</p>
           </div>
+          <p class="px-card-foot"><span class="px-ink">Human Made. Honestly Kept.</span><span class="px-ink">Mumbai, India</span></p>
         </div>
-        <div class="field">
-          <span class="label">Roughly how many?</span>
-          <div class="chips">
-            <label><input type="radio" name="qty" value="100" checked><span>100</span></label>
-            <label><input type="radio" name="qty" value="250"><span>250</span></label>
-            <label><input type="radio" name="qty" value="500"><span>500</span></label>
-            <label><input type="radio" name="qty" value="More than 500"><span>500+</span></label>
-          </div>
-        </div>
-        <label class="field"><span class="label">Tell us about it</span><textarea name="need" placeholder="e.g. Logo in one ink, name blind pressed, cards for three team members"></textarea></label>
-        <div class="form-foot">
-          <small>Opens WhatsApp with your message.</small>
-          <button type="submit" class="btn red">Send enquiry <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Questions -->
-  <section class="c-faq dark">
-    <div class="wrap grid">
-      <div class="c-faq-head rv">
-        <p class="label">Questions</p>
-        <h2>Before you <em>order</em>.</h2>
       </div>
-      <div class="c-faq-list rv">
-        <details>
-          <summary>What is letterpress?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Relief printing: a raised plate is inked and pressed into paper with real force. The words sit slightly below the surface of the card, so you can feel them with your fingertips.</p></div>
-        </details>
-        <details>
-          <summary>Will I see my card before it’s pressed?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Yes. We send a proof to your WhatsApp. Nothing goes to press until you approve it, and you can ask for changes first.</p></div>
-        </details>
-        <details>
-          <summary>Do I need a design ready?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>No. Send your own print-ready design, or tell us what should be on the card and the studio will set it for you.</p></div>
-        </details>
-        <details>
-          <summary>Which file should I send?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>A vector PDF, AI, EPS or SVG works best, with text converted to outlines. Letterpress can’t print photographs or soft gradients, so keep the artwork to solid shapes and lines.</p></div>
-        </details>
-        <details>
-          <summary>Can you match my brand colour?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>We press in multiple house inks, or blind with no ink at all. For a specific Pantone shade, message us on WhatsApp before you order.</p></div>
-        </details>
-        <details>
-          <summary>How long does it take?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>We dispatch within <?= e(DISPATCH) ?> of your proof being approved, with free tracked delivery across India.</p></div>
-        </details>
-        <details>
-          <summary>Why does each card look slightly different?<svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <div class="faq-a"><p>Each card is pressed one at a time, so the depth of the impression and the ink vary a little from card to card. That small variation is what makes letterpress feel handmade.</p></div>
-        </details>
+      <div class="px-actions px-end-actions">
+        <a href="commissions/" class="btn red">Discuss a commission <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right" /></svg></a>
+        <a href="business-cards/" class="btn line">Visit the Shop</a>
       </div>
     </div>
   </section>

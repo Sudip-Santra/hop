@@ -12,16 +12,20 @@ if (preg_match('#^/products(/.*)?$#', $path)) {
     header('Location: /business-cards/', true, 301); // the old catalogue
     exit;
 }
-if (preg_match('#^/(how-to-order)/$#', $path, $m)) {
-    header('Location: /' . $m[1], true, 301);
+if (preg_match('#^/how-to-order/?$#', $path)) {
+    header('Location: /', true, 301); // the old How to order section
     exit;
 }
-if (preg_match('#^/(how-to-order)$#', $path)) {
-    require __DIR__ . '/index.php';
-    return true;
+if (preg_match('#^/about(/.*)?$#', $path)) {
+    header('Location: /institution/', true, 301); // About became The Institution
+    exit;
+}
+if (preg_match('#^/gallery(/.*)?$#', $path)) {
+    header('Location: /works/', true, 301); // the Gallery became The Works
+    exit;
 }
 // Folder pages without the trailing slash: /contact -> /contact/ (Apache does this itself)
-if (preg_match('#^/(business-cards|checkout|about|contact|gallery|shipping-and-returns|privacy|terms)$#', $path, $m)) {
+if (preg_match('#^/(business-cards|checkout|institution|works|people|archive|journal|commissions|contact|shipping-and-returns|privacy|terms|home-2)$#', $path, $m)) {
     header('Location: /' . $m[1] . '/', true, 301);
     exit;
 }

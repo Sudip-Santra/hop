@@ -5,8 +5,8 @@
  *   php build.php
  *
  * Section URLs come from the pages themselves: each data-route="slug" found on a page
- * becomes its own file, e.g. /how-to-order -> dist/how-to-order.html
- * (Netlify serves /how-to-order from that file).
+ * becomes its own file, e.g. /some-section -> dist/some-section.html
+ * (Netlify serves /some-section from that file).
  */
 
 // Child mode: render one page as if it were requested at $argv[2]
@@ -25,12 +25,17 @@ $pages = [
     ['/',         'index.php',          'index.html'],
     ['/business-cards/', 'business-cards/index.php', 'business-cards/index.html'],
     ['/checkout/',  'checkout/index.php',  'checkout/index.html'],
-    ['/about/',    'about/index.php',    'about/index.html'],
+    ['/institution/', 'institution/index.php', 'institution/index.html'],
+    ['/works/',    'works/index.php',    'works/index.html'],
+    ['/people/',   'people/index.php',   'people/index.html'],
+    ['/archive/',  'archive/index.php',  'archive/index.html'],
+    ['/journal/',  'journal/index.php',  'journal/index.html'],
+    ['/commissions/', 'commissions/index.php', 'commissions/index.html'],
     ['/contact/',  'contact/index.php',  'contact/index.html'],
-    ['/gallery/',  'gallery/index.php',  'gallery/index.html'],
     ['/shipping-and-returns/', 'shipping-and-returns/index.php', 'shipping-and-returns/index.html'],
     ['/privacy/',  'privacy/index.php',  'privacy/index.html'],
     ['/terms/',    'terms/index.php',    'terms/index.html'],
+    ['/home-2/',   'home-2/index.php',   'home-2/index.html'], // second home page, to compare (noindex)
 ];
 
 function render(string $url, string $src): string

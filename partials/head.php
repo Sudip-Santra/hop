@@ -4,6 +4,7 @@
  * Expects: $page (nav key), $base ('' at root, '../' one level down), $title, $description.
  * Optional: $jsonLd, an array of schema.org objects printed as structured data;
  *           $preloadImage, the above-the-fold image to fetch first (the LCP).
+ *           $noindex, true for a page kept out of search (a draft to compare).
  */
 require_once __DIR__ . '/config.php';
 
@@ -18,7 +19,7 @@ $self = '/' . ($page === 'home' ? '' : $page . '/');
 <title><?= e($title) ?></title>
 <meta name="description" content="<?= e($description) ?>">
 <link rel="canonical" href="<?= SITE_URL . $self ?>">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="<?= empty($noindex) ? 'index, follow' : 'noindex, nofollow' ?>">
 <meta name="theme-color" content="#f4efe6">
 <link rel="icon" href="<?= $base ?>assets/logo.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
@@ -35,8 +36,8 @@ $self = '/' . ($page === 'home' ? '' : $page . '/');
 <meta name="twitter:title" content="<?= e($title) ?>">
 <meta name="twitter:description" content="<?= e($description) ?>">
 <meta name="twitter:image" content="<?= SITE_URL ?>/assets/og-image.png">
-<link rel="preload" href="<?= $base ?>assets/fonts/megalito-slab.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="<?= $base ?>assets/fonts/sen.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= $base ?>assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= $base ?>assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= $base ?>assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
 <?php if (!empty($preloadImage)): ?>
 <link rel="preload" href="<?= $base . $preloadImage ?>" as="image" fetchpriority="high">

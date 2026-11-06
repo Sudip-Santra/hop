@@ -3,15 +3,17 @@
 // $noFooter = true to leave out the footer itself (checkout).
 
 $footerNav = [
-  'Shop' => [
-    ['Business cards', 'business-cards/'],
-    ['How to order',   'how-to-order'],
-    ['Checkout',       'checkout/'],
+  'The House' => [
+    ['The Institution', 'institution/'],
+    ['The Works',       'works/'],
+    ['The People',      'people/'],
+    ['The Archive',     'archive/'],
+    ['The Journal',     'journal/'],
   ],
-  'Studio' => [
-    ['About',   'about/'],
-    ['Gallery', 'gallery/'],
-    ['Contact', 'contact/'],
+  'Work with us' => [
+    ['Commissions', 'commissions/'],
+    ['Shop',        'business-cards/'],
+    ['Contact',     'contact/'],
   ],
 ];
 $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
@@ -20,8 +22,8 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
 <footer class="footer">
   <div class="wrap footer__top">
     <div class="footer__intro">
-      <p class="footer__lead">We’re so glad you appreciate tactile, analog craftsmanship.</p>
-      <p class="footer__about">A small letterpress studio pressing business cards into thick cotton paper, one sheet at a time. Every order gets a proof on WhatsApp before anything touches the press.</p>
+      <h2 class="footer__lead">Human Made. <em>Honestly Kept.</em></h2>
+      <p class="footer__about">An institution dedicated to the preservation, practice and advancement of human craftsmanship. Mumbai, India. An institution in the making.</p>
       <ul class="footer__social" aria-label="Talk to us">
         <li><a href="https://wa.me/<?= WHATSAPP ?>" aria-label="WhatsApp" title="WhatsApp"><svg class="i" aria-hidden="true"><use href="#i-whatsapp"/></svg></a></li>
         <li><a href="<?= $instagramUrl ?>" target="_blank" rel="noopener noreferrer" aria-label="Instagram @<?= INSTAGRAM ?>" title="Instagram @<?= INSTAGRAM ?>"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a></li>
@@ -55,11 +57,11 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
   <dl class="wrap footer__facts">
     <div>
       <dt>Studio hours</dt>
-      <dd><?= e(HOURS) ?></dd>
+      <dd><?= nums(HOURS) ?></dd>
     </div>
     <div>
       <dt>Dispatch</dt>
-      <dd><?= e(DISPATCH) ?> after your proof</dd>
+      <dd><?= nums(DISPATCH) ?> after your proof</dd>
     </div>
     <div>
       <dt>Delivery</dt>
@@ -77,7 +79,7 @@ $instagramUrl = 'https://instagram.com/' . INSTAGRAM;
   </div>
 
   <div class="wrap footer__base">
-    <p>© <?= date('Y') ?> <?= SITE_NAME ?>. Prices include GST and delivery within India.</p>
+    <p>© <b class="num"><?= date('Y') ?></b> <?= SITE_NAME ?>. Prices include GST and delivery within India.</p>
     <ul class="footer__legal">
       <li><a href="<?= $base ?>shipping-and-returns/">Shipping &amp; returns</a></li>
       <li><a href="<?= $base ?>privacy/">Privacy policy</a></li>

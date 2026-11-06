@@ -4,12 +4,57 @@
 const form = document.getElementById('contact-form');
 const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 
+const NEED_MAX = 1000;
+
+// Each checked field, with the message shown under it when it's missing or wrong
+const checks = [
+  ['name', (v) => v.length >= 2, 'Add your name.'],
+  ['phone', (v) => /^[6-9]\d{9}$/.test(v), 'Add your 10-digit mobile number.'],
+  ['need', (v) => v.length <= NEED_MAX, ''], // message comes from the live counter
+];
+const field = (k) => form.querySelector(`[name=${k}]`);
+const errorOf = (k) => document.getElementById(`err-${k}`);
+const flag = (k, text) => {
+  const el = errorOf(k);
+  el.innerHTML = text; // our own fixed messages; the counter wraps its numbers in .num
+  el.hidden = !text;
+  if (text) field(k).setAttribute('aria-invalid', 'true');
+  else field(k).removeAttribute('aria-invalid');
+};
+
+// The number field takes digits only, at most 10
+const phone = field('phone');
+phone.addEventListener('input', () => {
+  let d = phone.value.replace(/\D/g, '');
+  if (d.length > 10) d = d.replace(/^(91|0)/, ''); // pasted as +91… or 0…
+  phone.value = d.slice(0, 10);
+});
+
+// "Tell us about it": the count shows only once it's past the limit
+const need = field('need');
+const num = (n) => `<span class="num">${n.toLocaleString('en-IN')}</span>`;
+const checkNeed = () => {
+  const n = need.value.trim().length;
+  flag('need', n > NEED_MAX ? `${num(n)} / ${num(NEED_MAX)} characters. Please shorten it a little.` : '');
+};
+need.addEventListener('input', checkNeed);
+
+// Typing in a flagged field clears its message
+['name', 'phone'].forEach((k) => field(k).addEventListener('input', () => {
+  if (field(k).getAttribute('aria-invalid')) flag(k, '');
+}));
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const f = new FormData(form);
   const val = (k) => (f.get(k) || '').toString().trim();
-  if (!val('name') || !val('phone')) {
-    form.querySelector(val('name') ? '[name=phone]' : '[name=name]').focus();
+  const failed = checks.filter(([k, ok, text]) => {
+    const bad = !ok(val(k));
+    if (k === 'need') checkNeed(); else flag(k, bad ? text : '');
+    return bad;
+  });
+  if (failed.length) {
+    field(failed[0][0]).focus();
     return;
   }
   const date = val('date') ? new Date(val('date') + 'T00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';

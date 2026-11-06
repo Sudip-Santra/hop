@@ -1,7 +1,7 @@
 <?php
 $page        = 'terms';
 $base        = '../';
-$title       = 'Terms & Conditions — House of Press';
+$title       = 'Terms & Conditions - House of Press';
 $description = 'The terms for ordering letterpress business cards from House of Press: proofs, prices, payment, artwork, delivery and liability.';
 include __DIR__ . '/../partials/head.php';
 
